@@ -97,7 +97,7 @@ mkdir ~/.config/
 mkdir ~/.config/fontconfig/
 mkdir ~/.config/fontconfig/conf.d/
 mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
-sed -i \'s#bash .omz-installer.sh##g\' ~/.bashrc
+sed -i 's#bash .omz-installer.sh##g' ~/.bashrc
 rm -rf ~/.omz-installer.sh
 echo 'You must log out and log back in to activate zshell.'
 read -p 'Press [Enter] to log out.'
@@ -107,32 +107,43 @@ EOF
 # Deskterm #
 apt-get install -y devilspie2
 tee -a /etc/skel/.profile<<EOF
-devilspie2
-sleep 4s
-gnome-terminal --window-with-profile=Deskterm --role=Deskterm --hide-menubar
+devilspie2 | grep 'silence is golden' &
+sleep 10s
+gnome-terminal --role=Deskterm --hide-menubar
 EOF
 mkdir /etc/skel/.config/
 mkdir /etc/skel/.config/devilspie2/
-mv deskterm.lua /etc/skel/.config/devilspie2/
+cp deskterm.lua /etc/skel/.config/devilspie2/
 
 # Intialize Wizard #
 tee -a /etc/skel/.bashrc <<EOF
-bash .initialize-wizard.sh
+sudo bash .initialize-wizard.sh
 EOF
 tee /etc/skel/.initialize-wizard.sh <<EOF
 #!/bin/bash
 cd /tmp
-echo 'We need your permission to run the devbuntu wizard.'
+echo 'Please enter your password again so we can install zshell.'
 echo -n 'Enter your password: '
 read -s password
-(echo \$password) | sudo tee -a /etc/skel/.bashrc <<EOF
+runuser -l \$SUDO_USER -c "sed -i 's#sudo bash .initialize-wizard.sh##g' ~/.bashrc"
+sed -i 's#sudo bash .initialize-wizard.sh##g' /etc/skel/.bashrc
+tee -a /etc/skel/.bashrc <<EOF
 bash .omz-installer.sh
 $(echo 'EOF')
-sed -i \'s#bash .initialize-wizard.sh##g\' ~/.bashrc
-(echo \$password) | sudo sed -i \'s#bash .initialize-wizard.sh##g\' /etc/skel/.bashrc
-rm -rf ~/.initialize-wizard.sh
-(echo \$password) | sudo rm -rf /etc/skel/.initialize-wizard.sh
+runuser -l \$SUDO_USER -c 'rm -rf ~/.initialize-wizard.sh'
+rm -rf /etc/skel/.initialize-wizard.sh
 git clone https://github.com/jamrizzi/devbuntu.git
-(echo \$password) | sudo bash devbuntu/wizard.sh
-(echo \$password) | bash ~/.omz-installer.sh
+python devbuntu/wizard.py
+(echo \$password) | runuser -l \$SUDO_USER -c 'bash ~/.omz-installer.sh'
+git clone https://github.com/bhilburn/powerlevel9k.git /root/.oh-my-zsh/custom/themes/powerlevel9k/
+sed -i 's#ZSH_THEME="robbyrussell"#ZSH_THEME="powerlevel9k/powerlevel9k"#g' /root/.zshrc
+wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
+wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
+mkdir /root/.fonts/
+mv PowerlineSymbols.otf /root/.fonts/
+fc-cache -vf /root/.fonts/
+mkdir /root/.config/
+mkdir /root/.config/fontconfig/
+mkdir /root/.config/fontconfig/conf.d/
+mv 10-powerline-symbols.conf /root/.config/fontconfig/conf.d/
 EOF
