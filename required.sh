@@ -77,12 +77,8 @@ apt-get install -y alacarte
 
 # Oh My Zsh #
 apt-get install -y zsh
-tee -a /etc/skel/.bashrc <<EOF
-bash .omz-installer.sh
-EOF
 tee /etc/skel/.omz-installer.sh <<EOF
 #!/bin/bash
-
 cd /tmp
 echo 'We need your permission to install zshell, a super awsome terminal shell.'
 echo -n 'Enter your password: '
@@ -102,6 +98,7 @@ mkdir ~/.config/fontconfig/
 mkdir ~/.config/fontconfig/conf.d/
 mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
 sed -i \'s#bash .omz-installer.sh##g\' ~/.bashrc
+rm -rf ~/.omz-installer.sh
 echo 'You must log out and log back in to activate zshell.'
 read -p 'Press [Enter] to log out.'
 gnome-session-quit
@@ -117,3 +114,25 @@ EOF
 mkdir /etc/skel/.config/
 mkdir /etc/skel/.config/devilspie2/
 mv deskterm.lua /etc/skel/.config/devilspie2/
+
+# Intialize Wizard #
+tee -a /etc/skel/.bashrc <<EOF
+bash .initialize-wizard.sh
+EOF
+tee /etc/skel/.initialize-wizard.sh <<EOF
+#!/bin/bash
+cd /tmp
+echo 'We need your permission to run the devbuntu wizard.'
+echo -n 'Enter your password: '
+read -s password
+(echo \$password) | sudo tee -a /etc/skel/.bashrc <<EOF
+bash .omz-installer.sh
+$(echo 'EOF')
+sed -i \'s#bash .initialize-wizard.sh##g\' ~/.bashrc
+(echo \$password) | sudo sed -i \'s#bash .initialize-wizard.sh##g\' /etc/skel/.bashrc
+rm -rf ~/.initialize-wizard.sh
+(echo \$password) | sudo rm -rf /etc/skel/.initialize-wizard.sh
+git clone https://github.com/jamrizzi/devbuntu.git
+(echo \$password) | sudo bash devbuntu/wizard.sh
+(echo \$password) | bash ~/.omz-installer.sh
+EOF
