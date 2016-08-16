@@ -106,3 +106,14 @@ echo 'You must log out and log back in to activate zshell.'
 read -p 'Press [Enter] to log out.'
 gnome-session-quit
 EOF
+
+# Deskterm #
+apt-get install -y devilspie2
+tee -a /etc/skel/.profile<<EOF
+devilspie2
+sleep 4s
+gnome-terminal --window-with-profile=Deskterm --role=Deskterm --hide-menubar
+EOF
+mkdir /etc/skel/.config/
+mkdir /etc/skel/.config/devilspie2/
+mv deskterm.lua /etc/skel/.config/devilspie2/
