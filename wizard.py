@@ -1,63 +1,45 @@
 import os
 import sys
-
-def read(message):
-    if sys.version_info[0] < 3: # python 2
-        return raw_input(message)
-    else: # python 3
-        return input(message)
-
-def question(message, defaultAnswer = 'y'):
-    if defaultAnswer.lower() == 'y':
-        response = True
-        answer = read(message + ' [Y|n]: ')
-        if len(answer) > 0 and answer[0].lower() == 'n':
-            response = False
-    else:
-        response = False
-        answer = read(message + ' [y|N]: ')
-        if len(answer) > 0 and answer[0].lower() == 'y':
-            response = True
-    return response
+from uni import uni
 
 if os.getuid() == 0:
-    chrome = question('Install Chrome?')
-    virtualbox = question('Install VirtualBox?')
-    vagrant = question('Install Vagrant?', 'n')
-    lamp = question('Install LAMP Stack?')
+    chrome = uni.question('Install Chrome?')
+    virtualbox = uni.question('Install VirtualBox?')
+    vagrant = uni.question('Install Vagrant?', 'n')
+    lamp = uni.question('Install LAMP Stack?')
     wordpress = None
-    if lamp: wordpress = question('Install WordPress?')
-    atom = question('Install Atom?')
-    emacs = question('Install Emacs?')
-    enpass = question('Install Enpass?')
-    spotify = question('Install Spotify?')
-    slack = question('Install Slack?')
-    lmms = question('Install LMMS?')
-    intellij = question('Install IntelliJ?', 'n')
-    lightworks = question('Install LightWorks?')
-    googleCloudSDK = question('Install Google Cloud SDK?')
-    androidStudio = question('Install Android Studio?')
-    audacity = question('Install Audacity?')
-    blender = question('Install Blender?')
-    rsaKey = question('Would you like an RSA key generated for you?')
-    privateInternetAccess = question('Install Private Internet Access?')
-    mongodb = question('Install MongoDB?')
-    deluge = question('Install Deluge?')
-    poedit = question('Install PoEdit?')
-    synfig = question('Install Synfig?')
-    inkscape = question('Install Inkscape?')
-    robomongo = question('Install RoboMongo?')
-    mysqlWorkbench = question('Install MySql Workbench?')
-    aircrack = question('Install Aircrack?')
-    johnTheRipper = question('Install John the Ripper?')
-    ophcrack = question('Install Ophcrack?')
-    angryIpScanner = question('Install Angry IP Scanner?')
-    pycharm = question('Install PyCharm?', 'n')
-    musescore = question('Install MuseScore?')
-    googleWebDesigner = question('Install Google Web Designer?')
-    kazam = question('Install Kazam?')
-    freemat = question('Install FreeMat?')
-    nodejs = question('Edit NodeJS Installation?', 'n')
+    if lamp: wordpress = uni.question('Install WordPress?')
+    atom = uni.question('Install Atom?')
+    emacs = uni.question('Install Emacs?')
+    enpass = uni.question('Install Enpass?')
+    spotify = uni.question('Install Spotify?')
+    slack = uni.question('Install Slack?')
+    lmms = uni.question('Install LMMS?')
+    intellij = uni.question('Install IntelliJ?', 'n')
+    lightworks = uni.question('Install LightWorks?')
+    googleCloudSDK = uni.question('Install Google Cloud SDK?')
+    androidStudio = uni.question('Install Android Studio?')
+    audacity = uni.question('Install Audacity?')
+    blender = uni.question('Install Blender?')
+    rsaKey = uni.question('Would you like an RSA key generated for you?')
+    privateInternetAccess = uni.question('Install Private Internet Access?')
+    mongodb = uni.question('Install MongoDB?')
+    deluge = uni.question('Install Deluge?')
+    poedit = uni.question('Install PoEdit?')
+    synfig = uni.question('Install Synfig?')
+    inkscape = uni.question('Install Inkscape?')
+    robomongo = uni.question('Install RoboMongo?')
+    mysqlWorkbench = uni.question('Install MySql Workbench?')
+    aircrack = uni.question('Install Aircrack?')
+    johnTheRipper = uni.question('Install John the Ripper?')
+    ophcrack = uni.question('Install Ophcrack?')
+    angryIpScanner = uni.question('Install Angry IP Scanner?')
+    pycharm = uni.question('Install PyCharm?', 'n')
+    musescore = uni.question('Install MuseScore?')
+    googleWebDesigner = uni.question('Install Google Web Designer?')
+    kazam = uni.question('Install Kazam?')
+    freemat = uni.question('Install FreeMat?')
+    nodejs = uni.question('Edit NodeJS Installation?', 'n')
     os.system('''
         cd /tmp
         apt-get -y update
