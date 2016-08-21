@@ -51,21 +51,6 @@ make
 make install
 cd ..
 
-# Respin #
-wget http://security.ubuntu.com/ubuntu/pool/universe/x/xresprobe/xresprobe_0.4.24ubuntu9_amd64.deb
-dpkg -i xresprobe_*ubuntu9_amd64.deb
-apt-get install -y dialog casper libdebian-installer4 ubiquity-frontend-debconf user-setup discover
-apt-get -fy install
-rm -rf xresprobe_*ubuntu9_amd64.deb
-git clone https://github.com/ch1x0r/LinuxRespin.git
-dpkg -i LinuxRespin/ubuntu/respin_1.1.0-1_all.deb
-rm -rf LinuxRespin
-
-# Aptik #
-apt-add-repository -y ppa:teejee2008/ppa
-apt-get update
-apt-get install -y aptik
-
 # GuFW #
 apt-get install -y gufw
 
