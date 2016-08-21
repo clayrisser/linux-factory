@@ -1,0 +1,50 @@
+---
+- id: chooseDeveloper
+  question: What kind of developer are you?
+  answers:
+  - id: frontend
+    name: Frontend
+  - id: backend
+    name: Backend
+  - id: full-stack
+    name: Full Stack
+  - id: hacker
+    name: Hacker
+
+- id: chooseLanguages
+  question: What programming languages do you use?
+  answers:
+  - id: php
+    name: PHP
+    if:
+    - parent: chooseDeveloper
+      required:
+      - frontend
+      - backend
+      - full-stack
+  - id: python
+    name: Python
+    if:
+    - parent: chooseDeveloper
+      required:
+      - backend
+      - full-stack
+      - hacker
+
+- id: chooseTechnologies
+  question: What technologies do you use?
+  answers:
+  - id: lamp-stack
+    name: LAMP Stack
+    settings:
+    - php:
+      - 5.5
+      - 5.6
+      - 7.0
+    - database
+      - MySql
+      - Maria
+    if:
+    - parent: chooseLanguages
+      required:
+      - php

@@ -1,88 +1,41 @@
 import os
 import sys
-from uni import uni
+from uni import Uni
+from profile import Profile
 
-if os.getuid() == 0:
-    chrome = uni.question('Install Chrome?')
-    virtualbox = uni.question('Install VirtualBox?')
-    vagrant = uni.question('Install Vagrant?', 'n')
-    lamp = uni.question('Install LAMP Stack?')
-    wordpress = None
-    if lamp: wordpress = uni.question('Install WordPress?')
-    atom = uni.question('Install Atom?')
-    emacs = uni.question('Install Emacs?')
-    enpass = uni.question('Install Enpass?')
-    spotify = uni.question('Install Spotify?')
-    slack = uni.question('Install Slack?')
-    lmms = uni.question('Install LMMS?')
-    intellij = uni.question('Install IntelliJ?', 'n')
-    lightworks = uni.question('Install LightWorks?')
-    googleCloudSDK = uni.question('Install Google Cloud SDK?')
-    androidStudio = uni.question('Install Android Studio?')
-    audacity = uni.question('Install Audacity?')
-    blender = uni.question('Install Blender?')
-    rsaKey = uni.question('Would you like an RSA key generated for you?')
-    privateInternetAccess = uni.question('Install Private Internet Access?')
-    mongodb = uni.question('Install MongoDB?')
-    deluge = uni.question('Install Deluge?')
-    poedit = uni.question('Install PoEdit?')
-    synfig = uni.question('Install Synfig?')
-    inkscape = uni.question('Install Inkscape?')
-    robomongo = uni.question('Install RoboMongo?')
-    mysqlWorkbench = uni.question('Install MySql Workbench?')
-    aircrack = uni.question('Install Aircrack?')
-    johnTheRipper = uni.question('Install John the Ripper?')
-    ophcrack = uni.question('Install Ophcrack?')
-    angryIpScanner = uni.question('Install Angry IP Scanner?')
-    pycharm = uni.question('Install PyCharm?', 'n')
-    musescore = uni.question('Install MuseScore?')
-    googleWebDesigner = uni.question('Install Google Web Designer?')
-    kazam = uni.question('Install Kazam?')
-    freemat = uni.question('Install FreeMat?')
-    nodejs = uni.question('Edit NodeJS Installation?', 'n')
-    os.system('''
-        cd /tmp
-        apt-get -y update
-        apt-get -y upgrade
-        apt autoremove -y
-        apt-get clean
-        apt-get install ubuntu-restricted-extras
-    ''')
-    if chrome: os.system('bash installers/chrome.sh')
-    if virtualbox: os.system('bash installers/virtualbox.sh')
-    if vagrant: os.system('bash installers/vagrant.sh')
-    if lamp: os.system('python installers/lamp.py')
-    if wordpress: os.system('bash installers/wordpress.sh')
-    if atom: os.system('python installers/atom.py')
-    if emacs: os.system('python installers/emacs.py')
-    if enpass: os.system('bash installers/enpass.sh')
-    if spotify: os.system('bash installers/spotify.sh')
-    if slack: os.system('bash installers/slack.sh')
-    if lmms: os.system('bash installers/lmms.sh')
-    if lightworks: os.system('bash installers/lightworks.sh')
-    if googleCloudSDK: os.system('bash installers/google-cloud-sdk.sh')
-    if androidStudio: os.system('bash installers/android-studio.sh')
-    if audacity: os.system('bash installers/audacity.sh')
-    if blender: os.system('bash installers/blender.sh')
-    if rsaKey: os.system('bash installers/rsa-key.sh')
-    if privateInternetAccess: os.system('bash installers/private-internet-access.sh')
-    if mongodb: os.system('bash installers/mongodb.sh')
-    if deluge: os.system('bash installers/deluge.sh')
-    if poedit: os.system('bash installers/poedit.sh')
-    if synfig: os.system('bash installers/synfig.sh')
-    if inkscape: os.system('bash installers/inkscape.sh')
-    if robomongo: os.system('bash installers/robomongo.sh')
-    if mysqlWorkbench: os.system('bash installers/mysql-workbench.sh')
-    if aircrack: os.system('bash installers/aircrack.sh')
-    if johnTheRipper: os.system('bash installers/john-the-ripper.sh')
-    if ophcrack: os.system('bash installers/ophcrack.sh')
-    if angryIpScanner: os.system('bash installers/angry-ip-scanner.sh')
-    if pycharm: os.system('bash installers/pycharm.sh')
-    if musescore: os.system('bash installers/musescore.sh')
-    if googleWebDesigner: os.system('bash installers/google-web-designer.sh')
-    if kazam: os.system('bash installers/kazam.sh')
-    if freemat: os.system('bash installers/freemat.sh')
-    if nodejs: os.system('python installers/nodejs.py')
-else:
-    print 'This program must be run as root'
-    exit()
+class Wizard:
+    
+    def __init__(self):
+        global uni
+        uni = Uni()
+        self.profile = Profile()
+
+    def chooseDeveloperType(self):
+        print '[0] Backend'
+        print '[1] Front-end'
+        print '[2] Full-stack'
+        print '[3] Hacker'
+        self.profile.developerType = uni.read('Select what kind of developer you are: ')
+
+    def chooseProgrammingTechnologies(self):
+        if self.profile.developerType == 'Backend':
+            print '[0] Java'
+            print '[1] Python'
+            print '[2] Go'
+            print '[3] JavaScript'
+            print '[4] PHP'
+        else if self.profile.developerType == 'Front-end':
+            print '[0] JavaScript'
+            print '[1] ReactJS'
+            print '[2] AngularJS'
+            print '[3] Polymer'
+        else:
+        
+        self.profile.technologies = uni.read('Select the technologies you use:')
+        
+    def install(self):
+        print self.profile.developerType
+        
+wizard = Wizard()
+wizard.chooseDeveloperType()
+wizard.install()
