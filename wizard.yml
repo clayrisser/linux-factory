@@ -1,5 +1,5 @@
 ---
-- id: chooseDeveloper
+- id: developer
   question: What kind of developer are you?
   answers:
   - id: frontend
@@ -11,13 +11,14 @@
   - id: hacker
     name: Hacker
 
-- id: chooseLanguages
+- id: languages
   question: What programming languages do you use?
+  multiple: true
   answers:
   - id: php
     name: PHP
     if:
-    - parent: chooseDeveloper
+      parent: developer
       required:
       - frontend
       - backend
@@ -25,13 +26,27 @@
   - id: python
     name: Python
     if:
-    - parent: chooseDeveloper
+      parent: developer
       required:
       - backend
       - full-stack
       - hacker
+  - id: go
+    name: Go
+    if:
+      parent: developer
+      required:
+      - backend
+      - full-stack
+  - id: javascript
+    name: JavaScript
+    if:
+      parent: developer
+      required:
+      - frontend
+      - full-stack
 
-- id: chooseTechnologies
+- id: technologies
   question: What technologies do you use?
   answers:
   - id: lamp-stack
@@ -45,6 +60,6 @@
       - MySql
       - Maria
     if:
-    - parent: chooseLanguages
+      parent: languages
       required:
       - php
