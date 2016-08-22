@@ -46,19 +46,60 @@
       - frontend
       - full-stack
 
+- id: environment
+  question: Do you prefer GUIs or terminal?
+  answers:
+  - id: gui
+    name: GUI
+  - id: terminal
+    name: Terminal
+  - id: both
+    name: I Like Both
+
+- id: editors
+  question: What text editor do you prefer?
+  answers:
+  - id: emacs
+    name: Emacs
+    if:
+      parent: environment
+      required:
+      - terminal
+      - both
+  - id: vim
+    name: Vim
+    if:
+      parent: environment
+      required:
+      - terminal
+      - both
+  - id: atom
+    name: Atom
+    if:
+      parent: environment
+      required:
+      - gui
+      - both
+  - id: sublime
+    name: Sublime
+    if:
+      parent: environment
+      required:
+      - gui
+      - both
+  - id: visual-studio-code
+    name: Visual Studio Code
+    if:
+      parent: environment
+      required:
+      - gui
+      - both
+
 - id: technologies
   question: What technologies do you use?
   answers:
   - id: lamp-stack
     name: LAMP Stack
-    settings:
-    - php:
-      - 5.5
-      - 5.6
-      - 7.0
-    - database
-      - MySql
-      - Maria
     if:
       parent: languages
       required:
