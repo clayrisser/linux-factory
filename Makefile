@@ -1,40 +1,63 @@
 SHELL := /bin/bash
-CWD := $(shell readlink -en $(dir $(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST))))
+CWD := $(shell pwd)
 
 .PHONY: all
 all: extracted edit
 
 .PHONY: chroot
-chroot: extracted edit
-	sudo cp /etc/resolv.conf edit/etc/resolv.conf
-	sudo cp /usr/bin/zsh edit/usr/bin/zsh
-	sudo chroot ./edit
+chroot: extracted edit mount
+	@sudo cp /etc/resolv.conf edit/etc/resolv.conf
+	@sudo cp ./dbtool.py edit/usr/bin/dbtool
+	@sudo chmod +x edit/usr/bin/dbtool
+	@sudo chroot ./edit /bin/bash
 
-extracted: mnt
-	-mkdir -p ./extracted/
-	sudo rsync --exclude=/install/filesystem.squashfs -a ./mnt/ ./extracted/
+.PHONY: extracted
+extracted: ._extracted
+._extracted: ._mnt
+	@mkdir -p ./extracted/
+	@sudo rsync --exclude=/install/filesystem.squashfs -a ./mnt/ ./extracted/
+	@touch ._extracted
+	@echo mnt extracted to ./extracted/
 
-edit: mnt
-	sudo unsquashfs mnt/install/filesystem.squashfs
-	sudo mv ./squashfs-root/ ./edit/
+.PHONY: edit
+edit: ._edit
+._edit: ._mnt
+	@sudo unsquashfs mnt/install/filesystem.squashfs
+	@sudo mv ./squashfs-root/ ./edit/
+	@touch ._edit
+	@echo filesystem unsquashed to ./edit/
 
-mnt: ubuntu-16.04.2-server-amd64.iso
-	-mkdir -p ./mnt/
-	-sudo mount -o loop ubuntu-16.04.2-server-amd64.iso ./mnt/
+.PHONY: mnt
+mnt: ._mnt
+._mnt: ubuntu-16.04.2-server-amd64.iso
+	@mkdir -p ./mnt/
+	@sudo mount -o loop ubuntu-16.04.2-server-amd64.iso ./mnt/
+	@touch ._mnt
+	@echo iso mounted to ./mnt/
 
 ubuntu-16.04.2-server-amd64.iso:
-	-if [ -f $$HOME"/Downloads/ubuntu-16.04.2-server-amd64.iso" ]; then \
+	-@if [ -f $$HOME"/Downloads/ubuntu-16.04.2-server-amd64.iso" ]; then \
 		cp ~/Downloads/ubuntu-16.04.2-server-amd64.iso ./; \
 	else \
 		curl -LO http://releases.ubuntu.com/xenial/ubuntu-16.04.2-server-amd64.iso; \
 	fi;
+	@echo ./ubuntu-16.04.2-server-amd64.iso downloaded
+
+.PHONY: mount
+mount: ._mount
+._mount:
+	@sudo mount --bind /dev/ ./edit/dev/
+	@touch ._mount
+	@echo mounted
 
 .PHONY: umount
 umount:
-	-@sudo umount ./mnt/
-	$(info unmounted)
+	-@sudo umount ./mnt/ || true
+	-@sudo umount ./edit/dev || true
+	-@ rm -rf ./._mount
+	@echo umounted
 
 .PHONY: clean
 clean: umount
 	@sudo rm -rf ./edit ./extracted ./mnt ./ubuntu-*.iso ./._*
-	$(info cleaned)
+	@echo cleaned
