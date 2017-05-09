@@ -23,7 +23,11 @@ mnt: ubuntu-16.04.2-server-amd64.iso
 	-sudo mount -o loop ubuntu-16.04.2-server-amd64.iso ./mnt/
 
 ubuntu-16.04.2-server-amd64.iso:
-	curl -LO http://releases.ubuntu.com/xenial/ubuntu-16.04.2-server-amd64.iso
+	-if [ -f $$HOME"/Downloads/ubuntu-16.04.2-server-amd64.iso" ]; then \
+		cp ~/Downloads/ubuntu-16.04.2-server-amd64.iso ./; \
+	else \
+		curl -LO http://releases.ubuntu.com/xenial/ubuntu-16.04.2-server-amd64.iso; \
+	fi;
 
 .PHONY: umount
 umount:
