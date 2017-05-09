@@ -1,2 +1,11 @@
-\#*
+edit
+extracted
+mnt
+squashfs-root
+ubuntu-16.04.2-server-amd64.iso
+._*
+
+# Emacs
+\#*\#
+.\#*
 *~
