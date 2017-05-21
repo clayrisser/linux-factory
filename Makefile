@@ -8,7 +8,9 @@ all: extracted edit
 chroot: extracted edit mount
 	@sudo cp /etc/resolv.conf edit/etc/resolv.conf
 	@sudo cp ./dbtool.py edit/usr/bin/dbtool
+	@sudo cp ./dbinit.sh edit/usr/bin/dbinit
 	@sudo chmod +x edit/usr/bin/dbtool
+	@sudo chmod +x edit/usr/bin/dbinit
 	@sudo chroot ./edit /bin/bash
 
 .PHONY: extracted
@@ -16,6 +18,7 @@ extracted: ._extracted
 ._extracted: ._mnt
 	@mkdir -p ./extracted/
 	@sudo rsync --exclude=/install/filesystem.squashfs -a ./mnt/ ./extracted/
+	@sudo chown -R $$USER:$$USER ./extracted/
 	@touch ._extracted
 	@echo mnt extracted to ./extracted/
 
@@ -24,6 +27,7 @@ edit: ._edit
 ._edit: ._mnt
 	@sudo unsquashfs mnt/install/filesystem.squashfs
 	@sudo mv ./squashfs-root/ ./edit/
+	@sudo chown -R $$USER:$$USER ./edit/
 	@touch ._edit
 	@echo filesystem unsquashed to ./edit/
 
@@ -40,6 +44,7 @@ ubuntu-16.04.2-server-amd64.iso:
 		cp ~/Downloads/ubuntu-16.04.2-server-amd64.iso ./; \
 	else \
 		curl -LO http://releases.ubuntu.com/xenial/ubuntu-16.04.2-server-amd64.iso; \
+		cp ./ubuntu-16.04.2-server-amd64.iso ~/Downloads/; \
 	fi;
 	@echo ./ubuntu-16.04.2-server-amd64.iso downloaded
 
@@ -59,5 +64,5 @@ umount:
 
 .PHONY: clean
 clean: umount
-	@sudo rm -rf ./edit ./extracted ./mnt ./ubuntu-*.iso ./._*
+	-@sudo rm -rf ./edit ./extracted ./mnt ./ubuntu-*.iso ./._*
 	@echo cleaned
