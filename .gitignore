@@ -1,8 +1,9 @@
-edit
-extracted
+squashfs
+cd-image
 mnt
 squashfs-root
 ubuntu-16.04.2-server-amd64.iso
+ubuntu-keyring
 ._*
 
 # Emacs

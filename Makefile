@@ -2,34 +2,35 @@ SHELL := /bin/bash
 CWD := $(shell pwd)
 
 .PHONY: all
-all: extracted edit
+all: cd-image squashfs
 
 .PHONY: chroot
-chroot: extracted edit mount
-	@sudo cp /etc/resolv.conf edit/etc/resolv.conf
-	@sudo cp ./dbtool.py edit/usr/bin/dbtool
-	@sudo cp ./dbinit.sh edit/usr/bin/dbinit
-	@sudo chmod +x edit/usr/bin/dbtool
-	@sudo chmod +x edit/usr/bin/dbinit
-	@sudo chroot ./edit /bin/bash
+chroot: cd-image squashfs mount
+	@sudo cp /etc/resolv.conf ./squashfs/etc/resolv.conf
+	@sudo cp ./dbtool.py ./squashfs/usr/bin/dbtool
+	@sudo cp ./dbinit.sh ./squashfs/usr/bin/dbinit
+	@sudo chmod +x ./squashfs/usr/bin/dbtool
+	@sudo chmod +x ./squashfs/usr/bin/dbinit
+	@sudo chroot ././squashfs/ /bin/bash
 
-.PHONY: extracted
-extracted: ._extracted
-._extracted: ._mnt
-	@mkdir -p ./extracted/
-	@sudo rsync --exclude=/install/filesystem.squashfs -a ./mnt/ ./extracted/
-	@sudo chown -R $$USER:$$USER ./extracted/
-	@touch ._extracted
-	@echo mnt extracted to ./extracted/
+.PHONY: cd-image
+cd-image: ._cd_image
+._cd_image: ._mnt
+	@mkdir -p ./cd-image/
+	@sudo rsync --exclude=/install/filesystem.squashfs -a ./mnt/ ./cd-image/
+	@sudo chown -R $$USER:$$USER ./cd-image/
+	@sudo chmod -R 755 ./cd-image/
+	@touch ._cd_image
+	@echo mnt extracted to ./cd-image/
 
-.PHONY: edit
-edit: ._edit
-._edit: ._mnt
+.PHONY: squashfs
+squashfs: ._squashfs
+._squashfs: ._mnt
 	@sudo unsquashfs mnt/install/filesystem.squashfs
-	@sudo mv ./squashfs-root/ ./edit/
-	@sudo chown -R $$USER:$$USER ./edit/
-	@touch ._edit
-	@echo filesystem unsquashed to ./edit/
+	@sudo mv ./squashfs-root/ ./squashfs/
+	@sudo chown -R $$USER:$$USER ./squashfs/
+	@touch ._squashfs
+	@echo filesystem unsquashed to ./squashfs/
 
 .PHONY: mnt
 mnt: ._mnt
@@ -51,18 +52,66 @@ ubuntu-16.04.2-server-amd64.iso:
 .PHONY: mount
 mount: ._mount
 ._mount:
-	@sudo mount --bind /dev/ ./edit/dev/
+	@sudo mount --bind /dev/ ./squashfs/dev/
 	@touch ._mount
 	@echo mounted
 
 .PHONY: umount
 umount:
 	-@sudo umount ./mnt/ || true
-	-@sudo umount ./edit/dev || true
+	-@sudo umount ./squashfs/dev || true
 	-@ rm -rf ./._mount
 	@echo umounted
 
+.PHONY: preseed
+preseed:
+	@echo preseeded
+
+.PHONY: extras
+extras: ._extras
+._extras: cd-image
+	@mkdir -p ./cd-image/pool/extras/
+	@cp -r ./extras/* ./cd-image/pool/extras/
+	@touch ._extras
+	@echo extra packages added
+
+.PHONY: keyring
+keyring: ubuntu-keyring squashfs
+	@echo made ubuntu-keyring
+	@sudo cp /usr/share/keyrings/ubuntu-archive-keyring.gpg \
+		./squashfs/usr/share/keyrings/ubuntu-archive-keyring.gpg
+	@sudo cp /etc/apt/trusted.gpg ./squashfs/etc/apt/trusted.gpg
+	@sudo cp /var/lib/apt/keyrings/ubuntu-archive-keyring.gpg \
+		./squashfs/var/lib/apt/keyrings/ubuntu-archive-keyring.gpg
+	@echo signed ubuntu-keyring
+.PHONY: gen_key
+gen_key: ._gen_key
+._gen_key:
+	@gpg --gen-key
+	@touch ._gen_key
+	@echo generated key
+ubuntu-keyring: cd-image gen_key
+	@read -p "Name: " _NAME && \
+		read -p "Email: " _EMAIL && \
+		gpg --list-keys "$$_NAME" && \
+		read -p "Key ID: " _KEY_ID && \
+		mkdir -p ubuntu-keyring && cd ubuntu-keyring && \
+		apt-get source ubuntu-keyring && \
+		cd ubuntu-keyring-2012.05.19/keyrings && \
+		gpg --import < ubuntu-archive-keyring.gpg && \
+		gpg --export FBB75451 437D05B5 C0B21F32 EFE21092 $$_KEY_ID > ubuntu-archive-keyring.gpg && \
+		cd ../ && \
+		dpkg-buildpackage -rfakeroot -m"$$_NAME <$$_EMAIL>" -k$$_KEY_ID && \
+		cd ../ && \
+		cp ubuntu-keyring*deb $(CWD)/cd-image/pool/main/u/ubuntu-keyring
+
+.PHONY: squash_resize
+squash_resize: squashfs
+	@cd ./squashfs/ && \
+		du -sx --block-size=1 ./ | cut -f1 > $(CWD)/cd-image/install/filesystem.size
+	@echo squash filesystem resized
+
 .PHONY: clean
 clean: umount
-	-@sudo rm -rf ./edit ./extracted ./mnt ./ubuntu-*.iso ./._*
+	-@sudo rm -rf ./squashfs/ ./cd-image/ ./mnt/ ./ubuntu-*.iso ./._* ./ubuntu-keyring
 	@echo cleaned
