@@ -66,7 +66,8 @@ umount:
 	@echo umounted
 
 .PHONY: preseed
-preseed:
+preseed: cd-image
+	@cp ./preseed/* cd-image/preseed/
 	@echo preseeded
 
 .PHONY: extras
@@ -122,7 +123,7 @@ indices: cd-image
 	@echo fetched indices
 
 .PHONY: build
-build: keyring indices extras
+build: keyring indices extras preseed
 	@mkdir -p ./cd-image/dists/stable/extras/binary-amd64/
 	@apt-ftparchive packages ./cd-image/pool/extras > ./cd-image/dists/stable/extras/binary-amd64/Packages
 	@gzip -c ./cd-image/dists/stable/extras/binary-amd64/Packages | \
