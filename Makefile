@@ -132,13 +132,12 @@ build: keyring indices extras
 	@apt-ftparchive -c ./apt-ftparchive/release.conf generate ./apt-ftparchive/apt-ftparchive-udeb.conf
 	@apt-ftparchive -c ./apt-ftparchive/release.conf generate ./apt-ftparchive/apt-ftparchive-extras.conf
 	@apt-ftparchive -c ./apt-ftparchive/release.conf release ./cd-image/dists/$(DIST) > ./cd-image/dists/$(DIST)/Release
-	@pushd ./cd-image/ && \
+	@cd ./cd-image/ && \
 		read -p "Name: " _NAME && \
 		gpg --list-keys "$$_NAME" && \
 		read -p "Key ID: " _KEY_ID && \
 		gpg --default-key $$_KEY_ID --output $(CWD)/cd-image/dists/$(DIST)/Release.gpg -ba $(CWD)/cd-image/dists/$(DIST)/Release && \
-		find . -type f -print0 | xargs -0 md5sum > md5sum.txt && \
-		popd
+		find . -type f -print0 | xargs -0 md5sum > md5sum.txt
 	@echo built devbuntu
 
 .PHONY: iso
@@ -160,7 +159,6 @@ clean: umount
 		./._* \
 		./ubuntu-keyring \
 		./indices \
-		./md5sum.txt \
 		./extras/*.deb \
 		./devbuntu.iso
 	@echo cleaned
