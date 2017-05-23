@@ -1,6 +1,7 @@
 SHELL := /bin/bash
 CWD := $(shell pwd)
 DIST := xenial
+IMAGE := devbuntu.iso
 
 .PHONY: all
 all: cd-image squashfs
@@ -140,6 +141,16 @@ build: keyring indices extras
 		popd
 	@echo built devbuntu
 
+.PHONY: iso
+iso:
+	mkisofs -r -V "Devbuntu Install CD" \
+		-cache-inodes \
+		-J -l -b isolinux/isolinux.bin \
+		-c isolinux/boot.cat -no-emul-boot \
+		-boot-load-size 4 -boot-info-table \
+		-o $(IMAGE) ./cd-image
+	@echo made iso
+
 .PHONY: clean
 clean: umount
 	-@sudo rm -rf ./squashfs/ \
@@ -149,5 +160,7 @@ clean: umount
 		./._* \
 		./ubuntu-keyring \
 		./indices \
-		./md5sum.txt
+		./md5sum.txt \
+		./extras/*.deb \
+		./devbuntu.iso
 	@echo cleaned
