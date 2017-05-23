@@ -19,9 +19,8 @@ chroot: cd-image squashfs mount
 cd-image: ._cd_image
 ._cd_image: ._mnt
 	@mkdir -p ./cd-image/
-	@sudo rsync --exclude=/install/filesystem.squashfs -a ./mnt/ ./cd-image/
-	@sudo chown -R $$USER:$$USER ./cd-image/
-	@sudo chmod -R 755 ./cd-image/
+	@sudo cp -r ./mnt/* ./cd-image/
+	@sudo cp -r ./mnt/.disk ./cd-image/
 	@touch ._cd_image
 	@echo mnt extracted to ./cd-image/
 
@@ -67,14 +66,14 @@ umount:
 
 .PHONY: preseed
 preseed: cd-image
-	@cp ./preseed/* cd-image/preseed/
+	@sudo cp ./preseed/* cd-image/preseed/
 	@echo preseeded
 
 .PHONY: extras
 extras: ._extras
 ._extras: cd-image
-	@mkdir -p ./cd-image/pool/extras/
-	-@cp -r ./extras/* ./cd-image/pool/extras/ | true
+	@sudo mkdir -p ./cd-image/pool/extras/
+	-@sudo cp -r ./extras/* ./cd-image/pool/extras/ | true
 	@touch ._extras
 	@echo extra packages added
 
@@ -106,12 +105,12 @@ ubuntu-keyring: cd-image gen_key
 		cd ../ && \
 		dpkg-buildpackage -rfakeroot -m"$$_NAME <$$_EMAIL>" -k$$_KEY_ID && \
 		cd ../ && \
-		cp ubuntu-keyring*deb $(CWD)/cd-image/pool/main/u/ubuntu-keyring
+		sudo cp ubuntu-keyring*deb $(CWD)/cd-image/pool/main/u/ubuntu-keyring
 
 .PHONY: squash_resize
 squash_resize: squashfs
 	@cd ./squashfs/ && \
-		du -sx --block-size=1 ./ | cut -f1 > $(CWD)/cd-image/install/filesystem.size
+		sudo du -sx --block-size=1 ./ | cut -f1 > $(CWD)/cd-image/install/filesystem.size
 	@echo squash filesystem resized
 
 indices: cd-image
@@ -124,32 +123,37 @@ indices: cd-image
 
 .PHONY: build
 build: keyring indices extras preseed
-	@mkdir -p ./cd-image/dists/stable/extras/binary-amd64/
-	@apt-ftparchive packages ./cd-image/pool/extras > ./cd-image/dists/stable/extras/binary-amd64/Packages
-	@gzip -c ./cd-image/dists/stable/extras/binary-amd64/Packages | \
-		tee ./cd-image/dists/stable/extras/binary-amd64/Packages.gz > /dev/null
-	@apt-ftparchive -c ./apt-ftparchive/release.conf generate ./apt-ftparchive/apt-ftparchive-deb.conf
-	@perl extraoverride.pl < ./cd-image/dists/xenial/main/binary-amd64/Packages >> ./indices/override.xenial.extra.main
-	@apt-ftparchive -c ./apt-ftparchive/release.conf generate ./apt-ftparchive/apt-ftparchive-udeb.conf
-	@apt-ftparchive -c ./apt-ftparchive/release.conf generate ./apt-ftparchive/apt-ftparchive-extras.conf
-	@apt-ftparchive -c ./apt-ftparchive/release.conf release ./cd-image/dists/$(DIST) > ./cd-image/dists/$(DIST)/Release
+	@sudo mkdir -p ./cd-image/dists/stable/extras/binary-amd64/
+	@sudo apt-ftparchive packages ./cd-image/pool/extras | sudo tee ./cd-image/dists/stable/extras/binary-amd64/Packages
+	@sudo gzip -c ./cd-image/dists/stable/extras/binary-amd64/Packages | \
+		sudo tee ./cd-image/dists/stable/extras/binary-amd64/Packages.gz > /dev/null
+	@sudo apt-ftparchive -c ./apt-ftparchive/release.conf generate ./apt-ftparchive/apt-ftparchive-deb.conf
+	@sudo perl extraoverride.pl < ./cd-image/dists/xenial/main/binary-amd64/Packages | sudo tee -a ./indices/override.xenial.extra.main
+	@sudo apt-ftparchive -c ./apt-ftparchive/release.conf generate ./apt-ftparchive/apt-ftparchive-udeb.conf
+	@sudo apt-ftparchive -c ./apt-ftparchive/release.conf generate ./apt-ftparchive/apt-ftparchive-extras.conf
+	@sudo apt-ftparchive -c ./apt-ftparchive/release.conf release ./cd-image/dists/$(DIST) | sudo tee ./cd-image/dists/$(DIST)/Release
 	@cd ./cd-image/ && \
 		read -p "Name: " _NAME && \
 		gpg --list-keys "$$_NAME" && \
 		read -p "Key ID: " _KEY_ID && \
-		gpg --default-key $$_KEY_ID --output $(CWD)/cd-image/dists/$(DIST)/Release.gpg -ba $(CWD)/cd-image/dists/$(DIST)/Release && \
-		find . -type f -print0 | xargs -0 md5sum > md5sum.txt
+		sudo gpg --default-key $$_KEY_ID --output $(CWD)/cd-image/dists/$(DIST)/Release.gpg -ba $(CWD)/cd-image/dists/$(DIST)/Release
 	@echo built devbuntu
 
 .PHONY: iso
-iso:
-	mkisofs -r -V "Devbuntu Install CD" \
+iso: cd-image md5sum
+	@sudo mkisofs -r -V "Devbuntu Install CD" \
 		-cache-inodes \
 		-J -l -b isolinux/isolinux.bin \
 		-c isolinux/boot.cat -no-emul-boot \
 		-boot-load-size 4 -boot-info-table \
-		-o $(IMAGE) ./cd-image
+		-o $(IMAGE) ./cd-image/
 	@echo made iso
+
+.PHONY: md5sum
+md5sum:
+	@rm -rf md5sum.txt
+	@cd ./cd-image && md5sum `find . -type f -print | grep -E -v "^(\.\/)(md5sum.txt|isolinux)"` | sudo tee ./md5sum.txt
+	@echo generated md5 sum
 
 .PHONY: clean
 clean: umount
