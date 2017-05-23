@@ -1,5 +1,6 @@
 SHELL := /bin/bash
 CWD := $(shell pwd)
+DIST := xenial
 
 .PHONY: all
 all: cd-image squashfs
@@ -71,7 +72,7 @@ preseed:
 extras: ._extras
 ._extras: cd-image
 	@mkdir -p ./cd-image/pool/extras/
-	@cp -r ./extras/* ./cd-image/pool/extras/
+	-@cp -r ./extras/* ./cd-image/pool/extras/ | true
 	@touch ._extras
 	@echo extra packages added
 
@@ -111,7 +112,42 @@ squash_resize: squashfs
 		du -sx --block-size=1 ./ | cut -f1 > $(CWD)/cd-image/install/filesystem.size
 	@echo squash filesystem resized
 
+indices: cd-image
+	@mkdir -p ./indices/
+	@cd ./indices/ && \
+		for SUFFIX in extra.main main main.debian-installer restricted restricted.debian-installer; do \
+			wget http://archive.ubuntu.com/ubuntu/indices/override.$(DIST).$$SUFFIX; \
+		done
+	@echo fetched indices
+
+.PHONY: build
+build: keyring indices extras
+	@mkdir -p ./cd-image/dists/stable/extras/binary-amd64/
+	@apt-ftparchive packages ./cd-image/pool/extras > ./cd-image/dists/stable/extras/binary-amd64/Packages
+	@gzip -c ./cd-image/dists/stable/extras/binary-amd64/Packages | \
+		tee ./cd-image/dists/stable/extras/binary-amd64/Packages.gz > /dev/null
+	@apt-ftparchive -c ./apt-ftparchive/release.conf generate ./apt-ftparchive/apt-ftparchive-deb.conf
+	@perl extraoverride.pl < ./cd-image/dists/xenial/main/binary-amd64/Packages >> ./indices/override.xenial.extra.main
+	@apt-ftparchive -c ./apt-ftparchive/release.conf generate ./apt-ftparchive/apt-ftparchive-udeb.conf
+	@apt-ftparchive -c ./apt-ftparchive/release.conf generate ./apt-ftparchive/apt-ftparchive-extras.conf
+	@apt-ftparchive -c ./apt-ftparchive/release.conf release ./cd-image/dists/$(DIST) > ./cd-image/dists/$(DIST)/Release
+	@pushd ./cd-image/ && \
+		read -p "Name: " _NAME && \
+		gpg --list-keys "$$_NAME" && \
+		read -p "Key ID: " _KEY_ID && \
+		gpg --default-key $$_KEY_ID --output $(CWD)/cd-image/dists/$(DIST)/Release.gpg -ba $(CWD)/cd-image/dists/$(DIST)/Release && \
+		find . -type f -print0 | xargs -0 md5sum > md5sum.txt && \
+		popd
+	@echo built devbuntu
+
 .PHONY: clean
 clean: umount
-	-@sudo rm -rf ./squashfs/ ./cd-image/ ./mnt/ ./ubuntu-*.iso ./._* ./ubuntu-keyring
+	-@sudo rm -rf ./squashfs/ \
+		./cd-image/ \
+		./mnt/ \
+		./ubuntu-*.iso \
+		./._* \
+		./ubuntu-keyring \
+		./indices \
+		./md5sum.txt
 	@echo cleaned

@@ -1,9 +1,12 @@
 squashfs
 cd-image
 mnt
+indices
 squashfs-root
 ubuntu-16.04.2-server-amd64.iso
 ubuntu-keyring
+md5sum.txt
+extras/*.deb
 ._*
 
 # Emacs
