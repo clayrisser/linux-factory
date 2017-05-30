@@ -110,7 +110,7 @@ ubuntu-keyring: cd-image gen_key
 .PHONY: squash_resize
 squash_resize: squashfs
 	@cd ./squashfs/ && \
-		sudo du -sx --block-size=1 ./ | cut -f1 > $(CWD)/cd-image/install/filesystem.size
+		sudo du -sx --block-size=1 ./ | cut -f1 | sudo tee $(CWD)/cd-image/install/filesystem.size
 	@echo squash filesystem resized
 
 indices: cd-image
@@ -122,22 +122,26 @@ indices: cd-image
 	@echo fetched indices
 
 .PHONY: build
-build: keyring indices extras preseed
-	@sudo mkdir -p ./cd-image/dists/stable/extras/binary-amd64/
-	@sudo apt-ftparchive packages ./cd-image/pool/extras | sudo tee ./cd-image/dists/stable/extras/binary-amd64/Packages
-	@sudo gzip -c ./cd-image/dists/stable/extras/binary-amd64/Packages | \
-		sudo tee ./cd-image/dists/stable/extras/binary-amd64/Packages.gz > /dev/null
+build: preseed squash_resize packages iso
+	@echo built devbuntu
+
+.PHONY: packages
+packages: keyring indices extras
+	# @sudo mkdir -p ./cd-image/dists/stable/extras/binary-amd64/
+	# @sudo apt-ftparchive packages ./cd-image/pool/extras | sudo tee ./cd-image/dists/stable/extras/binary-amd64/Packages
+	# @sudo gzip -c ./cd-image/dists/stable/extras/binary-amd64/Packages | \
+		# sudo tee ./cd-image/dists/stable/extras/binary-amd64/Packages.gz > /dev/null
 	@sudo apt-ftparchive -c ./apt-ftparchive/release.conf generate ./apt-ftparchive/apt-ftparchive-deb.conf
 	@sudo perl extraoverride.pl < ./cd-image/dists/xenial/main/binary-amd64/Packages | sudo tee -a ./indices/override.xenial.extra.main
 	@sudo apt-ftparchive -c ./apt-ftparchive/release.conf generate ./apt-ftparchive/apt-ftparchive-udeb.conf
-	@sudo apt-ftparchive -c ./apt-ftparchive/release.conf generate ./apt-ftparchive/apt-ftparchive-extras.conf
+	# @sudo apt-ftparchive -c ./apt-ftparchive/release.conf generate ./apt-ftparchive/apt-ftparchive-extras.conf
 	@sudo apt-ftparchive -c ./apt-ftparchive/release.conf release ./cd-image/dists/$(DIST) | sudo tee ./cd-image/dists/$(DIST)/Release
 	@cd ./cd-image/ && \
 		read -p "Name: " _NAME && \
 		gpg --list-keys "$$_NAME" && \
 		read -p "Key ID: " _KEY_ID && \
 		sudo gpg --default-key $$_KEY_ID --output $(CWD)/cd-image/dists/$(DIST)/Release.gpg -ba $(CWD)/cd-image/dists/$(DIST)/Release
-	@echo built devbuntu
+	@echo created packages
 
 .PHONY: iso
 iso: cd-image md5sum
