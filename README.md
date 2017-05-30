@@ -1,8 +1,2 @@
-# deskterm
-Turn your desktop into a terminal
-
-## Install
-```
-git clone https://github.com/jamrizzi/deskterm.git
-sudo bash deskterm/install.sh
-```
+# devbuntu
+A fork of Linux with the i3 GUI multiplexer for hardcore developers
