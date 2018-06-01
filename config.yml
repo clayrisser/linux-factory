@@ -4,6 +4,12 @@ paths:
   iso: ubuntu-18.04-server-amd64.iso
   output: jam-os.iso
 packages:
+  - blueman
   - cowsay
+  - feh
   - i3
+  - lxappearance
+  - network-manager
+  - ranger
+  - terminator
   - xinit
