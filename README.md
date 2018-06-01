@@ -7,9 +7,21 @@
 Please ★ this repo if you found it useful ★ ★ ★
 
 
+## Features
+
+* i3 windowing system
+* ubuntu base
+* oh my zsh
+
+
+## Screenshots
+
+![Screenshot 1](https://user-images.githubusercontent.com/6234038/40850116-11160538-65c4-11e8-916f-1a38addc63fc.jpg)
+
+
 ## Installation
 
-1. Download jam-os.iso
+1. Download [jam-os.iso](https://github.com/codejamninja/jam-os/releases/download/0.3.0/jam-os.iso)
 
 2. Flash to USB with [Etcher](https://etcher.io)
 
@@ -18,20 +30,18 @@ Please ★ this repo if you found it useful ★ ★ ★
 4. Answer the prompts from the installer
 
 
-## Features
-
-* i3 windowing system
-* ubuntu base
-* oh my zsh
-
-
 ## Usage
 
-### Booting
+### Boot
 
 1. Power on your machine
 
 2. Enter login details when prompted
+
+    ```sh
+    Username: codejamninja
+    Password: ************
+    ```
 
 3. Power on X11 graphics
 
@@ -39,11 +49,13 @@ Please ★ this repo if you found it useful ★ ★ ★
     startx
     ```
 
-### Building
+### Build
 
 Build Jam OS from the source code
 
 ```sh
+git clone https://github.com/codejamninja/jam-os.git
+cd jam-os
 sudo forkbuntu
 ```
 
