@@ -1,0 +1,9 @@
+name: Jam OS
+version: 18.04
+paths:
+  iso: ubuntu-18.04-server-amd64.iso
+  output: jam-os.iso
+packages:
+  - cowsay
+  - i3
+  - xinit

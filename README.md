@@ -1,58 +1,90 @@
-# devbuntu _Beta_
+# Jam OS
 
-An operating system for the bold and fearless developer
+[![GitHub stars](https://img.shields.io/github/stars/codejamninja/jam-os.svg?style=social&label=Stars)](https://github.com/codejamninja/jam-os)
 
-Please &#9733; this repo if you found it useful &#9733; &#9733; &#9733;
+> The operating system built for software engineers
+
+Please ★ this repo if you found it useful ★ ★ ★
+
+
+## Installation
+
+1. Download jam-os.iso
+
+2. Flash to USB with [Etcher](https://etcher.io)
+
+3. Boot computer with USB
+
+4. Answer the prompts from the installer
 
 
 ## Features
-<!------------------------------------------------------->
 
-* i3
-* oh-my-zsh
-* playonlinux
+* i3 windowing system
+* ubuntu base
+* oh my zsh
+
+
+## Usage
+
+### Booting
+
+1. Power on your machine
+
+2. Enter login details when prompted
+
+3. Power on X11 graphics
+
+    ```sh
+    startx
+    ```
+
+### Building
+
+Build Jam OS from the source code
+
+```sh
+sudo forkbuntu
+```
 
 
 ## Support
-<!------------------------------------------------------->
 
-Submit an [issue](https://github.com/jamrizzi/devbuntu/issues/new)
+Submit an [issue](https://github.com/codejamninja/jam-os/issues/new)
 
 
-## Buy Me Coffee
-<!------------------------------------------------------->
+## Screenshots
 
-A ridiculous amount of coffee was consumed in the process of building this project.
-
-[Add some fuel](https://jamrizzi.com/#!/buy-me-coffee) if you'd like to keep me going!
+[Contribute](https://github.com/codejamninja/jam-os/blob/master/CONTRIBUTING.md) a screenshot
 
 
 ## Contributing
-<!------------------------------------------------------->
 
-1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -m 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
+Review the [guidelines for contributing](https://github.com/codejamninja/jam-os/blob/master/CONTRIBUTING.md)
 
 
 ## License
-<!------------------------------------------------------->
 
-[MIT License](https://github.com/jamrizzi/devbuntu/blob/master/LICENSE)
+[MIT License](https://github.com/codejamninja/jam-os/blob/master/LICENSE)
 
-[Jam Risser](https://jamrizzi.com) &copy; 2017
-
-
-## Credits
-<!------------------------------------------------------->
-
-* [Jam Risser](https://jamrizzi.com) - Author
+[Jam Risser](https://codejam.ninja) © 2018
 
 
 ## Changelog
-<!------------------------------------------------------->
 
-0.0.1 (2017-05-09)
-* Alpha release
+Review the [changelog](https://github.com/codejamninja/jam-os/blob/master/CHANGELOG.md)
+
+
+## Credits
+
+* [Jam Risser](https://codejam.ninja) - Author
+
+
+## Support on Liberapay
+
+A ridiculous amount of coffee ☕ ☕ ☕ was consumed in the process of building this project.
+
+[Add some fuel](https://liberapay.com/codejamninja/donate) if you'd like to keep me going!
+
+[![Liberapay receiving](https://img.shields.io/liberapay/receives/codejamninja.svg?style=flat-square)](https://liberapay.com/codejamninja/donate)
+[![Liberapay patrons](https://img.shields.io/liberapay/patrons/codejamninja.svg?style=flat-square)](https://liberapay.com/codejamninja/donate)

@@ -2,15 +2,14 @@ root = true
 
 [*]
 end_of_line = lf
-insert_final_newline = true
-indent_style = space
 indent_size = 2
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
 
-[*.{js,jsx,py,json,yml}]
+[*.md]
 charset = utf-8
+trim_trailing_whitespace = false
 
-[*.{py,json,yml}]
-indent_size = 4
-
-[Makefile]
-indent_style = tab
+[*.sh]
+charset = utf-8
