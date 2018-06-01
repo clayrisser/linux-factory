@@ -65,11 +65,6 @@ sudo forkbuntu
 Submit an [issue](https://github.com/codejamninja/jam-os/issues/new)
 
 
-## Screenshots
-
-[Contribute](https://github.com/codejamninja/jam-os/blob/master/CONTRIBUTING.md) a screenshot
-
-
 ## Contributing
 
 Review the [guidelines for contributing](https://github.com/codejamninja/jam-os/blob/master/CONTRIBUTING.md)
