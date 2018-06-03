@@ -6,10 +6,14 @@ paths:
 packages:
   - blueman
   - cowsay
+  - dbus-x11
   - feh
+  - fortune
   - i3
   - lxappearance
   - network-manager
+  - network-manager-gnome
   - ranger
+  - shutter
   - terminator
   - xinit

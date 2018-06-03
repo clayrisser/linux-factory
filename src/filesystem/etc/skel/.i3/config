@@ -195,17 +195,19 @@ assign [class="Spotify"] $workspace9
 assign [class="Enpass-Desktop"] $workspace10
 
 exec_always feh --bg-scale ~/.background.jpg
-exec_always --no-startup-id synclient MaxTapTime=0
+# exec_always --no-startup-id synclient MaxTapTime=0
 
 # exec --no-startup-id xautolock -time 10 -locker 'i3lock-next "Input Password" "Hurmit Nerd Font Mono" 24'
 # exec --no-startup-id xset dpms 610
 # exec bash /opt/Enpass/bin/runenpass.sh
+# exec bash ~/.resolutions/1500x1000.sh
 # exec compton -f
 # exec fluxgui
+# exec google-chrome
 # exec oneko
-exec blueman-applet
-exec google-chrome
 exec nm-applet
+exec blueman-applet
 exec sleep 1 && terminator
 exec sleep 2 && terminator -e ranger
 exec sleep 3 && i3 restart
+
