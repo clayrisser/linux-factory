@@ -5,6 +5,7 @@ paths:
   output: jam-os.iso
 packages:
   - blueman
+  - compton
   - cowsay
   - dbus-x11
   - feh
@@ -13,7 +14,11 @@ packages:
   - lxappearance
   - network-manager
   - network-manager-gnome
+  - python-pip
   - ranger
   - shutter
+  - stow
   - terminator
   - xinit
+  - xsel
+  - zsh

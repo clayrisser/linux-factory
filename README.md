@@ -70,6 +70,13 @@ Submit an [issue](https://github.com/codejamninja/jam-os/issues/new)
 Review the [guidelines for contributing](https://github.com/codejamninja/jam-os/blob/master/CONTRIBUTING.md)
 
 
+## TODO
+### Compiled programs to package
+  * i3-gaps
+  * i3lock-color
+  * polybar
+
+
 ## License
 
 [MIT License](https://github.com/codejamninja/jam-os/blob/master/LICENSE)
