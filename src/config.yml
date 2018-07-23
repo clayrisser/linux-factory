@@ -10,7 +10,10 @@ packages:
   - dbus-x11
   - feh
   - fortune
+  - gucharmap
   - i3
+  - i3lock-color
+  - lolcat
   - lxappearance
   - network-manager
   - network-manager-gnome
@@ -19,6 +22,7 @@ packages:
   - shutter
   - stow
   - terminator
+  - xbacklight
   - xinit
   - xsel
   - zsh
