@@ -12,7 +12,6 @@ packages:
   - feh
   - fortune
   - gdm3
-  - gtklp
   - gucharmap
   - i3
   - i3lock-color
@@ -24,6 +23,7 @@ packages:
   - ranger
   - shutter
   - stow
+  - system-config-printer
   - terminator
   - xbacklight
   - xinit
