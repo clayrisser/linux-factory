@@ -7,10 +7,12 @@ packages:
   - blueman
   - compton
   - cowsay
+  - cups
   - dbus-x11
   - feh
   - fortune
   - gdm3
+  - gtklp
   - gucharmap
   - i3
   - i3lock-color
