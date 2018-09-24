@@ -19,6 +19,7 @@ packages:
   - lxappearance
   - network-manager
   - network-manager-gnome
+  - pavucontrol
   - python-pip
   - ranger
   - shutter
