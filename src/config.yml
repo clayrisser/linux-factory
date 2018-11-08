@@ -11,7 +11,6 @@ packages:
   - dbus-x11
   - feh
   - fortune
-  - gdm3
   - gucharmap
   - i3
   - i3lock-color
