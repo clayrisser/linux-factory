@@ -4,6 +4,7 @@ paths:
   iso: ubuntu-18.04-server-amd64.iso
   output: jam-os.iso
 packages:
+  - arandr
   - blueman
   - compton
   - cowsay
