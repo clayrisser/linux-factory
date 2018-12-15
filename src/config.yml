@@ -28,6 +28,7 @@ packages:
   - playonlinux
   - python-pip
   - ranger
+  - seahorse
   - shutter
   - stow
   - system-config-printer
