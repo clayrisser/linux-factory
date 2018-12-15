@@ -13,6 +13,7 @@ packages:
   - feh
   - fluxgui
   - fortune
+  - gparted
   - gucharmap
   - hardinfo
   - i3
