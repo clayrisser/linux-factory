@@ -11,6 +11,7 @@ packages:
   - cups
   - dbus-x11
   - feh
+  - fluxgui
   - fortune
   - gucharmap
   - hardinfo
