@@ -26,6 +26,7 @@ packages:
   - stow
   - system-config-printer
   - terminator
+  - x11-apps
   - xbacklight
   - xinit
   - xsel
