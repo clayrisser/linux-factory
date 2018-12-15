@@ -15,6 +15,7 @@ packages:
   - gucharmap
   - i3
   - i3lock-color
+  - ispell
   - lolcat
   - lxappearance
   - network-manager
