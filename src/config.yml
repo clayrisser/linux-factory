@@ -30,6 +30,7 @@ packages:
   - ranger
   - seahorse
   - shutter
+  - silversearcher-ag
   - stow
   - system-config-printer
   - terminator
