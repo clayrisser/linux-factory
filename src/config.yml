@@ -6,6 +6,7 @@ paths:
 packages:
   - arandr
   - blueman
+  - cbatticon
   - compton
   - cowsay
   - cups
@@ -14,6 +15,7 @@ packages:
   - fluxgui
   - fortune
   - gedit
+  - gnome-power-manager
   - gparted
   - gucharmap
   - hardinfo
