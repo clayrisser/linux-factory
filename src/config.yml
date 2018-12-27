@@ -24,6 +24,7 @@ packages:
   - ispell
   - lolcat
   - lxappearance
+  - ncdu
   - network-manager
   - network-manager-gnome
   - pavucontrol
