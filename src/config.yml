@@ -27,8 +27,8 @@ packages:
   - ncdu
   - network-manager
   - network-manager-gnome
-  - network-manager-openvpn
   - network-manager-openvpn-gnome
+  - network-manager-pptp-gnome
   - pavucontrol
   - playonlinux
   - python-pip
