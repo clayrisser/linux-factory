@@ -39,6 +39,7 @@ packages:
   - stow
   - system-config-printer
   - terminator
+  - ubuntu-drivers-common
   - x11-apps
   - xbacklight
   - xinit
