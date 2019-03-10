@@ -16,6 +16,7 @@ packages:
   - fortune
   - gedit
   - gnome-power-manager
+  - gnome-system-monitor
   - gparted
   - gucharmap
   - hardinfo
