@@ -16,6 +16,7 @@ packages:
   - fortune
   - gedit
   - gnome-power-manager
+  - gnome-screenshot
   - gnome-system-monitor
   - gparted
   - gucharmap
@@ -35,7 +36,6 @@ packages:
   - python-pip
   - ranger
   - seahorse
-  - shutter
   - silversearcher-ag
   - stow
   - system-config-printer
