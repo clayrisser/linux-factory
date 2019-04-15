@@ -11,6 +11,7 @@ packages:
   - cowsay
   - cups
   - dbus-x11
+  - evince
   - feh
   - fluxgui
   - fortune
