@@ -13,7 +13,6 @@ packages:
   - dbus-x11
   - evince
   - feh
-  - fluxgui
   - fortune
   - gedit
   - gnome-power-manager
@@ -36,6 +35,7 @@ packages:
   - playonlinux
   - python-pip
   - ranger
+  - redshift
   - seahorse
   - silversearcher-ag
   - stow
