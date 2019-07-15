@@ -24,7 +24,6 @@ packages:
   - i3
   - i3lock-color
   - ispell
-  - jobs-admin
   - lolcat
   - lxappearance
   - ncdu
@@ -40,6 +39,7 @@ packages:
   - seahorse
   - silversearcher-ag
   - stow
+  - systemd-ui
   - system-config-printer
   - terminator
   - ubuntu-drivers-common
