@@ -24,6 +24,7 @@ packages:
   - i3
   - i3lock-color
   - ispell
+  - jobs-admin
   - lolcat
   - lxappearance
   - ncdu
