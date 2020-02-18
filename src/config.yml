@@ -15,6 +15,7 @@ packages:
   - feh
   - fortune
   - gedit
+  - gnome-control-center
   - gnome-power-manager
   - gnome-screenshot
   - gnome-system-monitor
