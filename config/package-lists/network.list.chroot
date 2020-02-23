@@ -1,0 +1,371 @@
+# web browsers
+#Description: firefox
+firefox-esr
+firefox-esr-l10n-fr
+pkg-mozilla-archive-keyring
+webext-https-everywhere
+webext-ublock-origin
+#Alt: midori
+#Alt: luakit
+#Alt: chromium
+#Alt: nss-passwords
+#Alt: w3m
+#Alt: links2
+#Alt: surf
+#Alt: elinks
+
+# instant messaging
+#Description: pidgin
+pidgin
+pidgin-otr
+libpurple-bin
+pidgin-plugin-pack
+pidgin-extprefs
+pidgin-gnome-keyring
+#Alt: empathy
+#Alt: finch
+#Alt: telegram-desktop
+#Alt: pidgin-skype
+#Alt: yowsup-cli
+
+# xmpp/jabber
+#Alt: dino-im
+#Alt: gajim
+#Alt: mcabber
+
+# irc
+#Alt: smuxi
+#Alt: xchat
+#Alt: weechat
+#Alt: ekg2
+
+# voip/videoconference
+#Description: mumble
+mumble
+#Alt: ring
+#Alt: linphone
+#ekiga #stretch only
+
+# mail clients
+#Description: thunderbird
+thunderbird
+thunderbird-l10n-fr
+#Alt: geary
+#Alt: claws-mail
+#Alt: claws-mail-plugins
+#Alt: mailnag
+#Alt: mutt
+#Alt: alpine
+#Alt: getmail4
+#mail-notification #stretch only
+#Alt: evolution
+#Alt: evolution-plugins
+#Alt: evolution-rss
+#mail-notification-evolution #stretch only
+#Alt: offlineimap
+
+# file transfer and synchronization
+#Description: nextcloud-desktop
+nextcloud-desktop
+rsync
+#Alt: lftp
+#Alt: unison-gtk
+#Alt: rclone
+#Alt: git-annex
+#Alt: nautilus-dropbox
+#Alt: syncthing
+#Alt: sparkleshare
+#Alt: seafile-cli
+#Alt: seafile-daemon
+#Alt: seafile-gui
+#Alt: grsync
+#Alt: filezilla
+#Alt: gftp
+#Alt: owncloud-client
+
+
+# bittorrent
+#Description: transmission-gtk
+transmission-gtk
+transmission-cli
+#Alt: qbittorrent
+#Alt: deluge-gtk
+#Alt: deluge-console
+#Alt: deluge-web
+#Alt: transmission-daemon
+#Alt: transmission-remote-gtk
+#Alt: transmission-remote-cli
+#Alt: uget
+#Alt: aria2
+#Alt: amule
+#Alt: amule-gnome-support
+#Alt: nicotine
+#Alt: rtorrent
+#Alt: btfs
+
+# multimedia download
+#Description: youtube-dl
+youtube-dl
+streamlink
+#Alt: get-flash-videos
+#Alt: gnome-twitch
+#Alt: minitube
+#Alt: smtube
+
+# web crawlers/downloaders
+curl
+wget
+#Alt: httrack
+#Alt: aria2
+#Alt: axel
+#Alt: plowshare
+
+# feed readers
+#Description: liferea
+liferea
+dconf-gsettings-backend
+#yarssr #stretch only
+#Alt: newsbeuter
+#olive #stretch only
+#specto #stretch only
+#Alt: quiterss
+#Alt: tickr
+#Alt: feedreader
+
+# LAN file sharing
+#Description: samba
+samba
+samba-vfs-modules 
+smbclient
+#Alt: smbc
+
+
+#########################################
+
+# network management
+#Description: network-manager-gnome
+network-manager-gnome
+network-manager-openvpn-gnome
+crda
+wireless-regdb
+dnsmasq-base
+hostname
+bridge-utils
+ethtool
+#Alt: wicd
+#Alt: connman
+#Alt: connman-ui
+#Alt: cmst
+#Alt: wicd-curses
+#Alt: wpagui
+#Alt: network-manager-ssh
+#Alt: network-manager-iodine-gnome
+#Alt: efax-gtk
+#Alt: wammu
+
+# cellphone and modem support
+#Alt: modemmanager
+#Alt: modem-manager-gui
+#Alt: mobile-broadband-provider-info
+#Alt: usb-modeswitch
+#Alt: gnome-phone-manager
+#Alt: kdeconnect
+
+# bluetooth
+#Description: blueman
+blueman
+bluetooth
+blueman
+#Alt: gnome-bluetooth
+#Alt: gnome-user-share
+#Alt: blueproximity
+#Alt: ganyremote
+
+# firewall management
+#Description: gufw
+ufw
+gufw
+iptables
+#Alt: ferm
+#Alt: iptables-persistent
+#Alt: firehol
+#Alt: fail2ban
+#Alt: ipset-persistent
+
+# avahi zero-configuration/uPnP/mDNS 
+#Alt: avahi-daemon
+#Alt: libnss-mdns
+#Alt: avahi-autoipd
+#Alt: avahi-dnsconfd
+#Alt: avahi-discover
+#Alt: avahi-ui-utils
+
+# network diagnostic/monitoring/utilities
+#Description: gnome-nettool
+gnome-nettool
+traceroute
+dig
+#Alt: arp-scan
+#Alt: arpwatch
+#Alt: bwm-ng
+#Alt: darkstat
+#Alt: ddupdate
+#Alt: driftnet
+#Alt: dsniff
+#Alt: fping
+#Alt: httpry
+#Alt: ifstat
+#Alt: iftop
+#Alt: ipcalc
+#Alt: iperf
+#Alt: iptraf-ng
+#Alt: jmeter
+#Alt: jnettop
+#Alt: logstalgia
+#Alt: macchanger
+#Alt: mitmproxy
+#Alt: mtr
+#Alt: natpmpc
+#Alt: nethogs
+#Alt: netmask
+#Alt: nmon
+#Alt: ntopng
+#Alt: prips
+#Alt: slurm
+#Alt: snetz
+#Alt: socat
+#Alt: speedometer
+#Alt: speedtest-cli
+#Alt: sslsniff
+#Alt: sslstrip
+#Alt: subnetcalc
+#Alt: tcpdump
+#Alt: tcpstat
+#Alt: thc-ipv6
+#Alt: trickle
+#Alt: tshark
+#Alt: usbip
+#Alt: vnstat
+#Alt: vnstati
+#Alt: wireshark
+#dropwatch #sid only
+
+# SSH
+#Alt: sshuttle
+#Alt: sshfs
+#Alt: pssh
+#Alt: putty-tools
+#Alt: autossh
+
+# remote access/remote desktop clients
+#Alt: remmina
+#Alt: remmina-plugin-nx
+#Alt: remmina-plugin-rdp
+#Alt: remmina-plugin-spice
+#Alt: remmina-plugin-telepathy
+#Alt: remmina-plugin-vnc
+#Alt: remmina-plugin-xdmcp
+#Alt: vinagre
+#Alt: weevely
+#Alt: x2goclient
+#Alt: gwakeonlan
+
+# ssh/remote access servers
+#Description: openssh-server
+openssh-server
+#Alt: barrier
+#Alt: xpra
+#Alt: lightdm-remote-session-x2go
+#Alt: x2godesktopsharing
+#Alt: x2goserver
+#Alt: x2goserver-desktopsharing
+#Alt: x2goserver-extensions
+#Alt: x2goserver-x2goagent
+#Alt: x2goserver-xsession
+#Alt: x2goserver-printing
+#Alt: tinysshd
+#Alt: vino
+
+# DNS
+#Alt: dnsutils
+#Alt: dnsmasq
+#Alt: dns-root-data
+#Alt: namebench
+
+# Load testing
+#Alt: siege
+#Alt: tsung
+
+# Scanners
+#Alt: nmap
+#Alt: nikto
+#Alt: zmap
+#Alt: prads
+#Alt: sqlmap
+#Alt: themole
+#Alt: arp-scan
+#Alt: arping
+#Alt: whatweb
+#Alt: knockpy
+#Alt: spectre-meltdown-checker
+#Alt: ndiff
+#Alt: zenmap
+#Alt: masscan
+#Alt: pompem
+#Alt: dirb
+#Alt: dhcpig
+#Alt: wafw00f
+#Alt: smbmap
+#Alt: wig
+#dnsmap #sid only
+#dnsenum #sid only
+
+# Wireless
+#Alt: aircrack-ng
+#Alt: kismet
+#Alt: kismet-plugins
+#Alt: reaver
+#Alt: python-scapy
+#Alt: btscanner
+#Alt: hostapd
+#Alt: mdk3
+#mdk4 #sid only
+
+# Passwords
+#Alt: hydra
+#Alt: pcredz
+#Alt: hydra-gtk
+#Alt: ophcrack
+#Alt: hashcat
+#Alt: hashcat-data
+
+# Hardening/cryptography
+#Alt: tcplay
+#Alt: tomb
+#Alt: zulucrypt-gui
+#Alt: zulumount-gui
+#Alt: libzulucrypt-plugins
+#tails-installer #stretch only
+#Alt: tor-geoipdb
+#endlessh #sid only
+
+# GeoIP databases
+#Alt: geoip-bin
+#geoip-database-contrib #stretch only
+#geoip-database #conflicts with above
+#geoip-database-extra #conflicts with above
+
+# Network modeling
+#Alt: marionnet
+#gns3 #stretch only
+
+# Out-of-band management
+#Alt: ipmitool
+
+# Tor
+#Alt: tor
+#Alt: torsocks
+#torbrowser-launcher #stretch only
+
+# misc
+#Alt: pastebinit

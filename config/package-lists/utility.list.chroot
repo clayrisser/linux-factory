@@ -1,0 +1,318 @@
+# file management
+#Description: thunar
+#cfv #sid only
+gvfs-backends
+gvfs-bin
+gvfs-fuse
+jdupes
+libgphoto2-l10n
+libmtp-runtime
+mlocate
+ooo-thumbnailer
+rename
+secure-delete
+thunar
+thunar-archive-plugin
+thunar-media-tags-plugin
+thunar-volman
+trash-cli
+tree
+tumbler
+#Alt: pcmanfm
+#Alt: gprename
+#Alt: thunar-gtkhash
+#Alt: nautilus
+#Alt: nautilus-sendto
+#Alt: ooo-thumbnailer
+#Alt: nautilus-wipe
+#Alt: nautilus-image-converter
+#Alt: gnome-sushi
+#Alt: gtkhash
+#Alt: gnome-split
+#Alt: ffmpegthumbnailer
+#Alt: tdfsb
+#Alt: cksfv
+#Alt: safe-rm
+#Alt: mmv
+#Alt: hardlink
+#Alt: ranger
+#Alt: chkboot
+#Alt: reflex
+#Alt: fzf
+#Alt: ripgrep
+
+
+
+# launcher/application menu
+xfce4-whiskermenu-plugin
+gmrun
+#Alt: kupfer
+#Alt: gnome-pie
+#Alt: xfce4-appfinder
+#Alt: synapse
+#Alt: zeitgeist
+#Alt: zeitgeist-datahub
+#Alt: activity-log-manager
+
+# desktop/wm/session/panel
+xfdesktop4
+xfwm4
+xfce4-session
+xfce4-notifyd
+#Alt: compiz
+#Alt: compiz-plugins
+#Alt: compiz-plugins-default
+#Alt: compiz-plugins-extra
+#Alt: compiz-plugins-main
+#Alt: compton
+#Alt: compton-conf
+
+# panel
+xfce4-panel
+xfce4-places-plugin
+xfce4-weather-plugin
+xfce4-netload-plugin
+xfce4-pulseaudio-plugin
+#Alt: plank
+
+
+# archive management
+#Description: file-roller
+file-roller
+atool
+p7zip
+p7zip-full
+arj
+cabextract
+cpio
+lzip
+lzma
+lzop
+lzip
+unace
+unalz
+unrar-free
+rar
+unzip
+zip
+iat
+nrg2iso
+gzrt
+#Alt: xarchiver
+#Alt: isomaster
+#Alt: p7zip-rar
+
+
+# password and keys management
+#Description: keepassxc
+keepassxc
+seahorse
+seahorse-daemon
+gnome-keyring
+ssh-askpass-gnome
+libpam-gnome-keyring
+gnupg
+gnupg2
+pwgen
+nss-passwords
+
+#Alt: keepassx
+#Alt: keepass2
+#Alt: qtpass
+#revelation #stretch only
+#Alt: apg
+#Alt: xkcdpass
+#Alt: pass
+
+# text editors
+#Description: mousepad
+mousepad
+#Description: nano
+nano
+vim-tiny
+#Alt: vim
+#Alt: vim-doc
+#Alt: vim-scripts
+#Alt: vim-addon-manager
+#Alt: focuswriter
+#Alt: gedit
+#Alt: gedit-plugins
+#Alt: gedit-source-code-browser-plugin
+#Alt: geany
+#Alt: nfoview
+
+# maps
+#Description: gnome-maps
+gnome-maps
+#Alt: marble-qt
+#alt: marble-plugins
+#Alt: geoclue-2.0
+#Alt: josm
+#Alt: navit
+#Alt: gpsd
+#Alt: routino
+#Alt: mkgmapgui
+#Alt: mkgmap
+#Alt: foxtrotgps
+#Alt: gis-tasks
+#Alt: gpsprune
+
+# screenshots
+#Description: xfce4-screenshooter
+xfce4-screenshooter
+#Alt: scrot
+#Alt: gnome-screenshot
+#Alt: flameshot
+
+# clocks/timers
+#Description: gnome-clocks
+gnome-clocks
+tty-clock
+#Alt: dclock
+#Alt: gtimer
+#Alt: stopwatch
+#Alt: xfce4-timer-plugin
+#screenruler #stretch only
+
+
+# calculators
+#Description: gnome-calculator
+#Screenshot: gnome-calculator
+gnome-calculator
+bc
+units
+#Alt: qalculate
+#Alt: num-utils
+#Alt: speedcrunch
+#Alt: gbase
+#Alt: graphmonkey
+
+# terminal emulators
+#Description: xfce4-terminal
+xfce4-terminal
+#Alt: lxterminal
+#Alt: gnome-terminal
+#Alt: guake
+#Alt: terminator
+#Alt: rxvt-unicode
+#Alt: tilda
+
+# science
+#Alt: stellarium
+#Alt: lightspeed
+#Alt: wxmaxima
+#Alt: gramps
+
+# color management
+#Description: redshift-gtk
+redshift-gtk
+#Alt: workrave
+#Alt: safeeyes
+
+# CD burning
+#Description: xfburn
+xfburn
+#Alt: brasero
+#Alt: brasero-cdrkit
+#Alt: cdrdao
+
+# Desktop configuration utilities
+xfce4-settings
+gnome-system-tools
+menulibre
+gconf-editor
+dconf-editor
+dconf-cli
+qt4-qtconfig
+gnome-settings-daemon
+dconf-gsettings-backend
+#Alt: gnome-tweaks
+
+# power management
+#Description: xfce4-power-manager
+xfce4-power-manager
+xfce4-battery-plugin
+radeontool
+bumblebee
+primus
+vbetool
+powertop
+usbutils
+acpi
+acpi-support
+acpi-support-base
+laptop-mode-tools
+fancontrol
+rfkill
+cpufrequtils
+hibernate
+pm-utils
+#Alt: powerdebug
+#Alt: tlp
+#Alt: powerstat
+#Alt: i8kutils
+#Alt: usbtop
+#hd-idle #bullseye only
+#eeepc-acpi-scripts #sid only
+
+# character map/font viewer
+gucharmap
+gnome-font-viewer
+#Alt: font-manager
+
+# spell checking/dictionaries
+hunspell
+hunspell-en-us
+hunspell-fr
+aspell
+aspell-fr
+hunspell-fr
+ispell
+iamerican
+ibritish
+ifrench-gut
+wfrench
+#Alt: xfce4-dict
+#Alt: gnome-dictionary
+#Alt: goldendict
+#Alt: verbiste-gnome
+
+# Resources
+desktop-base
+papirus-icon-theme
+arc-theme
+gnome-themes-standard
+sound-theme-freedesktop
+gnome-audio
+#Alt: faenza-icon-theme
+#Alt: clearlooks-phenix-theme
+#Alt: deepin-icon-theme
+
+
+# virtual keyboards
+#Alt: onboard
+#Alt: onboard-data
+#Alt: cellwriter
+#Alt: florence
+
+# other/misc
+libnotify-bin
+zenity
+numlockx
+x11-apps
+xbitmaps
+wmctrl
+xclip
+xcalib
+xbacklight
+conky-all
+gtk2-engines
+gtk2-engines-murrine
+gtk2-engines-pixbuf
+gtk2-engines-xfce
+xdg-user-dirs-gtk
+libfile-mimeinfo-perl
+policykit-1-gnome
+#Alt: randtype
+#Alt: winwrangler
+#Alt: xdotool

@@ -1,0 +1,161 @@
+# version control
+#Description: gitg
+gitg
+#Description: git
+git
+#Description: meld
+meld
+#Description: gource
+gource
+colordiff
+dwdiff
+cloc
+#Alt: fossil
+#Alt: ghi
+#Alt: git-mediawiki
+#Alt: git-sizer
+#Alt: svn2git
+#Alt: github-backup
+#Alt: hub
+#Alt: mercurial
+#Alt: myrepos
+#Alt: python-gitlab
+#Alt: subversion
+#Alt: tig
+#Alt: icdiff
+#Alt: qgit
+
+# shell & basic utilities
+bash
+autojump
+bash-completion
+shellcheck
+pv
+sed
+util-linux
+util-linux-locales
+whiptail
+moreutils
+less
+asciinema
+dialog
+manpages
+manpages-dev
+#Alt: undistract-me
+#Alt: inotify-tools
+#Alt: lr
+#Alt: ack-grep
+#Alt: bd
+#Alt: beep
+#Alt: command-not-found
+#Alt: detox
+#Alt: grc
+#Alt: pv
+#Alt: reptyr
+#Alt: source-highlight
+#Alt: tmux
+#Alt: ttyrec
+#Alt: fasd
+#Alt: pdd
+#Alt: termrec
+#Alt: ripgrep
+
+
+# Parsers/converters/documentation generators
+pandoc
+jq
+xmlstarlet
+aha
+groff
+dos2unix
+#Alt: man2html-base
+#Alt: txt2tags
+#Alt: mkdocs
+#Alt: csvkit
+#Alt: roffit
+#Alt: archmage
+
+# Packaging
+debhelper
+autoconf
+devscripts
+dh-make
+equivs
+build-essential
+checkinstall
+fakeroot
+debconf-utils
+lintian
+git-buildpackage
+#Alt: lintian-brush
+#Alt: apt-build
+#Alt: python-stdeb
+#Alt: pypi2deb
+#Alt: dgit
+#Alt: aptly
+
+# debugging
+gdb
+
+# python3
+python3-all-dev
+python3-setuptools
+python3-wheel
+python3-pip
+python3-venv
+
+# Live system
+live-build
+#Alt: debootstrap
+#Alt: live-config-doc
+#Alt: live-manual-pdf
+#Alt: live-manual-html
+#Alt: debian-handbook
+#Alt: blends-tasks
+#Alt: live-task-lxde
+#Alt: live-task-base
+#Alt: live-task-cinnamon
+#Alt: live-task-extra
+#Alt: live-task-gnome
+#Alt: live-task-kde
+#Alt: live-task-localisation
+#Alt: live-task-localisation-desktop
+#Alt: live-task-mate
+#Alt: live-task-recommended
+#Alt: live-task-xfce
+
+# hex editors
+#Alt: wxhexeditor
+#Alt: hexcurse
+#Alt: dhex
+#Alt: bless
+
+# translations
+#Alt: poedit
+
+# game development
+#Alt: godot3
+
+# Ruby
+#Alt: rubygems
+#Alt: ruby-dev
+
+# html/css/js
+#Alt: csstidy
+#Alt: sqlite3
+#Alt: webcheck
+#Alt: vera
+#Alt: nodejs
+#Alt: npm
+#Alt: jsbeautifier
+
+# php
+#Alt: php-cli
+
+# android
+#Alt: android-sdk
+#Alt: android-sdk-platform-tools-common
+#Alt: android-tools-fastboot
+#Alt: gplaycli python-ndg-httpsclient
+#Alt: adb
+#Alt: fastboot

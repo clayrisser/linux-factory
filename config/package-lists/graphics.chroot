@@ -1,0 +1,170 @@
+# image viewers
+#Description: ristretto
+ristretto
+#Alt: eog
+#Alt: eog-plugins
+#Alt: viewnior
+#Alt: pqiv
+#Alt: qiv
+#Alt: feh
+#comix #stretch only
+#Alt: mcomix
+#Alt: gpicview
+#Alt: mirage
+#Alt: xzgv
+#Alt: sxiv
+#Alt: catimg
+
+# image editors
+#Description: gimp
+gimp
+gimp-data-extras
+gimp-gap
+gimp-plugin-registry
+gimp-texturize
+gimp-ufraw
+gimp-gutenprint
+gimp-gmic
+gimp-lensfun
+create-resources
+gimp-help-fr
+
+# vector image editors
+#Description: inkscape
+inkscape
+create-resources
+python-lxml
+pstoedit
+#Alt: pencil2d
+#Alt: dia
+#Alt: birdfont
+#Alt: python-uniconvertor
+
+
+# drawing editors
+#Description: xournal
+xournal
+
+# Other editors
+#Alt: krita
+#pinta #stretch only
+#Alt: mypaint
+#Alt: mtpaint
+#Alt: xpaint
+#Alt: gnome-paint
+#Alt: delaboratory
+
+# Non-destructive editors (lightroom)
+#Alt: darktable
+#Alt: rawtherapee
+#Alt: luminance-hdr
+
+# Color pickers
+#gcolor2 #stretch only
+#agave #stretch only
+#Alt: gpick
+
+# Batch processing
+#phatch #stretch only
+#Alt: aspic
+#Alt: pixelize
+#Alt: hugin
+#Alt: aaphoto
+
+# Camera/upload management
+#Alt: rapid-photo-downloader
+#Alt: gtkam
+#postr #stretch only
+#flickrbackup #stretch only
+
+# Image library managers
+#Alt: nomacs
+#Alt: shotwell
+#Alt: gthumb
+#Alt: digikam
+#Alt: fotoxx
+#Alt: geeqie
+
+# Game asset editors
+#aseprite #stretch only
+#Alt: tiled
+#Alt: games-content-dev
+
+# Color management
+#Alt: colorhug-client
+
+# diagram editors
+#Description: dia
+dia
+dia-shapes
+gsfonts-x11 
+#Alt: asciio
+
+# Label/barcode editors (disabled)
+##Screenshot: glabels
+#Alt: glabels
+#Alt: qrencode
+#Alt: qtqr
+#Alt: zbar-tools
+
+# 3D editors
+#Description: blender
+blender
+#Alt: makehuman
+#Alt: g3dviewer
+#Alt: sweethome3d
+#Alt: sweethome3d-furniture
+#Alt: sweethome3d-furniture-editor
+#Alt: sweethome3d-textures-editor
+#Alt: sweethome3d-furniture-nonfree
+
+# CAD editors
+#Alt: librecad
+#Alt: kicad
+#Alt: freecad
+#Alt: pcb-gtk
+#Alt: qelectrotech
+
+# Video editors
+#Alt: openshot
+#Alt: kdenlive
+#Alt: devede
+#Alt: dvdauthor
+#Alt: imagination
+#Alt: ffdiaporama
+#Alt: screenkey
+#Alt: dvgrab
+#Alt: vgrabbj
+#Alt: dvbcut
+#Alt: multimedia-video
+#Alt: flowblade
+#Alt: handbrake
+#Alt: lives
+#Alt: rtmpdump
+#Alt: shotdetect
+#Alt: tsdecrypt
+#Alt: videotrans
+#Alt: voctomix
+#Alt: stopmotion
+#Alt: education-video
+
+# image manipulation/command-line
+imagemagick
+optipng
+advancecomp
+jpegoptim
+pngcrush
+exifprobe
+findimagedupes
+librsvg2-bin
+figlet
+toilet
+#Alt: caca-utils
+#Alt: converseen
+#Alt: fbi
+#Alt: gifsicle
+#Alt: jp2a
+#Alt: pecomato
+#Alt: aview
+#Alt: chafa
+#Alt: lolcat
