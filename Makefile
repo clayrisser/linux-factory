@@ -35,3 +35,26 @@ sign_checksums:
 	cd iso; \
 	gpg --detach-sign --armor SHA512SUMS; \
 	mv SHA512SUMS.asc SHA512SUMS.sign
+
+################################
+
+tests: download_iso test_kvm_bios test_kvm_uefi
+
+download_iso:
+	# download the iso image from a build server
+	rsync -avP buildbot.xinit.se:/var/dlc/iso ./
+
+test_kvm_bios:
+	# Run the resulting image in KVM/virt-manager (legacy BIOS mode)
+	sudo virt-install --name dlc-test --boot cdrom --disk path=/dlc-test-disk0.qcow2,format=qcow2,size=20,device=disk,bus=virtio,cache=none --cdrom 'iso/dlc-2.1-rc3-debian-buster-amd64.hybrid.iso' --memory 2048 --vcpu 2
+	sudo virsh destroy dlc-test
+	sudo virsh undefine dlc-test
+	sudo rm /dlc-test-disk0.qcow2
+
+test_kvm_uefi:
+	# Run the resulting image in KVM/virt-manager (UEFI mode)
+	# UEFI support must be enabled in QEMU config for EFI install tests https://wiki.archlinux.org/index.php/Libvirt#UEFI_Support (/usr/share/OVMF/*.fd)
+	sudo virt-install --name dlc-test --boot loader=/usr/share/OVMF/OVMF_CODE.fd --disk path=/dlc-test-disk0.qcow2,format=qcow2,size=20,device=disk,bus=virtio,cache=none --cdrom 'iso/dlc-2.1-rc3-debian-buster-amd64.hybrid.iso' --memory 2048 --vcpu 2
+	sudo virsh destroy dlc-test
+	sudo virsh undefine dlc-test
+	sudo rm /dlc-test-disk0.qcow2
