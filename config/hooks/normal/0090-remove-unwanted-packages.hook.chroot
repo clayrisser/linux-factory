@@ -1,0 +1,2 @@
+#!/bin/bash
+aptitude -y purge exim4-base nfs-common rpcbind
