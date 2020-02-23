@@ -1,0 +1,2 @@
+#!/bin/bash
+update-alternatives --set x-session-manager /usr/bin/xfce4-session
