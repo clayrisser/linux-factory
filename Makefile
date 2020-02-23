@@ -12,3 +12,22 @@ build:
 	sudo lb clean --all
 	sudo lb config
 	sudo lb build
+
+##############################
+
+release: checksums sign_checksums
+
+checksums:
+	# Generate checksums of the resulting ISO image
+	@mkdir -p iso/
+	mv *.iso iso/
+	last_tag=$$(git tag | tail -n1); \
+	cd iso/; \
+	rename "s/live-image/dlc-$$last_tag-debian-buster/" *; \
+	sha512sum *.iso  > SHA512SUMS; \
+
+sign_checksums:
+	# Sign checksums with a GPG private key
+	cd iso; \
+	gpg --detach-sign --armor SHA512SUMS; \
+	mv SHA512SUMS.asc SHA512SUMS.sign
