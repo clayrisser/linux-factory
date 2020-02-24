@@ -76,10 +76,8 @@ Scripts and data that do not belong to an existing Debian package _should_ be di
 
 Simply use the `.list` extension to install packages in the live system and include them as well in the `pool/` directory in the ISO image.
 
-Lines commented out with `#` will be ignored, except a few keywords (`#if...`), or used for documentation generation (see below).
 
-
-### config/packages.chroot
+### config/packages.chroot/
 
 `.deb` packages placed here will be installed to the live system.
 
@@ -95,20 +93,24 @@ Reasons to NOT use this:
  - Packages placed here are not GPG-signed. Ensure you download/build the package over a secure channel.
 
 
-### config/includes.installer
+### config/includes.installer/
 
 `preseed.cfg` is used to preconfigure the _installer_ using [preseeding](https://wiki.debian.org/Preseed).
 
 
-### config/preseed
+### config/preseed/
 
 `*.chroot.cfg` used to preseed debconf values for the _resulting live system_.
 
 
-### config/hooks
+### config/hooks/
 
 Scripts used to run arbitrary commands at different stages of the build (`*.hook.chroot` or `.*chroot.binary`). See `/usr/share/doc/live-build/examples/hooks/` for examples.
 
+
+### config/includes.binary/
+
+Additional files to place at the root of the ISO image filesystem (these files will be directly accessible when mounting the ISO).
 
 ## Other
 
