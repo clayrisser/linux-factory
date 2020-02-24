@@ -68,6 +68,12 @@ Files to copy to the resulting live system (used include modified configuration 
 
 Scripts and data that do not belong to an existing Debian package _should_ be distributed as [custom packages](http://wiki.debian.org/Packaging), and not stashed directly into the directory. Debian packages can also handle custom configuration files (see [`man dpkg-divert`](https://manpages.debian.org/buster/dpkg/dpkg-divert.1.en.html)).
 
+For example, to add custom files/unpackaged programs inside your live system:
+
+```bash
+git clone https://gitlab.com/nodiscc/toolbox config/includes.chroot/opt/toolbox
+git clone https://gitlab.com/nodiscc/dlc config/includes.chroot/opt/dlc
+```
 
 ### config/package-lists/
 
@@ -92,6 +98,13 @@ Reasons to NOT use this:
  - Packages placed here will _not_ receive upgrades through APT (unless they are someday added to official Debian repositories)
  - Packages placed here are not GPG-signed. Ensure you download/build the package over a secure channel.
 
+
+For example, to add a third-party package to your system:
+
+```bash
+mkdir -pv config/packages.chroot
+wget -N -nv --show-progress -P config/packages.chroot/ https://download.opensuse.org/repositories/home:/strycore/Debian_9.0/amd64/lutris_0.5.2.2_amd64.deb
+```
 
 ### config/includes.installer/
 
