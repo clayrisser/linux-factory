@@ -6,6 +6,21 @@ install_buildenv:
 	# Install packages required to build the image
 	sudo apt install live-build make build-essential wget git xmlstarlet unzip colordiff shellcheck apt-transport-https rename ovmf rsync
 
+##############################
+
+WGET=wget --timestamping --no-verbose --show-progress --directory-prefix=cache/downloads/
+download_extras:
+	mkdir -p cache/downloads/
+	# https://gitlab.com/nodiscc/plymouth-theme-debian-logo
+	$(WGET) https://gitlab.com/nodiscc/plymouth-theme-debian-logo/-/archive/1.0/plymouth-theme-debian-logo-1.0.zip
+	-rm -rf config/includes.chroot/usr/share/plymouth/themes/debian-logo cache/downloads/plymouth-theme-debian-logo-1.0
+	unzip -q cache/downloads/plymouth-theme-debian-logo-1.0.zip -d cache/downloads/
+	mkdir -p config/includes.chroot/usr/share/plymouth/themes/
+	mv cache/downloads/plymouth-theme-debian-logo-1.0 config/includes.chroot/usr/share/plymouth/themes/debian-logo
+
+
+##############################
+
 bump_version:
 	@last_tag=$$(git tag | tail -n1); \
 	echo "Please set version to $$last_tag in Makefile config/bootloaders/isolinux/live.cfg.in config/bootloaders/isolinux/menu.cfg auto/config"
