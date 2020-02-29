@@ -11,6 +11,7 @@ install_buildenv:
 clean:
 	-rm -rf config/includes.chroot/usr/share/plymouth/themes/debian-logo cache/downloads/plymouth-theme-debian-logo-1.0
 	-rm -rf config/includes.chroot/usr/share/backgrounds/cc0-wallpapers cache/downloads/cc0-wallpapers-1.0
+	-rm -rf config/includes.chroot/usr/share/xfce4/terminal/colorschemes cache/downloads/xfce4-terminal-colorschemes-1.0
 
 
 WGET=wget --timestamping --no-verbose --show-progress --directory-prefix=cache/downloads/
@@ -24,6 +25,10 @@ download_extras:
 	$(WGET) https://gitlab.com/nodiscc/cc0-wallpapers/-/archive/1.0/cc0-wallpapers-1.0.zip
 	unzip -q cache/downloads/cc0-wallpapers-1.0.zip -d cache/downloads/
 	mkdir -p config/includes.chroot/usr/share/backgrounds/ && mv cache/downloads/cc0-wallpapers-1.0 config/includes.chroot/usr/share/backgrounds/cc0-wallpapers
+	# https://gitlab.com/nodiscc/xfce4-terminal-colorschemes
+	$(WGET) https://gitlab.com/nodiscc/xfce4-terminal-colorschemes/-/archive/1.0/xfce4-terminal-colorschemes-1.0.zip
+	unzip -q cache/downloads/xfce4-terminal-colorschemes-1.0.zip -d cache/downloads/
+	mkdir -p config/includes.chroot/usr/share/xfce4/terminal/ && mv cache/downloads/xfce4-terminal-colorschemes-1.0 config/includes.chroot/usr/share/xfce4/terminal/colorschemes
 
 
 ##############################
