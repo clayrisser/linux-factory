@@ -8,15 +8,22 @@ install_buildenv:
 
 ##############################
 
+clean:
+	-rm -rf config/includes.chroot/usr/share/plymouth/themes/debian-logo cache/downloads/plymouth-theme-debian-logo-1.0
+	-rm -rf config/includes.chroot/usr/share/backgrounds/cc0-wallpapers cache/downloads/cc0-wallpapers-1.0
+
+
 WGET=wget --timestamping --no-verbose --show-progress --directory-prefix=cache/downloads/
 download_extras:
 	mkdir -p cache/downloads/
 	# https://gitlab.com/nodiscc/plymouth-theme-debian-logo
 	$(WGET) https://gitlab.com/nodiscc/plymouth-theme-debian-logo/-/archive/1.0/plymouth-theme-debian-logo-1.0.zip
-	-rm -rf config/includes.chroot/usr/share/plymouth/themes/debian-logo cache/downloads/plymouth-theme-debian-logo-1.0
 	unzip -q cache/downloads/plymouth-theme-debian-logo-1.0.zip -d cache/downloads/
-	mkdir -p config/includes.chroot/usr/share/plymouth/themes/
-	mv cache/downloads/plymouth-theme-debian-logo-1.0 config/includes.chroot/usr/share/plymouth/themes/debian-logo
+	mkdir -p config/includes.chroot/usr/share/plymouth/themes/ && mv cache/downloads/plymouth-theme-debian-logo-1.0 config/includes.chroot/usr/share/plymouth/themes/debian-logo
+	# https://gitlab.com/nodiscc/cc0-wallpapers
+	$(WGET) https://gitlab.com/nodiscc/cc0-wallpapers/-/archive/1.0/cc0-wallpapers-1.0.zip
+	unzip -q cache/downloads/cc0-wallpapers-1.0.zip -d cache/downloads/
+	mkdir -p config/includes.chroot/usr/share/backgrounds/ && mv cache/downloads/cc0-wallpapers-1.0 config/includes.chroot/usr/share/backgrounds/cc0-wallpapers
 
 
 ##############################
