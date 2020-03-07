@@ -14,7 +14,7 @@ clean:
 	-rm -rf config/includes.chroot/usr/share/xfce4/terminal/colorschemes cache/downloads/xfce4-terminal-colorschemes-1.0
 
 
-WGET=wget --timestamping --no-verbose --show-progress --directory-prefix=cache/downloads/
+WGET=wget --no-verbose --show-progress --directory-prefix=cache/downloads/
 download_extras:
 	mkdir -p cache/downloads/
 	# https://gitlab.com/nodiscc/plymouth-theme-debian-logo
