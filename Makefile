@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 
-all: install_buildenv build
+all: install_buildenv clean download_extras build
 
 install_buildenv:
 	# Install packages required to build the image
