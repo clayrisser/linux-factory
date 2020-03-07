@@ -20,15 +20,18 @@ download_extras:
 	# https://gitlab.com/nodiscc/plymouth-theme-debian-logo
 	$(WGET) https://gitlab.com/nodiscc/plymouth-theme-debian-logo/-/archive/1.0/plymouth-theme-debian-logo-1.0.zip
 	unzip -q cache/downloads/plymouth-theme-debian-logo-1.0.zip -d cache/downloads/
-	mkdir -p config/includes.chroot/usr/share/plymouth/themes/ && mv cache/downloads/plymouth-theme-debian-logo-1.0 config/includes.chroot/usr/share/plymouth/themes/debian-logo
+	mkdir -p config/includes.chroot/usr/share/plymouth/themes/
+	mv cache/downloads/plymouth-theme-debian-logo-1.0 config/includes.chroot/usr/share/plymouth/themes/debian-logo
 	# https://gitlab.com/nodiscc/cc0-wallpapers
 	$(WGET) https://gitlab.com/nodiscc/cc0-wallpapers/-/archive/1.0/cc0-wallpapers-1.0.zip
 	unzip -q cache/downloads/cc0-wallpapers-1.0.zip -d cache/downloads/
-	mkdir -p config/includes.chroot/usr/share/backgrounds/ && mv cache/downloads/cc0-wallpapers-1.0 config/includes.chroot/usr/share/backgrounds/cc0-wallpapers
+	mkdir -p config/includes.chroot/usr/share/backgrounds/
+	mv cache/downloads/cc0-wallpapers-1.0 config/includes.chroot/usr/share/backgrounds/cc0-wallpapers
 	# https://gitlab.com/nodiscc/xfce4-terminal-colorschemes
 	$(WGET) https://gitlab.com/nodiscc/xfce4-terminal-colorschemes/-/archive/1.0/xfce4-terminal-colorschemes-1.0.zip
 	unzip -q cache/downloads/xfce4-terminal-colorschemes-1.0.zip -d cache/downloads/
-	mkdir -p config/includes.chroot/usr/share/xfce4/terminal/ && mv cache/downloads/xfce4-terminal-colorschemes-1.0 config/includes.chroot/usr/share/xfce4/terminal/colorschemes
+	mkdir -p config/includes.chroot/usr/share/xfce4/terminal/
+	mv cache/downloads/xfce4-terminal-colorschemes-1.0 config/includes.chroot/usr/share/xfce4/terminal/colorschemes
 
 
 ##############################
