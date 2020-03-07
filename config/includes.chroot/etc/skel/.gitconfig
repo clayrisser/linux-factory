@@ -1,0 +1,17 @@
+[color]
+	ui = true
+[merge]
+	tool = meld
+[alias]
+	st = status
+	a = add
+	ch = checkout
+	b = branch -a
+	c = commit
+	ru = remote update
+	l = "log --graph --abbrev-commit --decorate --date=relative --pretty=oneline --all"
+	d = diff
+    wd = diff --color-words=.
+	sl = shortlog
+	gc = gc --aggressive
+	thanks = shortlog -sne
