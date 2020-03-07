@@ -4,7 +4,7 @@
 
 A [Debian GNU/Linux](https://www.debian.org/) live system/installer, preconfigured for generic personal computers/workstations.
 
-To build your own Debian-based "distribution", you can [edit the default configuration](doc/custom.md)
+This repository contains the `live-build` configuration and scripts used to build a custom Debian ISO image. See [doc/custom.md](doc/custom.md).
 
 ## Features
 
