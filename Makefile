@@ -11,7 +11,7 @@ install_buildenv:
 clean:
 
 
-WGET=wget --no-verbose --show-progress --directory-prefix=cache/downloads/
+WGET=wget --continue --no-verbose --show-progress --directory-prefix=cache/downloads/
 download_extras:
 	mkdir -p cache/downloads/
 	# https://gitlab.com/nodiscc/plymouth-theme-debian-logo
