@@ -32,11 +32,11 @@ download_extras:
 	unzip -q cache/downloads/xfce4-terminal-colorschemes-1.0.zip -d cache/downloads/
 	mkdir -p config/includes.chroot/usr/share/xfce4/terminal/
 	mv cache/downloads/xfce4-terminal-colorschemes-1.0 config/includes.chroot/usr/share/xfce4/terminal/colorschemes
-	# https://github.com/serialhex/nano-highlight
+	# https://github.com/scopatz/nanorc
 	-rm -rf config/includes.chroot/etc/skel/.nano cache/downloads/nano-highlight-master
-	$(WGET) https://github.com/serialhex/nano-highlight/archive/master.zip -O cache/downloads/nano-highlight-master.zip
-	unzip -q cache/downloads/nano-highlight-master.zip -d cache/downloads/
-	mv cache/downloads/nano-highlight-master config/includes.chroot/etc/skel/.nano
+	$(WGET) https://github.com/scopatz/nanorc/archive/master.zip -O cache/downloads/nanorc-master.zip
+	unzip -q cache/downloads/nanorc-master.zip -d cache/downloads/
+	mv cache/downloads/nanorc-master config/includes.chroot/etc/skel/.nano
 
 ##############################
 
