@@ -4,7 +4,7 @@ A [Debian GNU/Linux](https://www.debian.org/) live system/installer, preconfigur
 
 This repository contains the `live-build` configuration and scripts used to build a custom Debian ISO image. See [doc/custom.md](doc/custom.md).
 
-![](https://i.imgur.com/1QdF9N7.png)
+![](https://i.imgur.com/wJETcZ3.png)
 
 
 ----------------
@@ -49,11 +49,16 @@ This repository contains the `live-build` configuration and scripts used to buil
 
 ## Download
 
-**[Download](https://github.com/nodiscc/dlc/releases/files/dlc-2.0.0-amd64.iso)** the latest ISO image
+**[![](doc/res/download.png) Download](https://github.com/nodiscc/debian-live-config/releases/download/2.2/dlc-2.2-debian-buster-amd64.hybrid.iso)** the latest ISO image
 
-It is optional but recommended to verify the ISO image against cryptographic signatures, to ensure downloaded files are valid and authentic. Download `dlc-release.key`, `SHA512SUMS.sign` and `SHA512SUMS` from the [releases page](https://github.com/nodiscc/dlc/releases), to the same directory as the `iso` file.
+It is optional but recommended to verify the ISO image against cryptographic signatures, to ensure downloaded files are valid and authentic:
 
 ```bash
+# download the iso, signing key, checksums and signature
+wget https://github.com/nodiscc/debian-live-config/releases/download/2.2/dlc-2.2-debian-buster-amd64.hybrid.iso
+wget https://github.com/nodiscc/debian-live-config/releases/download/2.2/dlc-release.key
+wget https://github.com/nodiscc/debian-live-config/releases/download/2.2/SHA512SUMS
+wget https://github.com/nodiscc/debian-live-config/releases/download/2.2/SHA512SUMS.sign
 # import the release signing key
 # the key used to sign releases has key ID 16C50725859EBE2DD1B22100BCC63E85387671B9
 gpg --import dlc-release.key
