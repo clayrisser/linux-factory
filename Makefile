@@ -8,8 +8,9 @@ install_buildenv:
 
 ##############################
 
+# clear all caches, only required when changing the mirrors/architecture config
 clean:
-
+	sudo lb clean --purge
 
 WGET=wget --continue --no-verbose --show-progress --directory-prefix=cache/downloads/
 download_extras:
@@ -46,7 +47,6 @@ bump_version:
 
 build:
 	# Build the live system/ISO image
-	#sudo lb clean --purge #only required when changing the mirrors/architecture config
 	sudo lb clean --all
 	sudo lb config
 	sudo lb build
