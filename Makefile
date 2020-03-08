@@ -79,7 +79,7 @@ tests: download_iso test_kvm_bios test_kvm_uefi
 
 download_iso:
 	# download the iso image from a build server
-	rsync -avP buildbot.xinit.se:/var/dlc/iso ./
+	rsync -avP buildbot.xinit.se:/var/debian-live-config/debian-live-config/iso ./
 
 test_kvm_bios:
 	# Run the resulting image in KVM/virt-manager (legacy BIOS mode)
