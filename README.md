@@ -1,31 +1,10 @@
 # debian-live-config
 
-![](https://i.imgur.com/1QdF9N7.png)
-
 A [Debian GNU/Linux](https://www.debian.org/) live system/installer, preconfigured for generic personal computers/workstations.
 
 This repository contains the `live-build` configuration and scripts used to build a custom Debian ISO image. See [doc/custom.md](doc/custom.md).
 
-## Features
-
-- [Live system](https://en.wikipedia.org/wiki/Live_USB) mode from USB/DVD (no installation required)
-- Install a ready-to-use desktop system to the hard drive in less than ~10 minutes, without Internet access
-- Preinstalled [software](doc/packages.md) for most office, multimedia, internet and configuration tasks ([Xfce](https://docs.xfce.org/start) desktop environment)
-- Sensible [default configuration](config/includes.chroot/) for personal computers
-- Good compatibility with recent hardware
-- Good performance/low resource usage low-end hardware, old/recycled machines, low power consumption
-- Fits on a 2GB USB drive
-- Based on Debian [stable](https://wiki.debian.org/DebianStable) + [backports](https://wiki.debian.org/Backports), reliable, low maintenance
-- 100% [Free and Open-Source Software](https://en.wikipedia.org/wiki/Free_software) (with the exception of hardware drivers/firmware)
-- Includes only official Debian software
-
-
-## Hardware Requirements
-
-    Computer with x86_64 CPU
-    Memory: min 1024MB, recommended 2GB+
-    Recommended storage: 15GB+ hard drive or SSD (operating system and programs), 10-∞GB (user data)
-    2GB+ USB drive or DVD-R for the installation media
+![](https://i.imgur.com/1QdF9N7.png)
 
 
 ----------------
@@ -34,12 +13,15 @@ This repository contains the `live-build` configuration and scripts used to buil
 
 <!-- MarkdownTOC levels=2 -->
 
-- [Download and verification](#download-and-verification)
+- [Features](#features)
+- [Hardware Requirements](#hardware-requirements)
+- [Download](#download)
 - [Writing the bootable media](#writing-the-bootable-media)
+- [Booting the ISO](#booting-the-iso)
 - [Running the live system](#running-the-live-system)
 - [Installing the system](#installing-the-system)
 - [Usage](#usage)
-- [Maintenance](#maintenance)
+- [Maintenance & security](#maintenance--security)
 - [Issues](#issues)
 - [Changelog](#changelog)
 - [License](#license)
@@ -48,17 +30,38 @@ This repository contains the `live-build` configuration and scripts used to buil
 
 ---------------
 
-## Download and verification
+## Features
+
+- Install a ready-to-use system in less than ~10 minutes, without Internet access, or run it [live](https://en.wikipedia.org/wiki/Live_USB) from USB/DVD (no installation required)
+- Preinstalled [software](doc/packages.md) for most office/multimedia/internet tasks, [preconfigured](config/includes.chroot/) for personal computers
+- Lightweight [desktop environment](https://docs.xfce.org/start)/low resource usage (low-end hardware, old/recycled machines...), low power consumption
+- Fits on a 2GB USB drive
+- Based on Debian [stable](https://wiki.debian.org/DebianStable) + [backports](https://wiki.debian.org/Backports), reliable, low maintenance
+
+
+## Hardware Requirements
+
+- Computer with x86_64 CPU
+- Memory: min 1024MB, recommended 2GB+
+- Recommended storage: 15GB+ hard drive or SSD (operating system and programs), 10-∞GB (user data)
+- 2GB+ USB drive or DVD-R for the installation media
+
+
+## Download
 
 **[Download](https://github.com/nodiscc/dlc/releases/files/dlc-2.0.0-amd64.iso)** the latest ISO image
 
-It is optional, but is strongly recommended to **verify the ISO image** to ensure downloaded files are valid and authentic. Download `dlc-release.key`, `SHA512SUMS.sign` and `SHA512SUMS` from the [releases page](https://github.com/nodiscc/dlc/releases), to the same directory as the `iso` file.
+It is optional but recommended to verify the ISO image against cryptographic signatures, to ensure downloaded files are valid and authentic. Download `dlc-release.key`, `SHA512SUMS.sign` and `SHA512SUMS` from the [releases page](https://github.com/nodiscc/dlc/releases), to the same directory as the `iso` file.
 
- * Import the GPG key: `gpg --import dlc-release.key`
- * Verify the authenticity of the checksums file: `gpg --verify SHA512SUMS.sign`
- * Verify the integrity of the ISO image: `sha512sum -c SHA512SUMS`
-
-The key used to sign releases has the key ID `16C50725859EBE2DD1B22100BCC63E85387671B9`.
+```bash
+# import the release signing key
+# the key used to sign releases has key ID 16C50725859EBE2DD1B22100BCC63E85387671B9
+gpg --import dlc-release.key
+# verify that checksums are authentic
+gpg --verify SHA512SUMS.sign
+# verify integrity of the ISO image
+sha512sum -c SHA512SUMS
+```
 
 
 ## Writing the bootable media
@@ -88,11 +91,13 @@ The key used to sign releases has the key ID `16C50725859EBE2DD1B22100BCC63E8538
 
 You can also run the system in a virtual machine on top of your existing system. In that case writing a bootable drive is not needed and you can simply load the `.iso` file in the virtual machine's CD drive. Free and open-source virtualization software includes [virt-manager](https://stdout.root.sx/docs/virt-manager.md) (Linux) or [VirtualBox](https://www.virtualbox.org) (Linux/MacOS/Windows).
 
-Turn your computer off. Insert the bootable USB/DVD, and turn it back on. The computer should boot to the main menu where you are given the choice to start the Live system, or to install it permanently to your hard drive.
 
-The boot menu will be displayed, allowing you to install the operating system or run it in Live mode.
+## Booting the ISO
 
-| 💥 | If your computer does not boot to the DVD/USB, check that the computer [BIOS/EFI boot configuration](http://www.makeuseof.com/tag/enter-bios-computer/) utility is configured to boot from CD/DVD or USB. |
+- Turn your computer off. Insert the bootable USB/DVD, and turn it back on.
+- The boot menu will be displayed, allowing you to install the operating system or run it in Live mode.
+
+| 💥 | If your computer does not boot to the DVD/USB, check that [BIOS/EFI boot configuration](http://www.makeuseof.com/tag/enter-bios-computer/) utility is configured to boot from CD/DVD or USB. |
 |---------|---------|
 
 | 💥 | On some computers you need to [disable secure boot](https://neosmart.net/wiki/disabling-secure-boot/) before installing a Linux distribution. |
@@ -115,7 +120,6 @@ Select `Graphical install` from the boot menu to install a permanent copy a of t
 | 💥 | Installation in UEFI boot mode is curently broken. [Disable secure boot](https://neosmart.net/wiki/disabling-secure-boot/) and [enable legacy BIOS boot mode](https://neosmart.net/wiki/enable-legacy-boot-mode/) before running the installer. |
 |---------|---------|
 
-
 | 💥 | The default drive partitioning configuration overwrites any previously installed operating system/data on the selected installation disk. To preserve your data, use manual partitioning in the installer, install to an empty disk, or backup your data to an external drive if needed. |
 |---------|---------|
 
@@ -131,15 +135,12 @@ Select `Graphical install` from the boot menu to install a permanent copy a of t
 Head to the **[Debian wiki](https://wiki.debian.org)** for information on how to use your Debian/GNU Linux system.
 
 
-## Maintenance
+## Maintenance & security
 
- * Apply software [upgrades](#upgrading-your-system) as soon as possible.
  * Only install software from your [package manager](#installingremoving-software-packages), do not run or install software or commands for untrusted sources.
  * Backup your data periodically to an external storage using the [Back In Time](https://backintime.readthedocs.io/en/latest/quick-start.html) backup utility
  * Only enter your administrator password to perform necessary system administration tasks.
- * Use strong (long) passwords/phrases, do not reuse passwords for different services (use the a password manager).
- * Use encrypted network communication protocols (HTTPS, SSH/SFTP, OTR, GPG...), use disk encryption.
- * Minimize installed/running software.
+ * Use strong (long) passwords/phrases, do not reuse passwords for different services (use the a password manager). Use encrypted network communication protocols (HTTPS, SSH/SFTP, OTR, GPG...), use disk encryption.
  * Keep your hardware in good condition.
 
 
