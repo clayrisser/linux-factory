@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 -------------------------------
 
 
-## [v2.2](https://gitlab.com/nodiscc/dlc/releases/tag/2.2) - UNRELEASED
+## [v2.2](https://gitlab.com/nodiscc/dlc/releases/tag/2.2) - 2020-03-08
 
 Initial release, git repository reset and rebuilt from scratch. See commit messages and documentation.
 
