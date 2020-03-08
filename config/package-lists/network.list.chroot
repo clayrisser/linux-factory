@@ -206,7 +206,10 @@ iptables
 #Description: gnome-nettool
 gnome-nettool
 traceroute
-dig
+dnsutils
+#Alt: dnsmasq
+#Alt: dns-root-data
+#Alt: namebench
 #Alt: arp-scan
 #Alt: arpwatch
 #Alt: bwm-ng
@@ -288,12 +291,6 @@ openssh-server
 #Alt: x2goserver-printing
 #Alt: tinysshd
 #Alt: vino
-
-# DNS
-#Alt: dnsutils
-#Alt: dnsmasq
-#Alt: dns-root-data
-#Alt: namebench
 
 # Load testing
 #Alt: siege
