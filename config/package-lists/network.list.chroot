@@ -85,6 +85,7 @@ rsync
 
 
 # bittorrent
+#Firewall: transmission bittorrent client
 #Description: transmission-gtk
 transmission-gtk
 transmission-cli
@@ -133,6 +134,7 @@ dconf-gsettings-backend
 #Alt: feedreader
 
 # LAN file sharing
+#Firewall: samba server
 #Description: samba
 samba
 samba-vfs-modules 
@@ -271,6 +273,7 @@ dig
 #Alt: gwakeonlan
 
 # ssh/remote access servers
+#Firewall: SSH server
 #Description: openssh-server
 openssh-server
 #Alt: barrier
