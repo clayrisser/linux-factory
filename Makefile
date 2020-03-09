@@ -14,6 +14,8 @@ clean:
 
 WGET=wget --continue --no-verbose --show-progress --directory-prefix=cache/downloads/
 download_extras:
+	# Download unpackaged software
+	# TODO file ITPs on bugs.debian.org, package for Debian
 	mkdir -p cache/downloads/
 	# https://gitlab.com/nodiscc/plymouth-theme-debian-logo
 	-rm -rf config/includes.chroot/usr/share/plymouth/themes/debian-logo cache/downloads/plymouth-theme-debian-logo-1.0
@@ -38,6 +40,12 @@ download_extras:
 	$(WGET) https://github.com/scopatz/nanorc/archive/master.zip -O cache/downloads/nanorc-master.zip
 	unzip -q cache/downloads/nanorc-master.zip -d cache/downloads/
 	mv cache/downloads/nanorc-master config/includes.chroot/etc/skel/.nano
+	# https://github.com/az0/cleanerml
+	-rm -rf config/includes.chroot/usr/share/bleachbit/cleaners cache/downloads/cleanerml-master
+	$(WGET) https://github.com/az0/cleanerml/archive/master.zip -O cache/downloads/cleanerml-master.zip
+	unzip -q cache/downloads/cleanerml-master.zip -d cache/downloads/
+	mkdir -p config/includes.chroot/usr/share/bleachbit/cleaners
+	mv cache/downloads/cleanerml-master/release/* config/includes.chroot/usr/share/bleachbit/cleaners/
 
 ##############################
 
