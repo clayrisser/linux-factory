@@ -25,6 +25,8 @@
     <property name="title_font" type="string" value="Roboto 10"/>
     <property name="title_horizontal_offset" type="int" value="0"/>
     <property name="title_shadow_active" type="string" value="false"/>
+    <property name="show_dock_shadow" type="bool" value="false"/>
+    <property name="show_frame_shadow" type="bool" value="false"/>
     <property name="unredirect_overlays" type="bool" value="true"/>
     <property name="urgent_blink" type="bool" value="true"/>
     <property name="use_compositing" type="bool" value="true"/>
