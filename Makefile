@@ -40,6 +40,8 @@ download_extras:
 	$(WGET) https://github.com/scopatz/nanorc/archive/master.zip -O cache/downloads/nanorc-master.zip
 	unzip -q cache/downloads/nanorc-master.zip -d cache/downloads/
 	mv cache/downloads/nanorc-master config/includes.chroot/etc/skel/.nano
+	git checkout -- config/includes.chroot/etc/skel/.nanorc
+	echo 'include ~/.nano/*.nanorc' >> config/includes.chroot/etc/skel/.nanorc
 	# https://github.com/az0/cleanerml
 	-rm -rf config/includes.chroot/usr/share/bleachbit/cleaners cache/downloads/cleanerml-master
 	$(WGET) https://github.com/az0/cleanerml/archive/master.zip -O cache/downloads/cleanerml-master.zip
