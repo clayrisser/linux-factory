@@ -12,6 +12,7 @@ jump = true
 columns = ~rating,~#track,~title~version,artist,~album~discsubtitle,~#disc,genre,~#length,~#bitrate,~filename,~#lastplayed,~format
 ratings = 5
 repeat = False
+default_rating = 0.0
 
 [browsers]
 panes = artist	<album>	genre	~rating
