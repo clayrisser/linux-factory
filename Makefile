@@ -1,7 +1,10 @@
 #!/usr/bin/make -f
 
-# remove 'download_extras' to build without third party software
-all: install_buildenv clean download_extras build
+# remove 'download_extra' to build without third party software/dotfiles
+all: install_buildenv clean download_extra build
+
+download_extra:
+	make -f Makefile.extra
 
 install_buildenv:
 	# Install packages required to build the image
@@ -12,45 +15,6 @@ install_buildenv:
 # clear all caches, only required when changing the mirrors/architecture config
 clean:
 	sudo lb clean --purge
-
-WGET=wget --continue --no-verbose --show-progress --directory-prefix=cache/downloads/
-download_extras:
-	# Download unpackaged software
-	# TODO file ITPs on bugs.debian.org, package for Debian
-	mkdir -p cache/downloads/
-	# https://gitlab.com/nodiscc/plymouth-theme-debian-logo
-	-rm -rf config/includes.chroot/usr/share/plymouth/themes/debian-logo cache/downloads/plymouth-theme-debian-logo-1.0
-	$(WGET) https://gitlab.com/nodiscc/plymouth-theme-debian-logo/-/archive/1.0/plymouth-theme-debian-logo-1.0.zip
-	unzip -q cache/downloads/plymouth-theme-debian-logo-1.0.zip -d cache/downloads/
-	mkdir -p config/includes.chroot/usr/share/plymouth/themes/
-	mv cache/downloads/plymouth-theme-debian-logo-1.0 config/includes.chroot/usr/share/plymouth/themes/debian-logo
-	# https://gitlab.com/nodiscc/cc0-wallpapers
-	-rm -rf config/includes.chroot/usr/share/backgrounds/cc0-wallpapers cache/downloads/cc0-wallpapers-1.0
-	$(WGET) https://gitlab.com/nodiscc/cc0-wallpapers/-/archive/1.0/cc0-wallpapers-1.0.zip
-	unzip -q cache/downloads/cc0-wallpapers-1.0.zip -d cache/downloads/
-	mkdir -p config/includes.chroot/usr/share/backgrounds/
-	mv cache/downloads/cc0-wallpapers-1.0 config/includes.chroot/usr/share/backgrounds/cc0-wallpapers
-	# https://gitlab.com/nodiscc/xfce4-terminal-colorschemes
-	-rm -rf config/includes.chroot/usr/share/xfce4/terminal/colorschemes cache/downloads/xfce4-terminal-colorschemes-1.0
-	$(WGET) https://gitlab.com/nodiscc/xfce4-terminal-colorschemes/-/archive/1.0/xfce4-terminal-colorschemes-1.0.zip
-	unzip -q cache/downloads/xfce4-terminal-colorschemes-1.0.zip -d cache/downloads/
-	mkdir -p config/includes.chroot/usr/share/xfce4/terminal/
-	mv cache/downloads/xfce4-terminal-colorschemes-1.0 config/includes.chroot/usr/share/xfce4/terminal/colorschemes
-	# https://github.com/scopatz/nanorc
-	-rm -rf config/includes.chroot/etc/skel/.nano cache/downloads/nano-highlight-master
-	$(WGET) https://github.com/scopatz/nanorc/archive/master.zip -O cache/downloads/nanorc-master.zip
-	unzip -q cache/downloads/nanorc-master.zip -d cache/downloads/
-	mv cache/downloads/nanorc-master config/includes.chroot/etc/skel/.nano
-	git checkout -- config/includes.chroot/etc/skel/.nanorc
-	echo 'include ~/.nano/*.nanorc' >> config/includes.chroot/etc/skel/.nanorc
-	# https://github.com/az0/cleanerml
-	-rm -rf config/includes.chroot/usr/share/bleachbit/cleaners cache/downloads/cleanerml-master
-	$(WGET) https://github.com/az0/cleanerml/archive/master.zip -O cache/downloads/cleanerml-master.zip
-	unzip -q cache/downloads/cleanerml-master.zip -d cache/downloads/
-	mkdir -p config/includes.chroot/usr/share/bleachbit/cleaners
-	mv cache/downloads/cleanerml-master/release/* config/includes.chroot/usr/share/bleachbit/cleaners/
-
-##############################
 
 bump_version:
 	@last_tag=$$(git tag | tail -n1); \
