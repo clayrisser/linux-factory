@@ -134,11 +134,10 @@ dconf-gsettings-backend
 #Alt: feedreader
 
 # LAN file sharing
-#Firewall: samba server
-#Description: samba
-samba
-samba-vfs-modules 
-smbclient
+##Firewall: samba server
+#Alt: samba
+#Alt: samba-vfs-modules 
+#Alt: smbclient
 #Alt: smbc
 
 
