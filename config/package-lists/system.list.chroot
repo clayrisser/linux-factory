@@ -212,11 +212,9 @@ light-locker
 #Alt: xscreensaver-gl
 #Alt: xscreensaver-gl-extra
 
-
 # Boot screen
 plymouth
 plymouth-x11
-plymouth-themes
 
 # Boot/init/permissions management
 systemd

@@ -4,19 +4,19 @@
   <property name="backdrop" type="empty">
     <property name="screen0" type="empty">
       <property name="monitor0" type="empty">
-        <property name="image-path" type="string" value="/usr/share/backgrounds/cc0-wallpapers/unsplash10.jpg"/>
+        <property name="image-path" type="string" value="/usr/share/desktop-base/futureprototype-theme/wallpaper/contents/images/1600x1200.svg"/>
         <property name="image-show" type="bool" value="true"/>
-        <property name="last-single-image" type="string" value="/usr/share/backgrounds/cc0-wallpapers/unsplash10.jpg"/>
+        <property name="last-single-image" type="string" value="/usr/share/desktop-base/futureprototype-theme/wallpaper/contents/images/1600x1200.svg"/>
         <property name="backdrop-cycle-enable" type="bool" value="true"/>
         <property name="backdrop-cycle-timer" type="uint" value="600"/>
         <property name="image-style" type="int" value="0"/>
         <property name="workspace0" type="empty">
           <property name="image-style" type="int" value="3"/>
-          <property name="last-image" type="string" value="/usr/share/backgrounds/cc0-wallpapers/unsplash10.jpg"/>
+          <property name="last-image" type="string" value="/usr/share/desktop-base/futureprototype-theme/wallpaper/contents/images/1600x1200.svg"/>
         </property>
         <property name="workspace1" type="empty">
           <property name="image-style" type="int" value="3"/>
-          <property name="last-image" type="string" value="usr/share/backgrounds/cc0-wallpapers/unsplash10.jpg"/>
+          <property name="last-image" type="string" value="/usr/share/desktop-base/futureprototype-theme/wallpaper/contents/images/1600x1200.svg"/>
         </property>
       </property>
     </property>
