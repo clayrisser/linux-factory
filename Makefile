@@ -1,5 +1,6 @@
 #!/usr/bin/make -f
 
+# remove 'download_extras' to build without third party software
 all: install_buildenv clean download_extras build
 
 install_buildenv:
