@@ -26,7 +26,7 @@ lb config noauto \
 --iso-publisher dlc \
 --iso-volume dlc-2.1-rc3 \
 --linux-packages "linux-image linux-headers" \
---bootappend-live "boot=live config" \
+--bootappend-live "boot=live config splash" \
 --memtest memtest86+ \
 --win32-loader true
 
