@@ -23,5 +23,10 @@ download_extra:
 	unzip -q cache/downloads/cleanerml-master.zip -d cache/downloads/
 	mkdir -p config/includes.chroot/usr/share/bleachbit/cleaners
 	mv cache/downloads/cleanerml-master/release/* config/includes.chroot/usr/share/bleachbit/cleaners/
-
-##############################
+	# https://github.com/nodiscc/user.js
+	-rm -rf config/includes.chroot/etc/firefox-esr/firefox-esr.js cache/downloads/user.js-dbu
+	$(WGET) https://github.com/nodiscc/user.js/archive/dbu.zip -O cache/downloads/user.js-dbu.zip
+	unzip -q cache/downloads/user.js-dbu.zip -d cache/downloads/
+	mkdir -p config/includes.chroot/etc/firefox-esr
+	cd cache/downloads/user.js-dbu/ && make systemwide_user.js
+	mv cache/downloads/user.js-dbu/systemwide_user.js config/includes.chroot/etc/firefox-esr/firefox-esr.js
