@@ -34,8 +34,10 @@ download_extra:
 	-mkdir -p config/packages.chroot
 	$(WGET) https://gitlab.com/nodiscc/pidgin-opensteamworks/-/jobs/471942010/artifacts/raw/pidgin-opensteamworks_1.7-buster0-1_amd64.deb -O config/packages.chroot/pidgin-opensteamworks_1.7-buster0-1_amd64.deb
 	# https://addons.mozilla.org/en-US/firefox/addon/keepassxc-browser/
+	# https://addons.mozilla.org/en-US/firefox/addon/cookie-autodelete/
 	mkdir -p config/includes.chroot/usr/share/firefox-esr/distribution/extensions/
 	$(WGET) https://addons.mozilla.org/firefox/downloads/file/3465157/keepassxc_browser-latest-fx.xpi -O config/includes.chroot/usr/share/firefox-esr/distribution/extensions/keepassxc_browser-latest-fx.xpi
+	$(WGET) https://addons.mozilla.org/firefox/downloads/file/3514619/cookie_autodelete-latest-an+fx.xpi -O config/includes.chroot/usr/share/firefox-esr/distribution/extensions/cookie_autodelete-latest-an+fx.xpi
 	# https://www.sublimetext.com/ (non-free)
 	#-rm -rf  cache/downloads/sublime_text_3 config/includes.chroot/opt/sublime_text
 	#$(WGET) https://download.sublimetext.com/sublime_text_3_build_3211_x64.tar.bz2
