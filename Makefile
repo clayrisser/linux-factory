@@ -15,6 +15,7 @@ install_buildenv:
 # clear all caches, only required when changing the mirrors/architecture config
 clean:
 	sudo lb clean --purge
+	git clean -di
 
 bump_version:
 	@last_tag=$$(git tag | tail -n1); \
