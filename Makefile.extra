@@ -33,3 +33,9 @@ download_extra:
 	# https://addons.mozilla.org/en-US/firefox/addon/keepassxc-browser/
 	mkdir -p config/includes.chroot/usr/share/firefox-esr/distribution/extensions/
 	$(WGET) https://addons.mozilla.org/firefox/downloads/file/3465157/keepassxc_browser-latest-fx.xpi -O config/includes.chroot/usr/share/firefox-esr/distribution/extensions/keepassxc_browser-latest-fx.xpi
+	# https://www.sublimetext.com/ (non-free)
+	#-rm -rf  cache/downloads/sublime_text_3 config/includes.chroot/opt/sublime_text
+	#$(WGET) https://download.sublimetext.com/sublime_text_3_build_3211_x64.tar.bz2
+	#tar -C cache/downloads -xvf cache/downloads/sublime_text_3_build_3211_x64.tar.bz2
+	#mkdir -p config/includes.chroot/opt
+	#mv cache/downloads/sublime_text_3 config/includes.chroot/opt/sublime_text
