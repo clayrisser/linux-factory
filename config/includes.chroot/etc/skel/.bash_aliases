@@ -9,8 +9,8 @@ alias encrypt="gpg -c" # encrypt file with GPG
 alias decrypt="gpg -d" # decrypt GPG encrypted file
 alias chx='chmod a+x' # set execute permission
 alias clipboard='xclip -selection c; notify-send --icon=gtk-paste "Copied to clipboard." 2>/dev/null' # send stdin to clipboard
-function f { find ./ -name "*$1*" } # find files in the currect directory
-function psg { ps -fp $(pgrep -f "$@") } # find running process matching a name
+function f { find ./ -name "*$1*"; } # find files in the currect directory
+function psg { ps -fp $(pgrep -f "$@"); } # find running process matching a name
 
 #ls and grep aliases
 if [ -x /usr/bin/dircolors ]; then
