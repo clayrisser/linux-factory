@@ -161,6 +161,7 @@ qemu-kvm
 qemu-utils
 virt-top
 netcat-openbsd
+#Alt: virt-sandbox
 #Alt: virt-what
 #Alt: libguestfs-tools
 #Alt: lxc

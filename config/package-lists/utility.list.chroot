@@ -18,6 +18,7 @@ thunar-volman
 trash-cli
 tree
 tumbler
+catfish
 #Alt: pcmanfm
 #Alt: gprename
 #Alt: thunar-gtkhash
@@ -40,6 +41,7 @@ tumbler
 #Alt: reflex
 #Alt: fzf
 #Alt: ripgrep
+#Alt: gnome-search-tool
 
 
 
