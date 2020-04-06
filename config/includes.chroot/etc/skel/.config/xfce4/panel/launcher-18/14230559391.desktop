@@ -11,3 +11,4 @@ Terminal=false
 X-MultipleArgs=false
 Type=Application
 Icon=firefox
+StartupNotify=true
