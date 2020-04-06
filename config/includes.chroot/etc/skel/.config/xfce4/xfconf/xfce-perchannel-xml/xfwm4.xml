@@ -29,7 +29,7 @@
     <property name="show_frame_shadow" type="bool" value="false"/>
     <property name="unredirect_overlays" type="bool" value="true"/>
     <property name="urgent_blink" type="bool" value="true"/>
-    <property name="use_compositing" type="bool" value="true"/>
+    <property name="use_compositing" type="bool" value="false"/>
     <property name="cycle_preview" type="bool" value="true"/>
     <property name="cycle_tabwin_mode" type="int" value="0"/>
     <property name="sync_to_vblank" type="bool" value="true"/>
