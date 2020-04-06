@@ -54,7 +54,7 @@ release_archive:
 
 ################################
 
-tests: test_imagesize download_iso test_kvm_bios test_kvm_uefi
+tests: test_imagesize test_kvm_bios test_kvm_uefi
 
 test_imagesize:
 	@size=$$(du -b iso/*.iso | cut -f 1); \
@@ -62,10 +62,6 @@ test_imagesize:
 	if [[ "$$size" -gt 2147483648 ]]; then \
 		echo '[WARNING] ISO image size is larger than 2GB!'; \
 	fi
-
-download_iso:
-	# download the iso image from a build server
-	rsync -avP buildbot.xinit.se:/var/debian-live-config/debian-live-config/iso ./
 
 test_kvm_bios:
 	# Run the resulting image in KVM/virt-manager (legacy BIOS mode)
