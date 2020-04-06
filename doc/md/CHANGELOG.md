@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Changed
 
 - Disable window manager compositor by default (improve video performance/prevent tearing)
+- Update user.js to 0.1
 
 ### Added
 
