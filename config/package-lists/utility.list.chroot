@@ -1,4 +1,6 @@
-# file management
+#Title: Utility
+
+#Section: File management
 #Description: thunar
 #cfv #sid only
 gvfs-backends
@@ -41,13 +43,22 @@ catfish
 #Alt: reflex
 #Alt: fzf
 #Alt: ripgrep
-#Alt: gnome-search-tool
 
 
-
-# launcher/application menu
+#Section: Desktop environment
+#Description: xfce4
+xfdesktop4
+xfwm4
+xfce4-session
+xfce4-notifyd
 xfce4-whiskermenu-plugin
 gmrun
+xfce4-panel
+xfce4-places-plugin
+xfce4-weather-plugin
+xfce4-netload-plugin
+xfce4-pulseaudio-plugin
+#Alt: plank
 #Alt: kupfer
 #Alt: gnome-pie
 #Alt: xfce4-appfinder
@@ -55,12 +66,6 @@ gmrun
 #Alt: zeitgeist
 #Alt: zeitgeist-datahub
 #Alt: activity-log-manager
-
-# desktop/wm/session/panel
-xfdesktop4
-xfwm4
-xfce4-session
-xfce4-notifyd
 #Alt: compiz
 #Alt: compiz-plugins
 #Alt: compiz-plugins-default
@@ -69,16 +74,8 @@ xfce4-notifyd
 #Alt: compton
 #Alt: compton-conf
 
-# panel
-xfce4-panel
-xfce4-places-plugin
-xfce4-weather-plugin
-xfce4-netload-plugin
-xfce4-pulseaudio-plugin
-#Alt: plank
 
-
-# archive management
+#Section: Archive management
 #Description: file-roller
 file-roller
 atool
@@ -105,7 +102,7 @@ gzrt
 #Alt: p7zip-rar
 
 
-# password and keys management
+#Section: Password management/file encryption
 #Description: keepassxc
 keepassxc
 seahorse
@@ -117,19 +114,25 @@ gnupg
 gnupg2
 pwgen
 nss-passwords
-
+cryptsetup
 #Alt: keepassx
 #Alt: keepass2
 #Alt: qtpass
 #revelation #stretch only
 #Alt: apg
+#Alt: tcplay
 #Alt: xkcdpass
 #Alt: pass
+#Alt: tomb
+#Alt: zulucrypt-gui
+#Alt: zulumount-gui
+#Alt: libzulucrypt-plugins
 
-# text editors
+
+#Section: text editors
 #Description: mousepad
-mousepad
 #Description: nano
+mousepad
 nano
 vim-tiny
 #Alt: vim
@@ -143,7 +146,15 @@ vim-tiny
 #Alt: geany
 #Alt: nfoview
 
-# maps
+#Section: Sticky notes
+#Description: xfce4-notes
+xfce4-notes
+#Alt: xpad
+#tomboy #stretch only
+#Alt: gnote
+
+
+#Section: maps
 #Description: gnome-maps
 gnome-maps
 #Alt: marble-qt
@@ -159,14 +170,14 @@ gnome-maps
 #Alt: gis-tasks
 #Alt: gpsprune
 
-# screenshots
+#Section: screenshots
 #Description: xfce4-screenshooter
 xfce4-screenshooter
 #Alt: scrot
 #Alt: gnome-screenshot
 #Alt: flameshot
 
-# clocks/timers
+#Section: clocks/timers
 #Description: gnome-clocks
 gnome-clocks
 tty-clock
@@ -177,7 +188,7 @@ tty-clock
 #screenruler #stretch only
 
 
-# calculators
+#Section: calculators
 #Description: gnome-calculator
 #Screenshot: gnome-calculator
 gnome-calculator
@@ -189,7 +200,7 @@ units
 #Alt: gbase
 #Alt: graphmonkey
 
-# terminal emulators
+#Section: terminal emulators
 #Description: xfce4-terminal
 xfce4-terminal
 #Alt: lxterminal
@@ -199,26 +210,26 @@ xfce4-terminal
 #Alt: rxvt-unicode
 #Alt: tilda
 
-# science
+#Section: science
 #Alt: stellarium
 #Alt: lightspeed
 #Alt: wxmaxima
 #Alt: gramps
 
-# color management
+#Section: color management
 #Description: redshift-gtk
 redshift-gtk
 #Alt: workrave
 #Alt: safeeyes
 
-# CD burning
+#Section: CD burning
 #Description: xfburn
 xfburn
 #Alt: brasero
 #Alt: brasero-cdrkit
 #Alt: cdrdao
 
-# Desktop configuration utilities
+#Section: Desktop configuration utilities
 xfce4-settings
 gnome-system-tools
 menulibre
@@ -230,7 +241,7 @@ gnome-settings-daemon
 dconf-gsettings-backend
 #Alt: gnome-tweaks
 
-# power management
+#Section: power management
 #Description: xfce4-power-manager
 xfce4-power-manager
 xfce4-battery-plugin
@@ -257,12 +268,12 @@ pm-utils
 #hd-idle #bullseye only
 #eeepc-acpi-scripts #sid only
 
-# character map/font viewer
+#Section: character map/font viewer
 gucharmap
 gnome-font-viewer
 #Alt: font-manager
 
-# spell checking/dictionaries
+#Section: spell checking/dictionaries
 hunspell
 hunspell-en-us
 hunspell-fr
@@ -279,7 +290,7 @@ wfrench
 #Alt: goldendict
 #Alt: verbiste-gnome
 
-# Resources
+#Section: Resources
 desktop-base
 papirus-icon-theme
 arc-theme
@@ -290,14 +301,13 @@ gnome-audio
 #Alt: clearlooks-phenix-theme
 #Alt: deepin-icon-theme
 
-
-# virtual keyboards
+#Section: virtual keyboards
 #Alt: onboard
 #Alt: onboard-data
 #Alt: cellwriter
 #Alt: florence
 
-# other/misc
+#Section: other/misc
 libnotify-bin
 zenity
 numlockx

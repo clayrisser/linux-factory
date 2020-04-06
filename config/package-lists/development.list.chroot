@@ -1,11 +1,11 @@
-# version control
+#Title: Development
+#Section: Version control
 #Description: gitg
-gitg
-#Description: git
-git
 #Description: meld
-meld
 #Description: gource
+gitg
+git
+meld
 gource
 colordiff
 dwdiff
@@ -25,7 +25,7 @@ cloc
 #Alt: icdiff
 #Alt: qgit
 
-# shell & basic utilities
+#Section: Shell & basic utilities
 bash
 autojump
 bash-completion
@@ -44,7 +44,7 @@ manpages-dev
 #Alt: undistract-me
 #Alt: inotify-tools
 #Alt: lr
-#Alt: ack-grep
+#Alt: ack
 #Alt: bd
 #Alt: beep
 #Alt: command-not-found
@@ -61,7 +61,7 @@ manpages-dev
 #Alt: ripgrep
 
 
-# Parsers/converters/documentation generators
+#Section: Parsers/converters/documentation generators
 pandoc
 jq
 xmlstarlet
@@ -75,7 +75,7 @@ dos2unix
 #Alt: roffit
 #Alt: archmage
 
-# Packaging
+#Section: Packaging
 debhelper
 autoconf
 devscripts
@@ -94,17 +94,17 @@ git-buildpackage
 #Alt: dgit
 #Alt: aptly
 
-# debugging
+#Section: Debuggers
 gdb
 
-# python3
+#Section: Python
 python3-all-dev
 python3-setuptools
 python3-wheel
 python3-pip
 python3-venv
 
-# Live system
+#Section: Live system
 live-build
 #Alt: debootstrap
 #Alt: live-config-doc
@@ -124,23 +124,22 @@ live-build
 #Alt: live-task-recommended
 #Alt: live-task-xfce
 
-# hex editors
+#Section: Hex editors
 #Alt: wxhexeditor
 #Alt: hexcurse
 #Alt: dhex
 #Alt: bless
 
-# translations
+#Section: Translation/localization
 #Alt: poedit
 
-# game development
+#Section: Game development
 #Alt: godot3
 
-# Ruby
-#Alt: rubygems
+#Section: Ruby
 #Alt: ruby-dev
 
-# html/css/js
+#Section: HTML/CC/JS
 #Alt: csstidy
 #Alt: sqlite3
 #Alt: webcheck
@@ -149,10 +148,10 @@ live-build
 #Alt: npm
 #Alt: jsbeautifier
 
-# php
+#Section: PHP
 #Alt: php-cli
 
-# android
+#Section: Android
 #Alt: android-sdk
 #Alt: android-sdk-platform-tools-common
 #Alt: android-tools-fastboot

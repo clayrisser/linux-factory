@@ -1,7 +1,8 @@
-# Video players
+#Title: Audio/video
+#Section: Video players
 #Description: mpv
-mpv
 #Description: vlc
+mpv
 vlc
 libdvdread4
 vlc-plugin-notify
@@ -29,8 +30,10 @@ libdvd-pkg
 #Alt: vlc-plugin-zvbi
 #Alt: zapping
 
-# music players/library managers
+#Section: Music players/library managers
 #Description: quodlibet
+#Description: exfalso
+exfalso
 quodlibet
 libgpod-common
 libgpod4
@@ -38,6 +41,7 @@ python-cddb
 python-feedparser
 python-musicbrainzngs
 python-pyinotify
+sox
 #Alt: gnome-music
 #Alt: rhythmbox
 #Alt: rhythmbox-plugins
@@ -52,17 +56,10 @@ python-pyinotify
 #Alt: cantata
 #Alt: ncmpcpp
 #Alt: mpc
-
-# console music players
-sox
 #Alt: moc
 #Alt: cmus
 #Alt: moc-ffmpeg-plugin
 #Alt: mpg123
-
-# ID3 tag management
-#Description: exfalso
-exfalso
 #Alt: beets
 #Alt: cowbell
 #Alt: easytag
@@ -71,20 +68,32 @@ exfalso
 #Alt: kid3
 #Alt: picard
 #Alt: mussort
+#Alt: musique
+#Alt: radiotray
+#Alt: vagalume
+#Alt: gpodder
+#Alt: go-mtpfs
+#Alt: gtkpod
+#Alt: playerctl
+#Alt: streamtuner2
 
-# webcam
+
+
+#Section: Webcam
 #Description: cheese
 cheese
 gnome-video-effects
 #Alt: guvcview
 #Alt: gnome-video-effects-frei0r
+#Alt: v4l2loopback-dkms
+#Alt: v4l2loopback-utils
 #kamoso #stretch only
 #zoneminder #stretch only
 
-# screencast/screen recording/streaming
+#Section: Screen recording/screencasting
 #Description: obs-studio
-obs-studio
 #Description: vokoscreen
+obs-studio
 vokoscreen
 #Alt: gtk-recordmydesktop
 #Alt: key-mon
@@ -94,29 +103,10 @@ vokoscreen
 #Alt: simplescreenrecorder
 
 
-# media converters
+#Section: Media conversion/codecs
 #Description: qwinff
 qwinff
 ffmpeg
-#Alt: handbrake
-#Alt: mp3splt
-#Alt: oggvideotools
-#Alt: ogmrip
-#Alt: ogmrip-plugins
-#Alt: soundconverter
-#Alt: winff
-#Alt: winff-doc
-#Alt: winff-qt
-
-# audio CD extractors
-#Description: asunder
-asunder
-#Alt: sound-juicer
-#Alt: goobox
-#Alt: ripperx
-#Alt: xcfa
-
-# codecs
 flac
 gstreamer1.0-alsa
 gstreamer1.0-libav
@@ -131,35 +121,40 @@ lame
 libmp3lame0
 libxvidcore4
 musepack-tools
-#Alt: x264
-#Alt: x265
-
-
-# other utilities
 mediainfo
 media-player-info
-#Alt: go-mtpfs
-#Alt: go-mtpfs
-#Alt: gpodder
-#Alt: gtkpod
-#Alt: mat
-#Alt: minidisc-utils
-#Alt: musique
-#Alt: playerctl
+#Alt: handbrake
+#Alt: mp3splt
+#Alt: oggvideotools
+#Alt: ogmrip
+#Alt: ogmrip-plugins
+#Alt: soundconverter
+#Alt: winff
+#Alt: winff-doc
+#Alt: winff-qt
+#Alt: x264
+#Alt: x265
 #Alt: qhimdtransfer
-#Alt: radiotray
-#Alt: streamtuner2
-#Alt: v4l2loopback-dkms
-#Alt: v4l2loopback-utils
-#Alt: vagalume
+#Alt: minidisc-utils
+#Alt: mat
 
-# subtitles
+
+#Section: Audio CD extraction
+#Description: asunder
+asunder
+#Alt: sound-juicer
+#Alt: goobox
+#Alt: ripperx
+#Alt: xcfa
+
+
+#Section: Subtitles
 #Alt: subtitleeditor
-#subliminal #stretch only
 #Alt: gaupol
 #Alt: gnome-subtitles
+#subliminal #stretch only
 
-# sound recording and editing
+#Section: audio recording and editing
 #Description: audacity
 #Description: gnome-sound-recorder
 audacity
@@ -167,11 +162,11 @@ gnome-sound-recorder
 #Alt: gwc
 #Alt: gjacktransport
 
-# lighting
+##Section: Lighting
 #qlcplus #bullseye only
 
 
-# audio system
+#Section: Audio system
 #Description: pulseaudio
 pavucontrol
 pulseaudio

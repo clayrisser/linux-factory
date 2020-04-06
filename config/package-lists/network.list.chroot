@@ -1,5 +1,7 @@
-# web browsers
-#Description: firefox
+#Title: Network
+
+#Section: Web browsers
+#Description: firefox-esr
 firefox-esr
 firefox-esr-l10n-fr
 pkg-mozilla-archive-keyring
@@ -14,7 +16,7 @@ webext-ublock-origin
 #Alt: surf
 #Alt: elinks
 
-# instant messaging
+#Section: Instant messaging
 #Description: pidgin
 pidgin
 pidgin-otr
@@ -27,26 +29,22 @@ pidgin-gnome-keyring
 #Alt: telegram-desktop
 #Alt: pidgin-skype
 #Alt: yowsup-cli
-
-# xmpp/jabber
 #Alt: dino-im
 #Alt: gajim
 #Alt: mcabber
-
-# irc
 #Alt: smuxi
 #Alt: xchat
 #Alt: weechat
 #Alt: ekg2
 
-# voip/videoconference
+#Section: VoIP/videoconference
 #Description: mumble
 mumble
 #Alt: ring
 #Alt: linphone
 #ekiga #stretch only
 
-# mail clients
+#Section: Mail clients
 #Description: thunderbird
 thunderbird
 thunderbird-l10n-fr
@@ -64,7 +62,7 @@ thunderbird-l10n-fr
 #mail-notification-evolution #stretch only
 #Alt: offlineimap
 
-# file transfer and synchronization
+#Section: File transfer and synchronization
 #Description: nextcloud-desktop
 nextcloud-desktop
 rsync
@@ -82,9 +80,10 @@ rsync
 #Alt: filezilla
 #Alt: gftp
 #Alt: owncloud-client
+#Alt: pastebinit
 
 
-# bittorrent
+#Section: Bittorrent
 #Firewall: transmission bittorrent client
 #Description: transmission-gtk
 transmission-gtk
@@ -104,7 +103,7 @@ transmission-cli
 #Alt: rtorrent
 #Alt: btfs
 
-# multimedia download
+#Section: Media download
 #Description: youtube-dl
 youtube-dl
 streamlink
@@ -113,7 +112,7 @@ streamlink
 #Alt: minitube
 #Alt: smtube
 
-# web crawlers/downloaders
+#Section: Downloaders/web crawlers
 curl
 wget
 #Alt: httrack
@@ -121,7 +120,7 @@ wget
 #Alt: axel
 #Alt: plowshare
 
-# feed readers
+#Section: Feed readers
 #Description: liferea
 liferea
 dconf-gsettings-backend
@@ -133,22 +132,17 @@ dconf-gsettings-backend
 #Alt: tickr
 #Alt: feedreader
 
-# LAN file sharing
+#Section: LAN file sharing
 ##Firewall: samba server
 #Alt: samba
 #Alt: samba-vfs-modules 
 #Alt: smbclient
 #Alt: smbc
 
-
-#########################################
-
-# network management
+#Section: Network management
 #Description: network-manager-gnome
 network-manager-gnome
 network-manager-openvpn-gnome
-crda
-wireless-regdb
 dnsmasq-base
 hostname
 bridge-utils
@@ -160,11 +154,16 @@ ethtool
 #Alt: wicd-curses
 #Alt: wpagui
 #Alt: network-manager-ssh
-#Alt: network-manager-iodine-gnome
 #Alt: efax-gtk
 #Alt: wammu
+#Alt: avahi-daemon
+#Alt: libnss-mdns
+#Alt: avahi-autoipd
+#Alt: avahi-dnsconfd
+#Alt: avahi-discover
+#Alt: avahi-ui-utils
 
-# cellphone and modem support
+#Section: Cellphone and modem support
 #Alt: modemmanager
 #Alt: modem-manager-gui
 #Alt: mobile-broadband-provider-info
@@ -172,17 +171,23 @@ ethtool
 #Alt: gnome-phone-manager
 #Alt: kdeconnect
 
-# bluetooth
+#Section: Wireless
 #Description: blueman
 blueman
 bluetooth
 blueman
+crda
+wireless-regdb
 #Alt: gnome-bluetooth
 #Alt: gnome-user-share
 #Alt: blueproximity
 #Alt: ganyremote
+#Alt: hostapd
+#Alt: aircrack-ng
+#Alt: btscanner
 
-# firewall management
+
+#Section: Firewall
 #Description: gufw
 ufw
 gufw
@@ -193,15 +198,7 @@ iptables
 #Alt: fail2ban
 #Alt: ipset-persistent
 
-# avahi zero-configuration/uPnP/mDNS 
-#Alt: avahi-daemon
-#Alt: libnss-mdns
-#Alt: avahi-autoipd
-#Alt: avahi-dnsconfd
-#Alt: avahi-discover
-#Alt: avahi-ui-utils
-
-# network diagnostic/monitoring/utilities
+#Section: Network diagnostic/monitoring
 #Description: gnome-nettool
 gnome-nettool
 traceroute
@@ -252,16 +249,18 @@ dnsutils
 #Alt: vnstat
 #Alt: vnstati
 #Alt: wireshark
+#Alt: python-scapy
 #dropwatch #sid only
 
-# SSH
+#Section: SSH
 #Alt: sshuttle
 #Alt: sshfs
 #Alt: pssh
 #Alt: putty-tools
 #Alt: autossh
+#endlessh #sid only
 
-# remote access/remote desktop clients
+#Section: Remote access/desktop clients
 #Alt: remmina
 #Alt: remmina-plugin-nx
 #Alt: remmina-plugin-rdp
@@ -272,9 +271,8 @@ dnsutils
 #Alt: vinagre
 #Alt: weevely
 #Alt: x2goclient
-#Alt: gwakeonlan
 
-# ssh/remote access servers
+#Section: SSH
 #Firewall: SSH server
 #Description: openssh-server
 openssh-server
@@ -291,11 +289,11 @@ openssh-server
 #Alt: tinysshd
 #Alt: vino
 
-# Load testing
+#Section: Load testing
 #Alt: siege
 #Alt: tsung
 
-# Scanners
+#Section: Scanners
 #Alt: nmap
 #Alt: nikto
 #Alt: zmap
@@ -316,55 +314,37 @@ openssh-server
 #Alt: wafw00f
 #Alt: smbmap
 #Alt: wig
-#dnsmap #sid only
-#dnsenum #sid only
-
-# Wireless
-#Alt: aircrack-ng
 #Alt: kismet
 #Alt: kismet-plugins
 #Alt: reaver
-#Alt: python-scapy
-#Alt: btscanner
-#Alt: hostapd
-#Alt: mdk3
-#mdk4 #sid only
-
-# Passwords
 #Alt: hydra
 #Alt: pcredz
 #Alt: hydra-gtk
 #Alt: ophcrack
 #Alt: hashcat
 #Alt: hashcat-data
+#Alt: mdk3
+#dnsmap #sid only
+#dnsenum #sid only
 
-# Hardening/cryptography
-#Alt: tcplay
-#Alt: tomb
-#Alt: zulucrypt-gui
-#Alt: zulumount-gui
-#Alt: libzulucrypt-plugins
-#tails-installer #stretch only
+#Section: Tor
 #Alt: tor-geoipdb
-#endlessh #sid only
+#Alt: tor
+#Alt: torsocks
+#tails-installer #stretch only
+#torbrowser-launcher #stretch only
 
-# GeoIP databases
+#Section: GeoIP databases
 #Alt: geoip-bin
 #geoip-database-contrib #stretch only
 #geoip-database #conflicts with above
 #geoip-database-extra #conflicts with above
 
-# Network modeling
+#Section: Network modeling
 #Alt: marionnet
 #gns3 #stretch only
 
-# Out-of-band management
+#Section: Out-of-band management
 #Alt: ipmitool
+#Alt: gwakeonlan
 
-# Tor
-#Alt: tor
-#Alt: torsocks
-#torbrowser-launcher #stretch only
-
-# misc
-#Alt: pastebinit

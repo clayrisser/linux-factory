@@ -1,4 +1,6 @@
-# image viewers
+#Title: Graphics
+
+#Section: Image viewers
 #Description: ristretto
 ristretto
 #Alt: eog
@@ -15,7 +17,7 @@ ristretto
 #Alt: sxiv
 #Alt: catimg
 
-# image editors
+#Section: Image editors
 #Description: gimp
 gimp
 gimp-data-extras
@@ -28,24 +30,6 @@ gimp-gmic
 gimp-lensfun
 create-resources
 gimp-help-fr
-
-# vector image editors
-#Description: inkscape
-inkscape
-create-resources
-python-lxml
-pstoedit
-#Alt: pencil2d
-#Alt: dia
-#Alt: birdfont
-#Alt: python-uniconvertor
-
-
-# drawing editors
-#Description: xournal
-xournal
-
-# Other editors
 #Alt: krita
 #pinta #stretch only
 #Alt: mypaint
@@ -54,30 +38,46 @@ xournal
 #Alt: gnome-paint
 #Alt: delaboratory
 
-# Non-destructive editors (lightroom)
+#Section: Vector editors
+#Description: inkscape
+inkscape
+create-resources
+python-lxml
+pstoedit
+#Alt: pencil2d
+#Alt: dia
+#Alt: birdfont
+
+
+#Section: Drawing
+#Description: xournal
+xournal
+
+
+#Section: Non-destructive editors (lightroom)
 #Alt: darktable
 #Alt: rawtherapee
 #Alt: luminance-hdr
 
-# Color pickers
+#Section: Color pickers
 #gcolor2 #stretch only
 #agave #stretch only
 #Alt: gpick
 
-# Batch processing
+#Section: Batch image processing
 #phatch #stretch only
 #Alt: aspic
 #Alt: pixelize
 #Alt: hugin
 #Alt: aaphoto
 
-# Camera/upload management
+#Section: Camera upload/management
 #Alt: rapid-photo-downloader
 #Alt: gtkam
 #postr #stretch only
 #flickrbackup #stretch only
 
-# Image library managers
+#Section: Image library managers
 #Alt: nomacs
 #Alt: shotwell
 #Alt: gthumb
@@ -85,29 +85,29 @@ xournal
 #Alt: fotoxx
 #Alt: geeqie
 
-# Game asset editors
+#Section: Game asset editors
 #aseprite #stretch only
 #Alt: tiled
 #Alt: games-content-dev
 
-# Color management
+#Section: Color grading
 #Alt: colorhug-client
 
-# diagram editors
+#Section: Diagram editors
 #Description: dia
 dia
 dia-shapes
 gsfonts-x11 
 #Alt: asciio
 
-# Label/barcode editors (disabled)
+#Section: Label/barcode editors
 ##Screenshot: glabels
 #Alt: glabels
 #Alt: qrencode
 #Alt: qtqr
 #Alt: zbar-tools
 
-# 3D editors
+#Section: 3D editors
 #Description: blender
 blender
 #Alt: makehuman
@@ -118,14 +118,14 @@ blender
 #Alt: sweethome3d-textures-editor
 #Alt: sweethome3d-furniture-nonfree
 
-# CAD editors
+#Section: CAD editors
 #Alt: librecad
 #Alt: kicad
 #Alt: freecad
 #Alt: pcb-gtk
 #Alt: qelectrotech
 
-# Video editors
+#Section: Video editors
 #Alt: openshot
 #Alt: kdenlive
 #Alt: devede
@@ -148,7 +148,7 @@ blender
 #Alt: stopmotion
 #Alt: education-video
 
-# image manipulation/command-line
+#Section: Command-line image manipulation
 imagemagick
 optipng
 advancecomp

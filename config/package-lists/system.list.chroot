@@ -1,6 +1,7 @@
-# package management
+#Title: System
+
+#Section: Package management
 #Description: gnome-packagekit
-#Description: aptitude
 #Description: synaptic
 apt-listchanges
 apt-transport-https
@@ -34,7 +35,7 @@ vrms
 #Alt: packagekit-gtk3-module
 #Alt: pk-update-icon
 
-# task management/monitoring/benchmarks
+#Section: Task management/monitoring
 #Description: xfce4-taskmanager
 xfce4-taskmanager
 htop
@@ -63,10 +64,11 @@ memtest86+
 #Alt: sysstat
 #Alt: cacti
 #Alt: hwloc
+#Alt: memlockd
 #Alt: read-edid
 #cpu-x #sid only
 
-# Backup utilities
+#Section: Backup
 #Description: backintime-qt4
 backintime-qt4
 #Alt: duplicity
@@ -84,18 +86,15 @@ backintime-qt4
 #Alt: backupninja
 #Alt: duply
 
-# Other
-#Alt: memlockd
-#Alt: bilibop-udev
-#Alt: forensics-full
-#Alt: steghide
-
-# disk/filesystem management
-# Description: gnome-disk-utility
-gnome-disk-utility
+#Section: Disk management
+#Description: gnome-disk-utility
 #Description: gparted
+#Description: baobab
+gnome-disk-utility
 gparted
-cryptsetup
+baobab
+ncdu
+dfc
 smartmontools
 mtools
 gdisk
@@ -112,17 +111,16 @@ xorriso
 #Alt: fsarchiver
 #Alt: partclone
 #Alt: pmount
+#Alt: bilibop-udev
 #ecryptfs-utils #stretch only
 #partimage #stretch only
-
-# disk space analyzers
-#Description: baobab
-baobab
-ncdu
-dfc
+#Alt: forensics-full
+#Alt: steghide
 #Alt: gdmap
 
-# data recovery
+
+#Section: data recovery
+#Description: testdisk
 testdisk
 #Alt: foremost
 #Alt: scalpel
@@ -132,13 +130,13 @@ testdisk
 #Alt: fatcat
 #Alt: safecopy
 
-# filesystem linters
+#Section: File cleaners/linters
 #Description: bleachbit
 bleachbit
 localepurge
 #Alt: fslint
 
-# log viewers
+#Section: Log viewers
 #Description: lnav
 lnav
 colortail
@@ -149,7 +147,7 @@ colortail
 #Alt: multitail
 
 
-# virtualization
+#Section: Virtualization
 #Description: virt-manager
 virt-manager
 virtinst
@@ -174,11 +172,10 @@ netcat-openbsd
 #Alt: vagrant
 #Alt: schroot
 
-# windows compatibility
+#Section: Windows compatibility
 #Description: wine
 wine
 #if ARCHITECTURES amd64
-wine32
 wine64
 wine32:i386
 libgl1-mesa-dri:i386
@@ -190,65 +187,56 @@ libgl1-mesa-dri:i386
 #Alt: dxvk
 #Alt: reglookup
 
-
-# configuration management
+#Section: configuration management
 #Alt: ansible
 
-# java runtime
+#Section: Java
 default-jre
 
-# display manager
+#Section: Display manager and screen lockr
 #Description: lightdm
+#Description: light-locker
 lightdm
 lightdm-gtk-greeter
+light-locker
 #Alt: slim
 #Alt: gdm3
 #Alt: arctica-greeter
-
-# screen locker
-light-locker
 #xsecurelock #bullseye only
 #Alt: xscreensaver
 #Alt: xscreensaver-data-extra
 #Alt: xscreensaver-gl
 #Alt: xscreensaver-gl-extra
 
-# Boot screen
+#Section: Boot screen
 plymouth
 plymouth-x11
 
-# Boot/init/permissions management
-systemd
-os-prober
-initramfs-tools
-console-setup
-user-setup
-libpam-systemd
-sudo
 
-# scheduling
+#Section: Scheduling
 at
 
-# Desktop performance
+#Section: Desktop performance
 ulatencyd
 irqbalance
 #Alt: haveged
 #oomd #bullseye only
 #preload #stretch only
 
-# sandboxing/isolation
+#Section: Security & sandboxing
 apparmor
 apparmor-easyprof
 apparmor-profiles
 apparmor-utils
 libpam-tmpdir
+sudo
 #Alt: apparmor-notify
 #Alt: apparmor-profiles-extra
 
-# Time
+#Section: Time
 ntp
 
-# display server
+#Section: Display
 #Description: xorg
 mesa-utils
 libgl1-mesa-dri
@@ -276,25 +264,31 @@ xserver-xorg-video-intel
 xfonts-base
 hwdata
 
-# Kernel
+#Section: Kernel/boot/init
 #if ARCHITECTURES amd64
 linux-headers-amd64
 #endif
 #if ARCHITECTURES i386
-linux-headers-amd64
+linux-headers-686:i386
 #endif
 module-assistant
 dkms
 build-essential
+systemd
+os-prober
+initramfs-tools
+console-setup
+user-setup
+libpam-systemd
 #Alt: kexec-tools
 
-# Firmwares
+#Section: Firmwares
 firmware-linux-free
 firmware-linux-nonfree
 amd64-microcode
 intel-microcode
 
-# Hardware-specific packages
+#Section: Hardware-specific packages
 #Alt: driverctl
 #Alt: pommed
 #Alt: lomoco
@@ -302,7 +296,7 @@ intel-microcode
 #Alt: mbpfan
 #Alt: usbmuxd
 
-# live system components
+#Section: Live system components
 live-boot
 live-config
 live-config-systemd

@@ -1,9 +1,11 @@
-# games
+#Title: Games
+
+#Section: Linux games
 cmatrix
 cmatrix-xfont
 #Alt: endless-sky
 #Alt: play.it
-#Alt: steam
+#Alt: steam:i386
 #Alt: supertuxkart
 #Alt: hedgewars
 #Alt: 0ad
@@ -58,12 +60,9 @@ cmatrix-xfont
 #Alt: sl
 #Alt: hollywood
 
-	
-
-
-# game console emulators
+#Section: Game console emulators
 #Alt: pcsxr
-#Alt: zsnes
+#Alt: zsnes:i386
 #Alt: higan
 #Alt: desmume
 #Alt: mupen64plus-qt
@@ -99,7 +98,6 @@ cmatrix-xfont
 #Alt: nestopia
 #Alt: dosbox
 #Alt: dolphin-emu
-#Alt: pcsx2
+#Alt: pcsx2:i386
 #Alt: games-emulator
 #mess mess-desktop-entries #stretch only
-

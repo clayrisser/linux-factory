@@ -1,4 +1,6 @@
-# office suite
+#Title: Office
+
+#Section: Office suite
 #Description: libreoffice
 libreoffice-writer
 libreoffice-impress
@@ -13,7 +15,6 @@ libreoffice-gnome
 libreoffice-avmedia-backend-gstreamer
 libreoffice-avmedia-backend-vlc
 libwmf-bin
-# Localization
 hyphen-fr
 libreoffice-l10n-fr
 mythes-fr
@@ -46,7 +47,7 @@ libreoffice-help-fr
 #calligraflow #stretch only
 #plume-creator #stretch only
 
-# calendars/contacts management
+# Section: Calendars/contacts management
 # Description: lightning
 lightning
 lightning-l10n-fr
@@ -56,7 +57,7 @@ lightning-l10n-fr
 #Alt: abook
 #Alt: orage
 
-# finance managemenet
+#Section: Personal finance
 #Description: homebank
 homebank
 #Alt: gnucash
@@ -64,7 +65,7 @@ homebank
 #bitcoin-qt #sid only
 #electrum #bullseye only
 
-# document viewers
+#Section: Document viewers
 #Description: evince
 evince
 #Alt: mupdf
@@ -77,13 +78,13 @@ evince
 #Alt: yelp
 #Alt: xchm
 
-# e-book readers
+#Section: E-book
 #Alt: calibre
 #griffith #stretch only
 #gcstar #stretch only
 #Alt: cdcat
 
-# PDF editor/utilities
+#Section: PDF editor/utilities
 #Description: pdfchain
 pdfchain
 pdfgrep
@@ -102,14 +103,8 @@ poppler-utils
 #Alt: chm2pdf
 #pdfproctools #sid only
 
-# Sticky notes
-#Description: xfce4-notes
-xfce4-notes
-#Alt: xpad
-#tomboy #stretch only
-#Alt: gnote
 
-# Notebooks/Tasks/Personal information managers
+#Section: Tasks/Personal information management
 #Alt: osmo
 #Alt: zim
 #Alt: tasque
@@ -140,7 +135,7 @@ xfce4-notes
 #Alt: almanah
 #Alt: nixnote2
 
-# image scanning
+#Section: Image scanning
 #Description: simple-scan
 simple-scan
 imagemagick
@@ -149,14 +144,14 @@ sane-utils
 #Alt: scanbd
 #Alt: xsane
 
-# Optical Character Recognition (OCR)
+#Section: Optical Character Recognition (OCR)
 #Alt: ocrfeeder
 #Alt: tesseract-ocr-fra
 #Alt: unpaper
 #Alt: yagf
 #Alt: ocrad
 
-# printing
+#Section: Printing
 #Description: system-config-printer
 cups
 cups-client
@@ -172,10 +167,8 @@ cups-browsed
 #Alt: mtink
 #Alt: colord
 
-
-
-
-# fonts
+#Section: Fonts
+#Description: fonts-hack-ttf
 fonts-pecita
 fonts-beteckna
 fonts-breip
