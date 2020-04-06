@@ -1,4 +1,4 @@
-favorites=exo-terminal-emulator.desktop,exo-file-manager.desktop,exo-mail-reader.desktop,exo-web-browser.desktop,pidgin.desktop,catfish.desktop,quodlibet.desktop
+favorites=exo-file-manager.desktop,thunderbird.desktop,firefox.desktop,pidgin.desktop,backintime-qt4.desktop,org.xfce.Catfish.desktop,io.github.quodlibet.QuodLibet.desktop,exo-terminal-emulator.desktop,org.gnome.Packages.desktop
 button-title=Applications
 button-icon=distributor-logo-debian
 button-single-row=true
