@@ -68,7 +68,7 @@ test_kvm_bios:
 	sudo virt-install --name dlc-test --boot cdrom --disk path=$$PWD/dlc-test-disk0.qcow2,format=qcow2,size=20,device=disk,bus=virtio,cache=none --cdrom 'iso/dlc-2.2.2-debian-buster-amd64.hybrid.iso' --memory 2048 --vcpu 2
 	sudo virsh destroy dlc-test
 	sudo virsh undefine dlc-test
-	sudo rm /dlc-test-disk0.qcow2
+	sudo rm $$PWD/dlc-test-disk0.qcow2
 
 test_kvm_uefi:
 	# Run the resulting image in KVM/virt-manager (UEFI mode)
@@ -76,7 +76,7 @@ test_kvm_uefi:
 	sudo virt-install --name dlc-test --boot loader=/usr/share/OVMF/OVMF_CODE.fd --disk path=$$PWD/dlc-test-disk0.qcow2,format=qcow2,size=20,device=disk,bus=virtio,cache=none --cdrom 'iso/dlc-2.2.2-debian-buster-amd64.hybrid.iso' --memory 2048 --vcpu 2
 	sudo virsh destroy dlc-test
 	sudo virsh undefine dlc-test
-	sudo rm /dlc-test-disk0.qcow2
+	sudo rm $$PWD/dlc-test-disk0.qcow2
 
 #################################
 
