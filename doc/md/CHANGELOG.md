@@ -5,7 +5,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 -------------------------------
 
-## [v2.2.2](https://gitlab.com/nodiscc/dlc/releases/tag/2.2.2) - 2020-04-06
+## [v2.2.2](https://gitlab.com/nodiscc/dlc/releases/tag/2.2.2) - 2020-04-11
 
 ### Changed
 
@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Fixed
 
+- Fix APT sources lists not present in the final image
 - Improve/cleanup makefile and package lists
 
 
