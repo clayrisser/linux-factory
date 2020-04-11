@@ -129,7 +129,7 @@ cryptsetup
 #Alt: libzulucrypt-plugins
 
 
-#Section: text editors
+#Section: Text editors
 #Description: mousepad
 #Description: nano
 mousepad
@@ -154,7 +154,7 @@ xfce4-notes
 #Alt: gnote
 
 
-#Section: maps
+#Section: Maps
 #Description: gnome-maps
 gnome-maps
 #Alt: marble-qt
@@ -170,14 +170,14 @@ gnome-maps
 #Alt: gis-tasks
 #Alt: gpsprune
 
-#Section: screenshots
+#Section: Screenshots
 #Description: xfce4-screenshooter
 xfce4-screenshooter
 #Alt: scrot
 #Alt: gnome-screenshot
 #Alt: flameshot
 
-#Section: clocks/timers
+#Section: Clocks/timers
 #Description: gnome-clocks
 gnome-clocks
 tty-clock
@@ -188,7 +188,7 @@ tty-clock
 #screenruler #stretch only
 
 
-#Section: calculators
+#Section: Calculators
 #Description: gnome-calculator
 #Screenshot: gnome-calculator
 gnome-calculator
@@ -200,7 +200,7 @@ units
 #Alt: gbase
 #Alt: graphmonkey
 
-#Section: terminal emulators
+#Section: Terminal emulators
 #Description: xfce4-terminal
 xfce4-terminal
 #Alt: lxterminal
@@ -210,13 +210,13 @@ xfce4-terminal
 #Alt: rxvt-unicode
 #Alt: tilda
 
-#Section: science
+#Section: Science
 #Alt: stellarium
 #Alt: lightspeed
 #Alt: wxmaxima
 #Alt: gramps
 
-#Section: color management
+#Section: Color management
 #Description: redshift-gtk
 redshift-gtk
 #Alt: workrave
@@ -241,7 +241,7 @@ gnome-settings-daemon
 dconf-gsettings-backend
 #Alt: gnome-tweaks
 
-#Section: power management
+#Section: Power management
 #Description: xfce4-power-manager
 xfce4-power-manager
 xfce4-battery-plugin
@@ -268,12 +268,12 @@ pm-utils
 #hd-idle #bullseye only
 #eeepc-acpi-scripts #sid only
 
-#Section: character map/font viewer
+#Section: Character map/font viewer
 gucharmap
 gnome-font-viewer
 #Alt: font-manager
 
-#Section: spell checking/dictionaries
+#Section: Spell checking/dictionaries
 hunspell
 hunspell-en-us
 hunspell-fr
@@ -301,13 +301,13 @@ gnome-audio
 #Alt: clearlooks-phenix-theme
 #Alt: deepin-icon-theme
 
-#Section: virtual keyboards
+#Section: Virtual keyboards
 #Alt: onboard
 #Alt: onboard-data
 #Alt: cellwriter
 #Alt: florence
 
-#Section: other/misc
+#Section: Other
 libnotify-bin
 zenity
 numlockx
