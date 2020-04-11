@@ -187,13 +187,13 @@ libgl1-mesa-dri:i386
 #Alt: dxvk
 #Alt: reglookup
 
-#Section: configuration management
+#Section: Configuration management
 #Alt: ansible
 
 #Section: Java
 default-jre
 
-#Section: Display manager and screen lockr
+#Section: Display manager/screen locker
 #Description: lightdm
 #Description: light-locker
 lightdm

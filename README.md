@@ -2,7 +2,7 @@
 
 [Debian GNU/Linux](https://www.debian.org/) desktop operating system, preconfigured for personal computers/workstations
 
-**[![](doc/md/download.png) Download (ISO image, amd64)](https://github.com/nodiscc/debian-live-config/releases/download/2.2.2/dlc-2.2.2-debian-buster-amd64.hybrid.iso)**
+**[![](doc/md/download.png) Download .ISO image](https://github.com/nodiscc/debian-live-config/releases/download/2.2.2/dlc-2.2.2-debian-buster-amd64.hybrid.iso)**
 
 ![](https://i.imgur.com/wJETcZ3.png)
 
