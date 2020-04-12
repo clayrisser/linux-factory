@@ -5,7 +5,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 -------------------------------
 
-## [v2.2.2](https://gitlab.com/nodiscc/dlc/releases/tag/2.2.2) - 2020-04-11
+## [v2.2.2](https://gitlab.com/nodiscc/debian-live-config/-/tags/2.2.2) - 2020-04-11
 
 ### Changed
 
@@ -26,7 +26,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 -------------------------------
 
 
-## [v2.2.1](https://gitlab.com/nodiscc/dlc/releases/tag/2.2.1) - 2020-03-14
+## [v2.2.1](https://gitlab.com/nodiscc/debian-live-config/-/tags/2.2.1) - 2020-03-14
 
 ### Changed
 
