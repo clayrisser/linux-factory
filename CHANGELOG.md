@@ -20,6 +20,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - Fix APT sources lists not present in the final image
 - Improve/cleanup makefile and package lists
+- Fix error during installation in EFI boot mode
 
 
 -------------------------------
