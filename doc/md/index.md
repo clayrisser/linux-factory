@@ -4,7 +4,10 @@
 
 **[![](download.png) Download .ISO image](https://github.com/nodiscc/debian-live-config/releases/download/2.2.2/dlc-2.2.2-debian-buster-amd64.hybrid.iso)**
 
-![](https://i.imgur.com/wJETcZ3.png)
+![](https://i.imgur.com/8lq28mV.png)
+<p align="center">
+<img src="https://i.imgur.com/gdM7X0xm.jpg"> <img src="https://i.imgur.com/EpXos8Hm.png">
+</p>
 
 - Ready-to-use operating system for personal computers/workstations
 - Preinstalled/preconfigured software for most office/multimedia/internet tasks

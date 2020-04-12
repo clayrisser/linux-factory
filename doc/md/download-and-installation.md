@@ -95,9 +95,6 @@ See **[Usage](usage.md)**
 
 Select `Graphical install` from the boot menu to install a permanent copy a of the system to your hard drive. Follow instructions from the installer.
 
-| 💥 | Installation in UEFI boot mode is curently broken. [Disable secure boot](https://neosmart.net/wiki/disabling-secure-boot/) and [enable legacy BIOS boot mode](https://neosmart.net/wiki/enable-legacy-boot-mode/) before running the installer. |
-|---------|---------|
-
 | 💥 | The default drive partitioning configuration overwrites any previously installed operating system/data on the selected installation disk. To preserve your data, use manual partitioning in the installer, install to an empty disk, or backup your data to an external drive if needed. |
 |---------|---------|
 
