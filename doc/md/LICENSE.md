@@ -1065,3 +1065,8 @@ License: CC-BY-SA-3.0
  does not form part of the License.
  .
  Creative Commons may be contacted at http://creativecommons.org/.
+
+----------------------------
+
+config/includes.chroot/usr/share/backgrounds/futureprototype-darker-4096x2160.svg and
+config/bootloaders/isolinux/splash.png (c) 2018 Alex Makas, GPLv3
