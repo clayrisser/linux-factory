@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 - Disable window manager compositor by default (improve video performance/prevent tearing)
 - Update user.js to 0.1
+- Remove unused locales from live system (only keep en/fr), decrease iso image size
 
 ### Added
 
