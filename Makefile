@@ -4,7 +4,7 @@
 SHELL := /bin/bash
 
 # remove 'download_extra' to build without third party software/dotfiles
-all: install_buildenv clean download_extra build
+all: install_buildenv download_extra build
 
 download_extra:
 	make -f Makefile.extra
@@ -17,7 +17,7 @@ install_buildenv:
 
 # clear all caches, only required when changing the mirrors/architecture config
 clean:
-	sudo lb clean --purge
+	sudo lb clean --all
 	git clean -di
 
 bump_version:
