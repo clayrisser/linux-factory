@@ -1,13 +1,12 @@
 # debian-live-config
 
-[Debian GNU/Linux](https://www.debian.org/) desktop operating system, preconfigured for personal computers/workstations
+[Debian GNU/Linux](https://www.debian.org/) desktop operating system, preconfigured for personal computers/workstations.
 
 **[![](doc/md/download.png) Download .ISO image](https://github.com/nodiscc/debian-live-config/releases/download/2.2.2/dlc-2.2.2-debian-buster-amd64.hybrid.iso)**
 
-![](https://i.imgur.com/8lq28mV.png)
-<p align="center">
-<img src="https://i.imgur.com/gdM7X0xm.jpg"> <img src="https://i.imgur.com/EpXos8Hm.png">
-</p>
+![](https://i.imgur.com/gdM7X0x.jpg)
+
+## Features
 
 - Ready-to-use operating system for personal computers/workstations
 - Preinstalled/preconfigured software for most office/multimedia/internet tasks
@@ -20,7 +19,6 @@
 
 This repository contains the `live-build` configuration and scripts used to build a custom Debian ISO image. See [Building a custom Debian ISO image](doc/md/custom.md).
 
----------------------------------------------------------
 
 ## Documentation
 
@@ -36,6 +34,12 @@ This repository contains the `live-build` configuration and scripts used to buil
 - [Software: Games](doc/md/packages/games.md)
 - [Changelog](CHANGELOG.md)
 - [Source code](https://gitlab.com/nodiscc/debian-live-config)
+
+## Screenshots
+
+![](https://i.imgur.com/8lq28mV.png)
+![](https://i.imgur.com/EpXos8H.png)
+
 
 ## License
 
