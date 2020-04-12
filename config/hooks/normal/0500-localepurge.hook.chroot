@@ -1,0 +1,3 @@
+#!/bin/bash
+locale-gen --keep-existing
+localepurge
