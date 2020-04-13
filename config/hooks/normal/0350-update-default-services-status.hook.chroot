@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "running [$0]"
+echo "I: running $0"
 
 disabled_services="avahi-daemon.service openvpn.service rsync.service ssh.service nmbd.service smbd.service libvirtd.service libvirt-guests.service"
 enabled_services="bumblebeed.service cups-browsed.service bluetooth.service cups.service fancontrol.service laptop-mode.service ntp.service plymouth.service preload.service smartmontools.service rsyslog.service lm-sensors.service hddtemp.service haveged.service"

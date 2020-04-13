@@ -1,4 +1,4 @@
 #!/bin/bash
-echo "running [$0]"
+echo "I: running $0"
 dpkg --add-architecture i386
 apt update
