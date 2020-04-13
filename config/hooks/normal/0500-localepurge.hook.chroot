@@ -1,3 +1,4 @@
 #!/bin/bash
+echo "running [$0]"
 locale-gen --keep-existing
 localepurge

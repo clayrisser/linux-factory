@@ -1,4 +1,6 @@
 #!/bin/sh
+echo "running [$0]"
+
 # clear APT package download cache to reduce the image size from ~100MB
 rm -vr /var/lib/apt/lists/
 
