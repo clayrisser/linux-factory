@@ -397,13 +397,13 @@
 - ![](grey.png) _[winetricks](https://packages.debian.org/buster/winetricks) `0.0+20181203-3` - simple tool to work around common problems in Wine_
 - ![](grey.png) _[dxvk](https://packages.debian.org/buster/dxvk) `0.96+ds1-1` - Vulkan-based translation layer for Direct3D 10/11_
 - ![](grey.png) _[reglookup](https://packages.debian.org/buster/reglookup) `1.0.1+svn287-7` - utility to analysis for Windows NT-based registry_
-#### configuration management
+#### Configuration management
 
 - ![](grey.png) _[ansible](https://packages.debian.org/buster/ansible) `2.7.7+dfsg-1` - Configuration management, deployment, and task execution system_
 #### Java
 
 - ![](green.png) [default-jre](https://packages.debian.org/buster/default-jre) `2:1.11-71` - Standard Java or Java compatible Runtime
-#### Display manager and screen lockr
+#### Display manager/screen locker
 
 
 </sub>

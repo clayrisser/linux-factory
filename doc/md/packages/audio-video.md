@@ -297,7 +297,7 @@
 - ![](grey.png) _[subtitleeditor](https://packages.debian.org/buster/subtitleeditor) `0.54.0-3` - Graphical subtitle editor with sound waves representation_
 - ![](grey.png) _[gaupol](https://packages.debian.org/buster/gaupol) `1.5-1` - subtitle editor for text-based subtitle files_
 - ![](grey.png) _[gnome-subtitles](https://packages.debian.org/buster/gnome-subtitles) `1.4.2-1` - Subtitle editor for the GNOME Desktop environment_
-#### audio recording and editing
+#### Audio recording/editing
 
 
 </sub>

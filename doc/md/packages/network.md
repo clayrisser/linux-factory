@@ -9,7 +9,7 @@
 
 </sub>
 
-<img align="right" src="https://screenshots.debian.net/thumbnail-with-version/firefox-esr/68.6.1esr-1~deb10u1">
+<img align="right" src="https://screenshots.debian.net/thumbnail-with-version/firefox-esr/68.7.0esr-1~deb10u1">
 
 **[firefox-esr](https://packages.debian.org/buster/firefox-esr)** - Mozilla Firefox web browser - Extended Support Release (ESR)
 
@@ -22,14 +22,14 @@
 -----------------------
 
 
-- ![](green.png) [firefox-esr](https://packages.debian.org/buster/firefox-esr) `68.6.1esr-1~deb10u1` - Mozilla Firefox web browser - Extended Support Release (ESR)
-- ![](green.png) [firefox-esr-l10n-fr](https://packages.debian.org/buster/firefox-esr-l10n-fr) `68.6.1esr-1~deb10u1` - French language package for Firefox ESR
+- ![](green.png) [firefox-esr](https://packages.debian.org/buster/firefox-esr) `68.7.0esr-1~deb10u1` - Mozilla Firefox web browser - Extended Support Release (ESR)
+- ![](green.png) [firefox-esr-l10n-fr](https://packages.debian.org/buster/firefox-esr-l10n-fr) `68.7.0esr-1~deb10u1` - French language package for Firefox ESR
 - ![](green.png) [pkg-mozilla-archive-keyring](https://packages.debian.org/buster/pkg-mozilla-archive-keyring) `1.2` - GnuPG archive keys for the Debian Mozilla team package repository
 - ![](green.png) [webext-https-everywhere](https://packages.debian.org/buster/webext-https-everywhere) `2019.1.31-2` - Extension to force the use of HTTPS on many sites
 - ![](green.png) [webext-ublock-origin](https://packages.debian.org/buster/webext-ublock-origin) `1.22.2+dfsg-1~deb10u1` - general-purpose lightweight ads, malware, trackers blocker (Web Extension)
 - ![](grey.png) _[midori](https://packages.debian.org/buster/midori) `7.0-2` - fast, lightweight graphical web browser_
 - ![](grey.png) _[luakit](https://packages.debian.org/buster/luakit) `1:2.1-1` - fast and small web browser extensible by Lua_
-- ![](grey.png) _[chromium](https://packages.debian.org/buster/chromium) `80.0.3987.149-1~deb10u1` - web browser_
+- ![](grey.png) _[chromium](https://packages.debian.org/buster/chromium) `80.0.3987.162-1~deb10u1` - web browser_
 - ![](grey.png) _[nss-passwords](https://packages.debian.org/buster/nss-passwords) `0.2-2+b2` - read passwords from a Mozilla keyring_
 - ![](grey.png) _[w3m](https://packages.debian.org/buster/w3m) `0.5.3-37` - WWW browsable pager with excellent tables/frames support_
 - ![](grey.png) _[links2](https://packages.debian.org/buster/links2) `2.18-2` - Web browser running in both graphics and text mode_

@@ -192,7 +192,7 @@
 - ![](grey.png) _[zulucrypt-gui](https://packages.debian.org/buster/zulucrypt-gui) `5.4.0-3` - graphical front end for zulucrypt-cli_
 - ![](grey.png) _[zulumount-gui](https://packages.debian.org/buster/zulumount-gui) `5.4.0-3` - graphical front end for zulumount-cli_
 - ![](grey.png) _[libzulucrypt-plugins](https://packages.debian.org/buster/libzulucrypt-plugins) `5.4.0-3` - collection of plugins for zulucrypt_
-#### text editors
+#### Text editors
 
 
 </sub>
@@ -260,7 +260,7 @@
 - ![](green.png) [xfce4-notes](https://packages.debian.org/buster/xfce4-notes) `1.8.1-2` - Notes application for the Xfce4 desktop
 - ![](grey.png) _[xpad](https://packages.debian.org/buster/xpad) `5.3.0-1` - sticky note application for X_
 - ![](grey.png) _[gnote](https://packages.debian.org/buster/gnote) `3.30.0-2` - desktop note taking program using Wiki style links_
-#### maps
+#### Maps
 
 
 </sub>
@@ -290,7 +290,7 @@
 - ![](grey.png) _[foxtrotgps](https://packages.debian.org/buster/foxtrotgps) `1.2.1-1` - GTK+ mapping and GPS application_
 - ![](grey.png) _[gis-tasks](https://packages.debian.org/buster/gis-tasks) `0.0.16` - Debian GIS tasks for tasksel_
 - ![](grey.png) _[gpsprune](https://packages.debian.org/buster/gpsprune) `19.2-1` - visualize, edit, convert and prune GPS data_
-#### screenshots
+#### Screenshots
 
 
 </sub>
@@ -313,7 +313,7 @@
 - ![](grey.png) _[scrot](https://packages.debian.org/buster/scrot) `0.9-1` - command line screen capture utility_
 - ![](grey.png) _[gnome-screenshot](https://packages.debian.org/buster/gnome-screenshot) `3.30.0-2` - screenshot application for GNOME_
 - ![](grey.png) _[flameshot](https://packages.debian.org/buster/flameshot) `0.6.0-11` - Powerful yet simple-to-use screenshot software_
-#### clocks/timers
+#### Clocks/timers
 
 
 </sub>
@@ -337,7 +337,7 @@
 - ![](grey.png) _[gtimer](https://packages.debian.org/buster/gtimer) `2.0.0-1.2+b1` - GTK-based X11 task timer_
 - ![](grey.png) _[stopwatch](https://packages.debian.org/buster/stopwatch) `3.5-6` - Virtual stopwatch and timer_
 - ![](grey.png) _[xfce4-timer-plugin](https://packages.debian.org/buster/xfce4-timer-plugin) `1.7.0-1` - timer plugin for Xfce panel_
-#### calculators
+#### Calculators
 
 
 </sub>
@@ -364,7 +364,7 @@
 - ![](grey.png) _[speedcrunch](https://packages.debian.org/buster/speedcrunch) `0.12.0-4` - High precision calculator_
 - ![](grey.png) _[gbase](https://packages.debian.org/buster/gbase) `0.5-2.2+b2` - small numeric base converter_
 - ![](grey.png) _[graphmonkey](https://packages.debian.org/buster/graphmonkey) `1.7-4` - a GTK#-based graphing calculator_
-#### terminal emulators
+#### Terminal emulators
 
 
 </sub>
@@ -390,13 +390,13 @@
 - ![](grey.png) _[terminator](https://packages.debian.org/buster/terminator) `1.91-4` - multiple GNOME terminals in one window_
 - ![](grey.png) _[rxvt-unicode](https://packages.debian.org/buster/rxvt-unicode) `9.22-6` - RXVT-like terminal emulator with Unicode and 256-color support_
 - ![](grey.png) _[tilda](https://packages.debian.org/buster/tilda) `1.4.1-2.1` - GTK+ based drop down terminal for Linux and Unix_
-#### science
+#### Science
 
 - ![](grey.png) _[stellarium](https://packages.debian.org/buster/stellarium) `0.18.3-1` - real-time photo-realistic sky generator_
 - ![](grey.png) _[lightspeed](https://packages.debian.org/buster/lightspeed) `1.2a.debian.1-2` - Shows how objects moving at relativistic speeds look like_
 - ![](grey.png) _[wxmaxima](https://packages.debian.org/buster/wxmaxima) `19.01.2-1` - GUI for the computer algebra system Maxima_
 - ![](grey.png) _[gramps](https://packages.debian.org/buster/gramps) `5.0.1-1` - Genealogical research program_
-#### color management
+#### Color management
 
 
 </sub>
@@ -454,7 +454,7 @@
 - ![](green.png) [gnome-settings-daemon](https://packages.debian.org/buster/gnome-settings-daemon) `3.30.2-3` - daemon handling the GNOME session settings
 - ![](green.png) [dconf-gsettings-backend](https://packages.debian.org/buster/dconf-gsettings-backend) `0.30.1-2` - simple configuration storage system - GSettings back-end
 - ![](grey.png) _[gnome-tweaks](https://packages.debian.org/buster/gnome-tweaks) `3.30.2-1` - tool to adjust advanced configuration settings for GNOME_
-#### power management
+#### Power management
 
 
 </sub>
@@ -496,12 +496,12 @@
 - ![](grey.png) _[powerstat](https://packages.debian.org/buster/powerstat) `0.02.18-1` - laptop power measuring tool_
 - ![](grey.png) _[i8kutils](https://packages.debian.org/buster/i8kutils) `1.43` - Fan control for Dell laptops_
 - ![](grey.png) _[usbtop](https://packages.debian.org/buster/usbtop) `0.2-1+b1` - utility to show bandwidth on USB buses and devices_
-#### character map/font viewer
+#### Character map/font viewer
 
 - ![](green.png) [gucharmap](https://packages.debian.org/buster/gucharmap) `1:11.0.3-3` - Unicode character picker and font browser
 - ![](green.png) [gnome-font-viewer](https://packages.debian.org/buster/gnome-font-viewer) `3.30.0-2` - font viewer for GNOME
 - ![](grey.png) _[font-manager](https://packages.debian.org/buster/font-manager) `0.7.3-1.1` - font management application for the GNOME desktop_
-#### spell checking/dictionaries
+#### Spell checking/dictionaries
 
 - ![](green.png) [hunspell](https://packages.debian.org/buster/hunspell) `1.7.0-2` - spell checker and morphological analyzer (program)
 - ![](green.png) [hunspell-en-us](https://packages.debian.org/buster/hunspell-en-us) `1:2018.04.16-1` - English_american dictionary for hunspell
@@ -529,13 +529,13 @@
 - ![](grey.png) _[faenza-icon-theme](https://packages.debian.org/buster/faenza-icon-theme) `1.3.1-1` - Faenza icon theme_
 - ![](grey.png) _[clearlooks-phenix-theme](https://packages.debian.org/buster/clearlooks-phenix-theme) `7.0.1-3` - GTK3 port of Clearlooks theme_
 - ![](grey.png) _[deepin-icon-theme](https://packages.debian.org/buster/deepin-icon-theme) `15.12.68-1` - Icon Theme for Deepin software and Deepin Desktop Environment_
-#### virtual keyboards
+#### Virtual keyboards
 
 - ![](grey.png) _[onboard](https://packages.debian.org/buster/onboard) `1.4.1-4+b1` - Simple On-screen Keyboard_
 - ![](grey.png) _[onboard-data](https://packages.debian.org/buster/onboard-data) `1.4.1-4` - Language model files for the word suggestion feature of Onboard_
 - ![](grey.png) _[cellwriter](https://packages.debian.org/buster/cellwriter) `1.3.6-1` - grid-entry handwriting input panel_
 - ![](grey.png) _[florence](https://packages.debian.org/buster/florence) `0.6.3-1.2` - extensible and scalable virtual keyboard for X_
-#### other/misc
+#### Other
 
 - ![](green.png) [libnotify-bin](https://packages.debian.org/buster/libnotify-bin) `0.7.7-4` - sends desktop notifications to a notification daemon (Utilities)
 - ![](green.png) [zenity](https://packages.debian.org/buster/zenity) `3.30.0-2` - Display graphical dialog boxes from shell scripts
