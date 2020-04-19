@@ -26,7 +26,7 @@ This repository contains the `live-build` configuration and scripts used to buil
 - [Usage](usage.md)
 - [Software: Utility](packages/utility.md)
 - [Software: Internet & network](packages/network.md)
-- [Software: Audio & video](packages/audio-video.md)
+- [Software: Audio and video](packages/audio-video.md)
 - [Software: Office](packages/office.md)
 - [Software: Graphics](packages/graphics.md)
 - [Software: System](packages/system.md)
