@@ -58,7 +58,7 @@ You need some disk space for the download and build caches. The build directory 
 
 ### auto/
 
-* `auto/config` sets basic configuration settings for the build (architecture, boot configuration, installer...), see [`man lb config`](httpshttps://manpages.debian.org/buster/live-build/lb_config.1.en.html)
+* `auto/config` sets basic configuration settings for the build (architecture, boot configuration, installer...), see [`man lb config`](https://manpages.debian.org/buster/live-build/lb_config.1.en.html)
 * `auto/clean` is run automatically before each build to ensure the build directory is free of any artifacts from previous builds (download caches are kept). See [`man lb clean`](https://manpages.debian.org/buster/live-build/lb_clean.1.en.html)
 * `auto/build` contains the command used for the build, and basic logging settings
 
@@ -152,5 +152,4 @@ Currently only 2 locales (english and french) are pre-generated, other languages
 
 ## See also
 
- - **https://wiki.debian.org/**
- - https://stdout.root.sx/links/?searchtags=debian
+ - <https://stdout.root.sx/links/?searchtags=debian>
