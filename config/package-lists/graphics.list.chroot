@@ -1,6 +1,6 @@
 #Title: Graphics
 
-#Section: Image viewers
+#Section: Image viewers and managers
 #Description: ristretto
 ristretto
 #Alt: eog
@@ -16,6 +16,12 @@ ristretto
 #Alt: xzgv
 #Alt: sxiv
 #Alt: catimg
+#Alt: nomacs
+#Alt: shotwell
+#Alt: gthumb
+#Alt: digikam
+#Alt: fotoxx
+#Alt: geeqie
 
 #Section: Image editors
 #Description: gimp
@@ -76,14 +82,6 @@ xournal
 #Alt: gtkam
 #postr #stretch only
 #flickrbackup #stretch only
-
-#Section: Image library managers
-#Alt: nomacs
-#Alt: shotwell
-#Alt: gthumb
-#Alt: digikam
-#Alt: fotoxx
-#Alt: geeqie
 
 #Section: Game asset editors
 #aseprite #stretch only
