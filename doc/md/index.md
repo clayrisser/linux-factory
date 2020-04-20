@@ -33,13 +33,19 @@ This repository contains the `live-build` configuration and scripts used to buil
 - [Software: Development](packages/development.md)
 - [Software: Games](packages/games.md)
 - [Changelog](CHANGELOG.md)
-- Source code mirrors: [Gitlab](https://gitlab.com/nodiscc/debian-live-config), [Github](https://github.com/nodiscc/debian-live-config)
 
 ## Screenshots
 
 ![](https://i.imgur.com/8lq28mV.png)
 
 ![](https://i.imgur.com/EpXos8H.png)
+
+
+## Source code
+
+Mirrors:
+- [Gitlab](https://gitlab.com/nodiscc/debian-live-config)
+- [Github](https://github.com/nodiscc/debian-live-config)
 
 
 ## License

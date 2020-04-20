@@ -25,21 +25,28 @@ This repository contains the `live-build` configuration and scripts used to buil
 - [Download and installation](doc/md/download-and-installation.md)
 - [Usage](doc/md/usage.md)
 - [Software: Utility](doc/md/packages/utility.md)
-- [Software: Internet/network](doc/md/packages/network.md)
-- [Software: Audio/video](doc/md/packages/audio-video.md)
+- [Software: Internet and network](doc/md/packages/network.md)
+- [Software: Audio and video](doc/md/packages/audio-video.md)
 - [Software: Office](doc/md/packages/office.md)
 - [Software: Graphics](doc/md/packages/graphics.md)
 - [Software: System](doc/md/packages/system.md)
 - [Software: Development](doc/md/packages/development.md)
 - [Software: Games](doc/md/packages/games.md)
 - [Changelog](CHANGELOG.md)
-- Source code mirrors: [Gitlab](https://gitlab.com/nodiscc/debian-live-config), [Github](https://github.com/nodiscc/debian-live-config)
+
 
 ## Screenshots
 
 ![](https://i.imgur.com/8lq28mV.png)
 
 ![](https://i.imgur.com/EpXos8H.png)
+
+
+## Source code
+
+Mirrors:
+- [Gitlab](https://gitlab.com/nodiscc/debian-live-config)
+- [Github](https://github.com/nodiscc/debian-live-config)
 
 
 ## License
