@@ -79,6 +79,13 @@ export HISTCONTROL=erasedups:ignoredups:ignorespace
 #bind "set completion-ignore-case on"; fi
 #bind "set show-all-if-ambiguous On"; fi
 
+# show a ✔ or ✕ symbol before the prompt depending on return code of previous command
+# $(__exit_code_block) must be added to your $PS1
+#function __exit_code_block() {
+#	if [[ "$?" == 0 ]]; then echo -e "✔ ";
+#	else echo -e "✕ "; fi
+#}
+
 ####### Colored manpages ##########
 export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
 export LESS_TERMCAP_md=$'\E[01;38;5;74m'  # begin bold
