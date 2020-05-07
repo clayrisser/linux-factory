@@ -102,7 +102,7 @@ gzrt
 #Alt: p7zip-rar
 
 
-#Section: Password management/file encryption
+#Section: Password management/file/disk encryption
 #Description: keepassxc
 keepassxc
 seahorse
@@ -115,6 +115,7 @@ gnupg2
 pwgen
 nss-passwords
 cryptsetup
+libblockdev-crypto2
 #Alt: keepassx
 #Alt: keepass2
 #Alt: qtpass
