@@ -264,7 +264,7 @@ xserver-xorg-video-all
 xserver-xorg-video-intel
 xfonts-base
 hwdata
-nvidia-driver # non-free
+nvidia-driver
 
 #Section: Kernel/boot/init
 #if ARCHITECTURES amd64
