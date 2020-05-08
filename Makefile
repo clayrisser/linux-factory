@@ -11,7 +11,7 @@ download_extra:
 
 install_buildenv:
 	# Install packages required to build the image
-	sudo apt install live-build make build-essential wget git xmlstarlet unzip colordiff shellcheck apt-transport-https rename ovmf rsync python3-venv gnupg
+	sudo apt install live-build make build-essential wget git unzip colordiff apt-transport-https rename ovmf rsync python3-venv gnupg
 
 ##############################
 
