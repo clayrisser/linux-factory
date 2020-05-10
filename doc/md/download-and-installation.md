@@ -10,15 +10,15 @@
 
 ## Download
 
-**[![](download.png) Download](https://github.com/nodiscc/debian-live-config/releases/download/2.2.2/dlc-2.2.2-debian-buster-amd64.hybrid.iso)** the latest ISO image
+**[![](download.png) Download](https://github.com/nodiscc/debian-live-config/releases/download/2.2.3/dlc-2.2.3-debian-buster-amd64.hybrid.iso)** the latest ISO image
 
 (Recommended) verify file integrity and authenticity with GPG:
 
 ```bash
 # download the iso, signing key, checksums and signature
-wget https://github.com/nodiscc/debian-live-config/releases/download/2.2.2/dlc-2.2.2-debian-buster-amd64.hybrid.iso
-wget https://github.com/nodiscc/debian-live-config/releases/download/2.2.2/dlc-release.key
-wget https://github.com/nodiscc/debian-live-config/releases/download/2.2.2/SHA512SUMS
+wget https://github.com/nodiscc/debian-live-config/releases/download/2.2.3/dlc-2.2.3-debian-buster-amd64.hybrid.iso
+wget https://github.com/nodiscc/debian-live-config/releases/download/2.2.3/dlc-release.key
+wget https://github.com/nodiscc/debian-live-config/releases/download/2.2.3/SHA512SUMS
 wget https://github.com/nodiscc/debian-live-config/releases/download/2.2.2/SHA512SUMS.sign
 # import the release signing key
 # the key used to sign releases has key ID 16C50725859EBE2DD1B22100BCC63E85387671B9
