@@ -48,6 +48,8 @@ sign_checksums:
 	cd iso; \
 	gpg --detach-sign --armor SHA512SUMS; \
 	mv SHA512SUMS.asc SHA512SUMS.sign
+	# Export the public GPG key used for signing
+	gpg --export --armor nodiscc@gmail.com > dlc-release.key
 
 release_archive:
 	git archive --format=zip -9 HEAD -o $$(basename $$PWD)-$$(git rev-parse HEAD).zip
