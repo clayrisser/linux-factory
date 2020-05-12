@@ -5,6 +5,24 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 -------------------------------
 
+## [v2.2.3](https://gitlab.com/nodiscc/dlc/releases/tag/2.2.3) - 2020-05-10
+
+Bugfix release.
+
+### Fixed
+
+- packages: add non-free nvidia-driver (fix no display at X startup on nvidia cards)
+- packages: fix inability to mount luks encrypted disks (missing libblockdev-crypto2 package)
+- packages: fix lightdm not showing the user list (missing accountsservice package)
+- doc: fix readthedocs TOC/typos/syntax, reorder graphics package list, update auto-generated documentation (make doc), add links to source mirrors
+
+### Changed
+
+- dotfiles: .bash_aliases: add example of return code indication in bash prompt
+- tools: remove unused build dependencies (xmlstarlet, shellcheck), add gnupg to build dependencies (checksums signing), add python3-venv to build dependencies (doc generation)
+
+-------------------------------
+
 ## [v2.2.2](https://gitlab.com/nodiscc/debian-live-config/-/tags/2.2.2) - 2020-04-11
 
 ### Changed
