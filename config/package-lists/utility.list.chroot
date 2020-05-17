@@ -43,6 +43,7 @@ catfish
 #Alt: reflex
 #Alt: fzf
 #Alt: ripgrep
+#Alt: fd-find
 
 
 #Section: Desktop environment

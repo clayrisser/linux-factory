@@ -297,6 +297,7 @@ intel-microcode
 #Alt: wmgui
 #Alt: mbpfan
 #Alt: usbmuxd
+#Alt: fprintd
 
 #Section: Live system components
 live-boot

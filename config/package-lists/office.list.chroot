@@ -150,6 +150,7 @@ sane-utils
 #Alt: unpaper
 #Alt: yagf
 #Alt: ocrad
+#paperwork-gtk # bullseye only
 
 #Section: Printing
 #Description: system-config-printer
