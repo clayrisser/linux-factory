@@ -155,6 +155,6 @@ live-build
 #Alt: android-sdk
 #Alt: android-sdk-platform-tools-common
 #Alt: android-tools-fastboot
-#Alt: gplaycli python-ndg-httpsclient
+#gplaycli python-ndg-httpsclient # bullseye only
 #Alt: adb
 #Alt: fastboot
