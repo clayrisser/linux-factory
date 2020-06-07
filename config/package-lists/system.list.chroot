@@ -155,6 +155,7 @@ virt-viewer
 ebtables
 dnsmasq-base
 libvirt-daemon-system
+gir1.2-spiceclientgtk-3.0
 qemu-kvm
 qemu-utils
 virt-top
