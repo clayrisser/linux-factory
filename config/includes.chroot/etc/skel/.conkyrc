@@ -12,7 +12,7 @@ double_buffer yes
 draw_borders no
 draw_graph_borders no
 draw_outline no
-draw_shades yes
+draw_shades no
 gap_x 30
 gap_y 50
 max_specials 1024
