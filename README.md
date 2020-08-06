@@ -2,8 +2,6 @@
 
 [Debian GNU/Linux](https://www.debian.org/) desktop operating system, preconfigured for personal computers/workstations.
 
-**[![](doc/md/download.png) Download .ISO image](https://github.com/nodiscc/debian-live-config/releases/download/2.2.3/dlc-2.2.3-debian-buster-amd64.hybrid.iso)**
-
 ![](https://i.imgur.com/gdM7X0x.jpg)
 
 ## Features
@@ -18,6 +16,11 @@
 - Proprietary drivers/firmware for good compatibility with recent hardware
 
 This repository contains the `live-build` configuration and scripts used to build a custom Debian ISO image. See [Building a custom Debian ISO image](doc/md/custom.md).
+
+
+## Download
+
+**[![](doc/md/download.png) Download .ISO image](https://github.com/nodiscc/debian-live-config/releases/download/2.2.3/dlc-2.2.3-debian-buster-amd64.hybrid.iso)** (64-bit)
 
 
 ## Documentation
