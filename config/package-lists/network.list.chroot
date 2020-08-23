@@ -123,7 +123,6 @@ wget
 #Section: Feed readers
 #Description: liferea
 liferea
-dconf-gsettings-backend
 #yarssr #stretch only
 #Alt: newsbeuter
 #olive #stretch only
