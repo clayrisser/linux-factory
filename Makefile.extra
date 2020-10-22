@@ -46,3 +46,6 @@ download_extra:
 	#tar -C cache/downloads -xvf cache/downloads/sublime_text_3_build_3211_x64.tar.bz2
 	#mkdir -p config/includes.chroot/opt
 	#mv cache/downloads/sublime_text_3 config/includes.chroot/opt/sublime_text
+	# https://github.com/ars3niy/tdlib-purple
+	#$(WGET) https://download.opensuse.org/repositories/home:/ars3n1y/Debian_10/amd64/libpurple-telegram-tdlib_0.7.1-1_amd64.deb
+
