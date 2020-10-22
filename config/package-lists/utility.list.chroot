@@ -138,6 +138,7 @@ libblockdev-crypto2
 mousepad
 nano
 vim-tiny
+#Alt: gnome-builder flatpak-builder python3-lxml python3-jedi
 #Alt: vim
 #Alt: vim-doc
 #Alt: vim-scripts
