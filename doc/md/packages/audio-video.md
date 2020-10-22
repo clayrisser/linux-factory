@@ -25,7 +25,7 @@
 
 </sub>
 
-<img align="right" src="https://screenshots.debian.net/thumbnail-with-version/vlc/3.0.8-0+deb10u1">
+<img align="right" src="https://screenshots.debian.net/thumbnail-with-version/vlc/3.0.11-0+deb10u1">
 
 **[vlc](https://packages.debian.org/buster/vlc)** - multimedia player and streamer
 
@@ -40,18 +40,18 @@
 
 
 - ![](green.png) [mpv](https://packages.debian.org/buster/mpv) `0.29.1-1` - video player based on MPlayer/mplayer2
-- ![](green.png) [vlc](https://packages.debian.org/buster/vlc) `3.0.8-0+deb10u1` - multimedia player and streamer
+- ![](green.png) [vlc](https://packages.debian.org/buster/vlc) `3.0.11-0+deb10u1` - multimedia player and streamer
 - ![](green.png) [libdvdread4](https://packages.debian.org/buster/libdvdread4) `6.0.1-1` - library for reading DVDs
-- ![](green.png) [vlc-plugin-notify](https://packages.debian.org/buster/vlc-plugin-notify) `3.0.8-0+deb10u1` - LibNotify plugin for VLC
+- ![](green.png) [vlc-plugin-notify](https://packages.debian.org/buster/vlc-plugin-notify) `3.0.11-0+deb10u1` - LibNotify plugin for VLC
 - ![](green.png) [vlc-plugin-vlsub](https://packages.debian.org/buster/vlc-plugin-vlsub) `0.10.2-2` - VLC extension to download subtitles from opensubtitles.org
-- ![](green.png) [vlc-plugin-jack](https://packages.debian.org/buster/vlc-plugin-jack) `3.0.8-0+deb10u1` - JACK audio plugins for VLC
-- ![](green.png) [vlc-plugin-samba](https://packages.debian.org/buster/vlc-plugin-samba) `3.0.8-0+deb10u1` - Samba plugin for VLC
-- ![](green.png) [vlc-plugin-skins2](https://packages.debian.org/buster/vlc-plugin-skins2) `3.0.8-0+deb10u1` - multimedia player and streamer (Skins2 plugin)
-- ![](green.png) [vlc-plugin-video-splitter](https://packages.debian.org/buster/vlc-plugin-video-splitter) `3.0.8-0+deb10u1` - multimedia player and streamer (video splitter plugins)
-- ![](green.png) [vlc-plugin-visualization](https://packages.debian.org/buster/vlc-plugin-visualization) `3.0.8-0+deb10u1` - multimedia player and streamer (visualization plugins)
-- ![](green.png) [vlc-plugin-video-output](https://packages.debian.org/buster/vlc-plugin-video-output) `3.0.8-0+deb10u1` - multimedia player and streamer (video output plugins)
-- ![](green.png) [vlc-plugin-base](https://packages.debian.org/buster/vlc-plugin-base) `3.0.8-0+deb10u1` - multimedia player and streamer (base plugins)
-- ![](green.png) [vlc-plugin-qt](https://packages.debian.org/buster/vlc-plugin-qt) `3.0.8-0+deb10u1` - multimedia player and streamer (Qt plugin)
+- ![](green.png) [vlc-plugin-jack](https://packages.debian.org/buster/vlc-plugin-jack) `3.0.11-0+deb10u1` - JACK audio plugins for VLC
+- ![](green.png) [vlc-plugin-samba](https://packages.debian.org/buster/vlc-plugin-samba) `3.0.11-0+deb10u1` - Samba plugin for VLC
+- ![](green.png) [vlc-plugin-skins2](https://packages.debian.org/buster/vlc-plugin-skins2) `3.0.11-0+deb10u1` - multimedia player and streamer (Skins2 plugin)
+- ![](green.png) [vlc-plugin-video-splitter](https://packages.debian.org/buster/vlc-plugin-video-splitter) `3.0.11-0+deb10u1` - multimedia player and streamer (video splitter plugins)
+- ![](green.png) [vlc-plugin-visualization](https://packages.debian.org/buster/vlc-plugin-visualization) `3.0.11-0+deb10u1` - multimedia player and streamer (visualization plugins)
+- ![](green.png) [vlc-plugin-video-output](https://packages.debian.org/buster/vlc-plugin-video-output) `3.0.11-0+deb10u1` - multimedia player and streamer (video output plugins)
+- ![](green.png) [vlc-plugin-base](https://packages.debian.org/buster/vlc-plugin-base) `3.0.11-0+deb10u1` - multimedia player and streamer (base plugins)
+- ![](green.png) [vlc-plugin-qt](https://packages.debian.org/buster/vlc-plugin-qt) `3.0.11-0+deb10u1` - multimedia player and streamer (Qt plugin)
 - ![](green.png) [libdvd-pkg](https://packages.debian.org/buster/libdvd-pkg) `1.4.2-1-1` - DVD-Video playing library - installer
 - ![](grey.png) _[freetuxtv](https://packages.debian.org/buster/freetuxtv) `0.6.8~dfsg1-1+b2` - Internet television and radio player_
 - ![](grey.png) _[gnome-dvb-client](https://packages.debian.org/buster/gnome-dvb-client) `1:0.2.91~git20170110-4` - client for gnome-dvb-daemon_
@@ -63,8 +63,8 @@
 - ![](grey.png) _[subdownloader](https://packages.debian.org/buster/subdownloader) `2.0.19-1` - subtitle download/upload manager for video files_
 - ![](grey.png) _[totem](https://packages.debian.org/buster/totem) `3.30.0-4` - Simple media player for the GNOME desktop based on GStreamer_
 - ![](grey.png) _[totem-plugins](https://packages.debian.org/buster/totem-plugins) `3.30.0-4` - Plugins for the Totem media player_
-- ![](grey.png) _[vlc-plugin-svg](https://packages.debian.org/buster/vlc-plugin-svg) `3.0.8-0+deb10u1` - SVG plugin for VLC_
-- ![](grey.png) _[vlc-plugin-zvbi](https://packages.debian.org/buster/vlc-plugin-zvbi) `3.0.8-0+deb10u1` - transitional dummy package_
+- ![](grey.png) _[vlc-plugin-svg](https://packages.debian.org/buster/vlc-plugin-svg) `3.0.11-0+deb10u1` - SVG plugin for VLC_
+- ![](grey.png) _[vlc-plugin-zvbi](https://packages.debian.org/buster/vlc-plugin-zvbi) `3.0.11-0+deb10u1` - transitional dummy package_
 - ![](grey.png) _[zapping](https://packages.debian.org/buster/zapping) `0.10~cvs6-16` - television viewer for the GNOME environment_
 #### Music players/library managers
 
@@ -238,7 +238,7 @@
 
 
 - ![](green.png) [qwinff](https://packages.debian.org/buster/qwinff) `0.2.1-1+deb10u1` - GUI for FFmpeg
-- ![](green.png) [ffmpeg](https://packages.debian.org/buster/ffmpeg) `7:4.1.4-1~deb10u1` - Tools for transcoding, streaming and playing of multimedia files
+- ![](green.png) [ffmpeg](https://packages.debian.org/buster/ffmpeg) `7:4.1.6-1~deb10u1` - Tools for transcoding, streaming and playing of multimedia files
 - ![](green.png) [flac](https://packages.debian.org/buster/flac) `1.3.2-3` - Free Lossless Audio Codec - command line tools
 - ![](green.png) [gstreamer1.0-alsa](https://packages.debian.org/buster/gstreamer1.0-alsa) `1.14.4-2` - GStreamer plugin for ALSA
 - ![](green.png) [gstreamer1.0-libav](https://packages.debian.org/buster/gstreamer1.0-libav) `1.15.0.1+git20180723+db823502-2` - libav plugin for GStreamer
@@ -274,7 +274,7 @@
 
 </sub>
 
-<img align="right" src="https://screenshots.debian.net/thumbnail-with-version/asunder/2.9.3-3">
+<img align="right" src="https://screenshots.debian.net/thumbnail-with-version/asunder/2.9.3-3+deb10u1">
 
 **[asunder](https://packages.debian.org/buster/asunder)** - graphical audio CD ripper and encoder
 
@@ -287,7 +287,7 @@
 -----------------------
 
 
-- ![](green.png) [asunder](https://packages.debian.org/buster/asunder) `2.9.3-3` - graphical audio CD ripper and encoder
+- ![](green.png) [asunder](https://packages.debian.org/buster/asunder) `2.9.3-3+deb10u1` - graphical audio CD ripper and encoder
 - ![](grey.png) _[sound-juicer](https://packages.debian.org/buster/sound-juicer) `3.24.0-3` - GNOME CD Ripper_
 - ![](grey.png) _[goobox](https://packages.debian.org/buster/goobox) `3.5.1-6` - CD player and ripper with GNOME 3 integration_
 - ![](grey.png) _[ripperx](https://packages.debian.org/buster/ripperx) `2.8.0-2` - GTK-based audio CD ripper/encoder_

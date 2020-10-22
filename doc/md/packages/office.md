@@ -9,7 +9,7 @@
 
 </sub>
 
-<img align="right" src="https://screenshots.debian.net/thumbnail-with-version/libreoffice/1:6.1.5-3+deb10u5">
+<img align="right" src="https://screenshots.debian.net/thumbnail-with-version/libreoffice/1:6.1.5-3+deb10u6">
 
 **[libreoffice](https://packages.debian.org/buster/libreoffice)** - office productivity suite (metapackage)
 
@@ -22,23 +22,23 @@
 -----------------------
 
 
-- ![](green.png) [libreoffice-writer](https://packages.debian.org/buster/libreoffice-writer) `1:6.1.5-3+deb10u5` - office productivity suite -- word processor
-- ![](green.png) [libreoffice-impress](https://packages.debian.org/buster/libreoffice-impress) `1:6.1.5-3+deb10u5` - office productivity suite -- presentation
-- ![](green.png) [libreoffice-draw](https://packages.debian.org/buster/libreoffice-draw) `1:6.1.5-3+deb10u5` - office productivity suite -- drawing
-- ![](green.png) [libreoffice-calc](https://packages.debian.org/buster/libreoffice-calc) `1:6.1.5-3+deb10u5` - office productivity suite -- spreadsheet
-- ![](green.png) [libreoffice-base](https://packages.debian.org/buster/libreoffice-base) `1:6.1.5-3+deb10u5` - office productivity suite -- database
-- ![](green.png) [libreoffice-gtk3](https://packages.debian.org/buster/libreoffice-gtk3) `1:6.1.5-3+deb10u5` - office productivity suite -- GTK+ 3 integration
-- ![](green.png) [libreoffice-style-tango](https://packages.debian.org/buster/libreoffice-style-tango) `1:6.1.5-3+deb10u5` - office productivity suite -- Tango symbol style
-- ![](green.png) [libreoffice-pdfimport](https://packages.debian.org/buster/libreoffice-pdfimport) `1:6.1.5-3+deb10u5` - transitional package for PDF Import component for LibreOffice
-- ![](green.png) [libreoffice-java-common](https://packages.debian.org/buster/libreoffice-java-common) `1:6.1.5-3+deb10u5` - office productivity suite -- arch-independent Java support files
-- ![](green.png) [libreoffice-gnome](https://packages.debian.org/buster/libreoffice-gnome) `1:6.1.5-3+deb10u5` - office productivity suite -- GNOME integration
-- ![](green.png) [libreoffice-avmedia-backend-gstreamer](https://packages.debian.org/buster/libreoffice-avmedia-backend-gstreamer) `1:6.1.5-3+deb10u5` - GStreamer backend for LibreOffice
-- ![](green.png) [libreoffice-avmedia-backend-vlc](https://packages.debian.org/buster/libreoffice-avmedia-backend-vlc) `1:6.1.5-3+deb10u5` - VLC backend for LibreOffice
+- ![](green.png) [libreoffice-writer](https://packages.debian.org/buster/libreoffice-writer) `1:6.1.5-3+deb10u6` - office productivity suite -- word processor
+- ![](green.png) [libreoffice-impress](https://packages.debian.org/buster/libreoffice-impress) `1:6.1.5-3+deb10u6` - office productivity suite -- presentation
+- ![](green.png) [libreoffice-draw](https://packages.debian.org/buster/libreoffice-draw) `1:6.1.5-3+deb10u6` - office productivity suite -- drawing
+- ![](green.png) [libreoffice-calc](https://packages.debian.org/buster/libreoffice-calc) `1:6.1.5-3+deb10u6` - office productivity suite -- spreadsheet
+- ![](green.png) [libreoffice-base](https://packages.debian.org/buster/libreoffice-base) `1:6.1.5-3+deb10u6` - office productivity suite -- database
+- ![](green.png) [libreoffice-gtk3](https://packages.debian.org/buster/libreoffice-gtk3) `1:6.1.5-3+deb10u6` - office productivity suite -- GTK+ 3 integration
+- ![](green.png) [libreoffice-style-tango](https://packages.debian.org/buster/libreoffice-style-tango) `1:6.1.5-3+deb10u6` - office productivity suite -- Tango symbol style
+- ![](green.png) [libreoffice-pdfimport](https://packages.debian.org/buster/libreoffice-pdfimport) `1:6.1.5-3+deb10u6` - transitional package for PDF Import component for LibreOffice
+- ![](green.png) [libreoffice-java-common](https://packages.debian.org/buster/libreoffice-java-common) `1:6.1.5-3+deb10u6` - office productivity suite -- arch-independent Java support files
+- ![](green.png) [libreoffice-gnome](https://packages.debian.org/buster/libreoffice-gnome) `1:6.1.5-3+deb10u6` - office productivity suite -- GNOME integration
+- ![](green.png) [libreoffice-avmedia-backend-gstreamer](https://packages.debian.org/buster/libreoffice-avmedia-backend-gstreamer) `1:6.1.5-3+deb10u6` - GStreamer backend for LibreOffice
+- ![](green.png) [libreoffice-avmedia-backend-vlc](https://packages.debian.org/buster/libreoffice-avmedia-backend-vlc) `1:6.1.5-3+deb10u6` - VLC backend for LibreOffice
 - ![](green.png) [libwmf-bin](https://packages.debian.org/buster/libwmf-bin) `0.2.8.4-14` - Windows metafile conversion tools
 - ![](green.png) [hyphen-fr](https://packages.debian.org/buster/hyphen-fr) `1:6.2.0-1` - French hyphenation patterns
-- ![](green.png) [libreoffice-l10n-fr](https://packages.debian.org/buster/libreoffice-l10n-fr) `1:6.1.5-3+deb10u5` - office productivity suite -- French language package
+- ![](green.png) [libreoffice-l10n-fr](https://packages.debian.org/buster/libreoffice-l10n-fr) `1:6.1.5-3+deb10u6` - office productivity suite -- French language package
 - ![](green.png) [mythes-fr](https://packages.debian.org/buster/mythes-fr) `1:6.2.0-1` - French Thesaurus for LibreOffice
-- ![](green.png) [libreoffice-help-fr](https://packages.debian.org/buster/libreoffice-help-fr) `1:6.1.5-3+deb10u5` - office productivity suite -- French help
+- ![](green.png) [libreoffice-help-fr](https://packages.debian.org/buster/libreoffice-help-fr) `1:6.1.5-3+deb10u6` - office productivity suite -- French help
 - ![](grey.png) _[abiword](https://packages.debian.org/buster/abiword) `3.0.2-8` - efficient, featureful word processor with collaboration_
 - ![](grey.png) _[calligraplan](https://packages.debian.org/buster/calligraplan) `1:3.1.0-3+b1` - integrated project management and planning tool_
 - ![](grey.png) _[calligrasheets](https://packages.debian.org/buster/calligrasheets) `1:3.1.0+dfsg-5` - spreadsheet for the Calligra Suite_
@@ -52,10 +52,10 @@
 - ![](grey.png) _[karbon](https://packages.debian.org/buster/karbon) `1:3.1.0+dfsg-5` - vector graphics application for the Calligra Suite_
 - ![](grey.png) _[key2odp](https://packages.debian.org/buster/key2odp) `0.9.6-2` - Keynote to OpenDocument converter_
 - ![](grey.png) _[libreoffice-dmaths](https://packages.debian.org/buster/libreoffice-dmaths) `4.4.0.0+dfsg1-1` - Formula editing plug-in for LibreOffice Writer_
-- ![](grey.png) _[libreoffice-math](https://packages.debian.org/buster/libreoffice-math) `1:6.1.5-3+deb10u5` - office productivity suite -- equation editor_
-- ![](grey.png) _[libreoffice-style-sifr](https://packages.debian.org/buster/libreoffice-style-sifr) `1:6.1.5-3+deb10u5` - office productivity suite -- Sifr symbol style_
+- ![](grey.png) _[libreoffice-math](https://packages.debian.org/buster/libreoffice-math) `1:6.1.5-3+deb10u6` - office productivity suite -- equation editor_
+- ![](grey.png) _[libreoffice-style-sifr](https://packages.debian.org/buster/libreoffice-style-sifr) `1:6.1.5-3+deb10u6` - office productivity suite -- Sifr symbol style_
 - ![](grey.png) _[lyx](https://packages.debian.org/buster/lyx) `2.3.2-1` - document processor_
-- ![](grey.png) _[python3-uno](https://packages.debian.org/buster/python3-uno) `1:6.1.5-3+deb10u5` - Python-UNO bridge_
+- ![](grey.png) _[python3-uno](https://packages.debian.org/buster/python3-uno) `1:6.1.5-3+deb10u6` - Python-UNO bridge_
 - ![](grey.png) _[retext](https://packages.debian.org/buster/retext) `7.0.4-1` - Simple text editor for Markdown and reStructuredText_
 - ![](grey.png) _[scribus](https://packages.debian.org/buster/scribus) `1.4.8+dfsg-1` - Open Source Desktop Page Layout - stable branch_
 - ![](grey.png) _[scribus-template](https://packages.debian.org/buster/scribus-template) `1.2.4.1-2` - additional scribus templates_
@@ -63,11 +63,11 @@
 - ![](grey.png) _[spotlighter](https://packages.debian.org/buster/spotlighter) `0.3-1.1+b2` - gtk interface to make annotations on the screen_
 - ![](grey.png) _[tpp](https://packages.debian.org/buster/tpp) `1.3.1-7` - text presentation program_
 - ![](grey.png) _[unoconv](https://packages.debian.org/buster/unoconv) `0.7-1.1` - converter between LibreOffice document formats_
-- ![](green.png) [lightning](https://packages.debian.org/buster/lightning) `1:68.6.0-1~deb10u1` - Calendar Extension for Thunderbird
-- ![](green.png) [lightning-l10n-fr](https://packages.debian.org/buster/lightning-l10n-fr) `1:68.6.0-1~deb10u1` - French language package for lightning - Transitional package
+- ![](green.png) [lightning](https://packages.debian.org/buster/lightning) `1:78.3.1-2~deb10u2` - Calendar Extension for Thunderbird - Transitional package
+- ![](green.png) [lightning-l10n-fr](https://packages.debian.org/buster/lightning-l10n-fr) `1:78.3.1-2~deb10u2` - French language package for lightning - Transitional package
 - ![](grey.png) _[pycarddav](https://packages.debian.org/buster/pycarddav) `0.7.0-1` - simple to use CardDAV CLI client_
 - ![](grey.png) _[gnome-calendar](https://packages.debian.org/buster/gnome-calendar) `3.30.1-2` - Calendar application for GNOME_
-- ![](grey.png) _[evolution-data-server](https://packages.debian.org/buster/evolution-data-server) `3.30.5-1` - evolution database backend server_
+- ![](grey.png) _[evolution-data-server](https://packages.debian.org/buster/evolution-data-server) `3.30.5-1+deb10u1` - evolution database backend server_
 - ![](grey.png) _[abook](https://packages.debian.org/buster/abook) `0.6.1-1+b2` - text-based ncurses address book application_
 - ![](grey.png) _[orage](https://packages.debian.org/buster/orage) `4.12.1-6` - Calendar for Xfce Desktop Environment_
 #### Personal finance
@@ -119,7 +119,7 @@
 
 
 - ![](green.png) [evince](https://packages.debian.org/buster/evince) `3.30.2-3+deb10u1` - Document (PostScript, PDF) viewer
-- ![](grey.png) _[mupdf](https://packages.debian.org/buster/mupdf) `1.14.0+ds1-4` - lightweight PDF viewer_
+- ![](grey.png) _[mupdf](https://packages.debian.org/buster/mupdf) `1.14.0+ds1-4+deb10u1` - lightweight PDF viewer_
 - ![](grey.png) _[apvlv](https://packages.debian.org/buster/apvlv) `0.1.5+dfsg-3` - PDF viewer with Vim-like behaviour_
 - ![](grey.png) _[xpdf](https://packages.debian.org/buster/xpdf) `3.04-13` - Portable Document Format (PDF) reader_
 - ![](grey.png) _[calibre](https://packages.debian.org/buster/calibre) `3.39.1+dfsg-3` - powerful and easy to use e-book manager_
@@ -136,7 +136,7 @@
 
 </sub>
 
-<img align="right" src="https://screenshots.debian.net/thumbnail-with-version/pdfchain/1:0.4.4.2-1">
+<img align="right" src="https://screenshots.debian.net/thumbnail-with-version/pdfchain/1:0.4.4.2-1+deb10u1">
 
 **[pdfchain](https://packages.debian.org/buster/pdfchain)** - graphical user interface for the PDF Tool Kit
 
@@ -150,7 +150,7 @@
 -----------------------
 
 
-- ![](green.png) [pdfchain](https://packages.debian.org/buster/pdfchain) `1:0.4.4.2-1` - graphical user interface for the PDF Tool Kit
+- ![](green.png) [pdfchain](https://packages.debian.org/buster/pdfchain) `1:0.4.4.2-1+deb10u1` - graphical user interface for the PDF Tool Kit
 - ![](green.png) [pdfgrep](https://packages.debian.org/buster/pdfgrep) `2.1.2-1` - search in pdf files for strings matching a regular expression
 - ![](green.png) [poppler-utils](https://packages.debian.org/buster/poppler-utils) `0.71.0-5` - PDF utilities (based on Poppler)
 - ![](grey.png) _[qpdf](https://packages.debian.org/buster/qpdf) `8.4.0-2` - tools for transforming and inspecting PDF files_
@@ -213,7 +213,7 @@
 
 
 - ![](green.png) [simple-scan](https://packages.debian.org/buster/simple-scan) `3.30.1.1-1+b1` - Simple Scanning Utility
-- ![](green.png) [imagemagick](https://packages.debian.org/buster/imagemagick) `8:6.9.10.23+dfsg-2.1` - image manipulation programs -- binaries
+- ![](green.png) [imagemagick](https://packages.debian.org/buster/imagemagick) `8:6.9.10.23+dfsg-2.1+deb10u1` - image manipulation programs -- binaries
 - ![](green.png) [sane-utils](https://packages.debian.org/buster/sane-utils) `1.0.27-3.2` - API library for scanners -- utilities
 - ![](grey.png) _[scanbd](https://packages.debian.org/buster/scanbd) `1.5.1-4` - Scanner button daemon_
 - ![](grey.png) _[xsane](https://packages.debian.org/buster/xsane) `0.999-6+b1` - featureful graphical frontend for SANE (Scanner Access Now Easy)_
@@ -244,8 +244,8 @@
 -----------------------
 
 
-- ![](green.png) [cups](https://packages.debian.org/buster/cups) `2.2.10-6+deb10u2` - Common UNIX Printing System(tm) - PPD/driver support, web interface
-- ![](green.png) [cups-client](https://packages.debian.org/buster/cups-client) `2.2.10-6+deb10u2` - Common UNIX Printing System(tm) - client programs (SysV)
+- ![](green.png) [cups](https://packages.debian.org/buster/cups) `2.2.10-6+deb10u3` - Common UNIX Printing System(tm) - PPD/driver support, web interface
+- ![](green.png) [cups-client](https://packages.debian.org/buster/cups-client) `2.2.10-6+deb10u3` - Common UNIX Printing System(tm) - client programs (SysV)
 - ![](green.png) [gutenprint-locales](https://packages.debian.org/buster/gutenprint-locales) `5.3.1-7` - locale data files for Gutenprint
 - ![](green.png) [cups-pk-helper](https://packages.debian.org/buster/cups-pk-helper) `0.2.6-1+b1` - PolicyKit helper to configure cups with fine-grained privileges
 - ![](green.png) [printer-driver-all](https://packages.debian.org/buster/printer-driver-all) `0.20170124` - printer drivers metapackage
@@ -314,7 +314,7 @@
 - ![](green.png) [fonts-ubuntu-title](https://packages.debian.org/buster/fonts-ubuntu-title) `1:0.3-2` - font used to create the Ubuntu logo (2004‒2010)
 - ![](green.png) [fonts-knda](https://packages.debian.org/buster/fonts-knda) `2:1.2` - Meta package for Kannada fonts
 - ![](green.png) [xfonts-terminus](https://packages.debian.org/buster/xfonts-terminus) `4.40-2` - Fixed-width fonts for fast reading
-- ![](green.png) [fonts-opensymbol](https://packages.debian.org/buster/fonts-opensymbol) `2:102.10+LibO6.1.5-3+deb10u5` - OpenSymbol TrueType font
+- ![](green.png) [fonts-opensymbol](https://packages.debian.org/buster/fonts-opensymbol) `2:102.10+LibO6.1.5-3+deb10u6` - OpenSymbol TrueType font
 - ![](green.png) [fonts-roboto](https://packages.debian.org/buster/fonts-roboto) `2:0~20170802-3` - metapackage to pull in Roboto fonts
 - ![](green.png) [fonts-averia-gwf](https://packages.debian.org/buster/fonts-averia-gwf) `1.00-3` - Avería GWF font family
 - ![](green.png) [ttf-mscorefonts-installer](https://packages.debian.org/buster/ttf-mscorefonts-installer) `3.7` - Installer for Microsoft TrueType core fonts

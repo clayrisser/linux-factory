@@ -62,6 +62,7 @@
 - ![](grey.png) _[reflex](https://packages.debian.org/buster/reflex) `0.2.0+git20181022.3df204f-1+b10` - Run a command when files change_
 - ![](grey.png) _[fzf](https://packages.debian.org/buster/fzf) `0.17.5-2+b10` - general-purpose command-line fuzzy finder_
 - ![](grey.png) _[ripgrep](https://packages.debian.org/buster/ripgrep) `0.10.0-2` - Recursively searches directories for a regex pattern_
+- ![](grey.png) _[fd-find](https://packages.debian.org/buster/fd-find) `7.2.0-2` - Simple, fast and user-friendly alternative to find_
 #### Desktop environment
 
 
@@ -113,7 +114,7 @@
 
 </sub>
 
-<img align="right" src="https://screenshots.debian.net/thumbnail-with-version/file-roller/3.30.1-2">
+<img align="right" src="https://screenshots.debian.net/thumbnail-with-version/file-roller/3.30.1-2+deb10u1">
 
 **[file-roller](https://packages.debian.org/buster/file-roller)** - archive manager for GNOME
 
@@ -125,7 +126,7 @@
 -----------------------
 
 
-- ![](green.png) [file-roller](https://packages.debian.org/buster/file-roller) `3.30.1-2` - archive manager for GNOME
+- ![](green.png) [file-roller](https://packages.debian.org/buster/file-roller) `3.30.1-2+deb10u1` - archive manager for GNOME
 - ![](green.png) [atool](https://packages.debian.org/buster/atool) `0.39.0-9` - tool for managing file archives of various types
 - ![](green.png) [p7zip](https://packages.debian.org/buster/p7zip) `16.02+dfsg-6` - 7zr file archiver with high compression ratio
 - ![](green.png) [p7zip-full](https://packages.debian.org/buster/p7zip-full) `16.02+dfsg-6` - 7z and 7za file archivers with high compression ratio
@@ -148,7 +149,7 @@
 - ![](grey.png) _[xarchiver](https://packages.debian.org/buster/xarchiver) `1:0.5.4.14-1` - GTK+ frontend for most used compression formats_
 - ![](grey.png) _[isomaster](https://packages.debian.org/buster/isomaster) `1.3.13-1+b1` - Graphical CD image editor_
 - ![](grey.png) _[p7zip-rar](https://packages.debian.org/buster/p7zip-rar) `16.02-3` - non-free rar module for p7zip_
-#### Password management/file encryption
+#### Password management/file/disk encryption
 
 
 </sub>
@@ -181,6 +182,7 @@
 - ![](green.png) [pwgen](https://packages.debian.org/buster/pwgen) `2.08-1` - Automatic Password generation
 - ![](green.png) [nss-passwords](https://packages.debian.org/buster/nss-passwords) `0.2-2+b2` - read passwords from a Mozilla keyring
 - ![](green.png) [cryptsetup](https://packages.debian.org/buster/cryptsetup) `2:2.1.0-5+deb10u2` - transitional dummy package for cryptsetup-{run,initramfs}
+- ![](green.png) [libblockdev-crypto2](https://packages.debian.org/buster/libblockdev-crypto2) `2.20-7+deb10u1` - Crypto plugin for libblockdev
 - ![](grey.png) _[keepassx](https://packages.debian.org/buster/keepassx) `2.0.3-2` - Cross Platform Password Manager_
 - ![](grey.png) _[keepass2](https://packages.debian.org/buster/keepass2) `2.41+dfsg-1` - Password manager_
 - ![](grey.png) _[qtpass](https://packages.debian.org/buster/qtpass) `1.2.3-2` - GUI for password manager pass_
@@ -229,6 +231,7 @@
 - ![](green.png) [mousepad](https://packages.debian.org/buster/mousepad) `0.4.1-2` - simple Xfce oriented text editor
 - ![](green.png) [nano](https://packages.debian.org/buster/nano) `3.2-3` - small, friendly text editor inspired by Pico
 - ![](green.png) [vim-tiny](https://packages.debian.org/buster/vim-tiny) `2:8.1.0875-5` - Vi IMproved - enhanced vi editor - compact version
+- ![](grey.png) _[gnome-builder](https://packages.debian.org/buster/gnome-builder) `3.30.3-2` - IDE for GNOME_
 - ![](grey.png) _[vim](https://packages.debian.org/buster/vim) `2:8.1.0875-5` - Vi IMproved - enhanced vi editor_
 - ![](grey.png) _[vim-doc](https://packages.debian.org/buster/vim-doc) `2:8.1.0875-5` - Vi IMproved - HTML documentation_
 - ![](grey.png) _[vim-scripts](https://packages.debian.org/buster/vim-scripts) `20180807` - plugins for vim, adding bells and whistles_
@@ -265,7 +268,7 @@
 
 </sub>
 
-<img align="right" src="https://screenshots.debian.net/thumbnail-with-version/gnome-maps/3.30.3-1">
+<img align="right" src="https://screenshots.debian.net/thumbnail-with-version/gnome-maps/3.30.3.1-0+deb10u1">
 
 **[gnome-maps](https://packages.debian.org/buster/gnome-maps)** - map application for GNOME
 
@@ -278,7 +281,7 @@
 -----------------------
 
 
-- ![](green.png) [gnome-maps](https://packages.debian.org/buster/gnome-maps) `3.30.3-1` - map application for GNOME
+- ![](green.png) [gnome-maps](https://packages.debian.org/buster/gnome-maps) `3.30.3.1-0+deb10u1` - map application for GNOME
 - ![](grey.png) _[marble-qt](https://packages.debian.org/buster/marble-qt) `4:17.08.3-3.2` - globe and map widget (no KDE dependencies)_
 - ![](grey.png) _[geoclue-2.0](https://packages.debian.org/buster/geoclue-2.0) `2.5.2-1` - geoinformation service_
 - ![](grey.png) _[josm](https://packages.debian.org/buster/josm) `0.0.svn14760+dfsg-1` - Editor for OpenStreetMap_
@@ -450,7 +453,7 @@
 - ![](green.png) [gconf-editor](https://packages.debian.org/buster/gconf-editor) `3.0.1-6` - editor for the GConf configuration system
 - ![](green.png) [dconf-editor](https://packages.debian.org/buster/dconf-editor) `3.30.2-1` - simple configuration storage system - graphical editor
 - ![](green.png) [dconf-cli](https://packages.debian.org/buster/dconf-cli) `0.30.1-2` - simple configuration storage system - utilities
-- ![](green.png) [qt4-qtconfig](https://packages.debian.org/buster/qt4-qtconfig) `4:4.8.7+dfsg-18` - Qt 4 configuration tool
+- ![](green.png) [qt4-qtconfig](https://packages.debian.org/buster/qt4-qtconfig) `4:4.8.7+dfsg-18+deb10u1` - Qt 4 configuration tool
 - ![](green.png) [gnome-settings-daemon](https://packages.debian.org/buster/gnome-settings-daemon) `3.30.2-3` - daemon handling the GNOME session settings
 - ![](green.png) [dconf-gsettings-backend](https://packages.debian.org/buster/dconf-gsettings-backend) `0.30.1-2` - simple configuration storage system - GSettings back-end
 - ![](grey.png) _[gnome-tweaks](https://packages.debian.org/buster/gnome-tweaks) `3.30.2-1` - tool to adjust advanced configuration settings for GNOME_

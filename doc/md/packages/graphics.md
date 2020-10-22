@@ -4,7 +4,7 @@
 ![](green.png) installed - ![](grey.png) suggested
 
 
-#### Image viewers
+#### Image viewers and managers
 
 
 </sub>
@@ -35,6 +35,12 @@
 - ![](grey.png) _[xzgv](https://packages.debian.org/buster/xzgv) `0.9.1-4+b1` - Picture viewer for X with a thumbnail-based selector_
 - ![](grey.png) _[sxiv](https://packages.debian.org/buster/sxiv) `25-1` - simple X image viewer_
 - ![](grey.png) _[catimg](https://packages.debian.org/buster/catimg) `2.5.0-1` - fast image printing in to your terminal_
+- ![](grey.png) _[nomacs](https://packages.debian.org/buster/nomacs) `3.12.0+dfsg-2` - image viewer with capability of syncing multiple instances_
+- ![](grey.png) _[shotwell](https://packages.debian.org/buster/shotwell) `0.30.1-1` - digital photo organizer_
+- ![](grey.png) _[gthumb](https://packages.debian.org/buster/gthumb) `3:3.6.2-4` - image viewer and browser_
+- ![](grey.png) _[digikam](https://packages.debian.org/buster/digikam) `4:5.9.0-1+b1` - digital photo management application for KDE_
+- ![](grey.png) _[fotoxx](https://packages.debian.org/buster/fotoxx) `18.07.2-1` - easy-to-use digital photo editor_
+- ![](grey.png) _[geeqie](https://packages.debian.org/buster/geeqie) `1:1.4+git20190121-2` - image viewer using GTK+_
 #### Image editors
 
 
@@ -141,14 +147,6 @@
 
 - ![](grey.png) _[rapid-photo-downloader](https://packages.debian.org/buster/rapid-photo-downloader) `0.9.13-1` - Photo downloader (importer) from cameras, memory cards, other devices_
 - ![](grey.png) _[gtkam](https://packages.debian.org/buster/gtkam) `1.0-3` - application for retrieving media from digital cameras_
-#### Image library managers
-
-- ![](grey.png) _[nomacs](https://packages.debian.org/buster/nomacs) `3.12.0+dfsg-2` - image viewer with capability of syncing multiple instances_
-- ![](grey.png) _[shotwell](https://packages.debian.org/buster/shotwell) `0.30.1-1` - digital photo organizer_
-- ![](grey.png) _[gthumb](https://packages.debian.org/buster/gthumb) `3:3.6.2-4` - image viewer and browser_
-- ![](grey.png) _[digikam](https://packages.debian.org/buster/digikam) `4:5.9.0-1+b1` - digital photo management application for KDE_
-- ![](grey.png) _[fotoxx](https://packages.debian.org/buster/fotoxx) `18.07.2-1` - easy-to-use digital photo editor_
-- ![](grey.png) _[geeqie](https://packages.debian.org/buster/geeqie) `1:1.4+git20190121-2` - image viewer using GTK+_
 #### Game asset editors
 
 - ![](grey.png) _[tiled](https://packages.debian.org/buster/tiled) `1.2.1+dfsg.1-1` - general purpose tile map editor_
@@ -250,7 +248,7 @@
 - ![](grey.png) _[education-video](https://packages.debian.org/buster/education-video) `2.10.47` - Debian Edu video applications_
 #### Command-line image manipulation
 
-- ![](green.png) [imagemagick](https://packages.debian.org/buster/imagemagick) `8:6.9.10.23+dfsg-2.1` - image manipulation programs -- binaries
+- ![](green.png) [imagemagick](https://packages.debian.org/buster/imagemagick) `8:6.9.10.23+dfsg-2.1+deb10u1` - image manipulation programs -- binaries
 - ![](green.png) [optipng](https://packages.debian.org/buster/optipng) `0.7.7-1` - advanced PNG (Portable Network Graphics) optimizer
 - ![](green.png) [advancecomp](https://packages.debian.org/buster/advancecomp) `2.1-2.1` - collection of recompression utilities
 - ![](green.png) [jpegoptim](https://packages.debian.org/buster/jpegoptim) `1.4.6-1` - utility to optimize jpeg files

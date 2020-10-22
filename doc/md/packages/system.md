@@ -41,7 +41,7 @@
 
 
 - ![](green.png) [apt-listchanges](https://packages.debian.org/buster/apt-listchanges) `3.19` - package change history notification tool
-- ![](green.png) [apt-transport-https](https://packages.debian.org/buster/apt-transport-https) `1.8.2` - transitional package for https support
+- ![](green.png) [apt-transport-https](https://packages.debian.org/buster/apt-transport-https) `1.8.2.1` - transitional package for https support
 - ![](green.png) [aptitude](https://packages.debian.org/buster/aptitude) `0.8.11-7` - terminal-based package manager
 - ![](green.png) [debconf-utils](https://packages.debian.org/buster/debconf-utils) `1.5.71` - debconf utilities
 - ![](green.png) [debian-archive-keyring](https://packages.debian.org/buster/debian-archive-keyring) `2019.1` - GnuPG archive keys of the Debian archive
@@ -62,7 +62,7 @@
 - ![](grey.png) _[apt-forktracer](https://packages.debian.org/buster/apt-forktracer) `0.5` - utility for tracking non-official package versions_
 - ![](grey.png) _[apt-listbugs](https://packages.debian.org/buster/apt-listbugs) `0.1.28` - tool which lists critical bugs before each APT installation_
 - ![](grey.png) _[aptitude-doc-fr](https://packages.debian.org/buster/aptitude-doc-fr) `0.8.11-7` - French manual for aptitude, a terminal-based package manager_
-- ![](grey.png) _[debian-security-support](https://packages.debian.org/buster/debian-security-support) `2019.12.12~deb10u1` - Debian security support coverage checker_
+- ![](grey.png) _[debian-security-support](https://packages.debian.org/buster/debian-security-support) `2020.06.21~deb10u1` - Debian security support coverage checker_
 - ![](grey.png) _[deborphan](https://packages.debian.org/buster/deborphan) `1.7.31` - program that can find unused packages, e.g. libraries_
 - ![](grey.png) _[debtree](https://packages.debian.org/buster/debtree) `1.0.10+nmu1` - package dependency graphs on steroids_
 - ![](grey.png) _[gnome-software](https://packages.debian.org/buster/gnome-software) `3.30.6-5` - Software Center for GNOME_
@@ -114,7 +114,7 @@
 - ![](grey.png) _[memtester](https://packages.debian.org/buster/memtester) `4.3.0-4+b1` - Utility for testing the memory subsystem_
 - ![](grey.png) _[dstat](https://packages.debian.org/buster/dstat) `0.7.3-1.1` - versatile resource statistics tool_
 - ![](grey.png) _[sysstat](https://packages.debian.org/buster/sysstat) `12.0.3-2` - system performance tools for Linux_
-- ![](grey.png) _[cacti](https://packages.debian.org/buster/cacti) `1.2.2+ds1-2+deb10u2` - web interface for graphing of monitoring systems_
+- ![](grey.png) _[cacti](https://packages.debian.org/buster/cacti) `1.2.2+ds1-2+deb10u3` - web interface for graphing of monitoring systems_
 - ![](grey.png) _[hwloc](https://packages.debian.org/buster/hwloc) `1.11.12-3` - Hierarchical view of the machine - utilities_
 - ![](grey.png) _[memlockd](https://packages.debian.org/buster/memlockd) `1.2` - daemon to lock files into RAM_
 - ![](grey.png) _[read-edid](https://packages.debian.org/buster/read-edid) `3.0.2-1+b1` - hardware information-gathering tool for VESA PnP monitors_
@@ -218,7 +218,7 @@
 - ![](green.png) [dosfstools](https://packages.debian.org/buster/dosfstools) `4.1-2` - utilities for making and checking MS-DOS FAT filesystems
 - ![](green.png) [hfsprogs](https://packages.debian.org/buster/hfsprogs) `332.25-11+b2` - mkfs and fsck for HFS and HFS+ file systems
 - ![](green.png) [ntfs-3g](https://packages.debian.org/buster/ntfs-3g) `1:2017.3.23AR.3-3` - read/write NTFS driver for FUSE
-- ![](green.png) [kpartx](https://packages.debian.org/buster/kpartx) `0.7.9-3` - create device mappings for partitions
+- ![](green.png) [kpartx](https://packages.debian.org/buster/kpartx) `0.7.9-3+deb10u1` - create device mappings for partitions
 - ![](green.png) [xorriso](https://packages.debian.org/buster/xorriso) `1.5.0-1` - command line ISO-9660 and Rock Ridge manipulation tool
 - ![](grey.png) _[disk-manager](https://packages.debian.org/buster/disk-manager) `1.1.1-2` - simple graphical filesystem configurator_
 - ![](grey.png) _[gsmartcontrol](https://packages.debian.org/buster/gsmartcontrol) `1.1.3-2` - graphical user interface for smartctl_
@@ -353,8 +353,9 @@
 - ![](green.png) [ebtables](https://packages.debian.org/buster/ebtables) `2.0.10.4+snapshot20181205-3` - Ethernet bridge frame table administration
 - ![](green.png) [dnsmasq-base](https://packages.debian.org/buster/dnsmasq-base) `2.80-1` - Small caching DNS proxy and DHCP/TFTP server
 - ![](green.png) [libvirt-daemon-system](https://packages.debian.org/buster/libvirt-daemon-system) `5.0.0-4+deb10u1` - Libvirt daemon configuration files
-- ![](green.png) [qemu-kvm](https://packages.debian.org/buster/qemu-kvm) `1:3.1+dfsg-8+deb10u4` - QEMU Full virtualization on x86 hardware
-- ![](green.png) [qemu-utils](https://packages.debian.org/buster/qemu-utils) `1:3.1+dfsg-8+deb10u4` - QEMU utilities
+- ![](green.png) [gir1.2-spiceclientgtk-3.0](https://packages.debian.org/buster/gir1.2-spiceclientgtk-3.0) `0.35-2` - GTK3 widget for SPICE clients (GObject-Introspection)
+- ![](green.png) [qemu-kvm](https://packages.debian.org/buster/qemu-kvm) `1:3.1+dfsg-8+deb10u8` - QEMU Full virtualization on x86 hardware
+- ![](green.png) [qemu-utils](https://packages.debian.org/buster/qemu-utils) `1:3.1+dfsg-8+deb10u8` - QEMU utilities
 - ![](green.png) [virt-top](https://packages.debian.org/buster/virt-top) `1.0.8-2` - show stats of virtualized domains
 - ![](green.png) [netcat-openbsd](https://packages.debian.org/buster/netcat-openbsd) `1.195-2` - TCP/IP swiss army knife
 - ![](grey.png) _[virt-sandbox](https://packages.debian.org/buster/virt-sandbox) `0.5.1+git20160404-1` - Application sandbox toolkit_
@@ -362,10 +363,10 @@
 - ![](grey.png) _[libguestfs-tools](https://packages.debian.org/buster/libguestfs-tools) `1:1.40.2-2` - guest disk image management system - tools_
 - ![](grey.png) _[lxc](https://packages.debian.org/buster/lxc) `1:3.1.0+really3.0.3-8` - Linux Containers userspace tools_
 - ![](grey.png) _[gnome-boxes](https://packages.debian.org/buster/gnome-boxes) `3.30.3-2` - Simple GNOME app to access remote or virtual systems_
-- ![](grey.png) _[lxc-templates](https://packages.debian.org/buster/lxc-templates) `3.0.3-1` - Linux Containers userspace tools (templates)_
-- ![](grey.png) _[docker.io](https://packages.debian.org/buster/docker.io) `18.09.1+dfsg1-7.1+deb10u1` - Linux container runtime_
+- ![](grey.png) _[lxc-templates](https://packages.debian.org/buster/lxc-templates) `3.0.4-0+deb10u1` - Linux Containers userspace tools (templates)_
+- ![](grey.png) _[docker.io](https://packages.debian.org/buster/docker.io) `18.09.1+dfsg1-7.1+deb10u2` - Linux container runtime_
 - ![](grey.png) _[docker-registry](https://packages.debian.org/buster/docker-registry) `2.6.2~ds1-2+b21` - Docker toolset to pack, ship, store, and deliver content_
-- ![](grey.png) _[docker-doc](https://packages.debian.org/buster/docker-doc) `18.09.1+dfsg1-7.1+deb10u1` - Linux container runtime -- documentation_
+- ![](grey.png) _[docker-doc](https://packages.debian.org/buster/docker-doc) `18.09.1+dfsg1-7.1+deb10u2` - Linux container runtime -- documentation_
 - ![](grey.png) _[anbox](https://packages.debian.org/buster/anbox) `0.0~git20190124-1` - Android in a box_
 - ![](grey.png) _[vagrant](https://packages.debian.org/buster/vagrant) `2.2.3+dfsg-1` - Tool for building and distributing virtualized development environments_
 - ![](grey.png) _[schroot](https://packages.debian.org/buster/schroot) `1.6.10-6+b1` - Execute commands in a chroot environment_
@@ -445,6 +446,7 @@
 - ![](green.png) [lightdm](https://packages.debian.org/buster/lightdm) `1.26.0-4` - simple display manager
 - ![](green.png) [lightdm-gtk-greeter](https://packages.debian.org/buster/lightdm-gtk-greeter) `2.0.6-1` - simple display manager (GTK+ greeter)
 - ![](green.png) [light-locker](https://packages.debian.org/buster/light-locker) `1.8.0-3` - simple screen locker for lightDM display manager
+- ![](green.png) [accountsservice](https://packages.debian.org/buster/accountsservice) `0.6.45-2` - query and manipulate user account information
 - ![](grey.png) _[slim](https://packages.debian.org/buster/slim) `1.3.6-5.1` - desktop-independent graphical login manager for X11_
 - ![](grey.png) _[gdm3](https://packages.debian.org/buster/gdm3) `3.30.2-3` - GNOME Display Manager_
 - ![](grey.png) _[arctica-greeter](https://packages.debian.org/buster/arctica-greeter) `0.99.1.3-1` - LightDM Arctica Greeter_
@@ -476,7 +478,8 @@
 - ![](grey.png) _[apparmor-profiles-extra](https://packages.debian.org/buster/apparmor-profiles-extra) `1.26` - Extra profiles for AppArmor Security policies_
 #### Time
 
-- ![](green.png) [ntp](https://packages.debian.org/buster/ntp) `1:4.2.8p12+dfsg-4` - Network Time Protocol daemon and utility programs
+- ![](green.png) [chrony](https://packages.debian.org/buster/chrony) `3.4-4+deb10u1` - Versatile implementation of the Network Time Protocol
+- ![](grey.png) _[ntp](https://packages.debian.org/buster/ntp) `1:4.2.8p12+dfsg-4` - Network Time Protocol daemon and utility programs_
 #### Display
 
 
@@ -521,26 +524,27 @@
 - ![](green.png) [xserver-xorg-video-intel](https://packages.debian.org/buster/xserver-xorg-video-intel) `2:2.99.917+git20180925-2` - X.Org X server -- Intel i8xx, i9xx display driver
 - ![](green.png) [xfonts-base](https://packages.debian.org/buster/xfonts-base) `1:1.0.5` - standard fonts for X
 - ![](green.png) [hwdata](https://packages.debian.org/buster/hwdata) `0.290-1` - hardware identification / configuration data
+- ![](green.png) [nvidia-driver](https://packages.debian.org/buster/nvidia-driver) `418.152.00-1` - NVIDIA metapackage
 #### Kernel/boot/init
 
-- ![](green.png) [linux-headers-amd64](https://packages.debian.org/buster/linux-headers-amd64) `4.19+105+deb10u3` - Header files for Linux amd64 configuration (meta-package)
-- ![](green.png) [linux-headers-686:i386](https://packages.debian.org/buster/linux-headers-686:i386) `4.19+105+deb10u3` - Header files for Linux 686 configuration (meta-package)
+- ![](green.png) [linux-headers-amd64](https://packages.debian.org/buster/linux-headers-amd64) `4.19+105+deb10u7` - Header files for Linux amd64 configuration (meta-package)
+- ![](green.png) [linux-headers-686:i386](https://packages.debian.org/buster/linux-headers-686:i386) `4.19+105+deb10u7` - Header files for Linux 686 configuration (meta-package)
 - ![](green.png) [module-assistant](https://packages.debian.org/buster/module-assistant) `0.11.10` - tool to make module package creation easier
 - ![](green.png) [dkms](https://packages.debian.org/buster/dkms) `2.6.1-4` - Dynamic Kernel Module Support Framework
 - ![](green.png) [build-essential](https://packages.debian.org/buster/build-essential) `12.6` - Informational list of build-essential packages
-- ![](green.png) [systemd](https://packages.debian.org/buster/systemd) `241-7~deb10u3` - system and service manager
+- ![](green.png) [systemd](https://packages.debian.org/buster/systemd) `241-7~deb10u4` - system and service manager
 - ![](green.png) [os-prober](https://packages.debian.org/buster/os-prober) `1.77` - utility to detect other OSes on a set of drives
 - ![](green.png) [initramfs-tools](https://packages.debian.org/buster/initramfs-tools) `0.133+deb10u1` - generic modular initramfs generator (automation)
 - ![](green.png) [console-setup](https://packages.debian.org/buster/console-setup) `1.193~deb10u1` - console font and keymap setup program
 - ![](green.png) [user-setup](https://packages.debian.org/buster/user-setup) `1.81` - Set up initial user and password
-- ![](green.png) [libpam-systemd](https://packages.debian.org/buster/libpam-systemd) `241-7~deb10u3` - system and service manager - PAM module
+- ![](green.png) [libpam-systemd](https://packages.debian.org/buster/libpam-systemd) `241-7~deb10u4` - system and service manager - PAM module
 - ![](grey.png) _[kexec-tools](https://packages.debian.org/buster/kexec-tools) `1:2.0.18-1` - tools to support fast kexec reboots_
 #### Firmwares
 
 - ![](green.png) [firmware-linux-free](https://packages.debian.org/buster/firmware-linux-free) `3.4` - Binary firmware for various drivers in the Linux kernel
 - ![](green.png) [firmware-linux-nonfree](https://packages.debian.org/buster/firmware-linux-nonfree) `20190114-2` - Binary firmware for various drivers in the Linux kernel (meta-package)
 - ![](green.png) [amd64-microcode](https://packages.debian.org/buster/amd64-microcode) `3.20181128.1` - Processor microcode firmware for AMD CPUs
-- ![](green.png) [intel-microcode](https://packages.debian.org/buster/intel-microcode) `3.20191115.2~deb10u1` - Processor microcode firmware for Intel CPUs
+- ![](green.png) [intel-microcode](https://packages.debian.org/buster/intel-microcode) `3.20200616.1~deb10u1` - Processor microcode firmware for Intel CPUs
 #### Hardware-specific packages
 
 - ![](grey.png) _[driverctl](https://packages.debian.org/buster/driverctl) `0.101-1` - Device driver control utility for Linux_
@@ -549,6 +553,7 @@
 - ![](grey.png) _[wmgui](https://packages.debian.org/buster/wmgui) `0.6.00+svn201-4` - GUI interface to the wiimote_
 - ![](grey.png) _[mbpfan](https://packages.debian.org/buster/mbpfan) `2.0.2-1` - fan control daemon for Apple Macbooks_
 - ![](grey.png) _[usbmuxd](https://packages.debian.org/buster/usbmuxd) `1.1.1~git20181007.f838cf6-1` - USB multiplexor daemon for iPhone and iPod Touch devices_
+- ![](grey.png) _[fprintd](https://packages.debian.org/buster/fprintd) `0.8.1-1` - D-Bus daemon for fingerprint reader access_
 #### Live system components
 
 - ![](green.png) [live-boot](https://packages.debian.org/buster/live-boot) `1:20190614` - Live System Boot Components

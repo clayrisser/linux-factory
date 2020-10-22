@@ -57,7 +57,7 @@
 
 
 - ![](green.png) [gitg](https://packages.debian.org/buster/gitg) `3.30.1-1` - git repository viewer
-- ![](green.png) [git](https://packages.debian.org/buster/git) `1:2.20.1-2+deb10u1` - fast, scalable, distributed revision control system
+- ![](green.png) [git](https://packages.debian.org/buster/git) `1:2.20.1-2+deb10u3` - fast, scalable, distributed revision control system
 - ![](green.png) [meld](https://packages.debian.org/buster/meld) `3.20.0-2` - graphical tool to diff and merge files
 - ![](green.png) [gource](https://packages.debian.org/buster/gource) `0.49-1+b2` - graphical source control visualisation
 - ![](green.png) [colordiff](https://packages.debian.org/buster/colordiff) `1.0.18-1` - tool to colorize 'diff' output
@@ -65,7 +65,7 @@
 - ![](green.png) [cloc](https://packages.debian.org/buster/cloc) `1.80-1` - statistics utility to count lines of code
 - ![](grey.png) _[fossil](https://packages.debian.org/buster/fossil) `1:2.8-1` - DSCM with built-in wiki, http interface and server, tickets database_
 - ![](grey.png) _[ghi](https://packages.debian.org/buster/ghi) `1.2.0-1` - GitHub issue tracker command line interface (CLI)_
-- ![](grey.png) _[git-mediawiki](https://packages.debian.org/buster/git-mediawiki) `1:2.20.1-2+deb10u1` - fast, scalable, distributed revision control system (MediaWiki remote helper)_
+- ![](grey.png) _[git-mediawiki](https://packages.debian.org/buster/git-mediawiki) `1:2.20.1-2+deb10u3` - fast, scalable, distributed revision control system (MediaWiki remote helper)_
 - ![](grey.png) _[git-sizer](https://packages.debian.org/buster/git-sizer) `1.3.0+dfsg-1` - compute various size metrics for a Git repository_
 - ![](grey.png) _[svn2git](https://packages.debian.org/buster/svn2git) `2.4.0-2` - Ruby tool for migrating svn projects to git_
 - ![](grey.png) _[github-backup](https://packages.debian.org/buster/github-backup) `1.20170301-2` - backs up data from GitHub_
@@ -196,8 +196,8 @@
 - ![](grey.png) _[sqlite3](https://packages.debian.org/buster/sqlite3) `3.27.2-3` - Command line interface for SQLite 3_
 - ![](grey.png) _[webcheck](https://packages.debian.org/buster/webcheck) `1.10.4-1.1` - website link and structure checker_
 - ![](grey.png) _[vera](https://packages.debian.org/buster/vera) `1.23-1` - Dictionary of computer related acronyms -- info format_
-- ![](grey.png) _[nodejs](https://packages.debian.org/buster/nodejs) `10.15.2~dfsg-2` - evented I/O for V8 javascript - runtime executable_
-- ![](grey.png) _[npm](https://packages.debian.org/buster/npm) `5.8.0+ds6-4` - package manager for Node.js_
+- ![](grey.png) _[nodejs](https://packages.debian.org/buster/nodejs) `10.21.0~dfsg-1~deb10u1` - evented I/O for V8 javascript - runtime executable_
+- ![](grey.png) _[npm](https://packages.debian.org/buster/npm) `5.8.0+ds6-4+deb10u2` - package manager for Node.js_
 - ![](grey.png) _[jsbeautifier](https://packages.debian.org/buster/jsbeautifier) `1.6.4-7` - JavaScript unobfuscator and beautifier_
 #### PHP
 
@@ -207,6 +207,5 @@
 - ![](grey.png) _[android-sdk](https://packages.debian.org/buster/android-sdk) `25.0.0+11+deb10u1` - Software development kit for Android platform_
 - ![](grey.png) _[android-sdk-platform-tools-common](https://packages.debian.org/buster/android-sdk-platform-tools-common) `27.0.0+11+deb10u1` - Tools for interacting with an Android platform - Common files_
 - ![](grey.png) _[android-tools-fastboot](https://packages.debian.org/buster/android-tools-fastboot) `1:8.1.0+r23-5` - transitional package_
-- ![](grey.png) _[gplaycli](https://packages.debian.org/buster/gplaycli) `3.25+ds-1` - Google Play downloader command line interface_
 - ![](grey.png) _[adb](https://packages.debian.org/buster/adb) `1:8.1.0+r23-5` - Android Debug Bridge_
 - ![](grey.png) _[fastboot](https://packages.debian.org/buster/fastboot) `1:8.1.0+r23-5` - Android fastboot tool_
