@@ -316,6 +316,7 @@ openssh-server
 #Alt: kismet
 #Alt: kismet-plugins
 #Alt: reaver
+#bully #sid only
 #Alt: hydra
 #Alt: pcredz
 #Alt: hydra-gtk
