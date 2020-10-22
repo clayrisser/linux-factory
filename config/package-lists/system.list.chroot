@@ -236,7 +236,8 @@ sudo
 #Alt: apparmor-profiles-extra
 
 #Section: Time
-ntp
+chrony
+#Alt: ntp
 
 #Section: Display
 #Description: xorg
