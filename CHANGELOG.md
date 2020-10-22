@@ -9,7 +9,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Added
 
 - add [Lutris](https://lutris.net) gaming platform
-- add zrdt compression tool
 - add sensible defaults for mousepad text editor
 
 ### Fixed
