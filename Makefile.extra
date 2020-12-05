@@ -11,7 +11,7 @@ download_extra:
 	mkdir -p config/includes.chroot/usr/share/xfce4/terminal/
 	mv cache/downloads/xfce4-terminal-colorschemes-1.0 config/includes.chroot/usr/share/xfce4/terminal/colorschemes
 	# https://github.com/scopatz/nanorc
-	-rm -rf config/includes.chroot/etc/skel/.nano cache/downloads/nano-highlight-master
+	-rm -rf config/includes.chroot/etc/skel/.nano cache/downloads/nanorc-master.zip
 	$(WGET) https://github.com/scopatz/nanorc/archive/master.zip -O cache/downloads/nanorc-master.zip
 	unzip -q cache/downloads/nanorc-master.zip -d cache/downloads/
 	mv cache/downloads/nanorc-master config/includes.chroot/etc/skel/.nano
