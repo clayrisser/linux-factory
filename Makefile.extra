@@ -1,30 +1,41 @@
 #!/usr/bin/make
 WGET=wget --continue --no-verbose --show-progress --directory-prefix=cache/downloads/
-download_extra:
+
+all: download_extra
+
+clean:
+	rm -rf config/includes.chroot/usr/share/xfce4/terminal/colorschemes cache/downloads/xfce4-terminal-colorschemes-1.0
+	rm -rf config/includes.chroot/etc/skel/.nano cache/downloads/nanorc-master.zip
+	rm -rf config/includes.chroot/usr/share/bleachbit/cleaners cache/downloads/cleanerml-master
+	rm -rf config/includes.chroot/etc/firefox-esr/firefox-esr.js cache/downloads/user.js-0.1
+	rm -rf config/includes.chroot/usr/lib/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}
+	rm -rf  cache/downloads/sublime_text_3 config/includes.chroot/opt/sublime_text
+	rm -f cache/downloads/pidgin-opensteamworks_1.7-buster0-1_amd64.deb
+	rm -f cache/downloads/cleanerml-master.zip
+	rm -f cache/downloads/lutris_0.5.8.1_all.deb
+	rm -f cache/downloads/user.js-0.1.zip
+	rm -f cache/downloads/xfce4-terminal-colorschemes-1.0.zip
+
+download_extra: clean
 	# Download unpackaged/third-party software
 	# TODO file ITPs on bugs.debian.org, package for Debian
 	mkdir -p cache/downloads/
 	# https://gitlab.com/nodiscc/xfce4-terminal-colorschemes
-	-rm -rf config/includes.chroot/usr/share/xfce4/terminal/colorschemes cache/downloads/xfce4-terminal-colorschemes-1.0
 	$(WGET) https://gitlab.com/nodiscc/xfce4-terminal-colorschemes/-/archive/1.0/xfce4-terminal-colorschemes-1.0.zip
 	unzip -q cache/downloads/xfce4-terminal-colorschemes-1.0.zip -d cache/downloads/
 	mkdir -p config/includes.chroot/usr/share/xfce4/terminal/
 	mv cache/downloads/xfce4-terminal-colorschemes-1.0 config/includes.chroot/usr/share/xfce4/terminal/colorschemes
 	# https://github.com/scopatz/nanorc
-	-rm -rf config/includes.chroot/etc/skel/.nano cache/downloads/nanorc-master.zip
 	$(WGET) https://github.com/scopatz/nanorc/archive/master.zip -O cache/downloads/nanorc-master.zip
 	unzip -q cache/downloads/nanorc-master.zip -d cache/downloads/
 	mv cache/downloads/nanorc-master config/includes.chroot/etc/skel/.nano
 	git checkout -- config/includes.chroot/etc/skel/.nanorc
-	echo 'include ~/.nano/*.nanorc' >> config/includes.chroot/etc/skel/.nanorc
 	# https://github.com/az0/cleanerml
-	-rm -rf config/includes.chroot/usr/share/bleachbit/cleaners cache/downloads/cleanerml-master
 	$(WGET) https://github.com/az0/cleanerml/archive/master.zip -O cache/downloads/cleanerml-master.zip
 	unzip -q cache/downloads/cleanerml-master.zip -d cache/downloads/
 	mkdir -p config/includes.chroot/usr/share/bleachbit/cleaners
 	mv cache/downloads/cleanerml-master/release/* config/includes.chroot/usr/share/bleachbit/cleaners/
 	# https://github.com/nodiscc/user.js
-	-rm -rf config/includes.chroot/etc/firefox-esr/firefox-esr.js cache/downloads/user.js-0.1
 	$(WGET) https://github.com/nodiscc/user.js/archive/0.1.zip -O cache/downloads/user.js-0.1.zip
 	unzip -q cache/downloads/user.js-0.1.zip -d cache/downloads/
 	mkdir -p config/includes.chroot/etc/firefox-esr
@@ -41,11 +52,9 @@ download_extra:
 	$(WGET) https://addons.mozilla.org/firefox/downloads/file/3465157/keepassxc_browser-latest-fx.xpi -O config/includes.chroot/usr/lib/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}/keepassxc-browser@keepassxc.org.xpi
 	$(WGET) https://addons.mozilla.org/firefox/downloads/file/3530747/cookie_autodelete-3.1.1-an+fx.xpi -O config/includes.chroot/usr/lib/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}/CookieAutoDelete@kennydo.com.xpi
 	# https://www.sublimetext.com/ (non-free)
-	#-rm -rf  cache/downloads/sublime_text_3 config/includes.chroot/opt/sublime_text
 	#$(WGET) https://download.sublimetext.com/sublime_text_3_build_3211_x64.tar.bz2
 	#tar -C cache/downloads -xvf cache/downloads/sublime_text_3_build_3211_x64.tar.bz2
 	#mkdir -p config/includes.chroot/opt
 	#mv cache/downloads/sublime_text_3 config/includes.chroot/opt/sublime_text
 	# https://github.com/ars3niy/tdlib-purple
 	#$(WGET) https://download.opensuse.org/repositories/home:/ars3n1y/Debian_10/amd64/libpurple-telegram-tdlib_0.7.1-1_amd64.deb
-
