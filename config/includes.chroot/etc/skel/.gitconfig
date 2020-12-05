@@ -15,3 +15,13 @@
 	sl = shortlog
 	gc = gc --aggressive
 	thanks = shortlog -sne
+
+# force GPG signing of all commits and tags
+#[commit]
+#    gpgSign = true
+#[tag]
+#    forceSignAnnotated = true
+#[gpg]
+#    program = gpg
+#[user]
+#    signingKey = EE73FC8FD71E3CC83606FDF361B23168A539DBBD
