@@ -158,8 +158,8 @@ xfce4-notes
 
 
 #Section: Maps
-#Description: gnome-maps
-gnome-maps
+##Description: gnome-maps
+#Alt: gnome-maps
 #Alt: marble-qt
 #alt: marble-plugins
 #Alt: geoclue-2.0
