@@ -128,8 +128,8 @@ wget
 
 
 #Section: Feed readers
-#Description: liferea
-liferea
+##Description: liferea
+#Alt: liferea
 #yarssr #stretch only
 #Alt: newsbeuter
 #olive #stretch only
