@@ -255,7 +255,7 @@
 - ![](green.png) [pngcrush](https://packages.debian.org/buster/pngcrush) `1.8.13-0.1` - optimizes PNG (Portable Network Graphics) files
 - ![](green.png) [exifprobe](https://packages.debian.org/buster/exifprobe) `2.0.1+git20170416.3c2b769-3` - read metadata from digital pictures
 - ![](green.png) [findimagedupes](https://packages.debian.org/buster/findimagedupes) `2.18-7` - Finds visually similar or duplicate images
-- ![](green.png) [librsvg2-bin](https://packages.debian.org/buster/librsvg2-bin) `2.44.10-2.1` - command-line and graphical viewers for SVG files
+- ![](green.png) [librsvg2-bin](https://packages.debian.org/buster/librsvg2-bin) `2.44.10-2.1+deb10u3` - command-line and graphical viewers for SVG files
 - ![](green.png) [figlet](https://packages.debian.org/buster/figlet) `2.2.5-3` - Make large character ASCII banners out of ordinary text
 - ![](green.png) [toilet](https://packages.debian.org/buster/toilet) `0.3-1.2` - display large colourful characters in text mode
 - ![](grey.png) _[caca-utils](https://packages.debian.org/buster/caca-utils) `0.99.beta19-2.1` - text mode graphics utilities_

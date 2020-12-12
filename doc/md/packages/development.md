@@ -193,7 +193,7 @@
 #### HTML/CC/JS
 
 - ![](grey.png) _[csstidy](https://packages.debian.org/buster/csstidy) `1.4-5` - CSS parser and optimiser_
-- ![](grey.png) _[sqlite3](https://packages.debian.org/buster/sqlite3) `3.27.2-3` - Command line interface for SQLite 3_
+- ![](grey.png) _[sqlite3](https://packages.debian.org/buster/sqlite3) `3.27.2-3+deb10u1` - Command line interface for SQLite 3_
 - ![](grey.png) _[webcheck](https://packages.debian.org/buster/webcheck) `1.10.4-1.1` - website link and structure checker_
 - ![](grey.png) _[vera](https://packages.debian.org/buster/vera) `1.23-1` - Dictionary of computer related acronyms -- info format_
 - ![](grey.png) _[nodejs](https://packages.debian.org/buster/nodejs) `10.21.0~dfsg-1~deb10u1` - evented I/O for V8 javascript - runtime executable_

@@ -9,7 +9,7 @@
 
 </sub>
 
-<img align="right" src="https://screenshots.debian.net/thumbnail-with-version/firefox-esr/78.4.0esr-1~deb10u2">
+<img align="right" src="https://screenshots.debian.net/thumbnail-with-version/firefox-esr/78.5.0esr-1~deb10u1">
 
 **[firefox-esr](https://packages.debian.org/buster/firefox-esr)** - Mozilla Firefox web browser - Extended Support Release (ESR)
 
@@ -22,11 +22,11 @@
 -----------------------
 
 
-- ![](green.png) [firefox-esr](https://packages.debian.org/buster/firefox-esr) `78.4.0esr-1~deb10u2` - Mozilla Firefox web browser - Extended Support Release (ESR)
-- ![](green.png) [firefox-esr-l10n-fr](https://packages.debian.org/buster/firefox-esr-l10n-fr) `78.4.0esr-1~deb10u2` - French language package for Firefox ESR
+- ![](green.png) [firefox-esr](https://packages.debian.org/buster/firefox-esr) `78.5.0esr-1~deb10u1` - Mozilla Firefox web browser - Extended Support Release (ESR)
+- ![](green.png) [firefox-esr-l10n-fr](https://packages.debian.org/buster/firefox-esr-l10n-fr) `78.5.0esr-1~deb10u1` - French language package for Firefox ESR
 - ![](green.png) [pkg-mozilla-archive-keyring](https://packages.debian.org/buster/pkg-mozilla-archive-keyring) `1.2` - GnuPG archive keys for the Debian Mozilla team package repository
 - ![](green.png) [webext-https-everywhere](https://packages.debian.org/buster/webext-https-everywhere) `2019.1.31-2` - Extension to force the use of HTTPS on many sites
-- ![](green.png) [webext-ublock-origin](https://packages.debian.org/buster/webext-ublock-origin) `1.22.2+dfsg-1~deb10u1` - general-purpose lightweight ads, malware, trackers blocker (Web Extension)
+- ![](green.png) [webext-ublock-origin](https://packages.debian.org/buster/webext-ublock-origin) `1.30.0+dfsg-1~deb10u1` - transitional package
 - ![](grey.png) _[midori](https://packages.debian.org/buster/midori) `7.0-2` - fast, lightweight graphical web browser_
 - ![](grey.png) _[luakit](https://packages.debian.org/buster/luakit) `1:2.1-1` - fast and small web browser extensible by Lua_
 - ![](grey.png) _[chromium](https://packages.debian.org/buster/chromium) `83.0.4103.116-1~deb10u3` - web browser_
@@ -105,7 +105,7 @@
 
 </sub>
 
-<img align="right" src="https://screenshots.debian.net/thumbnail-with-version/thunderbird/1:78.3.1-2~deb10u2">
+<img align="right" src="https://screenshots.debian.net/thumbnail-with-version/thunderbird/1:78.5.1-1~deb10u1">
 
 **[thunderbird](https://packages.debian.org/buster/thunderbird)** - mail/news client with RSS, chat and integrated spam filter support
 
@@ -123,13 +123,13 @@
 -----------------------
 
 
-- ![](green.png) [thunderbird](https://packages.debian.org/buster/thunderbird) `1:78.3.1-2~deb10u2` - mail/news client with RSS, chat and integrated spam filter support
-- ![](green.png) [thunderbird-l10n-fr](https://packages.debian.org/buster/thunderbird-l10n-fr) `1:78.3.1-2~deb10u2` - French language package for Thunderbird
+- ![](green.png) [thunderbird](https://packages.debian.org/buster/thunderbird) `1:78.5.1-1~deb10u1` - mail/news client with RSS, chat and integrated spam filter support
+- ![](green.png) [thunderbird-l10n-fr](https://packages.debian.org/buster/thunderbird-l10n-fr) `1:78.5.1-1~deb10u1` - French language package for Thunderbird
 - ![](grey.png) _[geary](https://packages.debian.org/buster/geary) `0.12.4-4` - lightweight email client designed for the GNOME desktop_
 - ![](grey.png) _[claws-mail](https://packages.debian.org/buster/claws-mail) `3.17.3-2` - Fast, lightweight and user-friendly GTK+2 based email client_
 - ![](grey.png) _[claws-mail-plugins](https://packages.debian.org/buster/claws-mail-plugins) `3.17.3-2` - Installs plugins for the Claws Mail mailer_
 - ![](grey.png) _[mailnag](https://packages.debian.org/buster/mailnag) `1.2.1-1.1` - extensible mail notification daemon_
-- ![](grey.png) _[mutt](https://packages.debian.org/buster/mutt) `1.10.1-2.1+deb10u3` - text-based mailreader supporting MIME, GPG, PGP and threading_
+- ![](grey.png) _[mutt](https://packages.debian.org/buster/mutt) `1.10.1-2.1+deb10u4` - text-based mailreader supporting MIME, GPG, PGP and threading_
 - ![](grey.png) _[alpine](https://packages.debian.org/buster/alpine) `2.21+dfsg1-1.1` - Text-based email client, friendly for novices but powerful_
 - ![](grey.png) _[getmail4](https://packages.debian.org/buster/getmail4) `5.13-1` - transitional dummy package_
 - ![](grey.png) _[evolution](https://packages.debian.org/buster/evolution) `3.30.5-1.1` - groupware suite with mail client and organizer_
@@ -179,7 +179,7 @@
 
 </sub>
 
-<img align="right" src="https://screenshots.debian.net/thumbnail-with-version/transmission-gtk/2.94-2+deb10u1">
+<img align="right" src="https://screenshots.debian.net/thumbnail-with-version/transmission-gtk/2.94-2+deb10u2">
 
 **[transmission-gtk](https://packages.debian.org/buster/transmission-gtk)** - lightweight BitTorrent client (GTK+ interface)
 
@@ -193,13 +193,13 @@
 -----------------------
 
 
-- ![](green.png) [transmission-gtk](https://packages.debian.org/buster/transmission-gtk) `2.94-2+deb10u1` - lightweight BitTorrent client (GTK+ interface)
-- ![](green.png) [transmission-cli](https://packages.debian.org/buster/transmission-cli) `2.94-2+deb10u1` - lightweight BitTorrent client (command line programs)
+- ![](green.png) [transmission-gtk](https://packages.debian.org/buster/transmission-gtk) `2.94-2+deb10u2` - lightweight BitTorrent client (GTK+ interface)
+- ![](green.png) [transmission-cli](https://packages.debian.org/buster/transmission-cli) `2.94-2+deb10u2` - lightweight BitTorrent client (command line programs)
 - ![](grey.png) _[qbittorrent](https://packages.debian.org/buster/qbittorrent) `4.1.5-1+deb10u1` - bittorrent client based on libtorrent-rasterbar with a Qt5 GUI_
 - ![](grey.png) _[deluge-gtk](https://packages.debian.org/buster/deluge-gtk) `1.3.15-2` - bittorrent client written in Python/PyGTK (GTK+ ui)_
 - ![](grey.png) _[deluge-console](https://packages.debian.org/buster/deluge-console) `1.3.15-2` - bittorrent client written in Python/PyGTK (console ui)_
 - ![](grey.png) _[deluge-web](https://packages.debian.org/buster/deluge-web) `1.3.15-2` - bittorrent client written in Python/PyGTK (web ui)_
-- ![](grey.png) _[transmission-daemon](https://packages.debian.org/buster/transmission-daemon) `2.94-2+deb10u1` - lightweight BitTorrent client (daemon)_
+- ![](grey.png) _[transmission-daemon](https://packages.debian.org/buster/transmission-daemon) `2.94-2+deb10u2` - lightweight BitTorrent client (daemon)_
 - ![](grey.png) _[transmission-remote-gtk](https://packages.debian.org/buster/transmission-remote-gtk) `1.4.1-1` - GTK+ interface for the Transmission BitTorrent daemon_
 - ![](grey.png) _[transmission-remote-cli](https://packages.debian.org/buster/transmission-remote-cli) `1.7.0-1` - ncurses interface for the Transmission BitTorrent daemon_
 - ![](grey.png) _[uget](https://packages.debian.org/buster/uget) `2.2.1-1+b1` - easy-to-use download manager written in GTK+_
@@ -244,36 +244,7 @@
 - ![](grey.png) _[plowshare](https://packages.debian.org/buster/plowshare) `2.1.7-2` - download and upload files from file sharing websites_
 #### Feed readers
 
-
-</sub>
-
-<img align="right" src="https://screenshots.debian.net/thumbnail-with-version/liferea/1.12.6-1">
-
-**[liferea](https://packages.debian.org/buster/liferea)** - feed/news/podcast client with plugin support
-
-
- Liferea is a feed reader, a news reader, and a podcast client that brings
- together all of the content from your favorite web subscriptions into a simple
- interface with an embedded graphical browser that's easy to organize and
- browse.
- It supports:
-    * aggregating feeds in all the major syndication formats (including
-      RSS/RDF, Atom, CDF, and more);
-    * synchronizing feeds across devices, with TinyTinyRSS and
-      TheOldReader support;
-    * downloading articles for offline reading;
-    * permanently saving headlines in news bins;
-    * playing podcasts directly in Liferea's browser interface;
-    * social networking / web integration so you can share your favorite news
-      articles to Facebook, Google+, Reddit, Twitter, Slashdot, Digg, Yahoo and
-      many more.
-
-<sub>
-
------------------------
-
-
-- ![](green.png) [liferea](https://packages.debian.org/buster/liferea) `1.12.6-1` - feed/news/podcast client with plugin support
+- ![](grey.png) _[liferea](https://packages.debian.org/buster/liferea) `1.12.6-1` - feed/news/podcast client with plugin support_
 - ![](grey.png) _[newsbeuter](https://packages.debian.org/buster/newsbeuter) `2.9-8+b1` - text mode rss feed reader with podcast support_
 - ![](grey.png) _[quiterss](https://packages.debian.org/buster/quiterss) `0.18.12+dfsg-1` - RSS/Atom news feeds reader_
 - ![](grey.png) _[tickr](https://packages.debian.org/buster/tickr) `0.6.4-1+b1` - GTK-based highly graphically-customizable Feed Ticker_
@@ -339,7 +310,7 @@
 
 </sub>
 
-<img align="right" src="https://screenshots.debian.net/thumbnail-with-version/blueman/2.0.8-1">
+<img align="right" src="https://screenshots.debian.net/thumbnail-with-version/blueman/2.0.8-1+deb10u1">
 
 **[blueman](https://packages.debian.org/buster/blueman)** - Graphical bluetooth manager
 
@@ -352,11 +323,11 @@
 -----------------------
 
 
-- ![](green.png) [blueman](https://packages.debian.org/buster/blueman) `2.0.8-1` - Graphical bluetooth manager
+- ![](green.png) [blueman](https://packages.debian.org/buster/blueman) `2.0.8-1+deb10u1` - Graphical bluetooth manager
 - ![](green.png) [bluetooth](https://packages.debian.org/buster/bluetooth) `5.50-1.2~deb10u1` - Bluetooth support (metapackage)
-- ![](green.png) [blueman](https://packages.debian.org/buster/blueman) `2.0.8-1` - Graphical bluetooth manager
+- ![](green.png) [blueman](https://packages.debian.org/buster/blueman) `2.0.8-1+deb10u1` - Graphical bluetooth manager
 - ![](green.png) [crda](https://packages.debian.org/buster/crda) `3.18-1` - wireless Central Regulatory Domain Agent
-- ![](green.png) [wireless-regdb](https://packages.debian.org/buster/wireless-regdb) `2016.06.10-1` - wireless regulatory database
+- ![](green.png) [wireless-regdb](https://packages.debian.org/buster/wireless-regdb) `2020.04.29-2~bpo10+1` - wireless regulatory database for Linux
 - ![](grey.png) _[gnome-bluetooth](https://packages.debian.org/buster/gnome-bluetooth) `3.28.2-4~deb10u1` - GNOME Bluetooth tools_
 - ![](grey.png) _[gnome-user-share](https://packages.debian.org/buster/gnome-user-share) `3.28.0-2` - User level public file sharing via WebDAV_
 - ![](grey.png) _[blueproximity](https://packages.debian.org/buster/blueproximity) `1.2.5-6` - locks/unlocks your desktop tracking a bluetooth device_
@@ -387,10 +358,10 @@
 - ![](green.png) [gufw](https://packages.debian.org/buster/gufw) `18.10.0-1` - graphical user interface for ufw
 - ![](green.png) [iptables](https://packages.debian.org/buster/iptables) `1.8.2-4` - administration tools for packet filtering and NAT
 - ![](grey.png) _[ferm](https://packages.debian.org/buster/ferm) `2.4-1` - maintain and setup complicated firewall rules_
-- ![](grey.png) _[iptables-persistent](https://packages.debian.org/buster/iptables-persistent) `1.0.11` - boot-time loader for netfilter rules, iptables plugin_
+- ![](grey.png) _[iptables-persistent](https://packages.debian.org/buster/iptables-persistent) `1.0.11+deb10u1` - boot-time loader for netfilter rules, iptables plugin_
 - ![](grey.png) _[firehol](https://packages.debian.org/buster/firehol) `3.1.6+ds-8` - easy to use but powerful iptables stateful firewall (program)_
 - ![](grey.png) _[fail2ban](https://packages.debian.org/buster/fail2ban) `0.10.2-2.1` - ban hosts that cause multiple authentication errors_
-- ![](grey.png) _[ipset-persistent](https://packages.debian.org/buster/ipset-persistent) `1.0.11` - boot-time loader for netfilter rules, ipset plugin_
+- ![](grey.png) _[ipset-persistent](https://packages.debian.org/buster/ipset-persistent) `1.0.11+deb10u1` - boot-time loader for netfilter rules, ipset plugin_
 #### Network diagnostic/monitoring
 
 
@@ -435,6 +406,7 @@
 - ![](grey.png) _[ifstat](https://packages.debian.org/buster/ifstat) `1.1-8.1+b1` - InterFace STATistics Monitoring_
 - ![](grey.png) _[iftop](https://packages.debian.org/buster/iftop) `1.0~pre4-6` - displays bandwidth usage information on an network interface_
 - ![](grey.png) _[ipcalc](https://packages.debian.org/buster/ipcalc) `0.41-5` - parameter calculator for IPv4 addresses_
+- ![](grey.png) _[ipcalc-ng](https://packages.debian.org/buster/ipcalc-ng) `0.4.1-2~bpo10+1` - parameter calculator for IPv4 and IPv6 addresses_
 - ![](grey.png) _[iperf](https://packages.debian.org/buster/iperf) `2.0.12+dfsg1-2` - Internet Protocol bandwidth measuring tool_
 - ![](grey.png) _[iptraf-ng](https://packages.debian.org/buster/iptraf-ng) `1:1.1.4-6+b1` - Next Generation Interactive Colorful IP LAN Monitor_
 - ![](grey.png) _[jmeter](https://packages.debian.org/buster/jmeter) `2.13-4` - Load testing and performance measurement application (main application)_
@@ -457,12 +429,12 @@
 - ![](grey.png) _[sslsniff](https://packages.debian.org/buster/sslsniff) `0.8-8+b1` - SSL/TLS man-in-the-middle attack tool_
 - ![](grey.png) _[sslstrip](https://packages.debian.org/buster/sslstrip) `0.9-1` - SSL/TLS man-in-the-middle attack tool_
 - ![](grey.png) _[subnetcalc](https://packages.debian.org/buster/subnetcalc) `2.1.3-1+b2` - IPv4/IPv6 Subnet Calculator_
-- ![](grey.png) _[tcpdump](https://packages.debian.org/buster/tcpdump) `4.9.3-1~deb10u1` - command-line network traffic analyzer_
+- ![](grey.png) _[tcpdump](https://packages.debian.org/buster/tcpdump) `4.9.3-1~deb10u2` - command-line network traffic analyzer_
 - ![](grey.png) _[tcpstat](https://packages.debian.org/buster/tcpstat) `1.5-8+b1` - network interface statistics reporting tool_
 - ![](grey.png) _[thc-ipv6](https://packages.debian.org/buster/thc-ipv6) `3.6-1` - The Hacker Choice's IPv6 Attack Toolkit_
 - ![](grey.png) _[trickle](https://packages.debian.org/buster/trickle) `1.07-10.1+b1` - user-space bandwidth shaper_
 - ![](grey.png) _[tshark](https://packages.debian.org/buster/tshark) `2.6.8-1.1` - network traffic analyzer - console version_
-- ![](grey.png) _[usbip](https://packages.debian.org/buster/usbip) `2.0+4.19.152-1` - USB device sharing system over IP network_
+- ![](grey.png) _[usbip](https://packages.debian.org/buster/usbip) `2.0+4.19.160-2` - USB device sharing system over IP network_
 - ![](grey.png) _[vnstat](https://packages.debian.org/buster/vnstat) `1.18-2` - console-based network traffic monitor_
 - ![](grey.png) _[vnstati](https://packages.debian.org/buster/vnstati) `1.18-2` - image output support for vnStat_
 - ![](grey.png) _[wireshark](https://packages.debian.org/buster/wireshark) `2.6.8-1.1` - network traffic analyzer - meta-package_
@@ -556,8 +528,8 @@
 - ![](grey.png) _[mdk3](https://packages.debian.org/buster/mdk3) `6.0-6` - Wireless attack tool for IEEE 802.11 networks_
 #### Tor
 
-- ![](grey.png) _[tor-geoipdb](https://packages.debian.org/buster/tor-geoipdb) `0.3.5.10-1` - GeoIP database for Tor_
-- ![](grey.png) _[tor](https://packages.debian.org/buster/tor) `0.3.5.10-1` - anonymizing overlay network for TCP_
+- ![](grey.png) _[tor-geoipdb](https://packages.debian.org/buster/tor-geoipdb) `0.3.5.12-1` - GeoIP database for Tor_
+- ![](grey.png) _[tor](https://packages.debian.org/buster/tor) `0.3.5.12-1` - anonymizing overlay network for TCP_
 - ![](grey.png) _[torsocks](https://packages.debian.org/buster/torsocks) `2.3.0-2` - use SOCKS-friendly applications with Tor_
 #### GeoIP databases
 

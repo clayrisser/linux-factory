@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.  
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+
+## [v2.2.4](https://gitlab.com/nodiscc/dlc/releases/tag/2.2.4) - 2020-10-22
+
+### Added
+
+- add [Lutris](https://lutris.net) gaming platform
+- add sensible defaults for mousepad text editor
+
+### Fixed
+
+- fix display of virt-manager console (add missing  gir1.2-spiceclientgtk-3.0 package)
+
+
+### Changed
+
+- update all packages to latest version (Debian 10.6)
+- replace ntp time synchronization service with [chrony](https://chrony.tuxfamily.org/)
+- keyboard shortcuts: add ctrl+alt+shift+left/down/right/up to move current windows to the left/down/right/up workspace
+- libvirt: set the default URI to qemu:///system (virsh now works without sudo or --connect)
+- dotfiles/conky: don't draw shades by default
+- update documentation
+- tools: various Makefile improvements
+
 -------------------------------
 
 ## [v2.2.3](https://gitlab.com/nodiscc/dlc/releases/tag/2.2.3) - 2020-05-10

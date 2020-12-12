@@ -41,7 +41,7 @@
 
 
 - ![](green.png) [apt-listchanges](https://packages.debian.org/buster/apt-listchanges) `3.19` - package change history notification tool
-- ![](green.png) [apt-transport-https](https://packages.debian.org/buster/apt-transport-https) `1.8.2.1` - transitional package for https support
+- ![](green.png) [apt-transport-https](https://packages.debian.org/buster/apt-transport-https) `1.8.2.2` - transitional package for https support
 - ![](green.png) [aptitude](https://packages.debian.org/buster/aptitude) `0.8.11-7` - terminal-based package manager
 - ![](green.png) [debconf-utils](https://packages.debian.org/buster/debconf-utils) `1.5.71` - debconf utilities
 - ![](green.png) [debian-archive-keyring](https://packages.debian.org/buster/debian-archive-keyring) `2019.1` - GnuPG archive keys of the Debian archive
@@ -100,7 +100,7 @@
 - ![](green.png) [memtest86+](https://packages.debian.org/buster/memtest86+) `5.01-3` - thorough real-mode memory tester
 - ![](grey.png) _[gnome-system-monitor](https://packages.debian.org/buster/gnome-system-monitor) `3.30.0-2` - Process viewer and system resource monitor for GNOME_
 - ![](grey.png) _[screenfetch](https://packages.debian.org/buster/screenfetch) `3.8.0-8` - Bash Screenshot Information Tool_
-- ![](grey.png) _[glances](https://packages.debian.org/buster/glances) `3.1.0-1` - Curses-based monitoring tool_
+- ![](grey.png) _[glances](https://packages.debian.org/buster/glances) `3.1.0-1+deb10u1` - Curses-based monitoring tool_
 - ![](grey.png) _[screentest](https://packages.debian.org/buster/screentest) `2.0-2.2+b1` - Utility to test the quality of screens_
 - ![](grey.png) _[hardinfo](https://packages.debian.org/buster/hardinfo) `0.5.1+git20180227-2` - Displays system information_
 - ![](grey.png) _[cputool](https://packages.debian.org/buster/cputool) `0.0.8-2+b1` - Utility which manages CPU usage and system load_
@@ -229,6 +229,7 @@
 - ![](grey.png) _[forensics-full](https://packages.debian.org/buster/forensics-full) `2.8` - Full forensics station (metapackage)_
 - ![](grey.png) _[steghide](https://packages.debian.org/buster/steghide) `0.5.1-13` - steganography hiding tool_
 - ![](grey.png) _[gdmap](https://packages.debian.org/buster/gdmap) `0.8.1-5` - Tool to visualize diskspace_
+- ![](grey.png) _[clonezilla](https://packages.debian.org/buster/clonezilla) `3.27.16-3` - bare metal backup and recovery of disk drives_
 #### data recovery
 
 
@@ -524,25 +525,25 @@
 - ![](green.png) [xserver-xorg-video-intel](https://packages.debian.org/buster/xserver-xorg-video-intel) `2:2.99.917+git20180925-2` - X.Org X server -- Intel i8xx, i9xx display driver
 - ![](green.png) [xfonts-base](https://packages.debian.org/buster/xfonts-base) `1:1.0.5` - standard fonts for X
 - ![](green.png) [hwdata](https://packages.debian.org/buster/hwdata) `0.290-1` - hardware identification / configuration data
-- ![](green.png) [nvidia-driver](https://packages.debian.org/buster/nvidia-driver) `418.152.00-1` - NVIDIA metapackage
+- ![](green.png) [nvidia-driver](https://packages.debian.org/buster/nvidia-driver) `450.80.02-1~bpo10+1` - NVIDIA metapackage
 #### Kernel/boot/init
 
-- ![](green.png) [linux-headers-amd64](https://packages.debian.org/buster/linux-headers-amd64) `4.19+105+deb10u7` - Header files for Linux amd64 configuration (meta-package)
-- ![](green.png) [linux-headers-686:i386](https://packages.debian.org/buster/linux-headers-686:i386) `4.19+105+deb10u7` - Header files for Linux 686 configuration (meta-package)
+- ![](green.png) [linux-headers-amd64](https://packages.debian.org/buster/linux-headers-amd64) `5.9.6-1~bpo10+1` - Header files for Linux amd64 configuration (meta-package)
+- ![](green.png) [linux-headers-686:i386](https://packages.debian.org/buster/linux-headers-686:i386) `4.19+105+deb10u8` - Header files for Linux 686 configuration (meta-package)
 - ![](green.png) [module-assistant](https://packages.debian.org/buster/module-assistant) `0.11.10` - tool to make module package creation easier
 - ![](green.png) [dkms](https://packages.debian.org/buster/dkms) `2.6.1-4` - Dynamic Kernel Module Support Framework
 - ![](green.png) [build-essential](https://packages.debian.org/buster/build-essential) `12.6` - Informational list of build-essential packages
-- ![](green.png) [systemd](https://packages.debian.org/buster/systemd) `241-7~deb10u4` - system and service manager
+- ![](green.png) [systemd](https://packages.debian.org/buster/systemd) `241-7~deb10u5` - system and service manager
 - ![](green.png) [os-prober](https://packages.debian.org/buster/os-prober) `1.77` - utility to detect other OSes on a set of drives
 - ![](green.png) [initramfs-tools](https://packages.debian.org/buster/initramfs-tools) `0.133+deb10u1` - generic modular initramfs generator (automation)
 - ![](green.png) [console-setup](https://packages.debian.org/buster/console-setup) `1.193~deb10u1` - console font and keymap setup program
 - ![](green.png) [user-setup](https://packages.debian.org/buster/user-setup) `1.81` - Set up initial user and password
-- ![](green.png) [libpam-systemd](https://packages.debian.org/buster/libpam-systemd) `241-7~deb10u4` - system and service manager - PAM module
+- ![](green.png) [libpam-systemd](https://packages.debian.org/buster/libpam-systemd) `241-7~deb10u5` - system and service manager - PAM module
 - ![](grey.png) _[kexec-tools](https://packages.debian.org/buster/kexec-tools) `1:2.0.18-1` - tools to support fast kexec reboots_
 #### Firmwares
 
 - ![](green.png) [firmware-linux-free](https://packages.debian.org/buster/firmware-linux-free) `3.4` - Binary firmware for various drivers in the Linux kernel
-- ![](green.png) [firmware-linux-nonfree](https://packages.debian.org/buster/firmware-linux-nonfree) `20190114-2` - Binary firmware for various drivers in the Linux kernel (meta-package)
+- ![](green.png) [firmware-linux-nonfree](https://packages.debian.org/buster/firmware-linux-nonfree) `20200918-1~bpo10+1` - Binary firmware for various drivers in the Linux kernel (meta-package)
 - ![](green.png) [amd64-microcode](https://packages.debian.org/buster/amd64-microcode) `3.20181128.1` - Processor microcode firmware for AMD CPUs
 - ![](green.png) [intel-microcode](https://packages.debian.org/buster/intel-microcode) `3.20200616.1~deb10u1` - Processor microcode firmware for Intel CPUs
 #### Hardware-specific packages

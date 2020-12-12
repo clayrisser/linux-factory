@@ -63,8 +63,8 @@
 - ![](grey.png) _[spotlighter](https://packages.debian.org/buster/spotlighter) `0.3-1.1+b2` - gtk interface to make annotations on the screen_
 - ![](grey.png) _[tpp](https://packages.debian.org/buster/tpp) `1.3.1-7` - text presentation program_
 - ![](grey.png) _[unoconv](https://packages.debian.org/buster/unoconv) `0.7-1.1` - converter between LibreOffice document formats_
-- ![](green.png) [lightning](https://packages.debian.org/buster/lightning) `1:78.3.1-2~deb10u2` - Calendar Extension for Thunderbird - Transitional package
-- ![](green.png) [lightning-l10n-fr](https://packages.debian.org/buster/lightning-l10n-fr) `1:78.3.1-2~deb10u2` - French language package for lightning - Transitional package
+- ![](green.png) [lightning](https://packages.debian.org/buster/lightning) `1:78.5.1-1~deb10u1` - Calendar Extension for Thunderbird - Transitional package
+- ![](green.png) [lightning-l10n-fr](https://packages.debian.org/buster/lightning-l10n-fr) `1:78.5.1-1~deb10u1` - French language package for lightning - Transitional package
 - ![](grey.png) _[pycarddav](https://packages.debian.org/buster/pycarddav) `0.7.0-1` - simple to use CardDAV CLI client_
 - ![](grey.png) _[gnome-calendar](https://packages.debian.org/buster/gnome-calendar) `3.30.1-2` - Calendar application for GNOME_
 - ![](grey.png) _[evolution-data-server](https://packages.debian.org/buster/evolution-data-server) `3.30.5-1+deb10u1` - evolution database backend server_
@@ -119,7 +119,7 @@
 
 
 - ![](green.png) [evince](https://packages.debian.org/buster/evince) `3.30.2-3+deb10u1` - Document (PostScript, PDF) viewer
-- ![](grey.png) _[mupdf](https://packages.debian.org/buster/mupdf) `1.14.0+ds1-4+deb10u1` - lightweight PDF viewer_
+- ![](grey.png) _[mupdf](https://packages.debian.org/buster/mupdf) `1.14.0+ds1-4+deb10u2` - lightweight PDF viewer_
 - ![](grey.png) _[apvlv](https://packages.debian.org/buster/apvlv) `0.1.5+dfsg-3` - PDF viewer with Vim-like behaviour_
 - ![](grey.png) _[xpdf](https://packages.debian.org/buster/xpdf) `3.04-13` - Portable Document Format (PDF) reader_
 - ![](grey.png) _[calibre](https://packages.debian.org/buster/calibre) `3.39.1+dfsg-3` - powerful and easy to use e-book manager_
@@ -244,8 +244,8 @@
 -----------------------
 
 
-- ![](green.png) [cups](https://packages.debian.org/buster/cups) `2.2.10-6+deb10u3` - Common UNIX Printing System(tm) - PPD/driver support, web interface
-- ![](green.png) [cups-client](https://packages.debian.org/buster/cups-client) `2.2.10-6+deb10u3` - Common UNIX Printing System(tm) - client programs (SysV)
+- ![](green.png) [cups](https://packages.debian.org/buster/cups) `2.2.10-6+deb10u4` - Common UNIX Printing System(tm) - PPD/driver support, web interface
+- ![](green.png) [cups-client](https://packages.debian.org/buster/cups-client) `2.2.10-6+deb10u4` - Common UNIX Printing System(tm) - client programs (SysV)
 - ![](green.png) [gutenprint-locales](https://packages.debian.org/buster/gutenprint-locales) `5.3.1-7` - locale data files for Gutenprint
 - ![](green.png) [cups-pk-helper](https://packages.debian.org/buster/cups-pk-helper) `0.2.6-1+b1` - PolicyKit helper to configure cups with fine-grained privileges
 - ![](green.png) [printer-driver-all](https://packages.debian.org/buster/printer-driver-all) `0.20170124` - printer drivers metapackage

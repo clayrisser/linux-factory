@@ -265,23 +265,7 @@
 - ![](grey.png) _[gnote](https://packages.debian.org/buster/gnote) `3.30.0-2` - desktop note taking program using Wiki style links_
 #### Maps
 
-
-</sub>
-
-<img align="right" src="https://screenshots.debian.net/thumbnail-with-version/gnome-maps/3.30.3.1-0+deb10u1">
-
-**[gnome-maps](https://packages.debian.org/buster/gnome-maps)** - map application for GNOME
-
-
- Maps is a map application for GNOME that allows you to view maps in different
- zoom levels, search for places, etc.
-
-<sub>
-
------------------------
-
-
-- ![](green.png) [gnome-maps](https://packages.debian.org/buster/gnome-maps) `3.30.3.1-0+deb10u1` - map application for GNOME
+- ![](grey.png) _[gnome-maps](https://packages.debian.org/buster/gnome-maps) `3.30.3.1-0+deb10u1` - map application for GNOME_
 - ![](grey.png) _[marble-qt](https://packages.debian.org/buster/marble-qt) `4:17.08.3-3.2` - globe and map widget (no KDE dependencies)_
 - ![](grey.png) _[geoclue-2.0](https://packages.debian.org/buster/geoclue-2.0) `2.5.2-1` - geoinformation service_
 - ![](grey.png) _[josm](https://packages.debian.org/buster/josm) `0.0.svn14760+dfsg-1` - Editor for OpenStreetMap_
