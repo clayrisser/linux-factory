@@ -117,6 +117,9 @@ xorriso
 #Alt: forensics-full
 #Alt: steghide
 #Alt: gdmap
+#Alt: clonezilla
+#exfatprogs #bullseye only
+#crazydiskinfo #bullseye only
 
 
 #Section: data recovery

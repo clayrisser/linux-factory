@@ -3,6 +3,7 @@
 #Section: Linux games
 cmatrix
 cmatrix-xfont
+#lutris # sid only
 #Alt: endless-sky
 #Alt: play.it
 #Alt: steam:i386

@@ -36,6 +36,9 @@ pidgin-gnome-keyring
 #Alt: xchat
 #Alt: weechat
 #Alt: ekg2
+#purple-lurch #bullseye only
+#purple-mm-sms #bullseye only
+#purple-xmpp-http-upload #bullseye only
 
 #Section: VoIP/videoconference
 #Description: mumble
@@ -119,6 +122,10 @@ wget
 #Alt: aria2
 #Alt: axel
 #Alt: plowshare
+#kiwix #bullseye only
+#kiwix-tools #bullseye only
+#zim-tools #bullseye only
+
 
 #Section: Feed readers
 #Description: liferea
@@ -127,6 +134,7 @@ liferea
 #Alt: newsbeuter
 #olive #stretch only
 #specto #stretch only
+#gnome-feeds #bullseye only
 #Alt: quiterss
 #Alt: tickr
 #Alt: feedreader
@@ -217,6 +225,7 @@ dnsutils
 #Alt: ifstat
 #Alt: iftop
 #Alt: ipcalc
+#Alt: ipcalc-ng
 #Alt: iperf
 #Alt: iptraf-ng
 #Alt: jmeter

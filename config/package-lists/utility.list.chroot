@@ -303,6 +303,7 @@ gnome-audio
 #Alt: faenza-icon-theme
 #Alt: clearlooks-phenix-theme
 #Alt: deepin-icon-theme
+#paper-icon-theme #bullseye only
 
 #Section: Virtual keyboards
 #Alt: onboard
