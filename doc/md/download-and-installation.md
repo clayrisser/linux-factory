@@ -21,7 +21,7 @@ wget https://github.com/nodiscc/debian-live-config/releases/download/2.2.5/dlc-r
 wget https://github.com/nodiscc/debian-live-config/releases/download/2.2.5/SHA512SUMS
 wget https://github.com/nodiscc/debian-live-config/releases/download/2.2.5/SHA512SUMS.sign
 # import the release signing key
-# the key used to sign releases has key ID 16C50725859EBE2DD1B22100BCC63E85387671B9
+# the key used to sign releases has key ID EE73FC8FD71E3CC83606FDF361B23168A539DBBD
 gpg --import dlc-release.key
 # verify that checksums are authentic
 gpg --verify SHA512SUMS.sign
