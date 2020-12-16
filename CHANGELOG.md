@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.  
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [v2.2.5](https://gitlab.com/nodiscc/dlc/releases/tag/2.2.5) - 2020-12-16
+
+### Removed
+
+- remove [Liferea](https://packages.debian.org/buster/liferea) feed reader from default install
+- remove [gnome-maps](https://packages.debian.org/buster/gnome-maps) from default install
+
+### Fixed
+
+- nano: fix loading of syntax highlighting configuratio from ~/.nano/*.nanorc
+
+
+### Changed
+
+- update third-party Lutris package to 0.5.8.1
+- update documentation/.gitconfig examples
+- tools: improve build/cleanup mechanisms
+
+-------------------------------
 
 ## [v2.2.4](https://gitlab.com/nodiscc/dlc/releases/tag/2.2.4) - 2020-10-22
 

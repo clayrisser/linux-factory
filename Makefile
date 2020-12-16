@@ -67,7 +67,7 @@ test_imagesize:
 
 test_kvm_bios:
 	# Run the resulting image in KVM/virt-manager (legacy BIOS mode)
-	sudo virt-install --name dlc-test --boot cdrom --video virtio --disk path=$$PWD/dlc-test-disk0.qcow2,format=qcow2,size=20,device=disk,bus=virtio,cache=none --cdrom 'iso/dlc-2.2.4-debian-buster-amd64.hybrid.iso' --memory 2048 --vcpu 2
+	sudo virt-install --name dlc-test --boot cdrom --video virtio --disk path=$$PWD/dlc-test-disk0.qcow2,format=qcow2,size=20,device=disk,bus=virtio,cache=none --cdrom 'iso/dlc-2.2.5-debian-buster-amd64.hybrid.iso' --memory 2048 --vcpu 2
 	sudo virsh destroy dlc-test
 	sudo virsh undefine dlc-test
 	sudo rm $$PWD/dlc-test-disk0.qcow2
@@ -75,7 +75,7 @@ test_kvm_bios:
 test_kvm_uefi:
 	# Run the resulting image in KVM/virt-manager (UEFI mode)
 	# UEFI support must be enabled in QEMU config for EFI install tests https://wiki.archlinux.org/index.php/Libvirt#UEFI_Support (/usr/share/OVMF/*.fd)
-	sudo virt-install --name dlc-test --boot loader=/usr/share/OVMF/OVMF_CODE.fd --video virtio --disk path=$$PWD/dlc-test-disk0.qcow2,format=qcow2,size=20,device=disk,bus=virtio,cache=none --cdrom 'iso/dlc-2.2.4-debian-buster-amd64.hybrid.iso' --memory 2048 --vcpu 2
+	sudo virt-install --name dlc-test --boot loader=/usr/share/OVMF/OVMF_CODE.fd --video virtio --disk path=$$PWD/dlc-test-disk0.qcow2,format=qcow2,size=20,device=disk,bus=virtio,cache=none --cdrom 'iso/dlc-2.2.5-debian-buster-amd64.hybrid.iso' --memory 2048 --vcpu 2
 	sudo virsh destroy dlc-test
 	sudo virsh undefine dlc-test
 	sudo rm $$PWD/dlc-test-disk0.qcow2

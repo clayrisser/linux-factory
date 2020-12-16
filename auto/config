@@ -24,7 +24,7 @@ lb config noauto \
 --firmware-chroot true \
 --initramfs live-boot \
 --iso-publisher dlc \
---iso-volume dlc-2.2.4 \
+--iso-volume dlc-2.2.5 \
 --linux-packages "linux-image linux-headers" \
 --bootappend-live "boot=live config splash" \
 --memtest memtest86+ \
