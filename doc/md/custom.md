@@ -132,22 +132,26 @@ Currently only 2 locales (english and french) are pre-generated, other languages
 
 ### Release process
 
- - [ ] `make bump_version`, update version indicators
- - [ ] Update the changelog
- - [ ] `git tag --sign $new_version`
- - [ ] `make doc && git add doc/md/packages/ doc/md/index.md && git commit -m "update auto-generated documentation"`
- - [ ] `make && make checksums && make sign_checksums`
- - [ ] `make tests`
-   - BIOS mode: test live mode in all languages
-   - BIOS mode: test online installation
-   - BIOS mode: test offline installation
-   - UEFI mode: test online installation
-   - UEFI mode: test offline installation
+- [ ] `make bump_version`, update version indicators
+- [ ] Update CHANGELOG.md
+- [ ] `make doc && git add doc/md/packages/ doc/md/index.md && git commit -m "update auto-generated documentation"`
+- [ ] `git tag --sign $new_version`
+- [ ] `make && make checksums && make sign_checksums`
+- [ ] `make tests`
+  - BIOS mode: test live mode in all languages
+  - BIOS mode: test online installation
+  - BIOS mode: test offline installation
+  - UEFI mode: test online installation
+  - UEFI mode: test offline installation
   - During installation, test the following disk partitioning schemes:
-   - [ ] Automatic whole disk encrypted LVM
-   - [ ] Automated whole disk LVM
-   - [ ] Automated whole disk partitioning
-   - [ ] Manual
+    - [ ] Automatic whole disk encrypted LVM
+    - [ ] Automated whole disk LVM
+    - [ ] Automated whole disk partitioning
+    - [ ] Manual
+- [ ] Copy latest CHANGELOG.md entry to a [new Github release](https://github.com/nodiscc/debian-live-config/releases)
+- [ ] attach `dlc-X.Y.Z-debian-buster-amd64.hybrid.iso dlc-release.key SHA512SUMS SHA512SUMS.sign` to the releases
+- `Publish release`
+ 
 
 
 ## See also
