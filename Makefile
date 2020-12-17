@@ -22,7 +22,7 @@ clean:
 
 bump_version:
 	@last_tag=$$(git tag | tail -n1); \
-	echo "Please set version to $$last_tag in Makefile config/bootloaders/isolinux/live.cfg.in config/bootloaders/isolinux/menu.cfg auto/config doc/md/download-and-installation.md"
+	echo "Please set version to $$last_tag in Makefile config/bootloaders/isolinux/live.cfg.in config/bootloaders/isolinux/menu.cfg auto/config doc/md/download-and-installation.md doc/md/index.md"
 
 build:
 	# Build the live system/ISO image

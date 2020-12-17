@@ -20,7 +20,7 @@ This repository contains the `live-build` configuration and scripts used to buil
 
 ## Download
 
-**[![](download.png) Download .ISO image](https://github.com/nodiscc/debian-live-config/releases/download/2.2.4/dlc-2.2.3-debian-buster-amd64.hybrid.iso)** (64-bit)
+**[![](download.png) Download .ISO image](https://github.com/nodiscc/debian-live-config/releases/download/2.2.5/dlc-2.2.5-debian-buster-amd64.hybrid.iso)** (64-bit)
 
 
 ## Documentation
