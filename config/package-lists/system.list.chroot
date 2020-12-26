@@ -34,6 +34,7 @@ vrms
 #Alt: packagekit-command-not-found
 #Alt: packagekit-gtk3-module
 #Alt: pk-update-icon
+#Alt: extrepo
 
 #Section: Task management/monitoring
 #Description: xfce4-taskmanager
