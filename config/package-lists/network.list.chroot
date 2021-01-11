@@ -68,6 +68,7 @@ thunderbird-l10n-fr
 #Section: File transfer and synchronization
 #Description: nextcloud-desktop
 nextcloud-desktop
+nextcloud-desktop-cmd
 rsync
 #Alt: lftp
 #Alt: unison-gtk
@@ -259,6 +260,7 @@ dnsutils
 #Alt: wireshark
 #Alt: python-scapy
 #dropwatch #sid only
+#termshark #sid only
 
 #Section: SSH
 #Alt: sshuttle

@@ -29,6 +29,7 @@ libdvd-pkg
 #Alt: vlc-plugin-svg
 #Alt: vlc-plugin-zvbi
 #Alt: zapping
+#celluloid # bullseye only
 
 #Section: Music players/library managers
 #Description: quodlibet
@@ -137,6 +138,7 @@ media-player-info
 #Alt: qhimdtransfer
 #Alt: minidisc-utils
 #Alt: mat
+#Alt: ffmpegfs
 
 
 #Section: Audio CD extraction

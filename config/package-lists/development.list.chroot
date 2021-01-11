@@ -24,6 +24,7 @@ cloc
 #Alt: tig
 #Alt: icdiff
 #Alt: qgit
+#Alt: git-secrets
 
 #Section: Shell & basic utilities
 bash
@@ -59,6 +60,7 @@ manpages-dev
 #Alt: pdd
 #Alt: termrec
 #Alt: ripgrep
+#Alt: retry
 
 
 #Section: Parsers/converters/documentation generators

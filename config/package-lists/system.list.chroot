@@ -121,6 +121,7 @@ xorriso
 #Alt: clonezilla
 #exfatprogs #bullseye only
 #crazydiskinfo #bullseye only
+#disk-filltest #bullseye only
 
 
 #Section: data recovery
