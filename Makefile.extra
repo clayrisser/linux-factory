@@ -12,7 +12,7 @@ clean:
 	rm -rf  cache/downloads/sublime_text_3 config/includes.chroot/opt/sublime_text
 	rm -f cache/downloads/pidgin-opensteamworks_1.7-buster0-1_amd64.deb
 	rm -f cache/downloads/cleanerml-master.zip
-	rm -f cache/downloads/lutris_0.5.8.1_all.deb
+	rm -f cache/downloads/lutris_*_all.deb
 	rm -f cache/downloads/user.js-0.1.zip
 	rm -f cache/downloads/xfce4-terminal-colorschemes-1.0.zip
 
@@ -40,7 +40,7 @@ download_extra: clean
 	-mkdir -p config/packages.chroot
 	$(WGET) https://gitlab.com/nodiscc/pidgin-opensteamworks/-/jobs/471942010/artifacts/raw/pidgin-opensteamworks_1.7-buster0-1_amd64.deb
 	# https://lutris.net/downloads/ - https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=754129
-	$(WGET) https://download.opensuse.org/repositories/home:/strycore/Debian_10/all/lutris_0.5.8.2_all.deb
+	$(WGET) https://download.opensuse.org/repositories/home:/strycore/Debian_10/all/lutris_0.5.8.3_all.deb
 	# https://addons.mozilla.org/en-US/firefox/addon/keepassxc-browser/
 	# https://addons.mozilla.org/en-US/firefox/addon/cookie-autodelete/
 	mkdir -p config/includes.chroot/usr/lib/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}
