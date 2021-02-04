@@ -20,11 +20,6 @@ download_extra: clean
 	# Download unpackaged/third-party software
 	# TODO file ITPs on bugs.debian.org, package for Debian
 	mkdir -p cache/downloads/
-	# https://gitlab.com/nodiscc/xfce4-terminal-colorschemes
-	$(WGET) https://gitlab.com/nodiscc/xfce4-terminal-colorschemes/-/archive/1.0/xfce4-terminal-colorschemes-1.0.zip
-	unzip -q cache/downloads/xfce4-terminal-colorschemes-1.0.zip -d cache/downloads/
-	mkdir -p config/includes.chroot/usr/share/xfce4/terminal/
-	mv cache/downloads/xfce4-terminal-colorschemes-1.0 config/includes.chroot/usr/share/xfce4/terminal/colorschemes
 	# https://github.com/scopatz/nanorc
 	$(WGET) https://github.com/scopatz/nanorc/archive/master.zip -O cache/downloads/nanorc-master.zip
 	unzip -q cache/downloads/nanorc-master.zip -d cache/downloads/
