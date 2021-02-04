@@ -3,10 +3,19 @@
 # For full documentation of the options in this file, see:
 #   info -f grub -n 'Simple configuration'
 
+# The default menu entry.
+
 GRUB_DEFAULT=0
+# Boot the default entry this many seconds after the menu is displayed, unless a key is pressed
 GRUB_TIMEOUT=5
+
+# Set by distributors of GRUB to their identifying name.
 GRUB_DISTRIBUTOR=`lsb_release -i -s 2> /dev/null || echo Debian`
+
+# Command-line arguments to add (only to the default menu entry - not recovery)
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash radeon.dpm=1 acpi_osi=Linux acpi_backlight=vendor apparmor=1 security=apparmor"
+
+# Command-line arguments to add to ALL menu entries for the Linux kernel.
 GRUB_CMDLINE_LINUX=""
 
 # Uncomment to enable BadRAM filtering, modify to suit your needs
@@ -28,5 +37,18 @@ GRUB_CMDLINE_LINUX=""
 # Uncomment to disable generation of recovery mode menu entries
 #GRUB_DISABLE_RECOVERY="true"
 
-# Uncomment to get a beep at grub start
+# Beep at grub start
 #GRUB_INIT_TUNE="480 440 1"
+# Example complex startup tune
+#format is tempo [pitch1 duration1] [pitch2 duration2]`
+#GRUB_INIT_TUNE="1000 334 1 334 1 0 1 334 1 0 1 261 1 334 1 0 1 392 2 0 4 196 2"
+
+# Uncomment to fix native screen resolution not detected in GRUB (eg. netbook monitor)
+#GRUB_TERMINAL=console
+#GRUB_GFXPAYLOAD_LINUX=1024x600x32
+
+# Uncomment to hide GRUB on boot (unless SHIFT is pressed)
+#GRUB_FORCE_HIDDEN_MENU="true"
+#export GRUB_FORCE_HIDDEN_MENU
+#GRUB_TIMEOUT=0
+#GRUB_HIDDEN_TIMEOUT=5
