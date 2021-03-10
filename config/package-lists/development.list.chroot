@@ -76,6 +76,7 @@ dos2unix
 #Alt: csvkit
 #Alt: roffit
 #Alt: archmage
+#Alt: html2text
 
 #Section: Packaging
 debhelper

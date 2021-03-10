@@ -239,6 +239,7 @@ libpam-tmpdir
 sudo
 #Alt: apparmor-notify
 #Alt: apparmor-profiles-extra
+#bdoas # bullseye only
 
 #Section: Time
 chrony
