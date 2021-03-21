@@ -119,14 +119,13 @@ streamlink
 #Section: Downloaders/web crawlers
 curl
 wget
-#Alt: httrack
 #Alt: aria2
+#Alt: kiwix
+#Alt: kiwix-tools
+#Alt: zim-tools
+#Alt: httrack
 #Alt: axel
 #Alt: plowshare
-#kiwix #bullseye only
-#kiwix-tools #bullseye only
-#zim-tools #bullseye only
-
 
 #Section: Feed readers
 ##Description: liferea
