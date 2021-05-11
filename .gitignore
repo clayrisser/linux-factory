@@ -1,2 +1,9 @@
-/.make
 /.build
+/.lock
+/.make
+/binary
+/binary.*
+/cache
+/chroot
+/chroot.*
+/live-image-*.*

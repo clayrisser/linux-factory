@@ -2,21 +2,27 @@ export MAKE_CACHE := $(shell pwd)/.make
 export PARENT := true
 include blackmagic.mk
 
-LB := lb
+LB := sudo lb
 CLOC := node_modules/.bin/cloc
 CSPELL := cspell
 
 .PHONY: all
 all: build
 
+.PHONY: sudo
+sudo:
+	@sudo true
+
 ACTIONS += config
 CONFIG_DEPS :=
+CONFIG_TARGET := sudo
 $(ACTION)/config:
 	@$(LB) config
 	@$(call done,config)
 
 ACTIONS += build~config
 BUILD_DEPS :=
+BUILD_TARGET := sudo
 $(ACTION)/build:
 	@$(LB) build
 	@$(call done,build)
