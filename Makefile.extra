@@ -9,7 +9,7 @@ clean:
 	rm -rf config/includes.chroot/usr/share/bleachbit/cleaners cache/downloads/cleanerml-master
 	rm -rf config/includes.chroot/etc/firefox-esr/firefox-esr.js cache/downloads/user.js-0.1
 	rm -rf config/includes.chroot/usr/lib/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}
-	rm -rf  cache/downloads/sublime_text_3 config/includes.chroot/opt/sublime_text
+	rm -rf cache/downloads/sublime_text_3 config/includes.chroot/opt/sublime_text
 	rm -f cache/downloads/pidgin-opensteamworks_1.7-buster0-1_amd64.deb
 	rm -f cache/downloads/cleanerml-master.zip
 	rm -f cache/downloads/lutris_*_all.deb

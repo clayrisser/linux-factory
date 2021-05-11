@@ -15,20 +15,29 @@ install_buildenv:
 
 ##############################
 
-# clear all caches, only required when changing the mirrors/architecture config
-clean:
-	sudo lb clean --all
-	make -f Makefile.extra clean
-
 bump_version:
 	@last_tag=$$(git tag | tail -n1); \
-	echo "Please set version to $$last_tag in Makefile config/bootloaders/isolinux/live.cfg.in config/bootloaders/isolinux/menu.cfg auto/config doc/md/download-and-installation.md doc/md/index.md"
+		echo "Please set version to $$last_tag in Makefile config/bootloaders/isolinux/live.cfg.in config/bootloaders/isolinux/menu.cfg auto/config doc/md/download-and-installation.md doc/md/index.md"
 
-build:
-	# Build the live system/ISO image
-	sudo lb clean --all
-	sudo lb config
-	sudo lb build
+.PHONY: sudo
+	@sudo su
+
+.PHONY: clean
+clean: sudo
+	@sudo lb clean --all
+	@make -f Makefile.extra clean
+	@docker run --rm -v $$(pwd):/git alpine/git clean -fXd
+
+.PHONY: config
+config: sudo
+	@$(MAKE) -s config/hooks/normal/0020-create-mtab-symlink.hook.chroot
+config/hooks/normal/0020-create-mtab-symlink.hook.chroot:
+	@$(MAKE) -s clean
+	@sudo lb config
+
+.PHONY: build
+build: sudo config
+	@sudo lb build
 
 ##############################
 
