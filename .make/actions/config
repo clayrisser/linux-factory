@@ -1,0 +1,33 @@
+ifeq ($(CHILD),true)
+ifneq ($(CHILD_CONFIG_READY),true)
+CHILD_CONFIG_READY = true
+.PHONY: child_config child_+config child__config child_~config
+child_config: child__config child_~config
+child_~config: | $(CHECK)  $(CONFIG_DEPS) $(CONFIG_TARGET) $(ACTION)/config
+child_+config: | $(CHECK) child__config $(CONFIG_DEPS) $(CONFIG_TARGET) $(ACTION)/config
+child__config:
+	@touch -m $(DONE)/+config
+	@$(call clear_cache,$(DONE)/_config)
+	@$(call clear_cache,$(DONE)/config)
+$(DONE)/_config/*: %
+	@$(call clear_cache,$(DONE)/config)
+	@$(call add_dep,config,$<)
+	@$(call cache,$@)
+endif
+else
+ifneq ($(CONFIG_READY),true)
+CONFIG_READY = true
+.PHONY: config +config _config ~config
+config: _config ~config
+~config: | $(CHECK)  $(CONFIG_DEPS) $(CONFIG_TARGET) $(ACTION)/config
++config: | $(CHECK) _config $(CONFIG_DEPS) $(CONFIG_TARGET) $(ACTION)/config
+_config:
+	@touch -m $(DONE)/+config
+	@$(call clear_cache,$(DONE)/_config)
+	@$(call clear_cache,$(DONE)/config)
+$(DONE)/_config/*: %
+	@$(call clear_cache,$(DONE)/config)
+	@$(call add_dep,config,$<)
+	@$(call cache,$@)
+endif
+endif

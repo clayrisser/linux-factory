@@ -1,0 +1,33 @@
+ifeq ($(CHILD),true)
+ifneq ($(CHILD_BUILD_READY),true)
+CHILD_BUILD_READY = true
+.PHONY: child_build child_+build child__build child_~build
+child_build: child__build child_~build
+child_~build: | $(CHECK) child_~test $(BUILD_DEPS) $(BUILD_TARGET) $(ACTION)/build
+child_+build: | $(CHECK) child__build $(BUILD_DEPS) $(BUILD_TARGET) $(ACTION)/build
+child__build:
+	@touch -m $(DONE)/+build
+	@$(call clear_cache,$(DONE)/_build)
+	@$(call clear_cache,$(DONE)/build)
+$(DONE)/_build/*: %
+	@$(call clear_cache,$(DONE)/build)
+	@$(call add_dep,build,$<)
+	@$(call cache,$@)
+endif
+else
+ifneq ($(BUILD_READY),true)
+BUILD_READY = true
+.PHONY: build +build _build ~build
+build: _build ~build
+~build: | $(CHECK) ~test $(BUILD_DEPS) $(BUILD_TARGET) $(ACTION)/build
++build: | $(CHECK) _build $(BUILD_DEPS) $(BUILD_TARGET) $(ACTION)/build
+_build:
+	@touch -m $(DONE)/+build
+	@$(call clear_cache,$(DONE)/_build)
+	@$(call clear_cache,$(DONE)/build)
+$(DONE)/_build/*: %
+	@$(call clear_cache,$(DONE)/build)
+	@$(call add_dep,build,$<)
+	@$(call cache,$@)
+endif
+endif

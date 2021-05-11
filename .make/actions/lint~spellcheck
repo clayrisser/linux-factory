@@ -1,0 +1,33 @@
+ifeq ($(CHILD),true)
+ifneq ($(CHILD_LINT_READY),true)
+CHILD_LINT_READY = true
+.PHONY: child_lint child_+lint child__lint child_~lint
+child_lint: child__lint child_~lint
+child_~lint: | $(CHECK) child_~spellcheck $(LINT_DEPS) $(LINT_TARGET) $(ACTION)/lint
+child_+lint: | $(CHECK) child__lint $(LINT_DEPS) $(LINT_TARGET) $(ACTION)/lint
+child__lint:
+	@touch -m $(DONE)/+lint
+	@$(call clear_cache,$(DONE)/_lint)
+	@$(call clear_cache,$(DONE)/lint)
+$(DONE)/_lint/*: %
+	@$(call clear_cache,$(DONE)/lint)
+	@$(call add_dep,lint,$<)
+	@$(call cache,$@)
+endif
+else
+ifneq ($(LINT_READY),true)
+LINT_READY = true
+.PHONY: lint +lint _lint ~lint
+lint: _lint ~lint
+~lint: | $(CHECK) ~spellcheck $(LINT_DEPS) $(LINT_TARGET) $(ACTION)/lint
++lint: | $(CHECK) _lint $(LINT_DEPS) $(LINT_TARGET) $(ACTION)/lint
+_lint:
+	@touch -m $(DONE)/+lint
+	@$(call clear_cache,$(DONE)/_lint)
+	@$(call clear_cache,$(DONE)/lint)
+$(DONE)/_lint/*: %
+	@$(call clear_cache,$(DONE)/lint)
+	@$(call add_dep,lint,$<)
+	@$(call cache,$@)
+endif
+endif

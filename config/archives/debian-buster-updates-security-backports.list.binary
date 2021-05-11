@@ -1,5 +1,0 @@
-deb https://deb.debian.org/debian/ buster main contrib non-free
-deb http://security.debian.org/ buster/updates main contrib non-free
-deb https://deb.debian.org/debian/ buster-proposed-updates main contrib non-free
-deb https://deb.debian.org/debian/ buster-updates main contrib non-free
-deb https://deb.debian.org/debian/ buster-backports main contrib non-free

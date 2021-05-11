@@ -1,0 +1,33 @@
+ifeq ($(CHILD),true)
+ifneq ($(CHILD_INSTALL_READY),true)
+CHILD_INSTALL_READY = true
+.PHONY: child_install child_+install child__install child_~install
+child_install: child__install child_~install
+child_~install: | $(CHECK)  $(INSTALL_DEPS) $(INSTALL_TARGET) $(ACTION)/install
+child_+install: | $(CHECK) child__install $(INSTALL_DEPS) $(INSTALL_TARGET) $(ACTION)/install
+child__install:
+	@touch -m $(DONE)/+install
+	@$(call clear_cache,$(DONE)/_install)
+	@$(call clear_cache,$(DONE)/install)
+$(DONE)/_install/*: %
+	@$(call clear_cache,$(DONE)/install)
+	@$(call add_dep,install,$<)
+	@$(call cache,$@)
+endif
+else
+ifneq ($(INSTALL_READY),true)
+INSTALL_READY = true
+.PHONY: install +install _install ~install
+install: _install ~install
+~install: | $(CHECK)  $(INSTALL_DEPS) $(INSTALL_TARGET) $(ACTION)/install
++install: | $(CHECK) _install $(INSTALL_DEPS) $(INSTALL_TARGET) $(ACTION)/install
+_install:
+	@touch -m $(DONE)/+install
+	@$(call clear_cache,$(DONE)/_install)
+	@$(call clear_cache,$(DONE)/install)
+$(DONE)/_install/*: %
+	@$(call clear_cache,$(DONE)/install)
+	@$(call add_dep,install,$<)
+	@$(call cache,$@)
+endif
+endif
