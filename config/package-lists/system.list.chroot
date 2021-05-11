@@ -1,0 +1,316 @@
+#Title: System
+
+#Section: Package management
+#Description: gnome-packagekit
+#Description: synaptic
+apt-listchanges
+apt-transport-https
+aptitude
+debconf-utils
+debian-archive-keyring
+debian-keyring
+debsecan
+debsums
+gnome-packagekit
+packagekit
+packagekit-tools
+reportbug
+software-properties-gtk
+synaptic
+unattended-upgrades
+vrms
+#Alt: appstream-generator
+#Alt: apt-config-auto-update
+#Alt: apt-file
+#Alt: apt-forktracer
+#Alt: apt-listbugs
+#Alt: aptitude-doc-fr
+#Alt: debian-security-support
+#Alt: deborphan
+#Alt: debtree
+#Alt: gnome-software
+#Alt: gstreamer1.0-packagekit
+#Alt: needrestart
+#Alt: packagekit-command-not-found
+#Alt: packagekit-gtk3-module
+#Alt: pk-update-icon
+#Alt: extrepo
+
+#Section: Task management/monitoring
+#Description: xfce4-taskmanager
+xfce4-taskmanager
+htop
+iotop
+lm-sensors
+hddtemp
+inxi
+lsof
+strace
+memtest86+
+#Alt: gnome-system-monitor
+#Alt: screenfetch
+#Alt: glances
+#Alt: screentest
+#Alt: hardinfo
+#Alt: cputool
+#Alt: usbview
+#Alt: stress
+#Alt: stressapptest
+#Alt: lshw
+#Alt: lshw-gtk
+#Alt: bonnie++
+#Alt: x86info
+#Alt: memtester
+#Alt: dstat
+#Alt: sysstat
+#Alt: cacti
+#Alt: hwloc
+#Alt: memlockd
+#Alt: read-edid
+#cpu-x #sid only
+
+#Section: Backup
+#Description: backintime-qt4
+backintime-qt4
+#Alt: duplicity
+#obnam #stretch only
+#bup #stretch only
+#Alt: tmfs
+#Alt: deja-dup
+#Alt: rdiff-backup
+#Alt: grsync
+#Alt: unison
+#Alt: unison-gtk
+#Alt: rsync
+#Alt: rsbackup
+#Alt: fsarchiver
+#Alt: backupninja
+#Alt: duply
+
+#Section: Disk management
+#Description: gnome-disk-utility
+#Description: gparted
+#Description: baobab
+gnome-disk-utility
+gparted
+baobab
+ncdu
+dfc
+smartmontools
+mtools
+gdisk
+parted
+hdparm
+sdparm
+dosfstools
+hfsprogs
+ntfs-3g
+kpartx
+xorriso
+#Alt: disk-manager
+#Alt: gsmartcontrol
+#Alt: fsarchiver
+#Alt: partclone
+#Alt: pmount
+#Alt: bilibop-udev
+#ecryptfs-utils #stretch only
+#partimage #stretch only
+#Alt: forensics-full
+#Alt: steghide
+#Alt: gdmap
+#Alt: clonezilla
+#exfatprogs #bullseye only
+#crazydiskinfo #bullseye only
+#disk-filltest #bullseye only
+
+
+#Section: data recovery
+#Description: testdisk
+testdisk
+#Alt: foremost
+#Alt: scalpel
+#Alt: gddrescue
+#Alt: ddrescueview
+#Alt: extundelete
+#Alt: fatcat
+#Alt: safecopy
+
+#Section: File cleaners/linters
+#Description: bleachbit
+bleachbit
+localepurge
+#Alt: fslint
+
+#Section: Log viewers
+#Description: lnav
+lnav
+colortail
+#Alt: gnome-logs
+#Alt: glogg
+#Alt: logtop
+#Alt: since
+#Alt: multitail
+
+
+#Section: Virtualization
+#Description: virt-manager
+virt-manager
+virtinst
+virt-viewer
+ebtables
+dnsmasq-base
+libvirt-daemon-system
+gir1.2-spiceclientgtk-3.0
+qemu-kvm
+qemu-utils
+virt-top
+netcat-openbsd
+#Alt: virt-sandbox
+#Alt: virt-what
+#Alt: libguestfs-tools
+#Alt: lxc
+#Alt: gnome-boxes
+#Alt: lxc-templates
+#Alt: docker.io
+#Alt: docker-registry
+#Alt: docker-doc
+#Alt: anbox
+#Alt: vagrant
+#Alt: schroot
+
+#Section: Windows compatibility
+#Description: wine
+wine
+#if ARCHITECTURES amd64
+wine64
+wine32:i386
+libgl1-mesa-dri:i386
+#endif
+#Alt: playonlinux
+#Alt: gnome-exe-thumbnailer
+#Alt: fonts-wine
+#Alt: winetricks
+#Alt: dxvk
+#Alt: reglookup
+
+#Section: Configuration management
+#Alt: ansible
+
+#Section: Java
+default-jre
+
+#Section: Display manager/screen locker
+#Description: lightdm
+#Description: light-locker
+lightdm
+lightdm-gtk-greeter
+light-locker
+accountsservice
+#Alt: slim
+#Alt: gdm3
+#Alt: arctica-greeter
+#xsecurelock #bullseye only
+#Alt: xscreensaver
+#Alt: xscreensaver-data-extra
+#Alt: xscreensaver-gl
+#Alt: xscreensaver-gl-extra
+
+#Section: Boot screen
+plymouth
+plymouth-x11
+
+
+#Section: Scheduling
+at
+
+#Section: Desktop performance
+ulatencyd
+irqbalance
+#Alt: haveged
+#oomd #bullseye only
+#preload #stretch only
+
+#Section: Security & sandboxing
+apparmor
+apparmor-easyprof
+apparmor-profiles
+apparmor-utils
+libpam-tmpdir
+sudo
+#Alt: apparmor-notify
+#Alt: apparmor-profiles-extra
+#bdoas # bullseye only
+
+#Section: Time
+chrony
+#Alt: ntp
+
+#Section: Display
+#Description: xorg
+mesa-utils
+libgl1-mesa-dri
+va-driver-all
+xinput
+xorg
+xinit
+xfonts-base
+xfonts-scalable
+xfonts-75dpi
+xfonts-100dpi
+xserver-xorg
+xserver-xorg-input-all
+xserver-xorg-input-wacom
+xserver-xorg-input-aiptek
+xserver-xorg-input-elographics
+xserver-xorg-input-joystick
+xserver-xorg-input-kbd
+xserver-xorg-input-mouse
+xserver-xorg-input-mutouch
+xserver-xorg-input-multitouch
+xserver-xorg-input-synaptics
+xserver-xorg-video-all
+xserver-xorg-video-intel
+xfonts-base
+hwdata
+nvidia-driver
+
+#Section: Kernel/boot/init
+#if ARCHITECTURES amd64
+linux-headers-amd64
+#endif
+#if ARCHITECTURES i386
+linux-headers-686:i386
+#endif
+module-assistant
+dkms
+build-essential
+systemd
+os-prober
+initramfs-tools
+console-setup
+user-setup
+libpam-systemd
+#Alt: kexec-tools
+
+#Section: Firmwares
+firmware-linux-free
+firmware-linux-nonfree
+amd64-microcode
+intel-microcode
+
+#Section: Hardware-specific packages
+#Alt: driverctl
+#Alt: pommed
+#Alt: lomoco
+#Alt: wmgui
+#Alt: mbpfan
+#Alt: usbmuxd
+#Alt: fprintd
+
+#Section: Live system components
+live-boot
+live-config
+live-config-systemd
+user-setup
+live-tools
+eject

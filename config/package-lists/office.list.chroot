@@ -1,0 +1,226 @@
+#Title: Office
+
+#Section: Office suite
+#Description: libreoffice
+libreoffice-writer
+libreoffice-impress
+libreoffice-draw
+libreoffice-calc
+libreoffice-base
+libreoffice-gtk3
+libreoffice-style-tango
+libreoffice-pdfimport
+libreoffice-java-common
+libreoffice-gnome
+libreoffice-avmedia-backend-gstreamer
+libreoffice-avmedia-backend-vlc
+libwmf-bin
+hyphen-fr
+libreoffice-l10n-fr
+mythes-fr
+libreoffice-help-fr
+#Alt: abiword
+#Alt: calligraplan
+#Alt: calligrasheets
+#Alt: calligrastage
+#Alt: calligrawords
+#Alt: dia
+#Alt: ebook2odt
+#Alt: gnumeric
+#Alt: gromit
+#Alt: impressive
+#Alt: karbon
+#Alt: key2odp
+#Alt: libreoffice-dmaths
+#Alt: libreoffice-math
+#Alt: libreoffice-style-sifr
+#Alt: lyx
+#Alt: python3-uno
+#Alt: retext python3-enchant python3-yaml
+#Alt: scribus
+#Alt: scribus-template
+#Alt: sozi
+#Alt: spotlighter
+#Alt: tpp
+#Alt: unoconv
+#braindump #stretch only
+#calligraflow #stretch only
+#plume-creator #stretch only
+
+# Section: Calendars/contacts management
+# Description: lightning
+lightning
+lightning-l10n-fr
+#Alt: pycarddav
+#Alt: gnome-calendar
+#Alt: evolution-data-server
+#Alt: abook
+#Alt: orage
+
+#Section: Personal finance
+#Description: homebank
+homebank
+#Alt: gnucash
+#Alt: grisbi
+#bitcoin-qt #sid only
+#electrum #bullseye only
+
+#Section: Document viewers
+#Description: evince
+evince
+#Alt: mupdf
+#Alt: apvlv
+#Alt: xpdf
+#Alt: calibre
+#Alt: zathura
+#Alt: fbreader
+#evince-gtk #stretch only
+#Alt: yelp
+#Alt: xchm
+#bookworkm #sid only
+
+#Section: E-book
+#Alt: calibre
+#griffith #stretch only
+#gcstar #stretch only
+#Alt: cdcat
+
+#Section: PDF editor/utilities
+#Description: pdfchain
+pdfchain
+pdfgrep
+poppler-utils
+#Alt: qpdf
+#Alt: pdfmod
+#Alt: pdfshuffler
+#gpdftext #stretch only
+#Alt: pdftk
+#Alt: pdfcrack
+#Alt: diffpdf
+#Alt: comparepdf
+#Alt: enscript
+#Alt: html2text
+#Alt: python-html2text
+#Alt: chm2pdf
+#pdfproctools #sid only
+
+
+#Section: Tasks/Personal information management
+#Alt: osmo
+#Alt: zim
+#Alt: tasque
+#Alt: gtg
+#Alt: taskcoach
+#Alt: email-reminder
+#Alt: todotxt-cli
+#Alt: lifeograph
+#Alt: tudu
+#Alt: tina
+#Alt: taskwarrior
+#Alt: vit
+#Alt: w2do
+#Alt: devtodo
+#Alt: gnome-todo
+#Alt: bijiben
+#Alt: wyrd
+#Alt: calcurse
+#Alt: gnome-contacts
+#Alt: gnome-documents
+#Alt: khal
+#Alt: treesheets
+#Alt: hnb
+#Alt: etm
+#cherrytree #stretch only
+#notebook-gtk2 #stretch-only
+#Alt: keepnote
+#Alt: almanah
+#Alt: nixnote2
+
+#Section: Image scanning
+#Description: simple-scan
+simple-scan
+imagemagick
+sane-utils
+#libsane-extras #stretch only
+#Alt: scanbd
+#Alt: xsane
+
+#Section: Optical Character Recognition (OCR)
+#Alt: ocrfeeder
+#Alt: tesseract-ocr-fra
+#Alt: unpaper
+#Alt: yagf
+#Alt: ocrad
+#paperwork-gtk # bullseye only
+
+#Section: Printing
+#Description: system-config-printer
+cups
+cups-client
+gutenprint-locales
+cups-pk-helper
+printer-driver-all
+printer-driver-cups-pdf
+printer-driver-gutenprint
+system-config-printer
+system-config-printer-udev
+cups-browsed
+#Alt: hplip-gui
+#Alt: mtink
+#Alt: colord
+
+#Section: Fonts
+#Description: fonts-hack-ttf
+fonts-pecita
+fonts-beteckna
+fonts-breip
+fonts-cantarell
+fonts-inconsolata
+fonts-junicode
+fonts-jura
+fonts-liberation
+fonts-dustin
+fonts-levien-museum
+fonts-opendin
+fonts-play
+fonts-prociono
+fonts-rufscript
+fonts-sil-andika
+fonts-sil-galatia
+fonts-tomsontalks
+fonts-sil-gentium
+fonts-vollkorn
+fonts-yanone-kaffeesatz
+fonts-century-catalogue
+fonts-comfortaa
+fonts-droid-fallback
+fonts-ecolier-court
+fonts-f500
+fonts-fanwood
+fonts-dancingscript
+fonts-cabinsketch
+fonts-lobster
+fonts-lobstertwo
+fonts-kaushanscript
+fonts-dosis
+fonts-cabin
+fonts-quattrocento
+fonts-lindenhill
+fonts-ocr-a
+fonts-ubuntu-title
+fonts-knda
+xfonts-terminus
+fonts-opensymbol
+fonts-roboto
+fonts-averia-gwf
+ttf-mscorefonts-installer
+fonts-freefont-ttf
+fonts-hack-ttf
+fonts-crosextra-caladea
+fonts-crosextra-carlito
+fonts-linuxlibertine
+fonts-sil-gentium-basic
+#Alt: fonts-lato
+#Alt: fonts-open-sans
+#Alt: fonts-fork-awesome
+#paperwork-gtk # sid only
