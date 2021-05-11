@@ -141,7 +141,7 @@ child__{{ACTION}}:
 	@touch -m $$(DONE)/+{{ACTION}}
 	@$$(call clear_cache,$$(DONE)/_{{ACTION}})
 	@$$(call clear_cache,$$(DONE)/{{ACTION}})
-$$(DONE)/_{{ACTION}}/*: %
+$$(DONE)/_{{ACTION}}/%: %
 	@$$(call clear_cache,$$(DONE)/{{ACTION}})
 	@$$(call add_dep,{{ACTION}},$$<)
 	@$$(call cache,$$@)
@@ -159,7 +159,7 @@ _{{ACTION}}:
 	@touch -m $$(DONE)/+{{ACTION}}
 	@$$(call clear_cache,$$(DONE)/_{{ACTION}})
 	@$$(call clear_cache,$$(DONE)/{{ACTION}})
-$$(DONE)/_{{ACTION}}/*: %
+$$(DONE)/_{{ACTION}}/%: %
 	@$$(call clear_cache,$$(DONE)/{{ACTION}})
 	@$$(call add_dep,{{ACTION}},$$<)
 	@$$(call cache,$$@)
