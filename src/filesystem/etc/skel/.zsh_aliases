@@ -1,8 +1,0 @@
-#!/bin/bash
-
-alias pbcopy="xsel --clipboard --input"
-alias pbpaste="xsel --clipboard --output"
-alias serve="python3 -m http.server"
-alias starwars="telnet towel.blinkenlights.nl"
-alias venv="source ./env/bin/activate"
-
