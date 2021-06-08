@@ -40,14 +40,18 @@ start: ~format
 +start: ;
 
 .PHONY: clean
-clean:
+clean: sudo
 	-@$(call clean)
-	-@$(LB) build
-	-@$(GIT) clean -fXd $(NOFAIL)
+	-@$(LB) clean
+	-@sudo $(GIT) clean -fXd $(NOFAIL)
 
 .PHONY: purge
 purge: clean
 	-@$(GIT) clean -fXd
+
+.PHONY: reset
+reset: purge
+	-@sudo rm -rf config local $(NOFAIL)
 
 -include $(patsubst %,$(_ACTIONS)/%,$(ACTIONS))
 
