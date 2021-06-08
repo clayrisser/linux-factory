@@ -1,10 +1,16 @@
 #!/bin/sh
 lb config noauto \
-	--mode debian \
     --apt apt \
     --apt-indices false \
     --architectures i386 \
+    --archive-areas "main contrib non-free" \
     --binary-images iso \
+    --bootappend-live "boot=live components locales=en_US.UTF-8 keyboard-layouts=us" \
+    --debian-installer live \
     --distribution buster \
     --linux-flavours 686-pae \
+    --linux-packages "linux-image-5.9.0-0.bpo.5 linux-headers-5.9.0-0.bpo.5" \
+    --mode debian \
     "${@}"
+
+# TODO: linux-packages not installing correct kernel
