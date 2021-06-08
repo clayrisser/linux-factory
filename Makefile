@@ -42,7 +42,7 @@ start: ~format
 .PHONY: clean
 clean:
 	-@$(call clean)
-	-@$(JEST) --clearCache $(NOFAIL)
+	-@$(LB) build
 	-@$(GIT) clean -fXd $(NOFAIL)
 
 .PHONY: purge

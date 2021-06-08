@@ -1,0 +1,10 @@
+#!/bin/sh
+lb config noauto \
+	--mode debian \
+    --apt apt \
+    --apt-indices false \
+    --architectures i386 \
+    --binary-images iso \
+    --distribution buster \
+    --linux-flavours 686-pae \
+    "${@}"
