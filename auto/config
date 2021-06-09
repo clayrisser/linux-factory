@@ -1,16 +1,42 @@
 #!/bin/sh
+
+export NAME="Jam OS"
+export EMAIL="email@clayrisser.com"
+export WEBSITE="https://clayrisser.com"
+export MIRROR="http://deb.debian.org/debian/"
+export MIRROR_SECURITY="http://security.debian.org/"
+export ARCH="i386"
+
+export _ARCHITECTURES="$ARCH"
+export _LINUX_FLAVOURS="$ARCH"
+if [ "$ARCH" == "i386" ]; then
+    export _LINUX_FLAVOURS="486 686-pae"
+fi
+
 lb config noauto \
     --apt apt \
     --apt-indices false \
-    --architectures i386 \
+    --apt-recommends true \
+    --apt-source-archives true \
+    --architectures "$_ARCHITECTURES" \
     --archive-areas "main contrib non-free" \
-    --binary-images iso \
+    --backports true \
+    --binary-images iso-hybrid \
     --bootappend-live "boot=live components locales=en_US.UTF-8 keyboard-layouts=us" \
+    --checksums sha256 \
     --debian-installer live \
+    --debian-installer-gui true \
     --distribution buster \
-    --linux-flavours 686-pae \
-    --linux-packages "linux-image-5.9.0-0.bpo.5 linux-headers-5.9.0-0.bpo.5" \
+    --initsystem systemd \
+    --iso-application "$NAME" \
+    --iso-publisher "$NAME; $WEBSITE; $EMAIL" \
+    --iso-volume "$NAME" \
+    --linux-flavours "$_LINUX_FLAVOURS" \
+    --linux-packages "linux-image linux-headers" \
+    --mirror-bootstrap "$MIRROR" \
+    --mirror-debian-installer "$MIRROR" \
     --mode debian \
+    --parent-mirror-chroot "$MIRROR" \
+    --parent-mirror-chroot-security "$MIRROR_SECURITY" \
+    --updates true \
     "${@}"
-
-# TODO: linux-packages not installing correct kernel
