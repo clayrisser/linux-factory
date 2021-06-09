@@ -16,6 +16,7 @@ fi
 lb config noauto \
     --apt apt \
     --apt-indices false \
+    --apt-options "-y --allow-remove-essential" \
     --apt-recommends true \
     --apt-source-archives true \
     --architectures "$_ARCHITECTURES" \

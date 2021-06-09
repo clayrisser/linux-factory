@@ -6,4 +6,6 @@
 /cache
 /chroot
 /chroot.*
+/config
 /live-image-*.*
+/local

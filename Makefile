@@ -15,11 +15,12 @@ sudo:
 	@sudo true
 
 ACTIONS += config
-CONFIG_DEPS := auto/config
+CONFIG_DEPS := auto/config config-overrides
 CONFIG_TARGET := sudo
 $(ACTION)/config:
 	@$(LB) config
 	@$(MAKE) -s fix-permissions
+	@rsync -a config-overrides/ config/
 	@$(call done,config)
 
 ACTIONS += build~config
@@ -52,10 +53,6 @@ clean: sudo
 .PHONY: purge
 purge: clean
 	-@$(GIT) clean -fXd
-
-.PHONY: reset
-reset: purge
-	-@sudo rm -rf config local $(NOFAIL)
 
 .PHONY: test-lang
 test-lang:
