@@ -1,11 +1,14 @@
 #!/bin/sh
 
 export NAME="Jam OS"
-export EMAIL="email@clayrisser.com"
 export WEBSITE="https://clayrisser.com"
+export EMAIL="email@clayrisser.com"
+export ARCH="i386"
+export DISTRIBUTION="buster"
+export KEYBOARD_LAYOUT="us"
+export LOCAL="en_US"
 export MIRROR="http://deb.debian.org/debian/"
 export MIRROR_SECURITY="http://security.debian.org/"
-export ARCH="i386"
 
 export _ARCHITECTURES="$ARCH"
 export _LINUX_FLAVOURS="$ARCH"
@@ -15,29 +18,38 @@ fi
 
 lb config noauto \
     --apt apt \
-    --apt-indices false \
-    --apt-options "-y --allow-remove-essential" \
+    --apt-indices true \
+    --apt-options "-y" \
     --apt-recommends true \
     --apt-source-archives true \
     --architectures "$_ARCHITECTURES" \
     --archive-areas "main contrib non-free" \
     --backports true \
     --binary-images iso-hybrid \
-    --bootappend-live "boot=live components locales=en_US.UTF-8 keyboard-layouts=us" \
+    --bootappend-live "boot=live components locales=$LOCAL.UTF-8 keyboard-layouts=$KEYBOARD_LAYOUT" \
+    --cache true \
     --checksums sha256 \
     --debian-installer live \
     --debian-installer-gui true \
-    --distribution buster \
+    --debootstrap-options "--include=apt-transport-https,ca-certificates,openssl" \
+    --debug \
+    --distribution "$DISTRIBUTION" \
     --initsystem systemd \
     --iso-application "$NAME" \
     --iso-publisher "$NAME; $WEBSITE; $EMAIL" \
     --iso-volume "$NAME" \
     --linux-flavours "$_LINUX_FLAVOURS" \
-    --linux-packages "linux-image linux-headers" \
     --mirror-bootstrap "$MIRROR" \
     --mirror-debian-installer "$MIRROR" \
     --mode debian \
+    --parent-debian-installer-distribution "$DISTRIBUTION" \
+    --parent-distribution "$DISTRIBUTION" \
     --parent-mirror-chroot "$MIRROR" \
     --parent-mirror-chroot-security "$MIRROR_SECURITY" \
+    --security true \
+    --system normal \
     --updates true \
+    --win32-loader true \
     "${@}"
+
+    # --linux-packages "linux-image-4.19.0-16 linux-headers-4.19.0-16" \

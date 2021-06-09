@@ -2,10 +2,10 @@ export MAKE_CACHE := $(shell pwd)/.make
 export PARENT := true
 include blackmagic.mk
 
-LB := sudo lb
 CLOC := node_modules/.bin/cloc
 CSPELL := cspell
 ISO_FILE := live-image-amd64.hybrid.iso
+DOWNLOAD_PACKAGE := cd config/packages.chroot && curl -LO
 
 .PHONY: all
 all: build
@@ -18,16 +18,24 @@ ACTIONS += config
 CONFIG_DEPS := auto/config config-overrides
 CONFIG_TARGET := sudo
 $(ACTION)/config:
-	@$(LB) config
+	@sudo bash auto/config
 	@$(MAKE) -s fix-permissions
-	@rsync -a config-overrides/ config/
+	@for d in $$(ls config-overrides); do \
+		mkdir -p config/$$d && \
+		if [ "$$(echo $$d | $(SED) 's|\..*||g')" == "includes" ]; then \
+			rsync -a config-overrides/$$d/ config/$$d/; \
+		else \
+			rsync -a --exclude=".*" config-overrides/$$d/ config/$$d/; \
+		fi; \
+	done
+	@$(MAKE) -s packages
 	@$(call done,config)
 
 ACTIONS += build~config
 BUILD_DEPS :=
 BUILD_TARGET := sudo
 $(ACTION)/build:
-	@$(LB) build
+	@sudo bash auto/build
 	@$(call done,build)
 
 .PHONY: prepare
@@ -47,7 +55,7 @@ $(ISO_FILE): ~build
 .PHONY: clean
 clean: sudo
 	-@$(call clean)
-	-@$(LB) clean
+	-@sudo bash auto/clean
 	-@sudo $(GIT) clean -fXd $(NOFAIL)
 
 .PHONY: purge
@@ -70,6 +78,18 @@ FIX_PERMISSIONS_FILES := config
 .PHONY: fix-permissions
 fix-permissions: sudo
 	@sudo chown -R $$(stat -c '%u:%g' Makefile) $(FIX_PERMISSIONS_FILES)
+
+.PHONY: patch
+patch: patch-debootstrap
+.PHONY: patch-debootstrap
+patch-debootstrap:
+	@sudo chroot cache/bootstrap apt install -y apt-transport-https ca-certificates openssl
+
+.PHONY: packages
+packages: config/packages.chroot/sway_*.deb
+config/packages.chroot/sway_*.deb:
+	@mkdir -p $$(echo $@ | $(SED) 's|/[^/]*$$||g')
+	@$(DOWNLOAD_PACKAGE) http://ftp.us.debian.org/debian/pool/main/s/sway/sway_1.5-7_amd64.deb
 
 -include $(patsubst %,$(_ACTIONS)/%,$(ACTIONS))
 
