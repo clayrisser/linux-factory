@@ -5,6 +5,7 @@ export WEBSITE="https://clayrisser.com"
 export EMAIL="email@clayrisser.com"
 export ARCH="i386"
 export DISTRIBUTION="buster"
+export KERNEL_VERSION="5.10.0-0.bpo.3"
 export KEYBOARD_LAYOUT="us"
 export LOCAL="en_US"
 export MIRROR="http://deb.debian.org/debian/"
@@ -13,7 +14,7 @@ export MIRROR_SECURITY="http://security.debian.org/"
 export _ARCHITECTURES="$ARCH"
 export _LINUX_FLAVOURS="$ARCH"
 if [ "$ARCH" == "i386" ]; then
-    export _LINUX_FLAVOURS="486 686-pae"
+    export _LINUX_FLAVOURS="686-pae"
 fi
 
 lb config noauto \
@@ -39,6 +40,7 @@ lb config noauto \
     --iso-publisher "$NAME; $WEBSITE; $EMAIL" \
     --iso-volume "$NAME" \
     --linux-flavours "$_LINUX_FLAVOURS" \
+    --linux-packages "linux-image-$KERNEL_VERSION linux-headers-$KERNEL_VERSION" \
     --mirror-bootstrap "$MIRROR" \
     --mirror-debian-installer "$MIRROR" \
     --mode debian \
@@ -51,5 +53,3 @@ lb config noauto \
     --updates true \
     --win32-loader true \
     "${@}"
-
-    # --linux-packages "linux-image-4.19.0-16 linux-headers-4.19.0-16" \

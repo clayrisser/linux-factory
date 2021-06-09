@@ -5,7 +5,6 @@ include blackmagic.mk
 CLOC := node_modules/.bin/cloc
 CSPELL := cspell
 ISO_FILE := live-image-amd64.hybrid.iso
-DOWNLOAD_PACKAGE := cd config/packages.chroot && curl -LO
 
 .PHONY: all
 all: build
@@ -55,7 +54,7 @@ $(ISO_FILE): ~build
 .PHONY: clean
 clean: sudo
 	-@$(call clean)
-	-@sudo bash auto/clean
+	-@sudo bash auto/clean --purge
 	-@sudo $(GIT) clean -fXd $(NOFAIL)
 
 .PHONY: purge
@@ -86,10 +85,12 @@ patch-debootstrap:
 	@sudo chroot cache/bootstrap apt install -y apt-transport-https ca-certificates openssl
 
 .PHONY: packages
-packages: config/packages.chroot/sway_*.deb
-config/packages.chroot/sway_*.deb:
+packages: config/packages.chroot/*.deb
+config/packages.chroot/*.deb:
 	@mkdir -p $$(echo $@ | $(SED) 's|/[^/]*$$||g')
-	@$(DOWNLOAD_PACKAGE) http://ftp.us.debian.org/debian/pool/main/s/sway/sway_1.5-7_amd64.deb
+	@for p in $$(cat packages.list | sed 's|^#.*||g'); do \
+		cd config/packages.chroot && curl -LO $$p && cd ../..; \
+	done
 
 -include $(patsubst %,$(_ACTIONS)/%,$(ACTIONS))
 

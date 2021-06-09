@@ -1,6 +1,5 @@
 gnome-power-manager
 gnome-system-monitor
-brave-browser
 system-config-printer
 nautilus
 seahorse
@@ -14,5 +13,6 @@ arandr
 firefox-esr
 gnome-control-center
 gucharmap
+brave-browser
 lxappearance
 #endif
