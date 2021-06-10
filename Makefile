@@ -5,7 +5,7 @@ include blackmagic.mk
 CLOC ?= cloc
 CSPELL ?= cspell
 DPKG_NAME ?= dpkg-name
-ISO_FILE ?= live-image-i386.hybrid.iso
+ISO_FILE ?= live-image-amd64.hybrid.iso
 
 .PHONY: all
 all: build
@@ -55,11 +55,15 @@ $(ISO_FILE): ~build
 .PHONY: clean
 clean: sudo
 	-@$(call clean)
-	-@sudo bash auto/clean --purge
-	-@sudo $(GIT) clean -fXd $(NOFAIL)
+	-@sudo bash auto/clean
+	-@sudo $(GIT) clean -fXd \
+		-e $(BANG)cache \
+		-e $(BANG)cache/ \
+		-e $(BANG)cache/**/* $(NOFAIL)
 
 .PHONY: purge
 purge: clean
+	-@sudo bash auto/clean --purge
 	-@$(GIT) clean -fXd
 
 .PHONY: test-lang
@@ -74,7 +78,7 @@ enhances:
 layouts:
 	@egrep -i '(^!|$(ARGS))' /usr/share/X11/xkb/rules/base.lst
 
-FIX_PERMISSIONS_FILES := config
+FIX_PERMISSIONS_FILES := config config-overrides
 .PHONY: fix-permissions
 fix-permissions: sudo
 	@sudo chown -R $$(stat -c '%u:%g' Makefile) $(FIX_PERMISSIONS_FILES)
@@ -95,6 +99,13 @@ config/packages.chroot/*.deb:
 		$(DPKG_NAME) -o package.deb && \
 		cd ../..; \
 	done
+
+.PHONY: clear-packages
+clear-packages:
+	@rm -rf config/packages.chroot/*.deb
+
+.PHONY: reset-packages
+reset-packages: clear-packages packages
 
 -include $(patsubst %,$(_ACTIONS)/%,$(ACTIONS))
 
