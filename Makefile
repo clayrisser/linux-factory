@@ -2,9 +2,10 @@ export MAKE_CACHE := $(shell pwd)/.make
 export PARENT := true
 include blackmagic.mk
 
-CLOC := node_modules/.bin/cloc
-CSPELL := cspell
-ISO_FILE := live-image-amd64.hybrid.iso
+CLOC ?= cloc
+CSPELL ?= cspell
+DPKG_NAME ?= dpkg-name
+ISO_FILE ?= live-image-i386.hybrid.iso
 
 .PHONY: all
 all: build
@@ -89,7 +90,10 @@ packages: config/packages.chroot/*.deb
 config/packages.chroot/*.deb:
 	@mkdir -p $$(echo $@ | $(SED) 's|/[^/]*$$||g')
 	@for p in $$(cat packages.list | sed 's|^#.*||g'); do \
-		cd config/packages.chroot && curl -LO $$p && cd ../..; \
+		cd config/packages.chroot && \
+		curl -L -o package.deb $$p && \
+		$(DPKG_NAME) -o package.deb && \
+		cd ../..; \
 	done
 
 -include $(patsubst %,$(_ACTIONS)/%,$(ACTIONS))

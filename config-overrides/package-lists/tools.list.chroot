@@ -1,12 +1,12 @@
+evince
+gedit
 gnome-power-manager
 gnome-system-monitor
-system-config-printer
+gparted
+hardinfo
 nautilus
 seahorse
-hardinfo
-gparted
-gedit
-evince
+system-config-printer
 
 #if VOID void
 arandr

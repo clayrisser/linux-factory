@@ -3,9 +3,9 @@
 export NAME="Jam OS"
 export WEBSITE="https://clayrisser.com"
 export EMAIL="email@clayrisser.com"
-export ARCH="i386"
+export ARCH="amd64" # i386,amd64
 export DISTRIBUTION="buster"
-export KERNEL_VERSION="5.10.0-0.bpo.3"
+export KERNEL_VERSION="5.9.0-0.bpo.5"
 export KEYBOARD_LAYOUT="us"
 export LOCAL="en_US"
 export MIRROR="http://deb.debian.org/debian/"
@@ -30,7 +30,7 @@ lb config noauto \
     --bootappend-live "boot=live components locales=$LOCAL.UTF-8 keyboard-layouts=$KEYBOARD_LAYOUT" \
     --cache true \
     --checksums sha256 \
-    --debian-installer live \
+    --debian-installer true \
     --debian-installer-gui true \
     --debootstrap-options "--include=apt-transport-https,ca-certificates,openssl" \
     --debug \
@@ -49,7 +49,8 @@ lb config noauto \
     --parent-mirror-chroot "$MIRROR" \
     --parent-mirror-chroot-security "$MIRROR_SECURITY" \
     --security true \
-    --system normal \
+    --system live \
     --updates true \
     --win32-loader true \
     "${@}"
+
