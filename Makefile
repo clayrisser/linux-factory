@@ -21,7 +21,6 @@ $(ACTION)/config:
 	@sudo bash auto/config
 	@$(MAKE) -s fix-permissions
 	@$(MAKE) -s packages
-	@$(MAKE) -s calamares
 	@for d in $$(ls config-overrides); do \
 		mkdir -p config/$$d && \
 		if [ "$$(echo $$d | $(SED) 's|\..*||g')" == "includes" ]; then \
@@ -83,23 +82,6 @@ FIX_PERMISSIONS_FILES := config config-overrides
 .PHONY: fix-permissions
 fix-permissions: sudo
 	@sudo chown -R $$(stat -c '%u:%g' Makefile) $(FIX_PERMISSIONS_FILES)
-
-.PHONY: calamares
-calamares: config/includes.chroot/etc/calamares/settings.conf \
-	config/includes.chroot/usr/lib/calamares/modules/bootloader-config/module.desc
-config/includes.chroot/etc/calamares/settings.conf: calamares-settings-debian/COPYING
-	@mkdir -p config/includes.chroot/etc
-	@cp -r calamares-settings-debian/calamares config/includes.chroot/etc/calamares
-config/includes.chroot/usr/lib/calamares/modules/bootloader-config/module.desc: calamares-settings-debian/COPYING
-	@mkdir -p config/includes.chroot/usr/lib/calamares
-	@cp -r calamares-settings-debian/calamares-modules \
-		config/includes.chroot/usr/lib/calamares/modules
-
-.PHONY: submodules
-submodules: calamares-settings-debian/COPYING
-calamares-settings-debian/COPYING:
-	@$(GIT) submodule update --init --recursive --remote
-	@cd calamares-settings-debian && git checkout 11.0.4
 
 .PHONY: packages
 packages: config/packages.chroot/*.deb

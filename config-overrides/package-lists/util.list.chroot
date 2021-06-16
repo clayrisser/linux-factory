@@ -10,3 +10,11 @@ playerctl
 pulseaudio-utils
 rfkill
 sudo
+
+autoconf
+automake
+build-essential
+cmake
+curl
+git
+make

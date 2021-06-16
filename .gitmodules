@@ -1,4 +1,0 @@
-[submodule "calamares-settings-debian"]
-	path = calamares-settings-debian
-	url = https://salsa.debian.org/live-team/calamares-settings-debian.git
-	branch = master
