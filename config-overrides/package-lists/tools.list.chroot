@@ -9,10 +9,11 @@ nautilus
 seahorse
 system-config-printer
 
-#if VOID void
-arandr
+#if IGNORE ignore
 firefox-esr
+gnome-calendar
+gnome-contacts
 gnome-control-center
 gucharmap
-lxappearance
+vlc
 #endif

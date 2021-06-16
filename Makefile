@@ -85,10 +85,15 @@ fix-permissions: sudo
 	@sudo chown -R $$(stat -c '%u:%g' Makefile) $(FIX_PERMISSIONS_FILES)
 
 .PHONY: calamares
-calamares: config/includes.chroot/etc/calamares/settings.conf
+calamares: config/includes.chroot/etc/calamares/settings.conf \
+	config/includes.chroot/usr/lib/calamares/modules/bootloader-config/module.desc
 config/includes.chroot/etc/calamares/settings.conf: calamares-settings-debian/COPYING
 	@mkdir -p config/includes.chroot/etc
 	@cp -r calamares-settings-debian/calamares config/includes.chroot/etc/calamares
+config/includes.chroot/usr/lib/calamares/modules/bootloader-config/module.desc: calamares-settings-debian/COPYING
+	@mkdir -p config/includes.chroot/usr/lib/calamares
+	@cp -r calamares-settings-debian/calamares-modules \
+		config/includes.chroot/usr/lib/calamares/modules
 
 .PHONY: submodules
 submodules: calamares-settings-debian/COPYING

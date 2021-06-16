@@ -1,0 +1,12 @@
+apt-file
+autofs
+brightnessctl
+gnome-keyring
+gnome-session-bin
+gnome-settings-daemon
+gnome-settings-daemon-common
+kanshi
+playerctl
+pulseaudio-utils
+rfkill
+sudo
