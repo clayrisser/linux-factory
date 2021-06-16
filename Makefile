@@ -20,6 +20,8 @@ CONFIG_TARGET := sudo
 $(ACTION)/config:
 	@sudo bash auto/config
 	@$(MAKE) -s fix-permissions
+	@$(MAKE) -s packages
+	@$(MAKE) -s calamares
 	@for d in $$(ls config-overrides); do \
 		mkdir -p config/$$d && \
 		if [ "$$(echo $$d | $(SED) 's|\..*||g')" == "includes" ]; then \
@@ -28,7 +30,6 @@ $(ACTION)/config:
 			rsync -a --exclude=".*" config-overrides/$$d/ config/$$d/; \
 		fi; \
 	done
-	@$(MAKE) -s packages
 	@$(call done,config)
 
 ACTIONS += build~config
@@ -83,12 +84,11 @@ FIX_PERMISSIONS_FILES := config config-overrides
 fix-permissions: sudo
 	@sudo chown -R $$(stat -c '%u:%g' Makefile) $(FIX_PERMISSIONS_FILES)
 
-.PHONY: patch
-patch: patch-debootstrap calamares-settings-debian/COPYING
-	@echo cp calamares-settings-debian/calamares
-.PHONY: patch-debootstrap
-patch-debootstrap:
-	@sudo chroot cache/bootstrap apt install -y apt-transport-https ca-certificates openssl
+.PHONY: calamares
+calamares: config/includes.chroot/etc/calamares/settings.conf
+config/includes.chroot/etc/calamares/settings.conf: calamares-settings-debian/COPYING
+	@mkdir -p config/includes.chroot/etc
+	@cp -r calamares-settings-debian/calamares config/includes.chroot/etc/calamares
 
 .PHONY: submodules
 submodules: calamares-settings-debian/COPYING
