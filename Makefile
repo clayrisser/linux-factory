@@ -84,14 +84,17 @@ fix-permissions: sudo
 	@sudo chown -R $$(stat -c '%u:%g' Makefile) $(FIX_PERMISSIONS_FILES)
 
 .PHONY: patch
-patch: patch-debootstrap submodules
+patch: patch-debootstrap calamares-settings-debian/COPYING
+	@echo cp calamares-settings-debian/calamares
 .PHONY: patch-debootstrap
 patch-debootstrap:
 	@sudo chroot cache/bootstrap apt install -y apt-transport-https ca-certificates openssl
 
 .PHONY: submodules
 submodules: calamares-settings-debian/COPYING
-	@git submodule update --init --recursive --remote
+calamares-settings-debian/COPYING:
+	@$(GIT) submodule update --init --recursive --remote
+	@cd calamares-settings-debian && git checkout 11.0.4
 
 .PHONY: packages
 packages: config/packages.chroot/*.deb
