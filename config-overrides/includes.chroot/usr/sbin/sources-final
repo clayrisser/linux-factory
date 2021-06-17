@@ -23,7 +23,4 @@ deb-src http://deb.debian.org/debian/ $RELEASE-backports main contrib non-free
 deb http://httpredir.debian.org/debian/ sid main contrib non-free
 EOF
 
-chroot $CHROOT apt-get update
-chroot $CHROOT apt-get upgrade -y
-
 exit 0

@@ -1,6 +1,62 @@
 #!/bin/sh
 
 CHROOT=$(mount | grep proc | grep calamares | awk '{print $3}' | sed -e "s#/proc##g")
+DEFAULT_USER=$(echo $(ls /home) | sed 's|\s.*$||g')
+
+# setup flatpak
+chroot $CHROOT sh -c \
+    'flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo'
+
+# install rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > $CHROOT/tmp/rust.sh
+chroot $CHROOT su $DEFAULT_USER -c '/tmp/rust.sh -y'
+chroot $CHROOT rm -f $CHROOT/tmp/rust.sh
+
+# install gvm
+chroot $CHROOT su $DEFAULT_USER -c \
+    'bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)'
+
+# install nvm
+chroot $CHROOT su $DEFAULT_USER -c \
+    'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash'
+
+# install pyenv
+chroot $CHROOT su $DEFAULT_USER -c \
+    'git clone https://github.com/pyenv/pyenv.git ~/.pyenv'
+
+# install nix
+chroot $CHROOT su $DEFAULT_USER -c \
+    'curl -L https://nixos.org/nix/install | sh'
+
+# install oh-my-zsh
+chroot $CHROOT su $DEFAULT_USER -c \
+    'curl -L https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh'
+
+# install spaceship prompt
+chroot $CHROOT su $DEFAULT_USER -c \
+    'git clone https://github.com/spaceship-prompt/spaceship-prompt.git "~/.oh-my-zsh/custom/themes/spaceship-prompt" --depth=1'
+chroot $CHROOT su $DEFAULT_USER -c \
+    'ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "~/.oh-my-zsh/custom/themes/spaceship.zsh-theme"'
+
+# install zsh-autosuggestions
+chroot $CHROOT su $DEFAULT_USER -c \
+    'git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions'
+
+# install zsh-syntax-highlighting
+chroot $CHROOT su $DEFAULT_USER -c \
+    'git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting'
+
+# install android studio
+chroot $CHROOT sh -c \
+    'flatpak install -y https://dl.flathub.org/repo/appstream/com.google.AndroidStudio.flatpakref'
+
+# install skype
+chroot $CHROOT sh -c \
+    'flatpak install -y https://dl.flathub.org/repo/appstream/com.skype.Client.flatpakref'
+
+# install microsoft teams
+chroot $CHROOT sh -c \
+    'flatpak install -y https://dl.flathub.org/repo/appstream/com.github.IsmaelMartinez.teams_for_linux.flatpakref'
 
 rm -rf \
     $CHROOT/usr/sbin/post-install \

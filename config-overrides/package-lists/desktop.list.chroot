@@ -3,6 +3,7 @@ gnome-backgrounds
 gnome-screenshot
 gnome-themes-extra
 gsettings-desktop-schemas 
+i3-wm
 kanshi
 policykit-1-gnome 
 qt5-style-kvantum
@@ -10,5 +11,6 @@ qt5-style-plugins
 sway
 xdg-desktop-portal
 xdg-desktop-portal-kde
+xinit
 xserver-xorg
 xwayland
