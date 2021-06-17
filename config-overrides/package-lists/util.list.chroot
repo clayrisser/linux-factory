@@ -2,6 +2,7 @@ apt-file
 apt-transport-https
 autofs
 brightnessctl
+coreutils
 curl
 gnome-keyring
 gnome-session-bin
