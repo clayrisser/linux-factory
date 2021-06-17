@@ -1,6 +1,0 @@
----
-type:       "job"
-name:       "pre-packages"
-interface:  "process"
-command:    "/usr/sbin/pre-packages"
-timeout:    600

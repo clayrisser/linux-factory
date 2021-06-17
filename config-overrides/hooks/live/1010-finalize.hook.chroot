@@ -1,1 +1,4 @@
 #!/bin/bash
+
+chmod +x /usr/sbin/post-install \
+    /usr/sbin/pre-install
