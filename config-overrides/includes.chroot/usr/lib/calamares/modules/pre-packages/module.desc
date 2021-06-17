@@ -1,0 +1,6 @@
+---
+type:       "job"
+name:       "post-packages"
+interface:  "process"
+command:    "/usr/sbin/post-packages"
+timeout:    600

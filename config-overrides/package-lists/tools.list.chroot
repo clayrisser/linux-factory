@@ -6,14 +6,4 @@ gnome-system-monitor
 gparted
 hardinfo
 nautilus
-seahorse
 system-config-printer
-
-#if IGNORE ignore
-firefox-esr
-gnome-calendar
-gnome-contacts
-gnome-control-center
-gucharmap
-vlc
-#endif
