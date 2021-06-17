@@ -1,6 +1,8 @@
 apt-file
+apt-transport-https
 autofs
 brightnessctl
+curl
 gnome-keyring
 gnome-session-bin
 gnome-settings-daemon
@@ -12,6 +14,7 @@ psutils
 pulseaudio-utils
 ranger
 rfkill
+rsync
 silversearcher-ag
 sudo
 vim

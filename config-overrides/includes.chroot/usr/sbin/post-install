@@ -2,4 +2,8 @@
 
 CHROOT=$(mount | grep proc | grep calamares | awk '{print $3}' | sed -e "s#/proc##g")
 
+rm -rf \
+    $CHROOT/usr/sbin/post-install \
+    $CHROOT/usr/sbin/pre-install
+
 exit 0

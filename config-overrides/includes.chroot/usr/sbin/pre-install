@@ -2,4 +2,7 @@
 
 CHROOT=$(mount | grep proc | grep calamares | awk '{print $3}' | sed -e "s#/proc##g")
 
+# rawfs
+rsync -a /etc/rawfs/ $CHROOT/
+
 exit 0
