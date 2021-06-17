@@ -1,13 +1,12 @@
 adwaita-qt
 gnome-backgrounds
+gnome-screenshot
 gnome-themes-extra
 gsettings-desktop-schemas 
 kanshi
-lxappearance
 policykit-1-gnome 
 qt5-style-kvantum
 qt5-style-plugins
-qt5ct
 sway
 xdg-desktop-portal
 xdg-desktop-portal-kde

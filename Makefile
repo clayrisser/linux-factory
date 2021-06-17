@@ -2,10 +2,12 @@ export MAKE_CACHE := $(shell pwd)/.make
 export PARENT := true
 include blackmagic.mk
 
+CWD=$(shell pwd)
 CLOC ?= cloc
 CSPELL ?= cspell
 DPKG_NAME ?= dpkg-name
 ISO_FILE ?= live-image-amd64.hybrid.iso
+EXPORT_GPG_KEY := sh $(CWD)/export-gpg-key.sh
 
 .PHONY: all
 all: build
@@ -100,6 +102,10 @@ clear-packages:
 
 .PHONY: reset-packages
 reset-packages: clear-packages packages
+
+.PHONY: trust-gpg-key
+trust-gpg-key:
+	@$(EXPORT_GPG_KEY) $(ARGS) config-overrides/archives/$(ARGS).key.chroot
 
 -include $(patsubst %,$(_ACTIONS)/%,$(ACTIONS))
 

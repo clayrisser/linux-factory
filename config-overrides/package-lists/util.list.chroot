@@ -1,11 +1,17 @@
+apt-file
 autofs
 brightnessctl
 gnome-keyring
 gnome-session-bin
 gnome-settings-daemon
 gnome-settings-daemon-common
+ispell
+ncdu
 playerctl
 psutils
 pulseaudio-utils
+ranger
 rfkill
+silversearcher-ag
 sudo
+vim
