@@ -3,6 +3,9 @@
 CHROOT=$(mount | grep proc | grep calamares | awk '{print $3}' | sed -e "s#/proc##g")
 DEFAULT_USER=$(echo $(ls /home) | sed 's|\s.*$||g')
 
+# set default shell
+usermod -s /usr/bin/zsh $DEFAULT_USER
+
 # setup flatpak
 chroot $CHROOT sh -c \
     'flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo'
@@ -24,6 +27,12 @@ chroot $CHROOT su $DEFAULT_USER -c \
 chroot $CHROOT su $DEFAULT_USER -c \
     'git clone https://github.com/pyenv/pyenv.git ~/.pyenv'
 
+# install rvm
+chroot $CHROOT sh -c \
+    'gpg --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB'
+chroot $CHROOT sh -c \
+    'curl -sSL https://get.rvm.io | bash -s stable --rails'
+
 # install nix
 chroot $CHROOT su $DEFAULT_USER -c \
     'curl -L https://nixos.org/nix/install | sh'
@@ -34,9 +43,9 @@ chroot $CHROOT su $DEFAULT_USER -c \
 
 # install spaceship prompt
 chroot $CHROOT su $DEFAULT_USER -c \
-    'git clone https://github.com/spaceship-prompt/spaceship-prompt.git "~/.oh-my-zsh/custom/themes/spaceship-prompt" --depth=1'
+    'git clone https://github.com/spaceship-prompt/spaceship-prompt.git ~/.oh-my-zsh/custom/themes/spaceship-prompt --depth=1'
 chroot $CHROOT su $DEFAULT_USER -c \
-    'ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "~/.oh-my-zsh/custom/themes/spaceship.zsh-theme"'
+    'ln -s ~/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme ~/.oh-my-zsh/custom/themes/spaceship.zsh-theme'
 
 # install zsh-autosuggestions
 chroot $CHROOT su $DEFAULT_USER -c \

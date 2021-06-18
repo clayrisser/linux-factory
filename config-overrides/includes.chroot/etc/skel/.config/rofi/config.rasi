@@ -1,0 +1,22 @@
+configuration {
+	columns: 9;
+	combi-hide-mode-prefix: true;
+	combi-modi: "drun,run,ssh";
+	drun-match-fields: "name,generic,exec,categories";
+	font: "Open Sans 11";
+	lines: 15;
+	matching: "fuzzy";
+	modi: "drun,run,ssh,combi";
+	show-icons: true;
+	terminal: "foot sh -c";
+	theme: "Arc-Dark";
+	width: 100;
+        hide-scrollbar: true;
+        kb-row-select: "Tab";
+        kb-row-tab: "";
+        line-margin: 0;
+        line-padding: 1;
+        lines: 2;
+        location: 1;
+        separator-style: none;
+}

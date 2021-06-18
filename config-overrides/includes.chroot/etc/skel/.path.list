@@ -1,0 +1,10 @@
+$ANDROID_SDK_ROOT/emulator
+$ANDROID_SDK_ROOT/platform-tools
+$ANDROID_SDK_ROOT/tools
+$ANDROID_SDK_ROOT/tools/bin
+$HOME/.deno/bin
+$HOME/.krew/bin
+$HOME/.rvm/bin
+$PYENV_ROOT/bin
+/home/linuxbrew/.linuxbrew/bin
+/opt/mssql-tools/bin

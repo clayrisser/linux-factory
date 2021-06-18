@@ -1,0 +1,10 @@
+aws
+awsp
+azure
+docker
+gcp
+krew
+kubectl
+kubectx
+minikube
+nix
