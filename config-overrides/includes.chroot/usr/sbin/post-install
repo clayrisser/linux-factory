@@ -1,10 +1,17 @@
 #!/bin/sh
 
+mkdir -p /log/calamares
+exec > /log/calamares/post-install.log 2>&1
+
 CHROOT=$(mount | grep proc | grep calamares | awk '{print $3}' | sed -e "s#/proc##g")
-DEFAULT_USER=$(echo $(ls /home) | sed 's|\s.*$||g')
+DEFAULT_USER=$(echo $(ls $CHROOT/home) | sed 's|\s.*$||g')
+
+echo CHROOT: $CHROOT
+echo DEFAULT_USER: $DEFAULT_USER
 
 # set default shell
-usermod -s /usr/bin/zsh $DEFAULT_USER
+chroot $CHROOT sh -c \
+    'usermod -s /usr/bin/zsh $DEFAULT_USER'
 
 # setup flatpak
 chroot $CHROOT sh -c \
