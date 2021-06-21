@@ -1,0 +1,2 @@
+deb https://packages.microsoft.com/repos/azure-cli bionic main
+deb https://packages.microsoft.com/repos/code stable main

@@ -9,6 +9,7 @@ gnome-session-bin
 gnome-settings-daemon
 gnome-settings-daemon-common
 ispell
+locate
 ncdu
 playerctl
 psutils

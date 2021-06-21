@@ -10,9 +10,14 @@ usermod -s /usr/bin/zsh $DEFAULT_USER
 chroot $CHROOT sh -c \
     'flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo'
 
+# setup snap
+chroot $CHROOT sh -c \
+    'snap install core'
+
 # install rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > $CHROOT/tmp/rust.sh
-chroot $CHROOT su $DEFAULT_USER -c '/tmp/rust.sh -y'
+chroot $CHROOT su $DEFAULT_USER -c \
+    '/tmp/rust.sh -y'
 chroot $CHROOT rm -f $CHROOT/tmp/rust.sh
 
 # install gvm
@@ -36,6 +41,14 @@ chroot $CHROOT sh -c \
 # install nix
 chroot $CHROOT su $DEFAULT_USER -c \
     'curl -L https://nixos.org/nix/install | sh'
+
+# install awsp
+chroot $CHROOT sh -c \
+    'npm install -g awsp'
+
+# install dotstow
+chroot $CHROOT sh -c \
+    'npm install -g dotstow'
 
 # install oh-my-zsh
 chroot $CHROOT su $DEFAULT_USER -c \
@@ -66,6 +79,78 @@ chroot $CHROOT sh -c \
 # install microsoft teams
 chroot $CHROOT sh -c \
     'flatpak install -y https://dl.flathub.org/repo/appstream/com.github.IsmaelMartinez.teams_for_linux.flatpakref'
+
+# install mongo compass
+curl -L -o $CHROOT/tmp/package.deb \
+    https://downloads.mongodb.com/compass/mongodb-compass_1.26.1_amd64.deb
+chroot $CHROOT sh -c \
+    'dpkg -i /tmp/package.deb 2>&1 || true'
+chroot $CHROOT sh -c \
+    'apt install -y -f'
+chroot $CHROOT sh -c \
+    'dpkg -i /tmp/package.deb'
+rm -rf $CHROOT/tmp/package.deb
+
+# install apache directory studio
+curl -L -o $CHROOT/tmp/package.deb \
+    https://downloads.apache.org//directory/apacheds/dist/2.0.0.AM26/apacheds-2.0.0.AM26-amd64.deb
+chroot $CHROOT sh -c \
+    'dpkg -i /tmp/package.deb 2>&1 || true'
+chroot $CHROOT sh -c \
+    'apt install -y -f'
+chroot $CHROOT sh -c \
+    'dpkg -i /tmp/package.deb'
+rm -rf $CHROOT/tmp/package.deb
+
+# install dbeaver
+curl -L -o $CHROOT/tmp/package.deb \
+    https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb
+chroot $CHROOT sh -c \
+    'dpkg -i /tmp/package.deb 2>&1 || true'
+chroot $CHROOT sh -c \
+    'apt install -y -f'
+chroot $CHROOT sh -c \
+    'dpkg -i /tmp/package.deb'
+rm -rf $CHROOT/tmp/package.deb
+
+# install react native debugger
+curl -L -o $CHROOT/tmp/package.deb \
+    https://github.com/jhen0409/react-native-debugger/releases/download/v0.11.9/react-native-debugger_0.11.9_amd64.deb
+chroot $CHROOT sh -c \
+    'dpkg -i /tmp/package.deb 2>&1 || true'
+chroot $CHROOT sh -c \
+    'apt install -y -f'
+chroot $CHROOT sh -c \
+    'dpkg -i /tmp/package.deb'
+rm -rf $CHROOT/tmp/package.deb
+
+# install krew
+mkdir -p $CHROOT/tmp/krew
+curl -L -o $CHROOT/tmp/krew/krew.tar.gz \
+    https://github.com/kubernetes-sigs/krew/releases/latest/download/krew.tar.gz
+chroot $CHROOT su $DEFAULT_USER -c \
+    'cd /tmp/krew && tar -xzvf krew.tar.gz'
+chroot $CHROOT su $DEFAULT_USER -c \
+    '/tmp/krew/krew-linux_amd64 install krew'
+rm -rf $CHROOT/tmp/krew
+
+# install docker machine
+curl -L -o $CHROOT/tmp/docker-machine \
+    https://github.com/docker/machine/releases/download/v0.16.0/docker-machine-Linux-x86_64
+chroot $CHROOT sh -c \
+    'mv /tmp/docker-machine /usr/local/bin/docker-machine'
+chroot $CHROOT sh -c \
+    'chmod +x /usr/local/bin/docker-machine'
+
+# install minikube
+curl -L -o $CHROOT/tmp/minikube \
+    https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+chroot $CHROOT sh -c \
+    'install /tmp/minikube /usr/local/bin/minikube'
+
+# install redis desktop manager
+chroot $CHROOT sh -c \
+    'snap install redis-desktop-manager'
 
 rm -rf \
     $CHROOT/usr/sbin/post-install \

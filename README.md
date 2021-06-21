@@ -1,10 +1,3 @@
-aws
-awsp
-azure
-docker
-gcp
-krew
-kubectl
-kubectx
-minikube
-nix
+# jam-os
+
+> the operating system built for software engineers
