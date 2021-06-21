@@ -239,6 +239,6 @@ bar {
 
 for_window [class="calamares" title="Debian GNU\/Linux Installer"] fullscreen enable
 
-exec sudo calamares
+exec sh -c "xhost + local: && sudo calamares"
 
 include /etc/sway/config.d/*
