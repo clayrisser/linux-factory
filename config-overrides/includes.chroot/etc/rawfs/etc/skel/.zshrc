@@ -80,5 +80,10 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/.zsh_aliases
 source $HOME/.zsh_envs
 source $HOME/.zsh_functions
-source $HOME/.zsh_sources
 source $HOME/.zsh_secrets
+source $HOME/.zsh_sources
+
+export PATH="$(extend_path)"
+
+echo sway.land | cowsay | lolcat
+echo && ls ~/Desktop

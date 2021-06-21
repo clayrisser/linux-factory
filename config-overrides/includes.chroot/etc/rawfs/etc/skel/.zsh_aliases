@@ -1,5 +1,6 @@
 #!/usr/bin/zsh
 
+alias awsp="source _awsp"
 alias c=clear
 alias k="kubectl"
 alias p="pnpm"

@@ -1,1 +1,24 @@
 #!/usr/bin/zsh
+
+perm() {
+	_PERM_PERM=$1
+	if [ -f $1 ] || [ -d $1 ]; then
+		_PERM_PERM=$(ls -ld $1 | sed 's| .*||g')
+	fi
+	_PERM_STAT=$(unix-permissions convert.stat $_PERM_PERM)
+	_PERM_STATUS=$?
+	if [ "$_PERM_STATUS" != "0" ]; then
+		printf "$_PERM_STAT" >&2
+		return $_PERM_STATUS
+	fi
+	echo $_PERM_STAT \
+		$(unix-permissions convert.octal $_PERM_PERM) \
+		$(unix-permissions convert.symbolic $_PERM_PERM)
+}
+
+extend_path() {
+    for p in $(eval echo $(cat $HOME/.path.list)); do
+        printf $p:
+    done
+    printf $PATH
+}

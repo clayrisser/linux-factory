@@ -18,7 +18,7 @@ set $term foot
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $menu rofi -show combi
 
 include /etc/sway/config-vars.d/*
 
@@ -210,10 +210,6 @@ bindsym $mod+r mode "resize"
 bar {
     position top
 
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    # status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
-
     status_command bumblebee-status -m cpu memory battery time \
         pasink pasource -p time.format="%H:%M" -t solarized
 
@@ -232,12 +228,8 @@ bar {
 
     workspace_buttons no
 
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    # status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
-
     status_command bumblebee-status -m nic \
-        -p time.format="%H:%M" -t powerline
+        -p time.format="%H:%M" -t solarized
 
     colors {
         statusline #ffffff
@@ -245,8 +237,5 @@ bar {
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
 }
-
-# exec_always sh -c "killall waybar && waybar"
-# exec_always nm-applet --indicator
 
 include /etc/sway/config.d/*

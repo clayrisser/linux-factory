@@ -8,6 +8,8 @@ i3-wm
 kanshi
 libpam0g
 libxcb-xkb1
+lightdm
+lightdm-autologin-greeter
 ncurses-bin
 policykit-1-gnome 
 qt5-style-kvantum

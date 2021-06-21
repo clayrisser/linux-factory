@@ -124,6 +124,17 @@ chroot $CHROOT sh -c \
     'dpkg -i /tmp/package.deb'
 rm -rf $CHROOT/tmp/package.deb
 
+# install ly
+curl -L -o $CHROOT/tmp/package.deb \
+    https://github.com/clayrisser/nfpm-ly/releases/download/v0.1.0/ly_0.1.0_amd64.deb
+chroot $CHROOT sh -c \
+    'dpkg -i /tmp/package.deb 2>&1 || true'
+chroot $CHROOT sh -c \
+    'apt install -y -f'
+chroot $CHROOT sh -c \
+    'dpkg -i /tmp/package.deb'
+rm -rf $CHROOT/tmp/package.deb
+
 # install krew
 mkdir -p $CHROOT/tmp/krew
 curl -L -o $CHROOT/tmp/krew/krew.tar.gz \
@@ -151,6 +162,10 @@ chroot $CHROOT sh -c \
 # install redis desktop manager
 chroot $CHROOT sh -c \
     'snap install redis-desktop-manager'
+
+# install bumblebee status
+chroot $CHROOT sh -c \
+    'pip3 install bumblebee-status'
 
 rm -rf \
     $CHROOT/usr/sbin/post-install \

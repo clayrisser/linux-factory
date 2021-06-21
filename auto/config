@@ -38,7 +38,7 @@ lb config noauto \
     --archive-areas "main contrib non-free" \
     --backports true \
     --binary-images iso-hybrid \
-    --bootappend-live "boot=live components locales=$LOCAL.UTF-8 keyboard-layouts=$KEYBOARD_LAYOUT" \
+    --bootappend-live "boot=live components username=live locales=$LOCAL.UTF-8 keyboard-layouts=$KEYBOARD_LAYOUT" \
     --cache true \
     --checksums sha256 \
     --debian-installer netinst \

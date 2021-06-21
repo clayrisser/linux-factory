@@ -21,3 +21,6 @@ source $HOME/.cargo/env
 
 # source gvm
 source $HOME/.gvm/scripts/gvm
+
+# source nix
+source $HOME/.nix-profile/etc/profile.d/nix.sh
