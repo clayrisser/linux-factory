@@ -1,26 +1,4 @@
 #!/usr/bin/zsh
 
-# source nvm
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-# source direnv
-eval "$(direnv hook zsh)"
-
-# source rvm
-source $HOME/.gvm/scripts/gvm
-
 # source fasd
 eval "$(fasd --init auto 2>/dev/null || true)"
-
-# source pyenv
-eval "$(pyenv init --path)"
-
-# source rust
-source $HOME/.cargo/env
-
-# source gvm
-source $HOME/.gvm/scripts/gvm
-
-# source nix
-source $HOME/.nix-profile/etc/profile.d/nix.sh

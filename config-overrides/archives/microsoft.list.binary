@@ -1,2 +1,3 @@
-deb https://packages.microsoft.com/repos/azure-cli bionic main
-deb https://packages.microsoft.com/repos/code stable main
+deb [arch=amd64] https://packages.microsoft.com/debian/10/prod buster main
+deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli buster main
+deb [arch=amd64] https://packages.microsoft.com/repos/code stable main

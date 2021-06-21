@@ -19,5 +19,6 @@ rfkill
 rsync
 silversearcher-ag
 sudo
+telnet
 vim
 xsel

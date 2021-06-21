@@ -1,11 +1,7 @@
 #!/usr/bin/zsh
 
-alias awsp="source _awsp"
 alias c=clear
-alias k="kubectl"
-alias p="pnpm"
 alias pbcopy="xsel --clipboard --input"
 alias pbpaste="xsel --clipboard --output"
 alias serve="python -m http.server"
 alias starwars="telnet towel.blinkenlights.nl"
-alias venv="source ./env/bin/activate"

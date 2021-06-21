@@ -42,9 +42,21 @@ chroot $CHROOT sh -c \
 chroot $CHROOT su $DEFAULT_USER -c \
     'curl -L https://nixos.org/nix/install | sh'
 
+# install deno
+chroot $CHROOT su $DEFAULT_USER -c \
+    'curl -fsSL https://deno.land/x/install/install.sh | sh'
+
+# install linux brew
+chroot $CHROOT su $DEFAULT_USER -c \
+    'curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash'
+
 # install awsp
 chroot $CHROOT sh -c \
     'npm install -g awsp'
+
+# install unix permissions
+chroot $CHROOT sh -c \
+    'npm install -g unix-permissions'
 
 # install dotstow
 chroot $CHROOT sh -c \
