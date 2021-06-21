@@ -220,7 +220,6 @@ bar {
     }
 }
 
-
 bar {
     position bottom
 
@@ -237,5 +236,9 @@ bar {
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
 }
+
+for_window [class="calamares" title="Debian GNU\/Linux Installer"] fullscreen enable
+
+exec sudo calamares
 
 include /etc/sway/config.d/*
