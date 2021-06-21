@@ -14,6 +14,7 @@ source $HOME/.gvm/scripts/gvm
 eval "$(fasd --init auto 2>/dev/null || true)"
 
 # source pyenv
+export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 
 # source rust

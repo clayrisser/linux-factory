@@ -1,109 +1,107 @@
 #!/bin/sh
 
 mkdir -p /log/calamares
-exec > /log/calamares/post-install.log 2>&1
 
 CHROOT=$(mount | grep proc | grep calamares | awk '{print $3}' | sed -e "s#/proc##g")
 DEFAULT_USER=$(echo $(ls $CHROOT/home) | sed 's|\s.*$||g')
 
-echo CHROOT: $CHROOT
-echo DEFAULT_USER: $DEFAULT_USER
-
-# set default shell
+#? set default shell
+# TODO: set foot default shell
 chroot $CHROOT sh -c \
     'usermod -s /usr/bin/zsh $DEFAULT_USER'
 
-# setup flatpak
+#- setup flatpak
 chroot $CHROOT sh -c \
     'flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo'
 
-# setup snap
+#? setup snap
 chroot $CHROOT sh -c \
     'snap install core'
 
-# install rust
+#? install rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > $CHROOT/tmp/rust.sh
 chroot $CHROOT su $DEFAULT_USER -c \
-    '/tmp/rust.sh -y'
+    'sh /tmp/rust.sh -y'
 chroot $CHROOT rm -f $CHROOT/tmp/rust.sh
 
-# install gvm
+#- install gvm
 chroot $CHROOT su $DEFAULT_USER -c \
     'bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)'
 
-# install nvm
+#- install nvm
 chroot $CHROOT su $DEFAULT_USER -c \
     'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash'
 
-# install pyenv
+#- install pyenv
 chroot $CHROOT su $DEFAULT_USER -c \
     'git clone https://github.com/pyenv/pyenv.git ~/.pyenv'
 
-# install rvm
+#? install rvm
 chroot $CHROOT sh -c \
     'gpg --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB'
 chroot $CHROOT sh -c \
     'curl -sSL https://get.rvm.io | bash -s stable --rails'
 
-# install nix
+#? install nix
 chroot $CHROOT su $DEFAULT_USER -c \
     'curl -L https://nixos.org/nix/install | sh'
 
-# install deno
+#? install deno
 chroot $CHROOT su $DEFAULT_USER -c \
     'curl -fsSL https://deno.land/x/install/install.sh | sh'
 
-# install linux brew
+#? install linux brew
 chroot $CHROOT su $DEFAULT_USER -c \
     'curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash'
 
-# install awsp
+#- install awsp
 chroot $CHROOT sh -c \
     'npm install -g awsp'
 
-# install unix permissions
+#? install unix permissions
 chroot $CHROOT sh -c \
     'npm install -g unix-permissions'
 
-# install dotstow
+#? install dotstow
 chroot $CHROOT sh -c \
     'npm install -g dotstow'
 
-# install oh-my-zsh
+#? install oh-my-zsh
 chroot $CHROOT su $DEFAULT_USER -c \
     'curl -L https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh'
+cp $CHROOT/etc/skel/.zshrc $CHROOT/home/$DEFAULT_USER/.zshrc
 
-# install spaceship prompt
+#? install spaceship prompt
 chroot $CHROOT su $DEFAULT_USER -c \
     'git clone https://github.com/spaceship-prompt/spaceship-prompt.git ~/.oh-my-zsh/custom/themes/spaceship-prompt --depth=1'
 chroot $CHROOT su $DEFAULT_USER -c \
     'ln -s ~/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme ~/.oh-my-zsh/custom/themes/spaceship.zsh-theme'
 
-# install zsh-autosuggestions
+#? install zsh-autosuggestions
 chroot $CHROOT su $DEFAULT_USER -c \
     'git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions'
 
-# install zsh-syntax-highlighting
+#? install zsh-syntax-highlighting
 chroot $CHROOT su $DEFAULT_USER -c \
     'git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting'
 
-# install android studio
+#- install android studio
 chroot $CHROOT sh -c \
     'flatpak install -y https://dl.flathub.org/repo/appstream/com.google.AndroidStudio.flatpakref'
 
-# install skype
+#- install skype
 chroot $CHROOT sh -c \
     'flatpak install -y https://dl.flathub.org/repo/appstream/com.skype.Client.flatpakref'
 
-# install microsoft teams
+#- install microsoft teams
 chroot $CHROOT sh -c \
     'flatpak install -y https://dl.flathub.org/repo/appstream/com.github.IsmaelMartinez.teams_for_linux.flatpakref'
 
-# install blender
+#- install blender
 chroot $CHROOT sh -c \
     'flatpak install -y https://dl.flathub.org/repo/appstream/org.blender.Blender.flatpakref'
 
-# install mongo compass
+#? install mongo compass
 curl -L -o $CHROOT/tmp/package.deb \
     https://downloads.mongodb.com/compass/mongodb-compass_1.26.1_amd64.deb
 chroot $CHROOT sh -c \
@@ -114,7 +112,7 @@ chroot $CHROOT sh -c \
     'dpkg -i /tmp/package.deb'
 rm -rf $CHROOT/tmp/package.deb
 
-# install apache directory studio
+#? install apache directory studio
 curl -L -o $CHROOT/tmp/package.deb \
     https://downloads.apache.org//directory/apacheds/dist/2.0.0.AM26/apacheds-2.0.0.AM26-amd64.deb
 chroot $CHROOT sh -c \
@@ -125,7 +123,7 @@ chroot $CHROOT sh -c \
     'dpkg -i /tmp/package.deb'
 rm -rf $CHROOT/tmp/package.deb
 
-# install dbeaver
+#? install dbeaver
 curl -L -o $CHROOT/tmp/package.deb \
     https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb
 chroot $CHROOT sh -c \
@@ -136,7 +134,7 @@ chroot $CHROOT sh -c \
     'dpkg -i /tmp/package.deb'
 rm -rf $CHROOT/tmp/package.deb
 
-# install react native debugger
+#? install react native debugger
 curl -L -o $CHROOT/tmp/package.deb \
     https://github.com/jhen0409/react-native-debugger/releases/download/v0.11.9/react-native-debugger_0.11.9_amd64.deb
 chroot $CHROOT sh -c \
@@ -147,7 +145,7 @@ chroot $CHROOT sh -c \
     'dpkg -i /tmp/package.deb'
 rm -rf $CHROOT/tmp/package.deb
 
-# install ly
+#- install ly
 curl -L -o $CHROOT/tmp/package.deb \
     https://github.com/clayrisser/nfpm-ly/releases/download/v0.1.0/ly_0.1.0_amd64.deb
 chroot $CHROOT sh -c \
@@ -158,7 +156,7 @@ chroot $CHROOT sh -c \
     'dpkg -i /tmp/package.deb'
 rm -rf $CHROOT/tmp/package.deb
 
-# install krew
+#? install krew
 mkdir -p $CHROOT/tmp/krew
 curl -L -o $CHROOT/tmp/krew/krew.tar.gz \
     https://github.com/kubernetes-sigs/krew/releases/latest/download/krew.tar.gz
@@ -168,7 +166,7 @@ chroot $CHROOT su $DEFAULT_USER -c \
     '/tmp/krew/krew-linux_amd64 install krew'
 rm -rf $CHROOT/tmp/krew
 
-# install docker machine
+#? install docker machine
 curl -L -o $CHROOT/tmp/docker-machine \
     https://github.com/docker/machine/releases/download/v0.16.0/docker-machine-Linux-x86_64
 chroot $CHROOT sh -c \
@@ -176,25 +174,26 @@ chroot $CHROOT sh -c \
 chroot $CHROOT sh -c \
     'chmod +x /usr/local/bin/docker-machine'
 
-# install minikube
+#- install minikube
 curl -L -o $CHROOT/tmp/minikube \
     https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 chroot $CHROOT sh -c \
     'install /tmp/minikube /usr/local/bin/minikube'
 
-# install redis desktop manager
+#? install redis desktop manager
 chroot $CHROOT sh -c \
     'snap install redis-desktop-manager'
 
-# install bumblebee status
+#? install bumblebee status
 chroot $CHROOT sh -c \
     'pip3 install bumblebee-status'
 
-# install mssql tools
+#? install mssql tools
 chroot $CHROOT sh -c \
     'export ACCEPT_EULA=y && export DEBIAN_FRONTEND=noninteractive && apt install -y mssql-tools'
 
 rm -rf \
+    $CHROOT/etc/sudoers.d/09-elevated \
     $CHROOT/usr/sbin/post-install \
     $CHROOT/usr/sbin/pre-install
 
