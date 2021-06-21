@@ -92,6 +92,10 @@ chroot $CHROOT sh -c \
 chroot $CHROOT sh -c \
     'flatpak install -y https://dl.flathub.org/repo/appstream/com.github.IsmaelMartinez.teams_for_linux.flatpakref'
 
+# install blender
+chroot $CHROOT sh -c \
+    'flatpak install -y https://dl.flathub.org/repo/appstream/org.blender.Blender.flatpakref'
+
 # install mongo compass
 curl -L -o $CHROOT/tmp/package.deb \
     https://downloads.mongodb.com/compass/mongodb-compass_1.26.1_amd64.deb
@@ -178,6 +182,10 @@ chroot $CHROOT sh -c \
 # install bumblebee status
 chroot $CHROOT sh -c \
     'pip3 install bumblebee-status'
+
+# install mssql tools
+chroot $CHROOT sh -c \
+    'export ACCEPT_EULA=y && export DEBIAN_FRONTEND=noninteractive && apt install -y mssql-tools'
 
 rm -rf \
     $CHROOT/usr/sbin/post-install \
