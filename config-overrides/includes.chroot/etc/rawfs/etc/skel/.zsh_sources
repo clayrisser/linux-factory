@@ -8,7 +8,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 eval "$(direnv hook zsh)"
 
 # source rvm
-source $HOME/.gvm/scripts/gvm
+source /usr/local/rvm/scripts/rvm
 
 # source fasd
 eval "$(fasd --init auto 2>/dev/null || true)"

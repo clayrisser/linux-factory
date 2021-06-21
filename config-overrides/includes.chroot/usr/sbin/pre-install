@@ -5,4 +5,7 @@ CHROOT=$(mount | grep proc | grep calamares | awk '{print $3}' | sed -e "s#/proc
 # rawfs
 rsync -a /etc/rawfs/ $CHROOT/
 
+# set default shell
+sed -i 's|DSHELL=/bin/bash|DSHELL=/usr/bin/zsh|g'
+
 exit 0

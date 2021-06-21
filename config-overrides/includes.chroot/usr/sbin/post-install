@@ -5,16 +5,17 @@ mkdir -p /log/calamares
 CHROOT=$(mount | grep proc | grep calamares | awk '{print $3}' | sed -e "s#/proc##g")
 DEFAULT_USER=$(echo $(ls $CHROOT/home) | sed 's|\s.*$||g')
 
-#? set default shell
-# TODO: set foot default shell
-chroot $CHROOT sh -c \
-    'usermod -s /usr/bin/zsh $DEFAULT_USER'
+# disable sudo password
+rm -rf $CHROOT/etc/sudoers.d/10-installer
 
-#- setup flatpak
+# setup flatpak
 chroot $CHROOT sh -c \
     'flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo'
 
 #? setup snap
+#TODO: snap daemon prob not running
+chroot $CHROOT sh -c \
+    'systemctl start snapd.service'
 chroot $CHROOT sh -c \
     'snap install core'
 
@@ -24,15 +25,15 @@ chroot $CHROOT su $DEFAULT_USER -c \
     'sh /tmp/rust.sh -y'
 chroot $CHROOT rm -f $CHROOT/tmp/rust.sh
 
-#- install gvm
+# install gvm
 chroot $CHROOT su $DEFAULT_USER -c \
     'bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)'
 
-#- install nvm
+# install nvm
 chroot $CHROOT su $DEFAULT_USER -c \
     'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash'
 
-#- install pyenv
+# install pyenv
 chroot $CHROOT su $DEFAULT_USER -c \
     'git clone https://github.com/pyenv/pyenv.git ~/.pyenv'
 
@@ -42,7 +43,7 @@ chroot $CHROOT sh -c \
 chroot $CHROOT sh -c \
     'curl -sSL https://get.rvm.io | bash -s stable --rails'
 
-#? install nix
+# install nix
 chroot $CHROOT su $DEFAULT_USER -c \
     'curl -L https://nixos.org/nix/install | sh'
 
@@ -188,12 +189,17 @@ chroot $CHROOT sh -c \
 chroot $CHROOT sh -c \
     'pip3 install bumblebee-status'
 
-#? install mssql tools
+# install lolcat
+chroot $CHROOT sh -c \
+    'pip3 install lolcat'
+
+# install mssql tools
 chroot $CHROOT sh -c \
     'export ACCEPT_EULA=y && export DEBIAN_FRONTEND=noninteractive && apt install -y mssql-tools'
 
 rm -rf \
-    $CHROOT/etc/sudoers.d/09-elevated \
+    $CHROOT/etc/apt/source.list.d/vscode.list \
+    $CHROOT/etc/sudoers.d/09-calamares \
     $CHROOT/usr/sbin/post-install \
     $CHROOT/usr/sbin/pre-install
 
