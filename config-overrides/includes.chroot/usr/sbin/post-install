@@ -223,6 +223,7 @@ VSpaceCode.vspacecode
 VSpaceCode.whichkey
 bodil.file-browser
 dbaeumer.vscode-eslint
+eamodio.gitlens
 esbenp.prettier-vscode
 golang.go
 hashicorp.terraform
@@ -239,8 +240,11 @@ ms-vscode.azure-account
 ms-vscode.cpptools
 ms-vscode.hexeditor
 ms-vscode.vscode-typescript-next
+njpwerner.autodocstring
 nopeslide.vscode-drawio-plugin-mermaid
 redhat.vscode-yaml
+stevencl.addDocComments
+streetsidesoftware.code-spell-checker
 usernamehw.errorlens
 vscodevim.vim
 zbr.vscode-ansible

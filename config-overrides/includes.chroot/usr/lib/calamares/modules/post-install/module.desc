@@ -3,4 +3,4 @@ type:       "job"
 name:       "post-install"
 interface:  "process"
 command:    "/usr/sbin/post-install"
-timeout:    600
+timeout:    1800
