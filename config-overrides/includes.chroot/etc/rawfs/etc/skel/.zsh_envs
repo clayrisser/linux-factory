@@ -3,8 +3,8 @@
 export ANDROID_SDK_ROOT="$HOME/.android/sdk"
 export EDITOR=vim
 export GTK_USE_PORTAL=1
-export HTTPS_PROXY="$(gsettings get org.gnome.system.proxy.https port 2>/dev/null)"
-export HTTP_PROXY="$(gsettings get org.gnome.system.proxy.http port 2>/dev/null)"
+export HTTPS_PROXY="$(get_proxy https)"
+export HTTP_PROXY="$(get_proxy http)"
 export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
 export PYENV_ROOT="$HOME/.pyenv"
 export QT_QPA_PLATFORMTHEME="qt5ct"

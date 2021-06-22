@@ -207,35 +207,6 @@ bindsym $mod+r mode "resize"
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-bar {
-    position top
-
-    status_command bumblebee-status -m cpu memory battery time \
-        pasink pasource -p time.format="%H:%M" -t solarized
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
-}
-
-bar {
-    position bottom
-
-    gaps 10
-
-    workspace_buttons no
-
-    status_command bumblebee-status -m nic \
-        -p time.format="%H:%M" -t solarized
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
-}
 
 for_window [class="calamares" title="Debian GNU\/Linux Installer"] fullscreen enable
 

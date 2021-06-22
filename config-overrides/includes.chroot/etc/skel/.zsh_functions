@@ -1,19 +1,19 @@
 #!/usr/bin/zsh
 
 perm() {
-	_PERM_PERM=$1
-	if [ -f $1 ] || [ -d $1 ]; then
-		_PERM_PERM=$(ls -ld $1 | sed 's| .*||g')
-	fi
-	_PERM_STAT=$(unix-permissions convert.stat $_PERM_PERM)
-	_PERM_STATUS=$?
-	if [ "$_PERM_STATUS" != "0" ]; then
-		printf "$_PERM_STAT" >&2
-		return $_PERM_STATUS
-	fi
-	echo $_PERM_STAT \
-		$(unix-permissions convert.octal $_PERM_PERM) \
-		$(unix-permissions convert.symbolic $_PERM_PERM)
+    _PERM_PERM=$1
+    if [ -f $1 ] || [ -d $1 ]; then
+        _PERM_PERM=$(ls -ld $1 | sed 's| .*||g')
+    fi
+    _PERM_STAT=$(unix-permissions convert.stat $_PERM_PERM)
+    _PERM_STATUS=$?
+    if [ "$_PERM_STATUS" != "0" ]; then
+        printf "$_PERM_STAT" >&2
+        return $_PERM_STATUS
+    fi
+    echo $_PERM_STAT \
+        $(unix-permissions convert.octal $_PERM_PERM) \
+        $(unix-permissions convert.symbolic $_PERM_PERM)
 }
 
 extend_path() {
@@ -21,4 +21,26 @@ extend_path() {
         printf $p:
     done
     printf $PATH
+}
+
+get_proxy() {
+    _PROXY_PROTOCOL=$1
+    if [ "$_PROXY_PROTOCOL" = "" ]; then
+        _PROXY_PROTOCOL="http"
+    fi
+    _PROXY_AUTHENTICATION_PASSWORD=$(eval echo $(gsettings get org.gnome.system.proxy.http authentication-password 2>/dev/null || true))
+    _PROXY_AUTHENTICATION_USER=$(eval echo $(gsettings get org.gnome.system.proxy.http authentication-user 2>/dev/null || true))
+    _PROXY_ENABLED=$(eval echo $(gsettings get org.gnome.system.proxy.http enabled 2>/dev/null || true))
+    _PROXY_HOST=$(eval echo $(gsettings get org.gnome.system.proxy.$_PROXY_PROTOCOL host 2>/dev/null || true))
+    _PROXY_PORT=$(eval echo $(gsettings get org.gnome.system.proxy.$_PROXY_PROTOCOL port 2>/dev/null || true))
+    _PROXY_USE_AUTHENTICATION=$(eval echo $(gsettings get org.gnome.system.proxy.http use-authentication 2>/dev/null || true))
+    _PROXY_AUTHENTICATION=""
+    if [ "$_PROXY_AUTHENTICATION_USER" != "" ] || [ "$_PROXY_AUTHENTICATION_PASSWORD" != "" ]; then
+        if [ "$_PROXY_USE_AUTHENTICATION" = "true" ]; then
+            _PROXY_AUTHENTICATION="$_PROXY_AUTHENTICATION_USER:$_PROXY_AUTHENTICATION_PASSWORD@"
+        fi
+    fi
+    if [ "$_PROXY_ENABLED" = "true" ]; then
+        printf "$_PROXY_PROTOCOL://$_PROXY_AUTHENTICATION$_PROXY_HOST:$_PROXY_PORT"
+    fi
 }

@@ -2,10 +2,14 @@
 
 CHROOT=$(mount | grep proc | grep calamares | awk '{print $3}' | sed -e "s#/proc##g")
 
+# cleanup installer
+rm -rf \
+    $CHROOT/etc/sudoers.d/09-calamares
+
 # rawfs
 rsync -a /etc/rawfs/ $CHROOT/
 
 # set default shell
-sed -i 's|DSHELL=/bin/bash|DSHELL=/usr/bin/zsh|g'
+sed -i /etc/adduser.conf 's|DSHELL=/bin/bash|DSHELL=/usr/bin/zsh|g'
 
 exit 0

@@ -1,1 +1,1 @@
-%sudo   ALL=(ALL:ALL) NOPASSWD: /usr/bin/calamares
+%sudo	ALL=(ALL:ALL) NOPASSWD: /usr/bin/calamares
