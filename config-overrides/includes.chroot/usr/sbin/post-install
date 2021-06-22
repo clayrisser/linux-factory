@@ -106,6 +106,28 @@ chroot $CHROOT sh -c \
     'dpkg -i /tmp/package.deb'
 rm -rf $CHROOT/tmp/package.deb
 
+# install etcher
+curl -L -o $CHROOT/tmp/package.deb \
+    https://github.com/balena-io/etcher/releases/download/v1.5.120/balena-etcher-electron_1.5.120_amd64.deb
+chroot $CHROOT sh -c \
+    'dpkg -i /tmp/package.deb 2>&1 || true'
+chroot $CHROOT sh -c \
+    'apt install -y -f'
+chroot $CHROOT sh -c \
+    'dpkg -i /tmp/package.deb'
+rm -rf $CHROOT/tmp/package.deb
+
+# install drawio
+curl -L -o $CHROOT/tmp/package.deb \
+    https://github.com/jgraph/drawio-desktop/releases/download/v14.6.13/drawio-amd64-14.6.13.deb
+chroot $CHROOT sh -c \
+    'dpkg -i /tmp/package.deb 2>&1 || true'
+chroot $CHROOT sh -c \
+    'apt install -y -f'
+chroot $CHROOT sh -c \
+    'dpkg -i /tmp/package.deb'
+rm -rf $CHROOT/tmp/package.deb
+
 #? install apache directory studio
 curl -L -o $CHROOT/tmp/package.tar.gz \
     https://downloads.apache.org/directory/studio/2.0.0.v20210213-M16/ApacheDirectoryStudio-2.0.0.v20210213-M16-linux.gtk.x86_64.tar.gz
@@ -184,6 +206,49 @@ chroot $CHROOT sh -c \
 # install lolcat
 chroot $CHROOT sh -c \
     'pip3 install lolcat'
+
+# install winehq
+chroot $CHROOT sh -c \
+    'dpkg --add-architecture i386'
+chroot $CHROOT sh -c \
+    'apt install -y --install-recommends winehq-stable'
+
+# install vscode extensions
+for e in $(cat <<EOF
+CoenraadS.bracket-pair-colorizer
+EditorConfig.EditorConfig
+GraphQL.vscode-graphql
+Prisma.prisma
+VSpaceCode.vspacecode
+VSpaceCode.whichkey
+bodil.file-browser
+dbaeumer.vscode-eslint
+esbenp.prettier-vscode
+golang.go
+hashicorp.terraform
+hediet.vscode-drawio
+jacobdufault.fuzzy-search
+kahole.magit
+ms-azuretools.vscode-docker
+ms-dotnettools.csharp
+ms-kubernetes-tools.vscode-kubernetes-tools
+ms-python.python
+ms-python.vscode-pylance
+ms-toolsai.jupyter
+ms-vscode.azure-account
+ms-vscode.cpptools
+ms-vscode.hexeditor
+ms-vscode.vscode-typescript-next
+nopeslide.vscode-drawio-plugin-mermaid
+redhat.vscode-yaml
+usernamehw.errorlens
+vscodevim.vim
+zbr.vscode-ansible
+EOF
+); do
+    chroot $CHROOT su $DEFAULT_USER -c \
+        'code --install-extension $e'
+done
 
 # setup ly
 mkdir -p $CHROOT/etc/ly
