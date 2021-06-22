@@ -13,6 +13,7 @@ set $left h
 set $down j
 set $up k
 set $right l
+set $gaps 16
 # Your preferred terminal emulator
 set $term foot
 # Your preferred application launcher
@@ -62,7 +63,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
 ### Gaps
 
-gaps inner 10
+gaps inner $gaps
 gaps outer 0
 
 ### Key bindings
@@ -218,12 +219,18 @@ bar {
         background #323232
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
+
+    font "UbuntuMono Nerd Font" Bold 14
+    height 32
+    separator_symbol " "
+    status_edge_padding 0
+    status_padding 0
 }
 
 bar {
     position bottom
 
-    gaps 10
+    gaps $gaps
 
     workspace_buttons no
 
@@ -235,6 +242,12 @@ bar {
         background #323232
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
+
+    font "UbuntuMono Nerd Font" Bold 14
+    height 32
+    separator_symbol " "
+    status_edge_padding 0
+    status_padding 0
 }
 
 include /etc/sway/config.d/*

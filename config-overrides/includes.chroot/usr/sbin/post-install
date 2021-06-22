@@ -215,6 +215,16 @@ chroot $CHROOT sh -c \
 chroot $CHROOT sh -c \
     'apt install -y --install-recommends winehq-stable'
 
+# install nerd fonts
+chroot $CHROOT su $DEFAULT_USER -c \
+    'curl -L -o /tmp/fonts.tar.gz https://github.com/ryanoasis/nerd-fonts/archive/refs/tags/v2.1.0.tar.gz'
+chroot $CHROOT su $DEFAULT_USER -c \
+    'cd /tmp && tar -xzvf fonts.tar.gz'
+chroot $CHROOT su $DEFAULT_USER -c \
+    '/tmp/nerd-fonts-2.1.0/install.sh'
+chroot $CHROOT su $DEFAULT_USER -c \
+    'rm -rf /tmp/nerd-fonts-2.1.0'
+
 #? install vscode extensions
 for e in $(cat <<EOF
 CoenraadS.bracket-pair-colorizer
@@ -262,6 +272,10 @@ cat <<EOF > $CHROOT/etc/ly/save
 $DEFAULT_USER
 2
 EOF
+
+# regenerate font cache
+chroot $CHROOT sh -c \
+    'fc-cache -f -v'
 
 rm -rf \
     $CHROOT/etc/apt/source.list.d/vscode.list \

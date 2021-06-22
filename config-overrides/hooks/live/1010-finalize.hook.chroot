@@ -1,4 +1,8 @@
 #!/bin/bash
 
+# install fonts
+fc-cache -f -v
+rsync -a /usr/share/fonts/ /etc/skel/usr/share/fonts/
+
 chmod +x /usr/sbin/post-install \
     /usr/sbin/pre-install

@@ -23,6 +23,7 @@ $(ACTION)/config:
 	@sudo bash auto/config
 	@$(MAKE) -s fix-permissions
 	@$(MAKE) -s packages
+	@$(MAKE) -s fonts
 	@for d in $$(ls config-overrides); do \
 		mkdir -p config/$$d && \
 		if [ "$$(echo $$d | $(SED) 's|\..*||g')" == "includes" ]; then \
@@ -85,16 +86,29 @@ FIX_PERMISSIONS_FILES := config config-overrides
 fix-permissions: sudo
 	@sudo chown -R $$(stat -c '%u:%g' Makefile) $(FIX_PERMISSIONS_FILES)
 
+
+.PHONY: fonts
+fonts: config/includes.chroot/usr/share/fonts/*.ttf
+config/includes.chroot/usr/share/fonts/*.ttf:
+	@FONTS_DIR=$$(echo $@ | $(SED) 's|/[^/]*$$||g') && \
+		mkdir -p $$FONTS_DIR && \
+		cd $$FONTS_DIR && \
+		for f in $$(cat $(CWD)/fonts.list | sed 's|^#.*||g'); do \
+			curl -L -o fonts.zip $$f && \
+			unzip fonts.zip && \
+			rm -rf fonts.zip; \
+		done
+
 .PHONY: packages
 packages: config/packages.chroot/*.deb
 config/packages.chroot/*.deb:
-	@mkdir -p $$(echo $@ | $(SED) 's|/[^/]*$$||g')
-	@for p in $$(cat packages.list | sed 's|^#.*||g'); do \
-		cd config/packages.chroot && \
-		curl -L -o package.deb $$p && \
-		$(DPKG_NAME) -o package.deb && \
-		cd ../..; \
-	done
+	@DPKG_DIR=$$(echo $@ | $(SED) 's|/[^/]*$$||g') && \
+		mkdir -p $$DPKG_DIR && \
+		cd $$DPKG_DIR && \
+		for p in $$(cat $(CWD)/packages.list | sed 's|^#.*||g'); do \
+			curl -L -o package.deb $$p && \
+			$(DPKG_NAME) -o package.deb; \
+		done
 
 .PHONY: clear-packages
 clear-packages:

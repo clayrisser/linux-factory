@@ -13,6 +13,7 @@ set $left h
 set $down j
 set $up k
 set $right l
+set $gaps 16
 # Your preferred terminal emulator
 set $term foot
 # Your preferred application launcher
@@ -62,7 +63,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
 ### Gaps
 
-gaps inner 10
+gaps inner $gaps
 gaps outer 0
 
 ### Key bindings

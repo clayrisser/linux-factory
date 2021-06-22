@@ -1,9 +1,27 @@
 {
     "cSpell.words": [
+        "synaptics",
+        "bindsym",
+        "calamares",
+        "combi",
         "deno",
+        "dpms",
+        "drun",
+        "fullscreen",
         "krew",
         "linuxbrew",
         "mssql",
-        "sbin"
+        "pasink",
+        "pasource",
+        "rofi",
+        "sbin",
+        "splith",
+        "splitv",
+        "statusline",
+        "swayidle",
+        "swaylock",
+        "swaymsg",
+        "swaynag",
+        "xhost"
     ]
 }
