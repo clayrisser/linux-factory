@@ -204,8 +204,8 @@ chroot $CHROOT su $DEFAULT_USER -c \
     'pip3 install --user bumblebee-status'
 
 # install lolcat
-chroot $CHROOT sh -c \
-    'pip3 install lolcat'
+chroot $CHROOT su $DEFAULT_USER -c \
+    'pip3 install --user lolcat'
 
 # install winehq
 chroot $CHROOT sh -c \
