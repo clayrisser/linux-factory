@@ -199,8 +199,8 @@ curl -L -o $CHROOT/usr/local/bin/ardm \
 chroot $CHROOT sh -c \
     'chmod +x /usr/local/bin/ardm'
 
-#? install bumblebee status
-chroot $CHROOT sh -c \
+# install bumblebee status
+chroot $CHROOT su $DEFAULT_USER -c \
     'pip3 install --user bumblebee-status'
 
 # install lolcat
