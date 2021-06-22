@@ -4,6 +4,7 @@ $ANDROID_SDK_ROOT/tools
 $ANDROID_SDK_ROOT/tools/bin
 $HOME/.deno/bin
 $HOME/.krew/bin
+$HOME/.local/bin
 $HOME/.rvm/bin
 /home/linuxbrew/.linuxbrew/bin
 /opt/mssql-tools/bin

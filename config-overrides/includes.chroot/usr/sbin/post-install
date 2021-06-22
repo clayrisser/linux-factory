@@ -36,15 +36,15 @@ chroot $CHROOT sh -c \
 chroot $CHROOT sh -c \
     'curl -sSL https://get.rvm.io | bash -s stable --rails'
 
-# install nix
+#? install nix
 chroot $CHROOT su $DEFAULT_USER -c \
     'curl -L https://nixos.org/nix/install | sh'
 
-#? install deno
+# install deno
 chroot $CHROOT su $DEFAULT_USER -c \
     'curl -L https://deno.land/x/install/install.sh | sh'
 
-#? install linux brew
+# install linux brew
 chroot $CHROOT su $DEFAULT_USER -c \
     'curl -L https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash'
 
@@ -193,7 +193,7 @@ curl -L -o $CHROOT/tmp/minikube \
 chroot $CHROOT sh -c \
     'install /tmp/minikube /usr/local/bin/minikube'
 
-#? install another redis desktop manager
+# install another redis desktop manager
 curl -L -o $CHROOT/usr/local/bin/ardm \
     'https://github.com/qishibo/AnotherRedisDesktopManager/releases/download/v1.4.5/Another-Redis-Desktop-Manager.1.4.5.AppImage'
 chroot $CHROOT sh -c \
@@ -201,7 +201,7 @@ chroot $CHROOT sh -c \
 
 #? install bumblebee status
 chroot $CHROOT sh -c \
-    'pip3 install bumblebee-status'
+    'pip3 install --user bumblebee-status'
 
 # install lolcat
 chroot $CHROOT sh -c \
@@ -211,9 +211,11 @@ chroot $CHROOT sh -c \
 chroot $CHROOT sh -c \
     'dpkg --add-architecture i386'
 chroot $CHROOT sh -c \
+    'apt update'
+chroot $CHROOT sh -c \
     'apt install -y --install-recommends winehq-stable'
 
-# install vscode extensions
+#? install vscode extensions
 for e in $(cat <<EOF
 CoenraadS.bracket-pair-colorizer
 EditorConfig.EditorConfig
