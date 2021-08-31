@@ -1,7 +1,7 @@
 { nixpkgs ? import <nixpkgs> {} }:
 
 nixpkgs.stdenv.mkDerivation rec {
-  name = "jam-os";
+  name = "deb-distro";
   buildInputs = [
     nixpkgs.cloc
     nixpkgs.gnumake42

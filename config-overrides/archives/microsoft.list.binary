@@ -1,3 +1,0 @@
-deb [arch=amd64] https://packages.microsoft.com/debian/9/prod stretch main
-deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli buster main
-deb [arch=amd64] https://packages.microsoft.com/repos/code stable main

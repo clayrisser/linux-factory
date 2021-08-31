@@ -1,8 +1,0 @@
-#!/usr/bin/zsh
-
-export EDITOR=vim
-export GTK_USE_PORTAL=1
-export HTTPS_PROXY="$(get_proxy https)"
-export HTTP_PROXY="$(get_proxy http)"
-export QT_QPA_PLATFORMTHEME="qt5ct"
-export QT_STYLE_OVERRIDE="adwaita"

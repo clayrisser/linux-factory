@@ -1,4 +1,0 @@
-#!/usr/bin/zsh
-
-# source fasd
-eval "$(fasd --init auto 2>/dev/null || true)"

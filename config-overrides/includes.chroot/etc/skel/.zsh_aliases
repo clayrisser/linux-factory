@@ -1,7 +1,0 @@
-#!/usr/bin/zsh
-
-alias c=clear
-alias pbcopy="xsel --clipboard --input"
-alias pbpaste="xsel --clipboard --output"
-alias serve="python -m http.server"
-alias starwars="telnet towel.blinkenlights.nl"

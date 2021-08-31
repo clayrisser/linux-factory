@@ -1,3 +1,3 @@
-# jam-os
+# deb-distro
 
-> the operating system built for software engineers
+> a framework used to create custom debian distributions

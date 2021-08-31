@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export NAME="Jam OS"
+export NAME="DEB Distro"
 export WEBSITE="https://clayrisser.com"
 export EMAIL="email@clayrisser.com"
 export ARCH="amd64" # i386,amd64
