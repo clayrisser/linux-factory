@@ -1,4 +1,5 @@
 *.log
+.mkpm/
 /.build
 /.lock
 /.make
