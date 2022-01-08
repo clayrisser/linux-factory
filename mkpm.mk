@@ -7,19 +7,18 @@ MKPM_REPOS := \
 
 ############# MKPM BOOTSTRAP SCRIPT BEGIN #############
 MKPM_BOOTSTRAP := https://bitspur.gitlab.io/community/mkpm/bootstrap.mk
+export PROJECT_ROOT := $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
 NULL := /dev/null
 TRUE := true
 ifneq ($(patsubst %.exe,%,$(SHELL)),$(SHELL))
 	NULL = nul
 	TRUE = type nul
 endif
--include .mkpm/.bootstrap.mk
-.mkpm/.bootstrap.mk:
+-include $(PROJECT_ROOT)/.mkpm/.bootstrap.mk
+$(PROJECT_ROOT)/.mkpm/.bootstrap.mk:
 	@mkdir $(@D) 2>$(NULL) || $(TRUE)
-	@cd $(@D) && \
-		$(shell curl --version >$(NULL) 2>$(NULL) && \
+	@$(shell curl --version >$(NULL) 2>$(NULL) && \
 			echo curl -L -o || \
 			echo wget --content-on-error -O) \
-		$(@F) $(MKPM_BOOTSTRAP) >$(NULL)
+		$@ $(MKPM_BOOTSTRAP) >$(NULL)
 ############## MKPM BOOTSTRAP SCRIPT END ##############
-

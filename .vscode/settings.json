@@ -1,10 +1,14 @@
 {
   "cSpell.words": [
+    "adwaita",
+    "autologin",
     "bindsym",
     "blueman",
     "calamares",
+    "Cheatsheet",
     "cloc",
     "combi",
+    "dconf",
     "deno",
     "distro",
     "dpms",
@@ -12,7 +16,13 @@
     "fullscreen",
     "gnumake",
     "gnused",
+    "gsettings",
+    "kanshi",
     "krew",
+    "kvantum",
+    "libpam",
+    "libxcb",
+    "lightdm",
     "linuxbrew",
     "mssql",
     "nixpkgs",
@@ -20,6 +30,7 @@
     "openvpn",
     "pasink",
     "pasource",
+    "policykit",
     "pptp",
     "rofi",
     "sbin",
@@ -32,6 +43,10 @@
     "swaymsg",
     "swaynag",
     "synaptics",
-    "xhost"
+    "sysv",
+    "xhost",
+    "xinit",
+    "xorg",
+    "xwayland"
   ]
 }

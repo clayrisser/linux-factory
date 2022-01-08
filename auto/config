@@ -42,7 +42,7 @@ lb config noauto \
     --cache true \
     --checksums sha256 \
     --debian-installer netinst \
-    --debian-installer-gui true \
+    --debian-installer-gui false \
     --debootstrap-options "--include=apt-transport-https,ca-certificates,openssl" \
     --debug \
     --distribution "$DISTRIBUTION" \
@@ -62,5 +62,5 @@ lb config noauto \
     --security "$_SECURITY" \
     --system live \
     --updates true \
-    --win32-loader true \
+    --win32-loader false \
     "${@}"
