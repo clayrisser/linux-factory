@@ -9,7 +9,6 @@
 - **live medium** - the ISO image and filesystem
 - **live system** - the operating system booted from the live medium
 - **installed system** - the operating system installed from debian installer
-- **installer** - the debian installer operating system
 - **chroot stage** - stage when building the image
 - **binary stage** - stage when running the live system
 
@@ -19,7 +18,7 @@
 `config/archives/*.{list,key}.chroot` - repositories loaded during the _chroot stage_
 `config/includes.binary/*` - files to include in the _live medium's_ filesystem
 `config/includes.chroot/*` - files to include in the _live system's_ filesystem
-`config/includes.installer/*` - files to include in the _installer's_ filesystem
+`config/includes.installer/*` - configuration for debian installer
 `config/package-lists/*.list.binary` - packages to place in the APT `pool/` repository on the _live medium_
 `config/package-lists/*.list.chroot` - packages to install in the _live system_
 `config/package-lists/*.list.chroot_install` - packages to install in the _live system_ and _installed system_
