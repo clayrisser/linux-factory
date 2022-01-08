@@ -1,4 +1,5 @@
 *.log
+.env
 .mkpm/
 /.build
 /.lock

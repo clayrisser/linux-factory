@@ -2,6 +2,7 @@ include mkpm.mk
 ifneq (,$(MKPM_READY))
 include $(MKPM)/gnu
 include $(MKPM)/mkchain
+include $(MKPM)/dotenv
 
 export CLOC ?= cloc
 export CSPELL ?= cspell
@@ -49,12 +50,12 @@ $(ISO_FILE): ~build
 
 .PHONY: clean
 clean: sudo ##
-	-@$(call clean)
+	-@$(MKCACHE_CLEAN)
 	-@$(SUDO) bash auto/clean
 	-@$(SUDO) $(GIT) clean -fXd \
-		-e $(BANG)cache \
-		-e $(BANG)cache/ \
-		-e $(BANG)cache/**/* $(NOFAIL)
+		$(MKPM_GIT_CLEAN_FLAGS) \
+		$(call git_clean_flags,cache) \
+		$(NOFAIL)
 
 .PHONY: purge
 purge: clean ##

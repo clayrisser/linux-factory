@@ -1,4 +1,5 @@
 MKPM_PACKAGES := \
+	dotenv=0.0.2 \
 	gnu=0.0.3 \
 	mkchain=0.0.13
 
