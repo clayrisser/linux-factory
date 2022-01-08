@@ -1,4 +1,5 @@
 *.log
+*.tmp
 .env
 .mkpm/
 /.build
@@ -12,3 +13,6 @@
 /config
 /live-image-*.*
 /local
+
+# upstream
+config-overrides/includes.chroot/etc/skel/.config/sway/config

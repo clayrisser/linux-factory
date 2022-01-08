@@ -3,6 +3,7 @@ ifneq (,$(MKPM_READY))
 include $(MKPM)/gnu
 include $(MKPM)/mkchain
 include $(MKPM)/dotenv
+include upstream.mk
 
 export CLOC ?= cloc
 export CSPELL ?= cspell
@@ -13,17 +14,20 @@ export EXPORT_GPG_KEY := sh $(PROJECT_ROOT)/export-gpg-key.sh
 export RSYNC ?= rsync
 export CURL ?= curl
 
-ACTIONS += config
-CONFIG_DEPS := auto/config config-overrides
+ACTIONS += upstream
+$(ACTION)/upstream: $(PATCHES) ##
+	@$(MAKE) -s patch-apply
+
+ACTIONS += config~upstream
 CONFIG_TARGET := sudo
-$(ACTION)/config: ##
+$(ACTION)/config: auto/config config-overrides ##
 	@sudo bash auto/config
 	@$(MAKE) -s fix-permissions
 	@$(MAKE) -s packages
 	@$(MAKE) -s fonts
 	@for d in $$(ls config-overrides); do \
 		$(MKDIR) -p config/$$d && \
-		if [ "$$($(ECHO) $$d | $(SED) 's|\..*||g')" == "includes" ]; then \
+		if [ "$$($(ECHO) $$d | $(SED) 's|\..*||g')" = "includes" ]; then \
 			$(RSYNC) -a config-overrides/$$d/ config/$$d/; \
 		else \
 			$(RSYNC) -a --exclude=".*" config-overrides/$$d/ config/$$d/; \
