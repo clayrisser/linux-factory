@@ -1,9 +1,0 @@
---- config-overrides/includes.chroot/etc/skel/.config/sway/config	2022-01-08 07:23:09.370757697 -0600
-+++ config-overrides/includes.chroot/etc/skel/.config/sway/config.tmp	2022-01-08 07:23:16.622826413 -0600
-@@ -215,3 +215,6 @@
- }
- 
- include @sysconfdir@/sway/config.d/*
-+
-+exec --no-startup-id sh -c "xhost local:root"
-+exec --no-startup-id sh $HOME/.config/sway/startup.sh

@@ -15,5 +15,4 @@
 /local
 
 # upstream
-config-overrides/includes.chroot/etc/skel/.config/sway/config
 config-overrides/includes.installer/preseed.cfg
