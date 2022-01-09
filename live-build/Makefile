@@ -104,9 +104,9 @@ config/packages.chroot/*.deb:
 	@DPKG_DIR=$$(echo $@ | $(SED) 's|/[^/]*$$||g') && \
 		$(MKDIR) -p $$DPKG_DIR && \
 		$(CD) $$DPKG_DIR && \
-		for p in $$(cat $(PROJECT_ROOT)/packages.list | sed 's|^#.*||g'); do \
-			$(CURL) -L -o package.deb $$p && \
-			$(DPKG_NAME) -o package.deb; \
+		for p in $$(for f in $(PROJECT_ROOT)/debs/*.list; do $(CAT) $$f $(NOFAIL) | $(SED) 's|^#.*||g'; $(ECHO); done); do \
+			echo $(CURL) -L -o package.deb $$p && \
+			echo $(DPKG_NAME) -o package.deb; \
 		done
 
 .PHONY: clear-packages
