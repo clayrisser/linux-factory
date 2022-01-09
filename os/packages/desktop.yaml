@@ -1,5 +1,17 @@
-- name: cowsay
+- name: sway
   live: true
   installed: true
   binary: false
-- gnu
+- name: lightdm
+  live: false
+  installed: true
+  binary: false
+- name: lightdm-autologin-greeter
+  live: true
+  installed: false
+  binary: true
+- name: rofi
+  live: true
+  installed: true
+  binary: true
+- xwayland
