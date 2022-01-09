@@ -1,4 +1,4 @@
-include mkpm.mk
+include ../mkpm.mk
 ifneq (,$(MKPM_READY))
 include $(MKPM)/gnu
 include $(MKPM)/mkchain
@@ -15,10 +15,13 @@ export RSYNC ?= rsync
 export CURL ?= curl
 
 ACTIONS += upstream
-$(ACTION)/upstream: $(PATCHES) ##
+$(ACTION)/upstream: $(UPSTREAMS) ##
+
+ACTIONS += patch~upstream
+$(ACTION)/patch: $(PATCHES) ##
 	@$(MAKE) -s patch-apply
 
-ACTIONS += config~upstream
+ACTIONS += config~patch
 CONFIG_TARGET := sudo
 $(ACTION)/config: auto/config config-overrides ##
 	@sudo bash auto/config

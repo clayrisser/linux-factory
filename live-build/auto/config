@@ -1,16 +1,5 @@
 #!/bin/sh
 
-export NAME="DEB Distro"
-export WEBSITE="https://clayrisser.com"
-export EMAIL="email@clayrisser.com"
-export ARCH="amd64" # i386,amd64
-export DISTRIBUTION="bullseye" # stretch,buster,bullseye,sid
-export KERNEL_VERSION=""
-export KEYBOARD_LAYOUT="us"
-export LOCAL="en_US"
-export MIRROR="http://deb.debian.org/debian/"
-export MIRROR_SECURITY="http://security.debian.org/"
-
 export _ARCHITECTURES="$ARCH"
 
 export _SECURITY="true"
@@ -42,7 +31,7 @@ lb config noauto \
     --cache true \
     --checksums sha256 \
     --debian-installer netinst \
-    --debian-installer-gui false \
+    --debian-installer-gui true \
     --debootstrap-options "--include=apt-transport-https,ca-certificates,openssl" \
     --debug \
     --distribution "$DISTRIBUTION" \
@@ -62,5 +51,5 @@ lb config noauto \
     --security "$_SECURITY" \
     --system live \
     --updates true \
-    --win32-loader false \
+    --win32-loader true \
     "${@}"

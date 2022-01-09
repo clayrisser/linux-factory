@@ -10,7 +10,7 @@
 - **live system** - the operating system booted from the live medium
 - **installed system** - the operating system installed from debian installer
 - **chroot stage** - stage when building the image
-- **binary stage** - stage when running the live system
+- **binary stage** - stage when building the live medium
 
 ### File Structure
 
@@ -19,11 +19,25 @@
 `config/includes.binary/*` - files to include in the _live medium's_ filesystem
 `config/includes.chroot/*` - files to include in the _live system's_ filesystem
 `config/includes.installer/*` - configuration for debian installer
-`config/package-lists/*.list.binary` - packages to place in the APT `pool/` repository on the _live medium_
-`config/package-lists/*.list.chroot` - packages to install in the _live system_
+`config/package-lists/*.list.binary` - packages to place in the APT `pool/` repository on the _live medium_ (for offline packages)
+`config/package-lists/*.list.chroot` - packages to install in the _live system_ (which will most likely be added to the _installed system_)
 `config/package-lists/*.list.chroot_install` - packages to install in the _live system_ and _installed system_
+`config/package-lists/*.list.chroot_live` - packages to install in the _live system_ only (works by uninstalling them from _installed system_)
+
+- I'm not sure exactly what the difference between `config/package-lists/*.list.chroot` and
+  `config/package-lists/*.list.chroot_install` are.
+
+### Mounts
+
+#### Debian Installer
+
+- **live medium** - `/cdrom`
+- **installed system** - `/target`
+
+#### Calamares
 
 ## Resources
 
 https://debian-live-config.readthedocs.io/en/latest/custom.html
+https://github.com/elementary/os/wiki/Building-ISO-Images
 https://live-team.pages.debian.net/live-manual/html/live-manual/index.en.html

@@ -10,5 +10,6 @@ nixpkgs.stdenv.mkDerivation rec {
     nixpkgs.gnumake42
     nixpkgs.gnused
     nixpkgs.jq
+    nixpkgs.yq
   ];
 }

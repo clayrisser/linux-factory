@@ -1,0 +1,5 @@
+- name: cowsay
+  live: true
+  installed: true
+  binary: false
+- gnu

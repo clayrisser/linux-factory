@@ -1,0 +1,15 @@
+*.log
+*.tmp
+.env
+.mkpm/
+/.build
+/.lock
+/.make
+/binary
+/binary.*
+/cache
+/chroot
+/chroot.*
+/config
+/live-image-*.*
+/local

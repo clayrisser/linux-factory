@@ -1,9 +1,9 @@
 export SWAY_VERSION ?= 1.5.1
 
-export UPSTREAM := config-overrides/includes.installer/preseed.cfg
+export UPSTREAMS := config-overrides/includes.installer/preseed.cfg
 
 export CURL ?= curl
-export PATCHES := $(UPSTREAM)
+export PATCHES :=
 include $(MKPM)/patch
 
 config-overrides/includes.installer/preseed.cfg:
