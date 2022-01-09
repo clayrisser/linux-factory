@@ -15,8 +15,8 @@ the official Debian distribution on amd64.
 | NixOS      | `sudo true && curl -L https://nixos.org/nix/install \| sh` | https://nixos.org/download.html                                               |
 | NodeJS     | `sudo apt-get install -y nodejs`                           | https://nodejs.org/en/                                                        |
 | direnv     | `sudo apt-get install -y direnv`                           | https://direnv.net                                                            |
-| jq         | `sudo apt install -y jq`                                   | https://stedolan.github.io/jq/                                                |
-| yq         | `sudo snap install yq`                                     | https://mikefarah.gitbook.io/yq/                                              |
+| jq         | `sudo apt-get install -y jq`                               | https://stedolan.github.io/jq/                                                |
+| yq         | `sudo apt-get install -y snap && sudo snap install yq`     | https://mikefarah.gitbook.io/yq/                                              |
 
 > If you install NixOS and direnv, you do not need to install yq, jq or GNU Make
 
