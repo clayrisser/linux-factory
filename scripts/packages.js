@@ -2,10 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const readline = require("readline");
 
-const configOverridesPath = path.resolve(
-  __dirname,
-  "../live-build/config-overrides"
-);
+const configPath = path.resolve(__dirname, "../live-build/config");
 
 function stdin() {
   const rl = readline.createInterface({
@@ -32,15 +29,9 @@ function removeFiles(filePaths) {
 
 function cleanPackages() {
   removeFiles([
-    path.resolve(
-      configOverridesPath,
-      "package-lists/packages.list.chroot_install"
-    ),
-    path.resolve(
-      configOverridesPath,
-      "package-lists/packages.list.chroot_live"
-    ),
-    path.resolve(configOverridesPath, "package-lists/packages.list.binary"),
+    path.resolve(configPath, "package-lists/packages.list.chroot_install"),
+    path.resolve(configPath, "package-lists/packages.list.chroot_live"),
+    path.resolve(configPath, "package-lists/packages.list.binary"),
   ]);
 }
 
@@ -48,20 +39,14 @@ function loadPackage(package) {
   if (package.live && package.installed) {
     // list.chroot or list.chroot_install
     fs.appendFileSync(
-      path.resolve(
-        configOverridesPath,
-        "package-lists/packages.list.chroot_install"
-      ),
-      `${package.name}\n`
+      path.resolve(configPath, "package-lists/packages.list.chroot_install"),
+      `${package.name.trim()}\n`
     );
   } else if (package.live && !package.installed) {
     // list.chroot_live
     fs.appendFileSync(
-      path.resolve(
-        configOverridesPath,
-        "package-lists/packages.list.chroot_live"
-      ),
-      `${package.name}\n`
+      path.resolve(configPath, "package-lists/packages.list.chroot_live"),
+      `${package.name.trim()}\n`
     );
   } else if (!package.live && package.installed) {
     // add to calamares/modules/packages.conf and includes.installer/preseed.cfg
@@ -69,14 +54,18 @@ function loadPackage(package) {
   if (package.binary) {
     // list.binary
     fs.appendFileSync(
-      path.resolve(configOverridesPath, "package-lists/packages.list.binary"),
-      `${package.name}\n`
+      path.resolve(configPath, "package-lists/packages.list.binary"),
+      `${package.name.trim()}\n`
     );
   }
   console.log(`loaded package ${package.name}`);
 }
 
 function loadPackages() {
+  if (!fs.existsSync(configPath)) fs.mkdirSync(configPath);
+  if (!fs.existsSync(path.resolve(configPath, "package-lists"))) {
+    fs.mkdirSync(path.resolve(configPath, "package-lists"));
+  }
   return stdin()
     .then((data) => {
       JSON.parse(data).forEach((package) => {
