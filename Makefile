@@ -14,6 +14,10 @@ export LOAD_REPOS ?= $(NODE) -e 'require("./scripts/repos.js").load()'
 export PACKAGES := $(shell ls os/packages/*.yaml $(NOFAIL))
 export REPOS := $(shell ls os/repos/*.yaml $(NOFAIL))
 
+.PHONY: config
+config:
+	@$(MAKE) -sC live-build config
+
 .PHONY: load-packages
 load-packages:
 	@$(CLEAN_PACKAGES)
@@ -29,7 +33,11 @@ load-repos:
 	done
 
 .PHONY: load
-load: load-packages load-repos
+load: | config load-packages load-repos
+
+.PHONY: build
+build: load
+	@$(MAKE) -sC live-build build
 
 .PHONY: clean
 clean: sudo

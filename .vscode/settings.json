@@ -12,6 +12,7 @@
     "cowsay",
     "dconf",
     "deno",
+    "direnv",
     "distro",
     "dpms",
     "drun",

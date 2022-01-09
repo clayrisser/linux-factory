@@ -73,12 +73,7 @@ function loadRepos() {
     .then((data) => {
       JSON.parse(data).forEach((repo) => {
         if (typeof repo !== "string") return loadRepo(repo);
-        return loadRepo({
-          name: repo,
-          live: true,
-          installed: true,
-          binary: false,
-        });
+        throw new Error("repo cannot be a string");
       });
     })
     .catch(console.error);
