@@ -8,15 +8,15 @@ This system can only be built from a Debian based operating system. While
 any Debian based operating system should work, this is only tested against
 the official Debian distribution on amd64.
 
-| Name       | Install                                                                                                                          | Url                                                                                                                            |
-| ---------- | -------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------- |
-| GNU Make   | `sudo apt-get install -y make`                                                                                                   | https://www.gnu.org/software/make                                                                                              |
-| Live Build | `sudo apt-get install -y live-build`                                                                                             | https://live-team.pages.debian.net/live-manual/html/live-manual/index.en.html                                                  |
-| NixOS      | `sudo true && curl -L https://nixos.org/nix/install                                                                              | sh`                                                                                                                            | https://nixos.org/download.html |
-| NodeJS     | `sudo apt-get install -y nodejs`                                                                                                 | https://nodejs.org/en/                                                                                                         |
-| direnv     | `sudo apt-get install -y direnv && SHELL_NAME=$(echo $SHELL                                                                      | grep -oE '[^/]+$') echo "eval \"\$(direnv hook $SHELL_NAME)\"" >> $HOME/.${SHELL_NAME}rc && eval "$(direnv hook $SHELL_NAME)"` | https://direnv.net              |
-| jq         | `sudo apt install -y jq`                                                                                                         | https://stedolan.github.io/jq/                                                                                                 |
-| yq         | `sudo wget https://github.com/mikefarah/yq/releases/download/v4.16.2/yq_linux_amd64 -O /usr/bin/yq && sudo chmod +x /usr/bin/yq` | https://mikefarah.gitbook.io/yq/                                                                                               |
+| Name       | Install                                                    | Url                                                                           |
+| ---------- | ---------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| GNU Make   | `sudo apt-get install -y make`                             | https://www.gnu.org/software/make                                             |
+| Live Build | `sudo apt-get install -y live-build`                       | https://live-team.pages.debian.net/live-manual/html/live-manual/index.en.html |
+| NixOS      | `sudo true && curl -L https://nixos.org/nix/install \| sh` | https://nixos.org/download.html                                               |
+| NodeJS     | `sudo apt-get install -y nodejs`                           | https://nodejs.org/en/                                                        |
+| direnv     | `sudo apt-get install -y direnv`                           | https://direnv.net                                                            |
+| jq         | `sudo apt install -y jq`                                   | https://stedolan.github.io/jq/                                                |
+| yq         | `sudo snap install yq`                                     | https://mikefarah.gitbook.io/yq/                                              |
 
 > If you install NixOS and direnv, you do not need to install yq, jq or GNU Make
 
