@@ -5,6 +5,15 @@ EXAMPLE_ENV := default.env
 include $(MKPM)/dotenv
 
 LB_PATH=$(PROJECT_ROOT)/lb
+SCRIPTS_PATH=$(PROJECT_ROOT)/scripts
+
+export DPKG_NAME ?= dpkg-name
+export NODE ?= node
+export YQ ?= yq
+export CLEAN_PACKAGES ?= $(NODE) -e 'require("$(SCRIPTS_PATH)/packages.js").clean()'
+export CLEAN_REPOS ?= $(NODE) -e 'require("$(SCRIPTS_PATH)/repos.js").clean()'
+export LOAD_PACKAGES ?= $(NODE) -e 'require("$(SCRIPTS_PATH)/packages.js").load()'
+export LOAD_REPOS ?= $(NODE) -e 'require("$(SCRIPTS_PATH)/repos.js").load()'
 
 NAME ?= DEB Distro
 WEBSITE ?= https://bitspur.com
@@ -59,6 +68,7 @@ SYSTEM ?= live
 UPDATES ?= true
 WIN32_LOADER ?= true
 
+.PHONY: env
 env:
 	@$(RM) $(LB_PATH)/.env $(NOFAIL)
 	@$(ECHO) 'APT=$(APT)' >> $(LB_PATH)/.env
@@ -95,5 +105,55 @@ env:
 	@$(ECHO) 'SYSTEM=$(SYSTEM)' >> $(LB_PATH)/.env
 	@$(ECHO) 'UPDATES=$(UPDATES)' >> $(LB_PATH)/.env
 	@$(ECHO) 'WIN32_LOADER=$(WIN32_LOADER)' >> $(LB_PATH)/.env
+
+.PHONY: config
+config: env
+	@$(MAKE) -sC $(LB_PATH) config
+
+DEBS := $(shell ls os/packages/*.deb $(NOFAIL))
+PACKAGES := $(shell ls os/packages/*.yaml $(NOFAIL))
+.PHONY: load-packages
+load-packages:
+	@$(CLEAN_PACKAGES)
+	@for p in $(PACKAGES); do \
+		$(CAT) $$p | $(YQ) | $(LOAD_PACKAGES); \
+	done
+	@$(RM) -rf $(MKPM_TMP)/debs
+	@$(MKDIR) -p $(MKPM_TMP)/debs
+	@for d in $(DEBS); do \
+		export MOVED_PATH=$$( \
+			eval $(ECHO) $$( \
+				$(DPKG_NAME) -s $(MKPM_TMP)/debs -o $$d | \
+				$(SED) 's/\x1B\[[0-9;]\{1,\}[A-Za-z]//g' | \
+				$(SED) 's|dpkg-name:\s.\+moved\s.\+\sto\s||g' \
+			) \
+		) && \
+		$(CP) $$MOVED_PATH $$d && \
+		$(ECHO) loaded package $$($(ECHO) $$MOVED_PATH | \
+			$(GREP) -oE '[^/]+$$' | $(GREP) -oE '^[^_]+'); \
+	done
+
+REPOS := $(shell ls os/repos/*.yaml $(NOFAIL))
+.PHONY: load-repos
+load-repos:
+	$(CLEAN_REPOS)
+	@for p in $(REPOS); do \
+		$(CAT) $$p | $(YQ) | $(LOAD_REPOS); \
+	done
+
+.PHONY: load
+load: | config load-packages load-repos
+
+.PHONY: build
+build: load
+	@$(MAKE) -sC $(LB_PATH) build
+
+.PHONY: clean
+clean: sudo
+	@$(MAKE) -sC $(LB_PATH) clean
+
+.PHONY: purge
+purge: sudo clean
+	@$(SUDO) $(GIT) clean -fXd
 
 endif
