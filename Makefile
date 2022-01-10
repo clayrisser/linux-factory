@@ -15,4 +15,11 @@ root:
 	@$(CD) root && \
 		$(call tmpl,$(OS))
 
+.PHONY: overlays
+overlays: root
+	@for o in $(shell $(LS) overlays); do \
+		$(CD) $(PROJECT_ROOT)/overlays/$$o && \
+			$(call tmpl,$(OS)); \
+	done
+
 endif
