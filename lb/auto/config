@@ -1,0 +1,38 @@
+#!/bin/sh
+
+lb config noauto \
+    --apt "${APT:-apt}" \
+    --apt-indices "${APT_INDICES:-true}" \
+    --apt-options "${APT_OPTIONS:--y}" \
+    --apt-recommends "${APT_RECOMMENDS:-true}" \
+    --apt-source-archives "${APT_SOURCE_ARCHIVES:-true}" \
+    --architectures "${ARCHITECTURES:-amd64}" \
+    --archive-areas "${ARCHIVE_AREAS:-main contrib non-free}" \
+    --backports "${BACKPORTS:-true}" \
+    --binary-images "${BINARY_IMAGES:-iso-hybrid}" \
+    --bootappend-live "${BOOTAPPEND_LIVE:-boot=live components username=live locales=en_US.UTF-8 keyboard-layouts=us}" \
+    --cache "${CACHE:-true}" \
+    --checksums "${CHECKSUMS:-sha256}" \
+    --debian-installer "${DEBIAN_INSTALLER:-netinst}" \
+    --debian-installer-gui "${DEBIAN_INSTALLER_GUI:-true}" \
+    --debootstrap-options "${DEBOOTSTRAP_OPTIONS:---include=apt-transport-https,ca-certificates,openssl}" \
+    $([ "${DEBUG:-true}" = "true" ] && echo --debug || true) \
+    --distribution "${DISTRIBUTION:-bullseye}" \
+    --initsystem "${INITSYSTEM:-systemd}" \
+    --iso-application "${ISO_APPLICATION:-DEB Distro}" \
+    --iso-publisher "${ISO_PUBLISHER:-DEB Distro; https://bitspur.com; email@bitspur.com}" \
+    --iso-volume "${ISO_VOLUME:-DEB Distro}" \
+    --linux-flavours "${LINUX_FLAVOURS:-amd64}" \
+    --linux-packages "${LINUX_PACKAGES:-linux-image linux-headers}" \
+    --mirror-bootstrap "${MIRROR_BOOTSTRAP:-http://deb.debian.org/debian/}" \
+    --mirror-debian-installer "${MIRROR_DEBIAN_INSTALLER:-http://deb.debian.org/debian/}" \
+    --mode "${MODE:-debian}" \
+    --parent-debian-installer-distribution "${PARENT_DEBIAN_INSTALLER_DISTRIBUTION:-bullseye}" \
+    --parent-distribution "${PARENT_DISTRIBUTION:-bullseye}" \
+    --parent-mirror-chroot "${PARENT_MIRROR_CHROOT:-http://deb.debian.org/debian/}" \
+    --parent-mirror-chroot-security "${PARENT_MIRROR_CHROOT_SECURITY:-http://security.debian.org/}" \
+    --security "${SECURITY:-false}" \
+    --system "${SYSTEM:-live}" \
+    --updates "${UPDATES:-true}" \
+    --win32-loader "${WIN32_LOADER:-true}" \
+    "${@}"

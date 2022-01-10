@@ -6,7 +6,7 @@ include $(MKPM)/dotenv
 include util.mk
 
 export TMPL := sh $(PROJECT_ROOT)/scripts/tmpl.sh
-export OS := $(MKPM_TMP)/os
+export OS := $(PROJECT_ROOT)/.os
 
 .PHONY: root
 root:
@@ -21,5 +21,13 @@ overlays: root
 		$(CD) $(PROJECT_ROOT)/overlays/$$o && \
 			$(call tmpl,$(OS)); \
 	done
+
+.PHONY: os
+os: overlays
+	@$(CD) os && \
+		$(call tmpl,$(OS))
+
+arch:
+	echo $(ARCH)
 
 endif

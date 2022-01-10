@@ -1,4 +1,5 @@
+*.log
 *.tmp
 .env
 .mkpm/
-*.log
+/.os
