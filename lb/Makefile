@@ -2,8 +2,13 @@ include ../mkpm.mk
 ifneq (,$(MKPM_READY))
 include $(MKPM)/gnu
 include $(MKPM)/mkchain
+DOTENV := .env
 include $(MKPM)/dotenv
 include upstream.mk
+
+ifeq ($(SUDO),sudo)
+	SUDO = sudo -E
+endif
 
 export CLOC ?= cloc
 export CSPELL ?= cspell
@@ -24,7 +29,7 @@ $(ACTION)/patch: $(PATCHES) ##
 ACTIONS += config~patch
 CONFIG_TARGET := sudo
 $(ACTION)/config: auto/config config-overrides ##
-	@sudo bash auto/config
+	@$(SUDO) bash auto/config
 	@$(MAKE) -s fix-permissions
 	@$(MAKE) -s packages
 	@$(MAKE) -s fonts

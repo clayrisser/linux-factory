@@ -1,6 +1,6 @@
 #!/bin/sh
 
-lb config noauto \
+echo lb config noauto \
     --apt "${APT:-apt}" \
     --apt-indices "${APT_INDICES:-true}" \
     --apt-options "${APT_OPTIONS:--y}" \

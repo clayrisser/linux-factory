@@ -1,48 +1,99 @@
 include ../mkpm.mk
 ifneq (,$(MKPM_READY))
 include $(MKPM)/gnu
+EXAMPLE_ENV := default.env
 include $(MKPM)/dotenv
 
 LB_PATH=$(PROJECT_ROOT)/lb
 
-hello:
-	@echo world
+NAME ?= DEB Distro
+WEBSITE ?= https://bitspur.com
+EMAIL ?= email@bitspur.com
+ARCHITECTURES ?= $(ARCH)
+LOCALE ?= en_US
+KEYBOARD_LAYOUT ?= us
+MIRROR ?= http://deb.debian.org/debian/
+MIRROR_SECURITY ?= http://security.debian.org/
+DISTRIBUTION ?= bullseye
+ifeq ($(DISTRIBUTION),bullseye)
+	SECURITY ?= false
+endif
+SECURITY ?= true
+ifeq ($(ARCH),i386)
+	LINUX_FLAVOURS ?= 686-pae
+endif
+LINUX_FLAVOURS ?= $(ARCH)
+KERNEL_VERSION ?=
+ifneq (,$(KERNEL_VERSION))
+	LINUX_PACKAGES ?= linux-image-$(KERNEL_VERSION) linux-headers-$(KERNEL_VERSION)
+endif
+LINUX_PACKAGES ?= linux-image linux-headers
+APT ?= apt
+APT_INDICES ?= true
+APT_OPTIONS ?= -y
+APT_RECOMMENDS ?= true
+APT_SOURCE_ARCHIVES ?= true
+ARCHITECTURES ?= $(ARCHITECTURES)
+ARCHIVE_AREAS ?= main contrib non-free
+BACKPORTS ?= true
+BINARY_IMAGES ?= iso-hybrid
+BOOTAPPEND_LIVE ?= boot=live components username=live locales=$(LOCALE).UTF-8 keyboard-layouts=$(KEYBOARD_LAYOUT)
+CACHE ?= true
+CHECKSUMS ?= sha256
+DEBIAN_INSTALLER ?= netinst
+DEBIAN_INSTALLER_GUI ?= true
+DEBOOTSTRAP_OPTIONS ?= --include=apt-transport-https,ca-certificates,openssl
+DEBUG ?= true
+INITSYSTEM ?= systemd
+ISO_APPLIECHOION ?= $(NAME)
+ISO_PUBLISHER ?= $(NAME); $(WEBSITE); $(EMAIL)
+ISO_VOLUME ?= $(NAME)
+MIRROR_BOOTSTRAP ?= $(MIRROR)
+MIRROR_DEBIAN_INSTALLER ?= $(MIRROR)
+MODE ?= debian
+PARENT_DEBIAN_INSTALLER_DISTRIBUTION ?= $(DISTRIBUTION)
+PARENT_DISTRIBUTION ?= $(DISTRIBUTION)
+PARENT_MIRROR_CHROOT ?= $(MIRROR)
+PARENT_MIRROR_CHROOT_SECURITY ?= $(MIRROR_SECURITY)
+SYSTEM ?= live
+UPDATES ?= true
+WIN32_LOADER ?= true
 
 env:
 	@$(RM) $(LB_PATH)/.env $(NOFAIL)
-	@$(ECHO) 'APT="apt"' >> $(LB_PATH)/.env
-	@$(ECHO) 'APT_INDICES="true"' >> $(LB_PATH)/.env
-	@$(ECHO) 'APT_OPTIONS="-y"' >> $(LB_PATH)/.env
-	@$(ECHO) 'APT_RECOMMENDS="true"' >> $(LB_PATH)/.env
-	@$(ECHO) 'APT_SOURCE_ARCHIVES="true"' >> $(LB_PATH)/.env
-	@$(ECHO) 'ARCHITECTURES="amd64"' >> $(LB_PATH)/.env
-	@$(ECHO) 'ARCHIVE_AREAS="main contrib non-free"' >> $(LB_PATH)/.env
-	@$(ECHO) 'BACKPORTS="true"' >> $(LB_PATH)/.env
-	@$(ECHO) 'BINARY_IMAGES="iso-hybrid"' >> $(LB_PATH)/.env
-	@$(ECHO) 'BOOTAPPEND_LIVE="boot=live components username=live locales=en_US.UTF-8 keyboard-layouts=us"' >> $(LB_PATH)/.env
-	@$(ECHO) 'CACHE="true"' >> $(LB_PATH)/.env
-	@$(ECHO) 'CHECKSUMS="sha256"' >> $(LB_PATH)/.env
-	@$(ECHO) 'DEBIAN_INSTALLER="netinst"' >> $(LB_PATH)/.env
-	@$(ECHO) 'DEBIAN_INSTALLER_GUI="true"' >> $(LB_PATH)/.env
-	@$(ECHO) 'DEBOOTSTRAP_OPTIONS="--include=apt-transport-https,ca-certificates,openssl"' >> $(LB_PATH)/.env
-	@$(ECHO) 'DEBUG="true"' >> $(LB_PATH)/.env
-	@$(ECHO) 'DISTRIBUTION="bullseye"' >> $(LB_PATH)/.env
-	@$(ECHO) 'INITSYSTEM="systemd"' >> $(LB_PATH)/.env
-	@$(ECHO) 'ISO_APPLIECHOION="DEB Distro"' >> $(LB_PATH)/.env
-	@$(ECHO) 'ISO_PUBLISHER="DEB Distro; https://bitspur.com; email@bitspur.com"' >> $(LB_PATH)/.env
-	@$(ECHO) 'ISO_VOLUME="DEB Distro"' >> $(LB_PATH)/.env
-	@$(ECHO) 'LINUX_FLAVOURS="amd64"' >> $(LB_PATH)/.env
-	@$(ECHO) 'LINUX_PACKAGES="linux-image linux-headers"' >> $(LB_PATH)/.env
-	@$(ECHO) 'MIRROR_BOOTSTRAP="http://deb.debian.org/debian/"' >> $(LB_PATH)/.env
-	@$(ECHO) 'MIRROR_DEBIAN_INSTALLER="http://deb.debian.org/debian/"' >> $(LB_PATH)/.env
-	@$(ECHO) 'MODE="debian"' >> $(LB_PATH)/.env
-	@$(ECHO) 'PARENT_DEBIAN_INSTALLER_DISTRIBUTION="bullseye"' >> $(LB_PATH)/.env
-	@$(ECHO) 'PARENT_DISTRIBUTION="bullseye"' >> $(LB_PATH)/.env
-	@$(ECHO) 'PARENT_MIRROR_CHROOT="http://deb.debian.org/debian/"' >> $(LB_PATH)/.env
-	@$(ECHO) 'PARENT_MIRROR_CHROOT_SECURITY="http://security.debian.org/"' >> $(LB_PATH)/.env
-	@$(ECHO) 'SECURITY="false"' >> $(LB_PATH)/.env
-	@$(ECHO) 'SYSTEM="live"' >> $(LB_PATH)/.env
-	@$(ECHO) 'UPDATES="true"' >> $(LB_PATH)/.env
-	@$(ECHO) 'WIN32_LOADER="true"' >> $(LB_PATH)/.env
+	@$(ECHO) 'APT=$(APT)' >> $(LB_PATH)/.env
+	@$(ECHO) 'APT_INDICES=$(APT_INDICES)' >> $(LB_PATH)/.env
+	@$(ECHO) 'APT_OPTIONS=$(APT_OPTIONS)' >> $(LB_PATH)/.env
+	@$(ECHO) 'APT_RECOMMENDS=$(APT_RECOMMENDS)' >> $(LB_PATH)/.env
+	@$(ECHO) 'APT_SOURCE_ARCHIVES=$(APT_SOURCE_ARCHIVES)' >> $(LB_PATH)/.env
+	@$(ECHO) 'ARCHITECTURES=$(ARCHITECTURES)' >> $(LB_PATH)/.env
+	@$(ECHO) 'ARCHIVE_AREAS=$(ARCHIVE_AREAS)' >> $(LB_PATH)/.env
+	@$(ECHO) 'BACKPORTS=$(BACKPORTS)' >> $(LB_PATH)/.env
+	@$(ECHO) 'BINARY_IMAGES=$(BINARY_IMAGES)' >> $(LB_PATH)/.env
+	@$(ECHO) 'BOOTAPPEND_LIVE=$(BOOTAPPEND_LIVE)' >> $(LB_PATH)/.env
+	@$(ECHO) 'CACHE=$(CACHE)' >> $(LB_PATH)/.env
+	@$(ECHO) 'CHECKSUMS=$(CHECKSUMS)' >> $(LB_PATH)/.env
+	@$(ECHO) 'DEBIAN_INSTALLER=$(DEBIAN_INSTALLER)' >> $(LB_PATH)/.env
+	@$(ECHO) 'DEBIAN_INSTALLER_GUI=$(DEBIAN_INSTALLER_GUI)' >> $(LB_PATH)/.env
+	@$(ECHO) 'DEBOOTSTRAP_OPTIONS=$(DEBOOTSTRAP_OPTIONS)' >> $(LB_PATH)/.env
+	@$(ECHO) 'DEBUG=$(DEBUG)' >> $(LB_PATH)/.env
+	@$(ECHO) 'DISTRIBUTION=$(DISTRIBUTION)' >> $(LB_PATH)/.env
+	@$(ECHO) 'INITSYSTEM=$(INITSYSTEM)' >> $(LB_PATH)/.env
+	@$(ECHO) 'ISO_APPLICATION=$(ISO_APPLICATION)' >> $(LB_PATH)/.env
+	@$(ECHO) 'ISO_PUBLISHER=$(ISO_PUBLISHER)' >> $(LB_PATH)/.env
+	@$(ECHO) 'ISO_VOLUME=$(ISO_VOLUME)' >> $(LB_PATH)/.env
+	@$(ECHO) 'LINUX_FLAVOURS=$(LINUX_FLAVOURS)' >> $(LB_PATH)/.env
+	@$(ECHO) 'LINUX_PACKAGES=$(LINUX_PACKAGES)' >> $(LB_PATH)/.env
+	@$(ECHO) 'MIRROR_BOOTSTRAP=$(MIRROR_BOOTSTRAP)' >> $(LB_PATH)/.env
+	@$(ECHO) 'MIRROR_DEBIAN_INSTALLER=$(MIRROR_DEBIAN_INSTALLER)' >> $(LB_PATH)/.env
+	@$(ECHO) 'MODE=$(MODE)' >> $(LB_PATH)/.env
+	@$(ECHO) 'PARENT_DEBIAN_INSTALLER_DISTRIBUTION=$(PARENT_DEBIAN_INSTALLER_DISTRIBUTION)' >> $(LB_PATH)/.env
+	@$(ECHO) 'PARENT_DISTRIBUTION=$(PARENT_DISTRIBUTION)' >> $(LB_PATH)/.env
+	@$(ECHO) 'PARENT_MIRROR_CHROOT=$(PARENT_MIRROR_CHROOT)' >> $(LB_PATH)/.env
+	@$(ECHO) 'PARENT_MIRROR_CHROOT_SECURITY=$(PARENT_MIRROR_CHROOT_SECURITY)' >> $(LB_PATH)/.env
+	@$(ECHO) 'SECURITY=$(SECURITY)' >> $(LB_PATH)/.env
+	@$(ECHO) 'SYSTEM=$(SYSTEM)' >> $(LB_PATH)/.env
+	@$(ECHO) 'UPDATES=$(UPDATES)' >> $(LB_PATH)/.env
+	@$(ECHO) 'WIN32_LOADER=$(WIN32_LOADER)' >> $(LB_PATH)/.env
 
 endif

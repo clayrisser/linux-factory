@@ -27,7 +27,8 @@ os: overlays
 	@$(CD) os && \
 		$(call tmpl,$(OS))
 
-arch:
-	echo $(ARCH)
+-include $(call actions)
+
+CACHE_ENVS += \
 
 endif
