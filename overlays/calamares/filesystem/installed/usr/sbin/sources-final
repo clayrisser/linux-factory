@@ -1,0 +1,18 @@
+#!/bin/sh
+#
+# Writes the final sources.list file
+#
+
+CHROOT=$(mount | grep proc | grep calamares | awk '{print $3}' | sed -e "s#/proc##g")
+RELEASE="bullseye"
+
+cat << EOF > $CHROOT/etc/apt/sources.list
+deb http://deb.debian.org/debian $RELEASE main contrib
+deb-src http://deb.debian.org/debian $RELEASE main contrib
+deb http://deb.debian.org/debian $RELEASE-updates main contrib
+deb-src http://deb.debian.org/debian $RELEASE-updates main contrib
+deb http://deb.debian.org/debian $RELEASE-backports main contrib
+deb-src http://deb.debian.org/debian $RELEASE-backports main contrib
+EOF
+
+exit 0
