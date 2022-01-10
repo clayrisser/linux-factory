@@ -7,6 +7,7 @@ nixpkgs.stdenv.mkDerivation rec {
   LANG = "en_US.UTF-8";
   buildInputs = [
     nixpkgs.cloc
+    nixpkgs.confd
     nixpkgs.gnumake42
     nixpkgs.gnused
     nixpkgs.jq
