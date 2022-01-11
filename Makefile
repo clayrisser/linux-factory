@@ -3,7 +3,7 @@
 # File Created: 09-01-2022 11:10:46
 # Author: Clay Risser
 # -----
-# Last Modified: 11-01-2022 07:39:37
+# Last Modified: 11-01-2022 07:40:31
 # Modified By: Clay Risser
 # -----
 # BitSpur Inc (c) Copyright 2021 - 2022
@@ -25,7 +25,6 @@ ifneq (,$(MKPM_READY))
 include $(MKPM)/gnu
 include $(MKPM)/envcache
 include os/config.mk
-include util.mk
 
 export OS_PATH := $(PROJECT_ROOT)/.os
 export SCRIPTS_PATH := $(PROJECT_ROOT)/scripts
