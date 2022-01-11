@@ -1,4 +1,0 @@
-myapp:
-  database:
-    url: db.example.com
-    user: rob

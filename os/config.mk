@@ -3,7 +3,7 @@
 # File Created: 11-01-2022 07:05:55
 # Author: Clay Risser
 # -----
-# Last Modified: 11-01-2022 07:07:11
+# Last Modified: 11-01-2022 07:38:29
 # Modified By: Clay Risser
 # -----
 # BitSpur Inc (c) Copyright 2021 - 2022
@@ -20,5 +20,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+NAME ?= DEB Distro
+WEBSITE ?= https://bitspur.com
+EMAIL ?= email@bitspur.com
+ARCHITECTURES ?= $(ARCH)
+LOCALE ?= en_US
+KEYBOARD_LAYOUT ?= us
+MIRROR ?= http://deb.debian.org/debian/
+MIRROR_SECURITY ?= http://security.debian.org/
+DISTRIBUTION ?= bullseye
 OVERLAYS := \
 	calamares

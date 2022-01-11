@@ -3,7 +3,7 @@
 # File Created: 09-01-2022 11:10:46
 # Author: Clay Risser
 # -----
-# Last Modified: 11-01-2022 07:08:30
+# Last Modified: 11-01-2022 07:39:37
 # Modified By: Clay Risser
 # -----
 # BitSpur Inc (c) Copyright 2021 - 2022
@@ -46,14 +46,15 @@ root:
 
 .PHONY: overlays
 overlays: root
-	@echo $(OVERLAYS)
-	@for o in $(shell $(LS) $(MKPM_TMP)/overlays $(NOFAIL)); do \
-		$(CD) $(MKPM_TMP)/overlays/$$o && \
-			$(call tmpl,$(OS_PATH)); \
-	done
+# @for o in $(shell $(LS) $(MKPM_TMP)/overlays $(NOFAIL)); do \
+# 	$(CD) $(MKPM_TMP)/overlays/$$o && \
+# 		$(call tmpl,$(OS_PATH)); \
+# done
 	@for o in $(shell $(LS) overlays); do \
-		$(CD) $(PROJECT_ROOT)/overlays/$$o && \
-			$(call tmpl,$(OS_PATH)); \
+		if ($(ECHO) ' $(OVERLAYS) ' | $(GREP) "\s$$o\s" $(NOOUT)); then \
+			$(CD) $(PROJECT_ROOT)/overlays/$$o && \
+				$(call tmpl,$(OS_PATH)); \
+		fi; \
 	done
 
 .PHONY: os
@@ -76,6 +77,27 @@ layouts: ##
 .PHONY: trust-gpg-key
 trust-gpg-key: ##
 	@$(EXPORT_GPG_KEY) $(ARGS) config-overrides/archives/$(ARGS).key.chroot
+
+
+define tmpl
+	for f in $$($(FIND) . -type f -printf "%p\n" | $(SED) 's|^\.\/||g'); do \
+		if [ "$2" != "" ]; then \
+			for i in $2; do \
+				if [ "$$f" = "$$i" ]; then \
+					IGNORE=1; \
+				fi; \
+			done; \
+		fi; \
+		if [ "$$IGNORE" != "1" ]; then \
+			$(MKDIR) -p $$($(ECHO) $1/$$f | $(SED) 's|\/[^\/]\+$$||g' $(NOFAIL)) && \
+			if [ "$$($(ECHO) $$f | $(GREP) -oE '\.tmpl$$' $(NOFAIL))" = ".tmpl" ]; then \
+				$(TMPL) $$f > $1/$$($(ECHO) $$f | $(SED) 's|\.tmpl$$||g'); \
+			else \
+				$(CP) $$f $1/$$f; \
+			fi; \
+		fi; \
+	done
+endef
 
 CACHE_ENVS += \
 
