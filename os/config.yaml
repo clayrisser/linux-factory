@@ -1,0 +1,12 @@
+name: "DEB Distro"
+website: https://bitspur.com
+email: email@bitspur.com
+architectures: amd64
+locale: en_US
+keyboardLayout: us
+mirror: http://deb.debian.org/debian/
+mirrorSecurity: http://security.debian.org/
+distribution: bullseye
+overlays:
+  calamares:
+    helloWorld: ""
