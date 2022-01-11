@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const readline = require("readline");
 
-const configPath = path.resolve(__dirname, "../live-build/config");
+const configPath = path.resolve(__dirname, "../lb/config");
 
 function stdin() {
   const rl = readline.createInterface({

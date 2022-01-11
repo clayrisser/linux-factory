@@ -110,8 +110,8 @@ env:
 config: env
 	@$(MAKE) -sC $(LB_PATH) config
 
-DEBS := $(shell ls os/packages/*.deb $(NOFAIL))
-PACKAGES := $(shell ls os/packages/*.yaml $(NOFAIL))
+DEBS := $(shell ls packages/*.deb $(NOFAIL))
+PACKAGES := $(shell ls packages/*.yaml $(NOFAIL))
 .PHONY: load-packages
 load-packages:
 	@$(CLEAN_PACKAGES)
@@ -133,7 +133,7 @@ load-packages:
 			$(GREP) -oE '[^/]+$$' | $(GREP) -oE '^[^_]+'); \
 	done
 
-REPOS := $(shell ls os/repos/*.yaml $(NOFAIL))
+REPOS := $(shell ls repos/*.yaml $(NOFAIL))
 .PHONY: load-repos
 load-repos:
 	$(CLEAN_REPOS)
