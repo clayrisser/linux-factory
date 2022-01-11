@@ -3,7 +3,7 @@
 # File Created: 09-01-2022 11:10:46
 # Author: Clay Risser
 # -----
-# Last Modified: 11-01-2022 03:44:59
+# Last Modified: 11-01-2022 07:08:30
 # Modified By: Clay Risser
 # -----
 # BitSpur Inc (c) Copyright 2021 - 2022
@@ -24,16 +24,18 @@ include mkpm.mk
 ifneq (,$(MKPM_READY))
 include $(MKPM)/gnu
 include $(MKPM)/envcache
-include $(MKPM)/dotenv
+include os/config.mk
 include util.mk
 
-export TMPL := sh $(PROJECT_ROOT)/scripts/tmpl.sh
 export OS_PATH := $(PROJECT_ROOT)/.os
+export SCRIPTS_PATH := $(PROJECT_ROOT)/scripts
 
 export CLOC ?= cloc
 export CSPELL ?= cspell
 export DPKG_NAME ?= dpkg-name
-export EXPORT_GPG_KEY := sh $(PROJECT_ROOT)/export-gpg-key.sh
+export EXPORT_GPG_KEY := sh $(SCRIPTS_PATH)/export-gpg-key.sh
+export GIT_DOWNLOAD := sh $(SCRIPTS_PATH)/git-download.sh
+export TMPL := sh $(SCRIPTS_PATH)/tmpl.sh
 
 .PHONY: root
 root:
@@ -44,6 +46,11 @@ root:
 
 .PHONY: overlays
 overlays: root
+	@echo $(OVERLAYS)
+	@for o in $(shell $(LS) $(MKPM_TMP)/overlays $(NOFAIL)); do \
+		$(CD) $(MKPM_TMP)/overlays/$$o && \
+			$(call tmpl,$(OS_PATH)); \
+	done
 	@for o in $(shell $(LS) overlays); do \
 		$(CD) $(PROJECT_ROOT)/overlays/$$o && \
 			$(call tmpl,$(OS_PATH)); \
