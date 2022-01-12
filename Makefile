@@ -3,7 +3,7 @@
 # File Created: 09-01-2022 11:10:46
 # Author: Clay Risser
 # -----
-# Last Modified: 12-01-2022 07:08:46
+# Last Modified: 12-01-2022 07:46:28
 # Modified By: Clay Risser
 # -----
 # BitSpur Inc (c) Copyright 2021 - 2022
@@ -54,7 +54,7 @@ overlays: | root +overlays
 		$(CP) -r $(PROJECT_ROOT)/overlays/$$o $(PROJECT_ROOT)/.overlays/$$o && \
 		$(CD) $(PROJECT_ROOT)/.overlays/$$o && \
 		$(call overlay_hook,pre) && \
-		$(call tmpl,$(OS_PATH),$(PROJECT_ROOT)/overlays/$$o/config.yaml) && \
+		$(call tmpl_overlay,$(OS_PATH)) && \
 		$(CD) $(PROJECT_ROOT)/.os && \
 		$(call overlay_hook,post); \
 	done
@@ -64,6 +64,7 @@ os: overlays +os
 +os:
 	@$(CD) os && \
 		$(call tmpl,$(OS_PATH))
+	@$(call parse_envs,$(PROJECT_ROOT)/os/config.yaml) > $(PROJECT_ROOT)/.os/.env
 
 .PHONY: load +load
 load: | os +load
@@ -100,8 +101,8 @@ define overlay_hook
 		( \
 			(($(CAT) $(PROJECT_ROOT)/overlays/$$o/config.yaml $(NOFAIL)) | $(YQ)) && \
 			(($(CAT) $(PROJECT_ROOT)/os/config.yaml $(NOFAIL)) | $(YQ) ".overlays.$$o") \
-		) | $(JQ) -s '.[0] + .[1]' | env -i sh -c " \
-			$(CAT) | $(PARSE_CONFIG) > $(MKPM_TMP)/overlay_hook_envs && \
+		) | $(JQ) -s '.[0]+.[1]' | env -i sh -c " \
+			$(CAT) | $(PARSE_CONFIG) -e > $(MKPM_TMP)/overlay_hook_envs && \
 			. $(MKPM_TMP)/overlay_hook_envs && \
 			sh $(PROJECT_ROOT)/.overlays/$$o/hooks/$1_overlay.sh \
 		"; \
@@ -109,24 +110,36 @@ define overlay_hook
 endef
 
 define tmpl
+	(($(CAT) $(PROJECT_ROOT)/os/config.yaml $(NOFAIL)) | $(YQ)) | \
+		$(call _tmpl,$1)
+endef
+
+define tmpl_overlay
 	( \
 		(($(CAT) $(PROJECT_ROOT)/overlays/$$o/config.yaml $(NOFAIL)) | $(YQ)) && \
 		(($(CAT) $(PROJECT_ROOT)/os/config.yaml $(NOFAIL)) | $(YQ) ".overlays.$$o") \
-	) | $(JQ) -s '.[0] + .[1]' | env -i sh -c ' \
-		$(CAT) | $(PARSE_CONFIG) > $(MKPM_TMP)/tmpl_envs && \
-		. $(MKPM_TMP)/tmpl_envs && \
-		for f in $$($(FIND) . -type f -printf "%p\n" | $(SED) "s|^\.\/||g"); do \
-			$(MKDIR) -p $$($(ECHO) $1/$$f | $(SED) "s|/[^/]\+$$||g" $(NOFAIL)) && \
-			if [ "$$($(ECHO) $$f | $(GREP) -oE "\.tmpl$$" $(NOFAIL))" = ".tmpl" ]; then \
-				$(TMPL) $$f > $1/$$($(ECHO) $$f | $(SED) "s|\.tmpl$$||g"); \
-			else \
-				$(CP) $$f $1/$$f; \
-			fi; \
-		done \
-	'
+	) | $(JQ) -s '.[0]+.[1]' | $(call _tmpl,$1)
+endef
+
+define _tmpl
+env -i sh -c ' \
+	$(CAT) | $(PARSE_CONFIG) -e > $(MKPM_TMP)/tmpl_envs && \
+	. $(MKPM_TMP)/tmpl_envs && \
+	for f in $$($(FIND) . -type f -printf "%p\n" | $(SED) "s|^\.\/||g"); do \
+		$(MKDIR) -p $$($(ECHO) $1/$$f | $(SED) "s|/[^/]\+$$||g" $(NOFAIL)) && \
+		if [ "$$($(ECHO) $$f | $(GREP) -oE "\.tmpl$$" $(NOFAIL))" = ".tmpl" ]; then \
+			$(TMPL) $$f > $1/$$($(ECHO) $$f | $(SED) "s|\.tmpl$$||g"); \
+		else \
+			$(CP) $$f $1/$$f; \
+		fi; \
+	done \
+'
+endef
+
+define parse_envs
+	(($(CAT) $1 $(NOFAIL)) | $(YQ)) | $(PARSE_CONFIG) $2
 endef
 
 CACHE_ENVS += \
 
 endif
-
