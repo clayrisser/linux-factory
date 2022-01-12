@@ -9,4 +9,4 @@ mirrorSecurity: http://security.debian.org/
 distribution: bullseye
 overlays:
   calamares:
-    helloWorld: ""
+    hello: world

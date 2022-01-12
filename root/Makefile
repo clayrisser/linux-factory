@@ -3,7 +3,7 @@
 # File Created: 10-01-2022 04:56:09
 # Author: Clay Risser
 # -----
-# Last Modified: 11-01-2022 07:37:59
+# Last Modified: 12-01-2022 07:08:42
 # Modified By: Clay Risser
 # -----
 # BitSpur Inc (c) Copyright 2021 - 2022
@@ -25,7 +25,6 @@ ifneq (,$(MKPM_READY))
 include $(MKPM)/gnu
 include $(MKPM)/envcache
 include $(MKPM)/dotenv
-include config.mk
 
 LB_PATH=$(PROJECT_ROOT)/lb
 SCRIPTS_PATH=$(PROJECT_ROOT)/scripts

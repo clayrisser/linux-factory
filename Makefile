@@ -3,7 +3,7 @@
 # File Created: 09-01-2022 11:10:46
 # Author: Clay Risser
 # -----
-# Last Modified: 12-01-2022 01:28:01
+# Last Modified: 12-01-2022 07:08:46
 # Modified By: Clay Risser
 # -----
 # BitSpur Inc (c) Copyright 2021 - 2022
@@ -24,7 +24,6 @@ include mkpm.mk
 ifneq (,$(MKPM_READY))
 include $(MKPM)/gnu
 include $(MKPM)/envcache
-include os/config.mk
 
 export OS_PATH := $(PROJECT_ROOT)/.os
 export SCRIPTS_PATH := $(PROJECT_ROOT)/scripts
@@ -75,6 +74,10 @@ load: | os +load
 		$(call overlay_hook,lb); \
 	done
 
+.PHONY: build +build
+build: | load +build
++build:
+	@$(MAKE) -sC .os build
 
 .PHONY: test-lang
 test-lang: ##
@@ -94,7 +97,10 @@ trust-gpg-key: ##
 
 define overlay_hook
 	if [ -f "$(PROJECT_ROOT)/.overlays/$$o/hooks/$1_overlay.sh" ]; then \
-		($(CAT) $(PROJECT_ROOT)/overlays/$$o/config.yaml $(NOFAIL)) | $(YQ) | env -i sh -c " \
+		( \
+			(($(CAT) $(PROJECT_ROOT)/overlays/$$o/config.yaml $(NOFAIL)) | $(YQ)) && \
+			(($(CAT) $(PROJECT_ROOT)/os/config.yaml $(NOFAIL)) | $(YQ) ".overlays.$$o") \
+		) | $(JQ) -s '.[0] + .[1]' | env -i sh -c " \
 			$(CAT) | $(PARSE_CONFIG) > $(MKPM_TMP)/overlay_hook_envs && \
 			. $(MKPM_TMP)/overlay_hook_envs && \
 			sh $(PROJECT_ROOT)/.overlays/$$o/hooks/$1_overlay.sh \
@@ -103,7 +109,10 @@ define overlay_hook
 endef
 
 define tmpl
-	([ "$2" = "" ] && $(TRUE) || ($(CAT) $2 $(NOFAIL))) | $(YQ) | env -i sh -c ' \
+	( \
+		(($(CAT) $(PROJECT_ROOT)/overlays/$$o/config.yaml $(NOFAIL)) | $(YQ)) && \
+		(($(CAT) $(PROJECT_ROOT)/os/config.yaml $(NOFAIL)) | $(YQ) ".overlays.$$o") \
+	) | $(JQ) -s '.[0] + .[1]' | env -i sh -c ' \
 		$(CAT) | $(PARSE_CONFIG) > $(MKPM_TMP)/tmpl_envs && \
 		. $(MKPM_TMP)/tmpl_envs && \
 		for f in $$($(FIND) . -type f -printf "%p\n" | $(SED) "s|^\.\/||g"); do \
@@ -120,3 +129,4 @@ endef
 CACHE_ENVS += \
 
 endif
+
