@@ -3,7 +3,7 @@
 # File Created: 31-08-2021 15:23:50
 # Author: Clay Risser
 # -----
-# Last Modified: 11-01-2022 03:43:10
+# Last Modified: 12-01-2022 11:10:00
 # Modified By: Clay Risser
 # -----
 # BitSpur Inc (c) Copyright 2021 - 2022
@@ -35,6 +35,7 @@ export CURL ?= curl
 ACTIONS += config
 CONFIG_TARGET := sudo
 $(ACTION)/config: auto/config config-overrides ##
+	@$(RM) -rf config
 	@$(SUDO) bash auto/config
 	@$(MAKE) -s fix-permissions
 	@for d in $$(ls config-overrides); do \

@@ -17,9 +17,14 @@ function stdin() {
   });
 }
 
+write = console.log;
+const filePath = path.resolve(process.argv[2] || "");
+if (new Set(process.argv).has("-i")) {
+  write = (data) => fs.writeFileSync(filePath, data);
+}
+
 stdin()
   .then((stdinData) => {
-    const filePath = path.resolve(process.argv[2] || "");
     if (fs.lstatSync(filePath).isFile()) {
       return new Promise((resolve, reject) => {
         fs.readFile(filePath, (err, fileData) => {
@@ -27,12 +32,18 @@ stdin()
           fileData = fileData.toString();
           if (process.argv.length > 3) {
             const match = fileData.match(new RegExp(process.argv[3]));
+            if (!match) {
+              write(fileData);
+              return resolve();
+            }
             const index = match.index + match[0].length;
-            console.log(
-              fileData.slice(0, index) + stdinData + fileData.slice(index)
+            write(
+              fileData.slice(0, index) +
+                stdinData.slice(0, stdinData.length - 1) +
+                fileData.slice(index)
             );
           } else {
-            console.log(fileData + stdinData);
+            write(fileData + stdinData);
           }
           return resolve();
         });

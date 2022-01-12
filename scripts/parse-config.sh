@@ -7,7 +7,6 @@ while [ $# -gt 0 ]; do
     esac
 done
 
-
 JSON=$(cat | jq)
 for k in $(echo $JSON | jq -r '. | keys[]'); do
     echo $_EXPORT \

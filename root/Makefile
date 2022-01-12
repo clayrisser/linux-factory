@@ -3,7 +3,7 @@
 # File Created: 10-01-2022 04:56:09
 # Author: Clay Risser
 # -----
-# Last Modified: 12-01-2022 09:55:12
+# Last Modified: 12-01-2022 10:29:12
 # Modified By: Clay Risser
 # -----
 # BitSpur Inc (c) Copyright 2021 - 2022
@@ -31,6 +31,7 @@ SCRIPTS_PATH=$(PROJECT_ROOT)/scripts
 
 export DPKG_NAME ?= dpkg-name
 export NODE ?= node
+export RSYNC ?= rsync
 export YQ ?= yq
 export CLEAN_PACKAGES ?= $(NODE) -e 'require("$(SCRIPTS_PATH)/packages.js").clean()'
 export CLEAN_REPOS ?= $(NODE) -e 'require("$(SCRIPTS_PATH)/repos.js").clean()'
@@ -165,14 +166,14 @@ load-repos:
 
 .PHONY: load-filesystem
 load-filesystem:
-	@$(RSYNC) -a filesystem/binary $(LB_PATH)/config/includes.binary/ $(NOFAIL)
-	@$(RSYNC) -a filesystem/live $(LB_PATH)/config/includes.chroot/ $(NOFAIL)
-	@$(RSYNC) -a filesystem/live_installed $(LB_PATH)/config/includes.chroot/ $(NOFAIL)
-#	@$(RSYNC) -a filesystem/installed_live $(LB_PATH)/config/includes.chroot/ $(NOFAIL)
+	@$(RSYNC) -a filesystem/binary/ $(LB_PATH)/config/includes.binary/ $(NOFAIL)
+	@$(RSYNC) -a filesystem/live/ $(LB_PATH)/config/includes.chroot/ $(NOFAIL)
+	@$(RSYNC) -a filesystem/live_installed/ $(LB_PATH)/config/includes.chroot/ $(NOFAIL)
+#	@$(RSYNC) -a filesystem/installed_live/ $(LB_PATH)/config/includes.chroot/ $(NOFAIL)
 
 .PHONY: load-lb
 load-lb:
-	@$(RSYNC) -a lb $(LB_PATH)/config/ $(NOFAIL)
+	@$(RSYNC) -a lb/ $(LB_PATH)/config/ $(NOFAIL)
 
 .PHONY: load
 load: | config load-packages load-repos load-filesystem load-lb

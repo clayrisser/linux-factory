@@ -50,6 +50,10 @@ function loadPackage(package) {
     );
   } else if (!package.live && package.installed) {
     // add to calamares/modules/packages.conf and includes.installer/preseed.cfg
+    fs.appendFileSync(
+      path.resolve(configPath, "package-lists/packages.list.install"),
+      `${package.name.trim()}\n`
+    );
   }
   if (package.binary) {
     // list.binary

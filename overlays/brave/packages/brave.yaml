@@ -1,1 +1,4 @@
-- brave
+- name: brave
+  live: false
+  installed: true
+  binary: false
