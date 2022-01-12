@@ -3,7 +3,7 @@
 # File Created: 09-01-2022 11:10:46
 # Author: Clay Risser
 # -----
-# Last Modified: 12-01-2022 07:46:28
+# Last Modified: 12-01-2022 08:58:49
 # Modified By: Clay Risser
 # -----
 # BitSpur Inc (c) Copyright 2021 - 2022
@@ -31,11 +31,12 @@ export SCRIPTS_PATH := $(PROJECT_ROOT)/scripts
 export CLOC ?= cloc
 export CSPELL ?= cspell
 export DPKG_NAME ?= dpkg-name
-export YQ ?= yq
 export EXPORT_GPG_KEY := sh $(SCRIPTS_PATH)/export-gpg-key.sh
 export GIT_DOWNLOAD := sh $(SCRIPTS_PATH)/git-download.sh
+export INSERT_CAT := node $(SCRIPTS_PATH)/insert-cat.js
 export PARSE_CONFIG := sh $(SCRIPTS_PATH)/parse-config.sh
 export TMPL := sh $(SCRIPTS_PATH)/tmpl.sh
+export YQ ?= yq
 
 .PHONY: root +root
 root: | +root
@@ -102,6 +103,7 @@ define overlay_hook
 			(($(CAT) $(PROJECT_ROOT)/overlays/$$o/config.yaml $(NOFAIL)) | $(YQ)) && \
 			(($(CAT) $(PROJECT_ROOT)/os/config.yaml $(NOFAIL)) | $(YQ) ".overlays.$$o") \
 		) | $(JQ) -s '.[0]+.[1]' | env -i sh -c " \
+			$(call inject_envs,') && \
 			$(CAT) | $(PARSE_CONFIG) -e > $(MKPM_TMP)/overlay_hook_envs && \
 			. $(MKPM_TMP)/overlay_hook_envs && \
 			sh $(PROJECT_ROOT)/.overlays/$$o/hooks/$1_overlay.sh \
@@ -123,6 +125,7 @@ endef
 
 define _tmpl
 env -i sh -c ' \
+	$(call inject_envs,") && \
 	$(CAT) | $(PARSE_CONFIG) -e > $(MKPM_TMP)/tmpl_envs && \
 	. $(MKPM_TMP)/tmpl_envs && \
 	for f in $$($(FIND) . -type f -printf "%p\n" | $(SED) "s|^\.\/||g"); do \
@@ -134,6 +137,10 @@ env -i sh -c ' \
 		fi; \
 	done \
 '
+endef
+
+define inject_envs
+	export INSERT_CAT=$1$(INSERT_CAT)$1
 endef
 
 define parse_envs

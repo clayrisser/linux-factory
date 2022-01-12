@@ -11,7 +11,7 @@ function stdin() {
   return new Promise((resolve, reject) => {
     try {
       let stdin = "";
-      rl.on("line", (line) => (stdin += line));
+      rl.on("line", (line) => (stdin += line + "\n"));
       rl.on("close", () => resolve(stdin));
     } catch (err) {
       return reject(err);
