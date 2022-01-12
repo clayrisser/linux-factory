@@ -3,7 +3,7 @@
 # File Created: 09-01-2022 11:10:46
 # Author: Clay Risser
 # -----
-# Last Modified: 11-01-2022 14:40:16
+# Last Modified: 12-01-2022 01:28:01
 # Modified By: Clay Risser
 # -----
 # BitSpur Inc (c) Copyright 2021 - 2022
@@ -38,14 +38,15 @@ export GIT_DOWNLOAD := sh $(SCRIPTS_PATH)/git-download.sh
 export PARSE_CONFIG := sh $(SCRIPTS_PATH)/parse-config.sh
 export TMPL := sh $(SCRIPTS_PATH)/tmpl.sh
 
-.PHONY: root
-root:
+.PHONY: root +root
+root: | +root
++root:
 	@$(RM) -rf $(OS_PATH) $(NOFAIL)
 	@$(MKDIR) -p $(OS_PATH)
 	@$(CD) root && \
 		$(call tmpl,$(OS_PATH))
 
-.PHONY: overlays
+.PHONY: overlays +overlays
 overlays: | root +overlays
 +overlays:
 	@$(RM) -rf $(PROJECT_ROOT)/.overlays
@@ -53,20 +54,27 @@ overlays: | root +overlays
 	@for o in $(shell $(CAT) os/config.yaml | $(YQ) -r '.overlays | keys[]'); do \
 		$(CP) -r $(PROJECT_ROOT)/overlays/$$o $(PROJECT_ROOT)/.overlays/$$o && \
 		$(CD) $(PROJECT_ROOT)/.overlays/$$o && \
-		if [ -f "$(PROJECT_ROOT)/.overlays/$$o/hooks/pre_overlay.sh" ]; then \
-			$(call overlay_hook,pre); \
-		fi && \
+		$(call overlay_hook,pre) && \
 		$(call tmpl,$(OS_PATH),$(PROJECT_ROOT)/overlays/$$o/config.yaml) && \
-		if [ -f "$(PROJECT_ROOT)/.overlays/$$o/hooks/post_overlay.sh" ]; then \
-			$(CD) $(PROJECT_ROOT)/.os && \
-			$(call overlay_hook,post); \
-		fi; \
+		$(CD) $(PROJECT_ROOT)/.os && \
+		$(call overlay_hook,post); \
 	done
 
-.PHONY: os
-os: overlays
+.PHONY: os +os
+os: overlays +os
++os:
 	@$(CD) os && \
 		$(call tmpl,$(OS_PATH))
+
+.PHONY: load +load
+load: | os +load
++load:
+	@$(MAKE) -sC .os load
+	@for o in $(shell $(LS) $(PROJECT_ROOT)/.overlays); do \
+		$(CD) $(PROJECT_ROOT)/lb && \
+		$(call overlay_hook,lb); \
+	done
+
 
 .PHONY: test-lang
 test-lang: ##
@@ -85,12 +93,13 @@ trust-gpg-key: ##
 	@$(EXPORT_GPG_KEY) $(ARGS) config-overrides/archives/$(ARGS).key.chroot
 
 define overlay_hook
-	([ "$(PROJECT_ROOT)/overlays/$$o/config.yaml" = "" ] && $(TRUE) || \
-		($(CAT) $(PROJECT_ROOT)/overlays/$$o/config.yaml $(NOFAIL))) | $(YQ) | env -i sh -c " \
-		$(CAT) | $(PARSE_CONFIG) > $(MKPM_TMP)/overlay_hook_envs && \
-		. $(MKPM_TMP)/overlay_hook_envs && \
-		sh $(PROJECT_ROOT)/.overlays/$$o/hooks/$1_overlay.sh \
-	"
+	if [ -f "$(PROJECT_ROOT)/.overlays/$$o/hooks/$1_overlay.sh" ]; then \
+		($(CAT) $(PROJECT_ROOT)/overlays/$$o/config.yaml $(NOFAIL)) | $(YQ) | env -i sh -c " \
+			$(CAT) | $(PARSE_CONFIG) > $(MKPM_TMP)/overlay_hook_envs && \
+			. $(MKPM_TMP)/overlay_hook_envs && \
+			sh $(PROJECT_ROOT)/.overlays/$$o/hooks/$1_overlay.sh \
+		"; \
+	fi
 endef
 
 define tmpl
