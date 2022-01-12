@@ -1,0 +1,8 @@
+- name: calamares
+  live: true
+  installed: false
+  binary: false
+- name: calamares-settings-debian
+  live: true
+  installed: false
+  binary: false

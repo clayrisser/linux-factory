@@ -1,6 +1,0 @@
----
-type:       "job"
-name:       "post-install"
-interface:  "process"
-command:    "/usr/sbin/post-install"
-timeout:    1800

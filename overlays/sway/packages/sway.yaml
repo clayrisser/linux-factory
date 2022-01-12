@@ -1,0 +1,11 @@
+- rofi
+- sway
+- xwayland
+- name: lightdm
+  live: true
+  installed: false
+  binary: false
+- name: lightdm-autologin-greeter
+  live: true
+  installed: false
+  binary: false

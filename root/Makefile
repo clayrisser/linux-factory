@@ -3,7 +3,7 @@
 # File Created: 10-01-2022 04:56:09
 # Author: Clay Risser
 # -----
-# Last Modified: 12-01-2022 07:08:42
+# Last Modified: 12-01-2022 09:55:12
 # Modified By: Clay Risser
 # -----
 # BitSpur Inc (c) Copyright 2021 - 2022
@@ -163,8 +163,19 @@ load-repos:
 		$(CAT) $$p | $(YQ) | $(LOAD_REPOS); \
 	done
 
+.PHONY: load-filesystem
+load-filesystem:
+	@$(RSYNC) -a filesystem/binary $(LB_PATH)/config/includes.binary/ $(NOFAIL)
+	@$(RSYNC) -a filesystem/live $(LB_PATH)/config/includes.chroot/ $(NOFAIL)
+	@$(RSYNC) -a filesystem/live_installed $(LB_PATH)/config/includes.chroot/ $(NOFAIL)
+#	@$(RSYNC) -a filesystem/installed_live $(LB_PATH)/config/includes.chroot/ $(NOFAIL)
+
+.PHONY: load-lb
+load-lb:
+	@$(RSYNC) -a lb $(LB_PATH)/config/ $(NOFAIL)
+
 .PHONY: load
-load: | config load-packages load-repos
+load: | config load-packages load-repos load-filesystem load-lb
 
 .PHONY: build
 build: load

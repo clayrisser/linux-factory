@@ -1,5 +1,3 @@
 #!/bin/sh
 
-echo LB $NAME OVERLAY $(pwd)
-
-echo $INSERT_CAT
+echo ADD PACKAGES TO CALAMARES

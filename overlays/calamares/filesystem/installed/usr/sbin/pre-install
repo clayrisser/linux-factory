@@ -1,9 +1,0 @@
-#!/bin/sh
-
-CHROOT=$(mount | grep proc | grep calamares | awk '{print $3}' | sed -e "s#/proc##g")
-
-# cleanup installer
-rm -rf \
-    $CHROOT/etc/sudoers.d/09-calamares
-
-exit 0
