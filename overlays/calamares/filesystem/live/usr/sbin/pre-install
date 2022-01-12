@@ -2,6 +2,18 @@
 
 CHROOT=$(mount | grep proc | grep calamares | awk '{print $3}' | sed -e "s#/proc##g")
 
+if [ -f /usr/sbin/some-preinstall-user-script ]; then
+    chroot $CHROOT su $DEFAULT_USER -c \
+        "cd /root && sh /usr/sbin/some-preinstall-user-script"
+    rm -rf /usr/sbin/some-preinstall-user-script
+fi
+
+if [ -f /usr/sbin/some-preinstall-root-script ]; then
+    chroot $CHROOT su -c \
+        "cd /home/$DEFAULT_USER && sh /usr/sbin/some-preinstall-root-script"
+    rm -rf /usr/sbin/some-preinstall-root-script
+fi
+
 # cleanup installer
 rm -rf \
     $CHROOT/etc/sudoers.d/09-calamares

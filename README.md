@@ -43,14 +43,14 @@ _If you install NixOS and direnv, you do not need to install yq, jq or GNU Make_
 - `config/package-lists/*.list.chroot_live` - packages to install in the _live system_ only (works by uninstalling them from _installed system_)
 
 _I'm not sure exactly what the difference between `config/package-lists/*.list.chroot` and
-  `config/package-lists/*.list.chroot_install` are._
+`config/package-lists/*.list.chroot_install` are._
 
 ### Mounts
 
 #### Debian Installer
 
-- **live medium** - `/cdrom`
-- **installed system** - `/target`
+- **live medium** - `/cdrom` if debian installer or `/run/live/medium` from live system
+- **installed system** - `/target` if debian installer or `/tmp/calamares-root-*` if calamares
 
 #### Calamares
 

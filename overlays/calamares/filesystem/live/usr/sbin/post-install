@@ -16,4 +16,16 @@ rm -rf \
     $CHROOT/usr/sbin/post-install \
     $CHROOT/usr/sbin/pre-install
 
+if [ -f /usr/sbin/some-postinstall-user-script ]; then
+    chroot $CHROOT su $DEFAULT_USER -c \
+        "cd /root && sh /usr/sbin/some-postinstall-user-script"
+    rm -rf /usr/sbin/some-postinstall-user-script
+fi
+
+if [ -f /usr/sbin/some-postinstall-root-script ]; then
+    chroot $CHROOT su -c \
+        "cd /home/$DEFAULT_USER && sh /usr/sbin/some-postinstall-root-script"
+    rm -rf /usr/sbin/some-postinstall-root-script
+fi
+
 exit 0
