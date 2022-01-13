@@ -1,20 +1,11 @@
 #!/bin/sh
 
-mkdir -p /log/calamares
-
-CHROOT=$(mount | grep proc | grep calamares | awk '{print $3}' | sed -e "s#/proc##g")
+CHROOT=/target
 DEFAULT_USER=$(echo $(ls $CHROOT/home) | sed 's|\s.*$||g')
 
 if [ -d /root/install/filesystem ]; then
     rsync -a /root/install/filesystem/ $CHROOT/
 fi
-
-# disable sudo password
-rm -rf $CHROOT/etc/sudoers.d/10-installer
-
-# regenerate font cache
-chroot $CHROOT sh -c \
-    'fc-cache -f -v'
 
 chroot $CHROOT su -c \
     "mkdir -p /var/log/install"
@@ -28,7 +19,6 @@ if [ -f $CHROOT/root/install/hooks/user-post-install.sh ]; then
 fi
 
 rm -rf \
-    /root/install \
     $CHROOT/root/install
 
 exit 0

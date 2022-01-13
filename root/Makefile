@@ -3,7 +3,7 @@
 # File Created: 10-01-2022 04:56:09
 # Author: Clay Risser
 # -----
-# Last Modified: 12-01-2022 10:29:12
+# Last Modified: 13-01-2022 07:17:17
 # Modified By: Clay Risser
 # -----
 # BitSpur Inc (c) Copyright 2021 - 2022
@@ -167,9 +167,14 @@ load-repos:
 .PHONY: load-filesystem
 load-filesystem:
 	@$(RSYNC) -a filesystem/binary/ $(LB_PATH)/config/includes.binary/ $(NOFAIL)
-	@$(RSYNC) -a filesystem/live/ $(LB_PATH)/config/includes.chroot/ $(NOFAIL)
-	@$(RSYNC) -a filesystem/live_installed/ $(LB_PATH)/config/includes.chroot/ $(NOFAIL)
-#	@$(RSYNC) -a filesystem/installed_live/ $(LB_PATH)/config/includes.chroot/ $(NOFAIL)
+	@$(RSYNC) -a filesystem/live/ filesystem/live_installed/ filesystem/installed_live/ \
+		$(LB_PATH)/config/includes.chroot/ $(NOFAIL)
+	$(MKDIR) -p $(LB_PATH)/config/includes.installer/root/install/filesystem
+	@$(RSYNC) -a filesystem/installed/ filesystem/live_installed/ filesystem/installed_live/ \
+		$(LB_PATH)/config/includes.installer/root/install/filesystem $(NOFAIL)
+	@$(MKDIR) -p $(LB_PATH)/config/includes.chroot/root/install/filesystem
+	@$(RSYNC) -a filesystem/installed/ filesystem/live_installed/ filesystem/installed_live/ \
+		$(LB_PATH)/config/includes.chroot/root/install/filesystem $(NOFAIL)
 
 .PHONY: load-lb
 load-lb:

@@ -3,7 +3,7 @@
 # File Created: 09-01-2022 11:10:46
 # Author: Clay Risser
 # -----
-# Last Modified: 12-01-2022 08:58:49
+# Last Modified: 13-01-2022 06:45:04
 # Modified By: Clay Risser
 # -----
 # BitSpur Inc (c) Copyright 2021 - 2022
@@ -98,7 +98,7 @@ trust-gpg-key: ##
 	@$(EXPORT_GPG_KEY) $(ARGS) config-overrides/archives/$(ARGS).key.chroot
 
 define overlay_hook
-	if [ -f "$(PROJECT_ROOT)/.overlays/$$o/hooks/$1_overlay.sh" ]; then \
+	if [ -f "$(PROJECT_ROOT)/.overlays/$$o/hooks/$1-overlay.sh" ]; then \
 		( \
 			(($(CAT) $(PROJECT_ROOT)/overlays/$$o/config.yaml $(NOFAIL)) | $(YQ)) && \
 			(($(CAT) $(PROJECT_ROOT)/os/config.yaml $(NOFAIL)) | $(YQ) ".overlays.$$o") \
@@ -106,7 +106,7 @@ define overlay_hook
 			$(call inject_envs,') && \
 			$(CAT) | $(PARSE_CONFIG) -e > $(MKPM_TMP)/overlay_hook_envs && \
 			. $(MKPM_TMP)/overlay_hook_envs && \
-			sh $(PROJECT_ROOT)/.overlays/$$o/hooks/$1_overlay.sh \
+			sh $(PROJECT_ROOT)/.overlays/$$o/hooks/$1-overlay.sh \
 		"; \
 	fi
 endef
