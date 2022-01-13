@@ -3,7 +3,7 @@
 # File Created: 09-01-2022 11:10:46
 # Author: Clay Risser
 # -----
-# Last Modified: 13-01-2022 07:57:14
+# Last Modified: 13-01-2022 08:52:22
 # Modified By: Clay Risser
 # -----
 # BitSpur Inc (c) Copyright 2021 - 2022
@@ -75,6 +75,15 @@ load: | os +load
 		$(CD) $(PROJECT_ROOT)/lb && \
 		$(call overlay_hook,lb); \
 	done
+	@$(CD) $(PROJECT_ROOT)/lb && [ -f $(PROJECT_ROOT)/root/post-load.sh ] && \
+		(($(CAT) $(PROJECT_ROOT)/os/config.yaml $(NOFAIL)) | $(YQ) | \
+		$(JQ) -s '.[0]+.[1]' | env -i sh -c " \
+			$(call inject_envs,') && \
+			$(CAT) | $(PARSE_CONFIG) -e > $(MKPM_TMP)/post_load_envs && \
+			. $(MKPM_TMP)/post_load_envs && \
+			sh $(PROJECT_ROOT)/root/post-load.sh \
+		") || true
+
 
 .PHONY: build +build
 build: | load +build
