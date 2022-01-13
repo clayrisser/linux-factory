@@ -3,7 +3,7 @@
 # File Created: 10-01-2022 04:56:09
 # Author: Clay Risser
 # -----
-# Last Modified: 13-01-2022 07:17:17
+# Last Modified: 13-01-2022 07:55:37
 # Modified By: Clay Risser
 # -----
 # BitSpur Inc (c) Copyright 2021 - 2022
@@ -183,9 +183,10 @@ load-lb:
 .PHONY: load
 load: | config load-packages load-repos load-filesystem load-lb
 
-.PHONY: build
-build: load
-	@$(MAKE) -sC $(LB_PATH) build
+.PHONY: build +build
+build: | load +build
++build:
+	@$(MAKE) -sC $(LB_PATH) +build
 
 .PHONY: clean
 clean: sudo

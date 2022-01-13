@@ -3,7 +3,7 @@
 # File Created: 09-01-2022 11:10:46
 # Author: Clay Risser
 # -----
-# Last Modified: 13-01-2022 06:45:04
+# Last Modified: 13-01-2022 07:57:14
 # Modified By: Clay Risser
 # -----
 # BitSpur Inc (c) Copyright 2021 - 2022
@@ -79,7 +79,7 @@ load: | os +load
 .PHONY: build +build
 build: | load +build
 +build:
-	@$(MAKE) -sC .os build
+	@$(MAKE) -sC .os +build
 
 .PHONY: test-lang
 test-lang: ##

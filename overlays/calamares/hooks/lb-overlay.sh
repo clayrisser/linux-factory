@@ -1,6 +1,8 @@
 #!/bin/sh
 
 for p in $(cat config/package-lists/*.list.chroot_live 2>/dev/null || true); do
+    sed -i 's|  - remove: \[]|  - remove:|g' \
+        config/includes.chroot/etc/calamares/modules/packages.conf
     echo "\n      - $p" | $INSERT_CAT \
         config/includes.chroot/etc/calamares/modules/packages.conf \
         '  - remove:' -i
