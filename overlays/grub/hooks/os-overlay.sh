@@ -2,16 +2,16 @@
 
 if [ -f assets/grub/theme.tar ] || [ -d assets/grub/theme ]; then
     if [ -f assets/grub/theme.tar ]; then
-        mkdir -p filesystem/installed/boot/grub/themes/default
 		rm -rf filesystem/installed/boot/grub/themes/default
+        mkdir -p filesystem/installed/boot/grub/themes/default
         CWD=$(pwd)
         ( \
             cd filesystem/installed/boot/grub/themes/default && \
                 tar -xvf $CWD/assets/grub/theme.tar \
         )
     elif [ -d assets/grub/theme ]; then
-        mkdir -p filesystem/installed/boot/grub/themes
 		rm -rf filesystem/installed/boot/grub/themes/default
+        mkdir -p filesystem/installed/boot/grub/themes
         cp -r assets/grub/theme \
             filesystem/installed/boot/grub/themes/default
     fi
@@ -28,7 +28,7 @@ SWAP_UUID=\$(blkid | grep 'TYPE="swap"' | \
 
 GRUB_DEFAULT="0"
 GRUB_TIMEOUT="5"
-GRUB_DISTRIBUTOR="\`lsb_release -i -s 2> /dev/null || echo $OS_NAME\`"
+GRUB_DISTRIBUTOR="\`lsb_release -i -s 2> /dev/null || echo $OS_SHORT_NAME\`"
 GRUB_CMDLINE_LINUX_DEFAULT="quiet\$([ "\$SWAP_UUID" = "" ] || echo " resume=UUID=\$SWAP_UUID")"
 GRUB_CMDLINE_LINUX=""
 GRUB_THEME="/boot/grub/themes/default/theme.txt"
