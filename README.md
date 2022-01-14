@@ -2,6 +2,10 @@
 
 > a framework used to create custom debian distributions
 
+## Tools
+
+grub-emu - used to test grub without rebooting
+
 ## Dependencies
 
 This system can only be built from a Debian based operating system. While

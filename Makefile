@@ -3,7 +3,7 @@
 # File Created: 09-01-2022 11:10:46
 # Author: Clay Risser
 # -----
-# Last Modified: 13-01-2022 08:52:22
+# Last Modified: 14-01-2022 05:42:25
 # Modified By: Clay Risser
 # -----
 # BitSpur Inc (c) Copyright 2021 - 2022
@@ -110,6 +110,7 @@ define overlay_hook
 	if [ -f "$(PROJECT_ROOT)/.overlays/$$o/hooks/$1-overlay.sh" ]; then \
 		( \
 			(($(CAT) $(PROJECT_ROOT)/overlays/$$o/config.yaml $(NOFAIL)) | $(YQ)) && \
+			(($(CAT) $(PROJECT_ROOT)/os/config.yaml $(NOFAIL)) | $(YQ) 'with_entries(.key = "os_"+.key)') && \
 			(($(CAT) $(PROJECT_ROOT)/os/config.yaml $(NOFAIL)) | $(YQ) ".overlays.$$o") \
 		) | $(JQ) -s '.[0]+.[1]' | env -i sh -c " \
 			$(call inject_envs,') && \
@@ -128,6 +129,7 @@ endef
 define tmpl_overlay
 	( \
 		(($(CAT) $(PROJECT_ROOT)/overlays/$$o/config.yaml $(NOFAIL)) | $(YQ)) && \
+		(($(CAT) $(PROJECT_ROOT)/os/config.yaml $(NOFAIL)) | $(YQ) 'with_entries(.key = "os_"+.key)') && \
 		(($(CAT) $(PROJECT_ROOT)/os/config.yaml $(NOFAIL)) | $(YQ) ".overlays.$$o") \
 	) | $(JQ) -s '.[0]+.[1]' | $(call _tmpl,$1)
 endef

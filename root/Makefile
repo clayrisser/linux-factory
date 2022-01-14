@@ -3,7 +3,7 @@
 # File Created: 10-01-2022 04:56:09
 # Author: Clay Risser
 # -----
-# Last Modified: 13-01-2022 07:55:37
+# Last Modified: 14-01-2022 05:16:21
 # Modified By: Clay Risser
 # -----
 # BitSpur Inc (c) Copyright 2021 - 2022
@@ -133,6 +133,15 @@ env:
 config: env
 	@$(MAKE) -sC $(LB_PATH) config
 
+.PHONY: load-envs
+load-envs:
+	@$(MKDIR) -p $(LB_PATH)/config/includes.chroot/root/install
+	@$(CAT) $(PROJECT_ROOT)/.os/.env | $(SED) 's|^\(.*\)$$|export \1|g' > \
+		$(LB_PATH)/config/includes.chroot/root/install/envs
+	@$(MKDIR) -p $(LB_PATH)/config/includes.installer/root/install
+	@$(CAT) $(PROJECT_ROOT)/.os/.env | $(SED) 's|^\(.*\)$$|export \1|g' > \
+		$(LB_PATH)/config/includes.installer/root/install/envs
+
 DEBS := $(shell ls packages/*.deb $(NOFAIL))
 PACKAGES := $(shell ls packages/*.yaml $(NOFAIL))
 .PHONY: load-packages
@@ -164,8 +173,13 @@ load-repos:
 		$(CAT) $$p | $(YQ) | $(LOAD_REPOS); \
 	done
 
+.PHONY: load-assets
+load-assets:
+	@$(MKDIR) -p filesystem/live_installed/boot/grub
+	@$(CP) assets/grub/background.png filesystem/live_installed/boot/grub/background.png $(NOFAIL)
+
 .PHONY: load-filesystem
-load-filesystem:
+load-filesystem: load-assets
 	@$(RSYNC) -a filesystem/binary/ $(LB_PATH)/config/includes.binary/ $(NOFAIL)
 	@$(RSYNC) -a filesystem/live/ filesystem/live_installed/ filesystem/installed_live/ \
 		$(LB_PATH)/config/includes.chroot/ $(NOFAIL)
@@ -181,7 +195,7 @@ load-lb:
 	@$(RSYNC) -a lb/ $(LB_PATH)/config/ $(NOFAIL)
 
 .PHONY: load
-load: | config load-packages load-repos load-filesystem load-lb
+load: | config load-envs load-packages load-repos load-assets load-filesystem load-lb
 
 .PHONY: build +build
 build: | load +build

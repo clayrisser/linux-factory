@@ -1,12 +1,18 @@
-name: "DEB Distro"
-website: https://bitspur.com
-email: email@bitspur.com
+name: Debian GNU/Linux
+shortName: Debian
+version: 11
+supportUrl: https://www.debian.org/support
+releaseNotesUrl: https://www.debian.org/releases/bullseye/releasenotes
+issuesUrl: https://bugs.debian.org
+donateUrl: https://www.debian.org
+distribution: bullseye
 architectures: amd64
-locale: en_US
+email: email@bitspur.com
 keyboardLayout: us
+locale: en_US
 mirror: http://deb.debian.org/debian/
 mirrorSecurity: http://security.debian.org/
-distribution: bullseye
+website: https://debian.org
 overlays:
   # brave: {}
   calamares: {}

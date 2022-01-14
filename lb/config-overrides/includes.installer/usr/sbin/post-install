@@ -1,7 +1,11 @@
 #!/bin/sh
 
-CHROOT=/target
-DEFAULT_USER=$(echo $(ls $CHROOT/home) | sed 's|\s.*$||g')
+export CHROOT=/target
+export DEFAULT_USER=$(echo $(ls $CHROOT/home) | sed 's|\s.*$||g')
+[ -f /root/install/envs ] && . /root/install/envs || true
+
+mkdir -p $CHROOT/var/log/install
+exec > $CHROOT/var/log/install/debian-install-pi.log 2>&1
 
 if [ -d /root/install/filesystem ]; then
     rsync -a /root/install/filesystem/ $CHROOT/
@@ -10,12 +14,20 @@ fi
 chroot $CHROOT su -c \
     "mkdir -p /var/log/install"
 if [ -f $CHROOT/root/install/hooks/post-install.sh ]; then
+    echo chroot $CHROOT su -c \
+        'cd / && sh /root/install/hooks/post-install.sh 2>&1 > /var/log/install/post-install.log'
     chroot $CHROOT su -c \
         "cd / && sh /root/install/hooks/post-install.sh 2>&1 > /var/log/install/post-install.log"
+else
+    echo NO USER POST INSTALL
 fi
 if [ -f $CHROOT/root/install/hooks/user-post-install.sh ]; then
+    echo chroot $CHROOT su $DEFAULT_USER -c \
+        "cd /home/$DEFAULT_USER"' && sh /root/install/hooks/user-post-install.sh 2>&1 > /var/log/install/user-post-install.log'
     chroot $CHROOT su $DEFAULT_USER -c \
         "cd /home/$DEFAULT_USER && sh /root/install/hooks/user-post-install.sh 2>&1 > /var/log/install/user-post-install.log"
+else
+    echo NO USER POST INSTALL
 fi
 
 rm -rf \
