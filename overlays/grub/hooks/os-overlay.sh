@@ -1,13 +1,21 @@
 #!/bin/sh
 
-if [ -f assets/grub/theme.tar ]; then
-	mkdir -p filesystem/installed/boot/grub/themes/default
-	CWD=$(pwd)
-	( \
-		cd filesystem/installed/boot/grub/themes/default && \
-			tar -xvf $CWD/assets/grub/theme.tar \
-	)
-	mkdir -p filesystem/installed/etc/default
+if [ -f assets/grub/theme.tar ] || [ -d assets/grub/theme ]; then
+    if [ -f assets/grub/theme.tar ]; then
+        mkdir -p filesystem/installed/boot/grub/themes/default
+		rm -rf filesystem/installed/boot/grub/themes/default
+        CWD=$(pwd)
+        ( \
+            cd filesystem/installed/boot/grub/themes/default && \
+                tar -xvf $CWD/assets/grub/theme.tar \
+        )
+    elif [ -d assets/grub/theme ]; then
+        mkdir -p filesystem/installed/boot/grub/themes
+		rm -rf filesystem/installed/boot/grub/themes/default
+        cp -r assets/grub/theme \
+            filesystem/installed/boot/grub/themes/default
+    fi
+    mkdir -p filesystem/installed/etc/default
     cat <<EOF > filesystem/installed/etc/default/grub
 # If you change this file, run 'update-grub' afterwards to update
 # /boot/grub/grub.cfg.
@@ -50,7 +58,7 @@ EOF
 fi
 
 if [ -f assets/grub/splash.png ]; then
-	mkdir -p filesystem/installed/boot/grub
-	cp assets/grub/splash.png \
-		filesystem/installed/boot/grub/splash.png
+    mkdir -p filesystem/installed/boot/grub
+    cp assets/grub/splash.png \
+        filesystem/installed/boot/grub/splash.png
 fi

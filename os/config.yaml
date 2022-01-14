@@ -1,17 +1,18 @@
-name: Debian GNU/Linux
-shortName: Debian
-version: 11
-supportUrl: https://www.debian.org/support
-releaseNotesUrl: https://www.debian.org/releases/bullseye/releasenotes
-issuesUrl: https://bugs.debian.org
-donateUrl: https://www.debian.org
-distribution: bullseye
 architectures: amd64
+debug: false
+distribution: bullseye
+donateUrl: https://www.debian.org
 email: email@bitspur.com
+issuesUrl: https://bugs.debian.org
 keyboardLayout: us
 locale: en_US
 mirror: http://deb.debian.org/debian/
 mirrorSecurity: http://security.debian.org/
+name: Debian GNU/Linux
+releaseNotesUrl: https://www.debian.org/releases/bullseye/releasenotes
+shortName: Debian
+supportUrl: https://www.debian.org/support
+version: 11
 website: https://debian.org
 overlays:
   # brave: {}
