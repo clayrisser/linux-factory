@@ -3,7 +3,7 @@
 # File Created: 09-01-2022 11:10:46
 # Author: Clay Risser
 # -----
-# Last Modified: 14-01-2022 05:42:25
+# Last Modified: 14-01-2022 08:08:50
 # Modified By: Clay Risser
 # -----
 # BitSpur Inc (c) Copyright 2021 - 2022
@@ -66,6 +66,10 @@ os: overlays +os
 	@$(CD) os && \
 		$(call tmpl,$(OS_PATH))
 	@$(call parse_envs,$(PROJECT_ROOT)/os/config.yaml) > $(PROJECT_ROOT)/.os/.env
+	@for o in $(shell $(CAT) os/config.yaml | $(YQ) -r '.overlays | keys[]'); do \
+		$(CD) $(PROJECT_ROOT)/.os && \
+		$(call overlay_hook,os); \
+	done
 
 .PHONY: load +load
 load: | os +load

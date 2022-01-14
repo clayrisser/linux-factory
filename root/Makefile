@@ -3,7 +3,7 @@
 # File Created: 10-01-2022 04:56:09
 # Author: Clay Risser
 # -----
-# Last Modified: 14-01-2022 05:16:21
+# Last Modified: 14-01-2022 06:26:11
 # Modified By: Clay Risser
 # -----
 # BitSpur Inc (c) Copyright 2021 - 2022
@@ -173,13 +173,8 @@ load-repos:
 		$(CAT) $$p | $(YQ) | $(LOAD_REPOS); \
 	done
 
-.PHONY: load-assets
-load-assets:
-	@$(MKDIR) -p filesystem/live_installed/boot/grub
-	@$(CP) assets/grub/background.png filesystem/live_installed/boot/grub/background.png $(NOFAIL)
-
 .PHONY: load-filesystem
-load-filesystem: load-assets
+load-filesystem:
 	@$(RSYNC) -a filesystem/binary/ $(LB_PATH)/config/includes.binary/ $(NOFAIL)
 	@$(RSYNC) -a filesystem/live/ filesystem/live_installed/ filesystem/installed_live/ \
 		$(LB_PATH)/config/includes.chroot/ $(NOFAIL)
@@ -195,7 +190,7 @@ load-lb:
 	@$(RSYNC) -a lb/ $(LB_PATH)/config/ $(NOFAIL)
 
 .PHONY: load
-load: | config load-envs load-packages load-repos load-assets load-filesystem load-lb
+load: | config load-envs load-packages load-repos load-filesystem load-lb
 
 .PHONY: build +build
 build: | load +build
