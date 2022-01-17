@@ -3,7 +3,7 @@
 # File Created: 10-01-2022 04:56:09
 # Author: Clay Risser
 # -----
-# Last Modified: 14-01-2022 06:26:11
+# Last Modified: 17-01-2022 06:49:31
 # Modified By: Clay Risser
 # -----
 # BitSpur Inc (c) Copyright 2021 - 2022
@@ -142,7 +142,6 @@ load-envs:
 	@$(CAT) $(PROJECT_ROOT)/.os/.env | $(SED) 's|^\(.*\)$$|export \1|g' > \
 		$(LB_PATH)/config/includes.installer/root/install/envs
 
-DEBS := $(shell ls packages/*.deb $(NOFAIL))
 PACKAGES := $(shell ls packages/*.yaml $(NOFAIL))
 .PHONY: load-packages
 load-packages:
@@ -152,7 +151,7 @@ load-packages:
 	done
 	@$(RM) -rf $(MKPM_TMP)/debs
 	@$(MKDIR) -p $(MKPM_TMP)/debs
-	@for d in $(DEBS); do \
+	@for d in $$(ls packages/*.deb .debs/*.deb $(NOFAIL)); do \
 		export MOVED_PATH=$$( \
 			eval $(ECHO) $$( \
 				$(DPKG_NAME) -s $(MKPM_TMP)/debs -o $$d | \
@@ -160,8 +159,11 @@ load-packages:
 				$(SED) 's|dpkg-name:\s.\+moved\s.\+\sto\s||g' \
 			) \
 		) && \
-		$(CP) $$MOVED_PATH $$d && \
-		$(ECHO) loaded package $$($(ECHO) $$MOVED_PATH | \
+		$(CP) $$MOVED_PATH $$d; \
+	done
+	@for d in $$(ls $(MKPM_TMP)/debs); do \
+		$(CP) $(MKPM_TMP)/debs/$$d $(LB_PATH)/config/packages.chroot && \
+		$(ECHO) loaded package $$($(ECHO) $$d | \
 			$(GREP) -oE '[^/]+$$' | $(GREP) -oE '^[^_]+'); \
 	done
 

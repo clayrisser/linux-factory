@@ -61,4 +61,12 @@ if [ -f assets/grub/splash.png ]; then
     mkdir -p filesystem/installed/boot/grub
     cp assets/grub/splash.png \
         filesystem/installed/boot/grub/splash.png
+    mkdir -p filesystem/binary/boot/grub
+    cp assets/grub/splash.png \
+        filesystem/binary/boot/grub/splash.png
+fi
+if [ "<% $OS_DEBUG %>" = "false" ] && [ -f assets/isolinux/splash.png ]; then
+    mkdir -p filesystem/binary/isolinux
+    cp assets/isolinux/splash.png \
+        filesystem/binary/isolinux/splash.png
 fi

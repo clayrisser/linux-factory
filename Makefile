@@ -3,7 +3,7 @@
 # File Created: 09-01-2022 11:10:46
 # Author: Clay Risser
 # -----
-# Last Modified: 14-01-2022 08:08:50
+# Last Modified: 17-01-2022 06:41:43
 # Modified By: Clay Risser
 # -----
 # BitSpur Inc (c) Copyright 2021 - 2022
@@ -79,15 +79,14 @@ load: | os +load
 		$(CD) $(PROJECT_ROOT)/lb && \
 		$(call overlay_hook,lb); \
 	done
-	@$(CD) $(PROJECT_ROOT)/lb && [ -f $(PROJECT_ROOT)/root/post-load.sh ] && \
+	@$(CD) $(PROJECT_ROOT)/lb && [ -f $(PROJECT_ROOT)/root/hooks/lb-root.sh ] && \
 		(($(CAT) $(PROJECT_ROOT)/os/config.yaml $(NOFAIL)) | $(YQ) | \
 		$(JQ) -s '.[0]+.[1]' | env -i sh -c " \
 			$(call inject_envs,') && \
 			$(CAT) | $(PARSE_CONFIG) -e > $(MKPM_TMP)/post_load_envs && \
 			. $(MKPM_TMP)/post_load_envs && \
-			sh $(PROJECT_ROOT)/root/post-load.sh \
+			sh $(PROJECT_ROOT)/root/hooks/lb-root.sh \
 		") || true
-
 
 .PHONY: build +build
 build: | load +build

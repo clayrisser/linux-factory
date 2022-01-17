@@ -1,5 +1,4 @@
 #!/bin/bash
 
-if [ "<% $DEBUG %>" = "false" ]; then
-    rm -rf isolinux/splash.png
-fi
+find boot/grub/live-theme -type d -print0 | xargs -0 chmod 755
+find boot/grub/live-theme -type f -print0 | xargs -0 chmod 644
