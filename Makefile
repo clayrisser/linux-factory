@@ -3,7 +3,7 @@
 # File Created: 09-01-2022 11:10:46
 # Author: Clay Risser
 # -----
-# Last Modified: 17-01-2022 10:08:50
+# Last Modified: 17-01-2022 11:51:58
 # Modified By: Clay Risser
 # -----
 # BitSpur Inc (c) Copyright 2021 - 2022
@@ -31,12 +31,12 @@ export SCRIPTS_PATH := $(PROJECT_ROOT)/scripts
 export CLOC ?= cloc
 export CSPELL ?= cspell
 export DPKG_NAME ?= dpkg-name
+export YQ ?= $(shell (yq | grep -q eval) && echo yq eval -o json || echo yq)
 export EXPORT_GPG_KEY := sh $(SCRIPTS_PATH)/export-gpg-key.sh
 export GIT_DOWNLOAD := sh $(SCRIPTS_PATH)/git-download.sh
 export INSERT_CAT := node $(SCRIPTS_PATH)/insert-cat.js
 export PARSE_CONFIG := sh $(SCRIPTS_PATH)/parse-config.sh
 export TMPL := sh $(SCRIPTS_PATH)/tmpl.sh
-export YQ ?= yq eval -o json
 
 .PHONY: root +root
 root: | +root
@@ -45,9 +45,6 @@ root: | +root
 	@$(MKDIR) -p $(OS_PATH)
 	@$(CD) root && \
 		$(call tmpl,$(OS_PATH))
-
-test:
-	$(CAT) os/config.yaml | $(YQ)
 
 .PHONY: overlays +overlays
 overlays: | root +overlays
