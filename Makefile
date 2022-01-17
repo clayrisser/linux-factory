@@ -3,7 +3,7 @@
 # File Created: 09-01-2022 11:10:46
 # Author: Clay Risser
 # -----
-# Last Modified: 17-01-2022 06:41:43
+# Last Modified: 17-01-2022 10:08:50
 # Modified By: Clay Risser
 # -----
 # BitSpur Inc (c) Copyright 2021 - 2022
@@ -36,7 +36,7 @@ export GIT_DOWNLOAD := sh $(SCRIPTS_PATH)/git-download.sh
 export INSERT_CAT := node $(SCRIPTS_PATH)/insert-cat.js
 export PARSE_CONFIG := sh $(SCRIPTS_PATH)/parse-config.sh
 export TMPL := sh $(SCRIPTS_PATH)/tmpl.sh
-export YQ ?= yq
+export YQ ?= yq eval -o json
 
 .PHONY: root +root
 root: | +root
@@ -46,12 +46,15 @@ root: | +root
 	@$(CD) root && \
 		$(call tmpl,$(OS_PATH))
 
+test:
+	$(CAT) os/config.yaml | $(YQ)
+
 .PHONY: overlays +overlays
 overlays: | root +overlays
 +overlays:
 	@$(RM) -rf $(PROJECT_ROOT)/.overlays
 	@$(MKDIR) -p $(PROJECT_ROOT)/.overlays
-	@for o in $(shell $(CAT) os/config.yaml | $(YQ) -r '.overlays | keys[]'); do \
+	@for o in $(shell $(CAT) os/config.yaml | $(YQ) | $(JQ) -r '.overlays | keys[]'); do \
 		$(CP) -r $(PROJECT_ROOT)/overlays/$$o $(PROJECT_ROOT)/.overlays/$$o && \
 		$(CD) $(PROJECT_ROOT)/.overlays/$$o && \
 		$(call overlay_hook,pre) && \
@@ -66,7 +69,7 @@ os: overlays +os
 	@$(CD) os && \
 		$(call tmpl,$(OS_PATH))
 	@$(call parse_envs,$(PROJECT_ROOT)/os/config.yaml) > $(PROJECT_ROOT)/.os/.env
-	@for o in $(shell $(CAT) os/config.yaml | $(YQ) -r '.overlays | keys[]'); do \
+	@for o in $(shell $(CAT) os/config.yaml | $(YQ) | $(JQ) -r '.overlays | keys[]'); do \
 		$(CD) $(PROJECT_ROOT)/.os && \
 		$(call overlay_hook,os); \
 	done
@@ -113,8 +116,8 @@ define overlay_hook
 	if [ -f "$(PROJECT_ROOT)/.overlays/$$o/hooks/$1-overlay.sh" ]; then \
 		( \
 			(($(CAT) $(PROJECT_ROOT)/overlays/$$o/config.yaml $(NOFAIL)) | $(YQ)) && \
-			(($(CAT) $(PROJECT_ROOT)/os/config.yaml $(NOFAIL)) | $(YQ) 'with_entries(.key = "os_"+.key)') && \
-			(($(CAT) $(PROJECT_ROOT)/os/config.yaml $(NOFAIL)) | $(YQ) ".overlays.$$o") \
+			(($(CAT) $(PROJECT_ROOT)/os/config.yaml $(NOFAIL)) | $(YQ) | $(JQ) 'with_entries(.key = "os_"+.key)') && \
+			(($(CAT) $(PROJECT_ROOT)/os/config.yaml $(NOFAIL)) | $(YQ) | $(JQ) ".overlays.$$o") \
 		) | $(JQ) -s '.[0]+.[1]' | env -i sh -c " \
 			$(call inject_envs,') && \
 			$(CAT) | $(PARSE_CONFIG) -e > $(MKPM_TMP)/overlay_hook_envs && \
@@ -132,8 +135,8 @@ endef
 define tmpl_overlay
 	( \
 		(($(CAT) $(PROJECT_ROOT)/overlays/$$o/config.yaml $(NOFAIL)) | $(YQ)) && \
-		(($(CAT) $(PROJECT_ROOT)/os/config.yaml $(NOFAIL)) | $(YQ) 'with_entries(.key = "os_"+.key)') && \
-		(($(CAT) $(PROJECT_ROOT)/os/config.yaml $(NOFAIL)) | $(YQ) ".overlays.$$o") \
+		(($(CAT) $(PROJECT_ROOT)/os/config.yaml $(NOFAIL)) | $(YQ) | $(JQ) 'with_entries(.key = "os_"+.key)') && \
+		(($(CAT) $(PROJECT_ROOT)/os/config.yaml $(NOFAIL)) | $(YQ) | $(JQ) ".overlays.$$o") \
 	) | $(JQ) -s '.[0]+.[1]' | $(call _tmpl,$1)
 endef
 

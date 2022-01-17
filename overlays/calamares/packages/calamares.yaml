@@ -1,16 +1,16 @@
-- name: calamares
+- package: calamares
   live: true
   installed: false
   binary: false
-- name: calamares-settings-debian
+- package: calamares-settings-debian
   live: true
   installed: false
   binary: false
-- name: lightdm
+- package: lightdm
   live: true
   installed: false
   binary: false
-- name: lightdm-autologin-greeter
+- package: lightdm-autologin-greeter
   live: true
   installed: false
   binary: false

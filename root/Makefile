@@ -3,7 +3,7 @@
 # File Created: 10-01-2022 04:56:09
 # Author: Clay Risser
 # -----
-# Last Modified: 17-01-2022 06:49:31
+# Last Modified: 17-01-2022 10:10:46
 # Modified By: Clay Risser
 # -----
 # BitSpur Inc (c) Copyright 2021 - 2022
@@ -32,9 +32,11 @@ SCRIPTS_PATH=$(PROJECT_ROOT)/scripts
 export DPKG_NAME ?= dpkg-name
 export NODE ?= node
 export RSYNC ?= rsync
-export YQ ?= yq
+export YQ ?= yq eval -o json
+export CLEAN_FONTS ?= $(NODE) -e 'require("$(SCRIPTS_PATH)/fonts.js").clean()'
 export CLEAN_PACKAGES ?= $(NODE) -e 'require("$(SCRIPTS_PATH)/packages.js").clean()'
 export CLEAN_REPOS ?= $(NODE) -e 'require("$(SCRIPTS_PATH)/repos.js").clean()'
+export LOAD_FONTS ?= $(NODE) -e 'require("$(SCRIPTS_PATH)/fonts.js").load()'
 export LOAD_PACKAGES ?= $(NODE) -e 'require("$(SCRIPTS_PATH)/packages.js").load()'
 export LOAD_REPOS ?= $(NODE) -e 'require("$(SCRIPTS_PATH)/repos.js").load()'
 
@@ -175,6 +177,22 @@ load-repos:
 		$(CAT) $$p | $(YQ) | $(LOAD_REPOS); \
 	done
 
+FONTS := $(shell ls fonts/*.yaml $(NOFAIL))
+.PHONY: load-fonts
+load-fonts:
+	$(CLEAN_FONTS)
+	@for f in $(FONTS); do \
+		$(CAT) $$f | $(YQ) | $(LOAD_FONTS); \
+	done
+	@for f in $$(ls .fonts/live); do \
+		if (echo $$f | grep -qE "\.zip$$"); then \
+			$(MKDIR) -p $(LB_PATH)/config/includes.chroot/usr/share/fonts && \
+			$(CP) .fonts/live/$$f $(LB_PATH)/config/includes.chroot/usr/share/fonts && \
+			(cd $(LB_PATH)/config/includes.chroot/usr/share/fonts && echo $(UNZIP) $$f) && \
+			$(RM) $(LB_PATH)/config/includes.chroot/usr/share/fonts/$$f; \
+		fi; \
+	done
+
 .PHONY: load-filesystem
 load-filesystem:
 	@$(RSYNC) -a filesystem/binary/ $(LB_PATH)/config/includes.binary/ $(NOFAIL)
@@ -192,7 +210,7 @@ load-lb:
 	@$(RSYNC) -a lb/ $(LB_PATH)/config/ $(NOFAIL)
 
 .PHONY: load
-load: | config load-envs load-packages load-repos load-filesystem load-lb
+load: | config load-envs load-packages load-repos load-fonts load-filesystem load-lb
 
 .PHONY: build +build
 build: | load +build

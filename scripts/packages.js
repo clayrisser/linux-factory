@@ -1,8 +1,8 @@
 const childProcess = require("child_process");
+const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
 const readline = require("readline");
-var crypto = require("crypto");
 
 const osPath = path.resolve(__dirname, "../.os");
 const configPath = path.resolve(__dirname, "../lb/config");
@@ -12,7 +12,10 @@ const DEB_REGEX = /[^:]+:\/\/.+\.deb$/g;
 function download(url, file) {
   return new Promise((resolve, reject) => {
     childProcess.exec(
-      `mkdir -p ${downloadedDebs} && curl -Lo ${file} ${url}`,
+      `mkdir -p ${downloadedDebs} && curl -Lo ${path.resolve(
+        downloadedDebs,
+        file
+      )} ${url}`,
       (err, stdout, stderr) => {
         if (err) return reject(err);
         if (stderr) {
@@ -58,15 +61,12 @@ function cleanPackages() {
 }
 
 function loadPackage(package) {
-  if (DEB_REGEX.test(package.name)) {
+  if (DEB_REGEX.test(package.package)) {
     return download(
-      package.name,
-      path.resolve(
-        downloadedDebs,
-        `${crypto.createHash("md5").update(package.name).digest("hex")}.deb`
-      )
+      package.package,
+      `${crypto.createHash("md5").update(package.package).digest("hex")}.deb`
     ).then((result) => {
-      console.log(`downloaded ${package.name}`);
+      console.log(`downloaded package ${package.package}`);
       return result;
     });
   } else {
@@ -74,29 +74,29 @@ function loadPackage(package) {
       // list.chroot or list.chroot_install
       fs.appendFileSync(
         path.resolve(configPath, "package-lists/packages.list.chroot_install"),
-        `${package.name.trim()}\n`
+        `${package.package.trim()}\n`
       );
     } else if (package.live && !package.installed) {
       // list.chroot_live
       fs.appendFileSync(
         path.resolve(configPath, "package-lists/packages.list.chroot_live"),
-        `${package.name.trim()}\n`
+        `${package.package.trim()}\n`
       );
     } else if (!package.live && package.installed) {
       // add to calamares/modules/packages.conf and includes.installer/preseed.cfg
       fs.appendFileSync(
         path.resolve(configPath, "package-lists/packages.list.install"),
-        `${package.name.trim()}\n`
+        `${package.package.trim()}\n`
       );
     }
     if (package.binary) {
       // list.binary
       fs.appendFileSync(
         path.resolve(configPath, "package-lists/packages.list.binary"),
-        `${package.name.trim()}\n`
+        `${package.package.trim()}\n`
       );
     }
-    console.log(`loaded package ${package.name}`);
+    console.log(`loaded package ${package.package}`);
   }
 }
 
@@ -110,10 +110,10 @@ function loadPackages() {
       JSON.parse(data).forEach((package) => {
         if (typeof package !== "string") return loadPackage(package);
         return loadPackage({
-          name: package,
-          live: true,
-          installed: true,
           binary: false,
+          installed: true,
+          live: true,
+          package: package,
         });
       });
     })
