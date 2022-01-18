@@ -24,7 +24,31 @@ the official Debian distribution on amd64.
 
 _If you install NixOS and direnv, you do not need to install yq, jq or GNU Make_
 
-## Cheatsheet
+## Components
+
+### Fonts
+
+Currently only supports zip files that contain .ttf fonts
+
+### Packages
+
+### Repos
+
+### Filesystem
+
+### Hooks
+
+### Live Build
+
+## Overlays
+
+### Calamares
+
+### Grub
+
+### Sway
+
+## Live Build Cheatsheet
 
 ### Definitions
 
@@ -55,8 +79,6 @@ _I'm not sure exactly what the difference between `config/package-lists/*.list.c
 
 - **live medium** - `/cdrom` if debian installer or `/run/live/medium` from live system
 - **installed system** - `/target` if debian installer or `/tmp/calamares-root-*` if calamares
-
-#### Calamares
 
 ## Resources
 

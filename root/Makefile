@@ -3,7 +3,7 @@
 # File Created: 10-01-2022 04:56:09
 # Author: Clay Risser
 # -----
-# Last Modified: 17-01-2022 12:12:33
+# Last Modified: 18-01-2022 03:26:57
 # Modified By: Clay Risser
 # -----
 # BitSpur Inc (c) Copyright 2021 - 2022
@@ -155,6 +155,7 @@ load-packages:
 	done
 	@$(RM) -rf $(MKPM_TMP)/debs
 	@$(MKDIR) -p $(MKPM_TMP)/debs
+#	TODO: separate live and installed debs
 	@for d in $$(ls packages/*.deb .debs/*.deb $(NOFAIL)); do \
 		export MOVED_PATH=$$( \
 			eval $(ECHO) $$( \
@@ -186,18 +187,27 @@ load-fonts:
 	@for f in $(FONTS); do \
 		$(CAT) $$f | $(YQ) | $(LOAD_FONTS); \
 	done
-	@for f in $$(ls .fonts/live); do \
+	@for f in $$(ls $(OS_PATH)/.fonts/live); do \
 		if (echo $$f | grep -qE "\.zip$$"); then \
 			$(PY_UNZIP) $(OS_PATH)/.fonts/live/$$f $(OS_PATH)/.fonts/live && \
 			$(RM) -f $(OS_PATH)/.fonts/live/$$f; \
 		fi; \
 	done
-	@for f in $$(ls .fonts/installed); do \
+#	TODO: support tar and tar.gz
+	@for f in $$(ls $(OS_PATH)/.fonts/installed); do \
 		if (echo $$f | grep -qE "\.zip$$"); then \
 			$(PY_UNZIP) $(OS_PATH)/.fonts/installed/$$f $(OS_PATH)/.fonts/installed && \
 			$(RM) -f $(OS_PATH)/.fonts/installed/$$f; \
 		fi; \
 	done
+#	TODO: only copy fonts if they exist
+#	TODO: support otf fonts
+	@$(MKDIR) -p $(OS_PATH)/filesystem/installed/usr/local/share/fonts
+	@$(CP) -r $(OS_PATH)/.fonts/installed/*.ttf $(OS_PATH)/filesystem/installed/usr/local/share/fonts
+	@$(MKDIR) -p $(OS_PATH)/filesystem/live/usr/local/share/fonts
+	@$(CP) -r $(OS_PATH)/.fonts/live/*.ttf $(OS_PATH)/filesystem/live/usr/local/share/fonts
+	@$(MKDIR) -p $(OS_PATH)/filesystem/installed/root/install/fonts
+	@$(CP) -r $(OS_PATH)/.fonts/installed/*.list $(OS_PATH)/filesystem/installed/root/install/fonts
 
 .PHONY: load-filesystem
 load-filesystem:

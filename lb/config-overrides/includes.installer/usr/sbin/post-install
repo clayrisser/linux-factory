@@ -11,6 +11,8 @@ if [ -d /root/install/filesystem ]; then
     rsync -a /root/install/filesystem/ $CHROOT/
 fi
 
+# TODO: install fonts
+
 chroot $CHROOT su -c \
     "mkdir -p /var/log/install"
 if [ -f $CHROOT/root/install/hooks/post-install.sh ]; then

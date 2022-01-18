@@ -16,6 +16,7 @@ fi
 # disable sudo password
 rm -rf $CHROOT/etc/sudoers.d/10-installer
 
+# TODO: install fonts
 # regenerate font cache
 chroot $CHROOT sh -c \
     'fc-cache -f -v'
