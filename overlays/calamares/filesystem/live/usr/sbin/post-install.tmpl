@@ -1,7 +1,9 @@
 #!/bin/sh
 
-export CHROOT=/target
-export DEFAULT_USER=$(echo $(ls $CHROOT/home) | sed 's|\s.*$||g')
+mkdir -p /log/calamares
+
+CHROOT=$(mount | grep proc | grep calamares | awk '{print $3}' | sed -e "s#/proc##g")
+DEFAULT_USER=$(echo $(ls $CHROOT/home) | sed 's|\s.*$||g')
 [ -f /root/install/envs ] && . /root/install/envs || true
 
 mkdir -p $CHROOT/var/log/install
@@ -11,7 +13,13 @@ if [ -d /root/install/filesystem ]; then
     rsync -a /root/install/filesystem/ $CHROOT/
 fi
 
+# disable sudo password
+rm -rf $CHROOT/etc/sudoers.d/10-installer
+
 # TODO: install fonts
+# regenerate font cache
+chroot $CHROOT sh -c \
+    'fc-cache -f -v'
 
 if [ -f $CHROOT/root/install/hooks/post-install.sh ]; then
     chroot $CHROOT su -c \
@@ -26,7 +34,12 @@ if [ -f $CHROOT/root/install/hooks/user-post-install.sh ]; then
         "cd /home/$DEFAULT_USER && sh /root/install/hooks/user-post-install.sh 2>&1 > /var/log/install/user-post-install.log"
 fi
 
+if [ "<% $OS_DEBUG %>" = "false" ]; then
+    rm -rf $CHROOT/var/log/install
+fi
+
 rm -rf \
+    /root/install \
     $CHROOT/root/install
 
 exit 0
