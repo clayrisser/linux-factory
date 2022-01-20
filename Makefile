@@ -3,7 +3,7 @@
 # File Created: 09-01-2022 11:10:46
 # Author: Clay Risser
 # -----
-# Last Modified: 17-01-2022 11:51:58
+# Last Modified: 20-01-2022 02:42:38
 # Modified By: Clay Risser
 # -----
 # BitSpur Inc (c) Copyright 2021 - 2022
@@ -38,8 +38,13 @@ export INSERT_CAT := node $(SCRIPTS_PATH)/insert-cat.js
 export PARSE_CONFIG := sh $(SCRIPTS_PATH)/parse-config.sh
 export TMPL := sh $(SCRIPTS_PATH)/tmpl.sh
 
+.PHONY: clean
+clean: | sudo +clean
++clean:
+	@$(MAKE) -sC lb clean
+
 .PHONY: root +root
-root: | +root
+root: | clean +root
 +root:
 	@$(RM) -rf $(OS_PATH) $(NOFAIL)
 	@$(MKDIR) -p $(OS_PATH)

@@ -8,3 +8,4 @@
 /config
 /live-image-*.*
 /local
+/unpacked-initrd
