@@ -11,7 +11,19 @@ if [ -d /root/install/filesystem ]; then
     rsync -a /root/install/filesystem/ $CHROOT/
 fi
 
-# TODO: install fonts
+if [ -d $CHROOT/root/install/fonts ]; then
+    cd $CHROOT/root/install/fonts
+    for f in $(cat *.list); do
+        curl -LO $f
+        # TODO: support tar and tar.gz
+        unzip *.zip || true
+        # TODO: support otf fonts
+        cp *.ttf $CHROOT/usr/local/share/fonts 2>/dev/null || true
+    done
+    cd -
+fi
+chroot $CHROOT sh -c \
+    'fc-cache -f -v'
 
 if [ -f $CHROOT/root/install/hooks/post-install.sh ]; then
     chroot $CHROOT su -c \

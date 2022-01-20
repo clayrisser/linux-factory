@@ -3,7 +3,7 @@
 # File Created: 10-01-2022 04:56:09
 # Author: Clay Risser
 # -----
-# Last Modified: 19-01-2022 10:23:35
+# Last Modified: 20-01-2022 09:20:51
 # Modified By: Clay Risser
 # -----
 # BitSpur Inc (c) Copyright 2021 - 2022
@@ -155,7 +155,6 @@ load-packages:
 	done
 	@$(RM) -rf $(MKPM_TMP)/debs
 	@$(MKDIR) -p $(MKPM_TMP)/debs
-#	TODO: separate live and installed debs
 	@for d in $$(ls packages/*.deb .debs/*.deb $(NOFAIL)); do \
 		export MOVED_PATH=$$( \
 			eval $(ECHO) $$( \

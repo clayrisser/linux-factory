@@ -1,4 +1,1 @@
-- package: brave
-  live: true
-  installed: true
-  binary: false
+- fortune
