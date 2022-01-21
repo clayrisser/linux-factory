@@ -47,6 +47,9 @@ if [ "<% $OS_DEBUG %>" = "false" ]; then
     rm -rf $CHROOT/var/log/install
 fi
 
+chroot $CHROOT su -c \
+    "update-grub"
+
 rm -rf \
     /root/install \
     $CHROOT/root/install

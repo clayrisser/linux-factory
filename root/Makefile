@@ -3,7 +3,7 @@
 # File Created: 10-01-2022 04:56:09
 # Author: Clay Risser
 # -----
-# Last Modified: 20-01-2022 09:20:51
+# Last Modified: 21-01-2022 06:18:50
 # Modified By: Clay Risser
 # -----
 # BitSpur Inc (c) Copyright 2021 - 2022
@@ -76,7 +76,7 @@ BINARY_IMAGES ?= iso-hybrid
 BOOTAPPEND_LIVE ?= boot=live components username=live locales=$(LOCALE).UTF-8 keyboard-layouts=$(KEYBOARD_LAYOUT)
 CACHE ?= true
 CHECKSUMS ?= sha256
-DEBIAN_INSTALLER ?= netinst
+DEBIAN_INSTALLER ?= none
 DEBIAN_INSTALLER_GUI ?= false
 DEBOOTSTRAP_OPTIONS ?= --include=apt-transport-https,ca-certificates,openssl
 DEBUG ?= true

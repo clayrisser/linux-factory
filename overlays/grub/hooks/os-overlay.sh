@@ -22,7 +22,7 @@ if [ -f assets/grub/theme.tar ] || [ -d assets/grub/theme ]; then
 # For full documentation of the options in this file, see:
 #   info -f grub -n 'Simple configuration'
 
-SWAP_UUID=\$(blkid | grep 'TYPE="swap"' | \
+SWAP_UUID=\$(/sbin/blkid | grep 'TYPE="swap"' | \
     grep \$(cat /proc/swaps | grep '^/dev/' | cut -d' ' -f1 | cut -d'/' -f3) | \
     sed 's|.\+\sUUID="\([^"]\+\).\+|\1|g')
 

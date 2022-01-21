@@ -1,5 +1,5 @@
 architectures: amd64
-debug: false
+debug: true
 distribution: bullseye
 donateUrl: https://www.debian.org
 email: email@bitspur.com
