@@ -1,12 +1,12 @@
 # File: /mkpm.mk
 # Project: deb-distro
-# File Created: 07-12-2021 00:29:49
+# File Created: 22-05-2022 12:30:01
 # Author: Clay Risser
 # -----
-# Last Modified: 11-01-2022 03:41:11
+# Last Modified: 22-05-2022 12:32:46
 # Modified By: Clay Risser
 # -----
-# BitSpur Inc (c) Copyright 2021 - 2022
+# Risser Labs LLC (c) Copyright 2021 - 2022
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,17 +21,18 @@
 # limitations under the License.
 
 MKPM_PACKAGES := \
-	dotenv=0.0.4 \
+	dotenv=0.0.7 \
 	envcache=0.0.2 \
 	gnu=0.0.3 \
-	mkchain=0.0.15 \
-	patch=0.0.1
+	mkchain=0.0.16 \
+	patch=0.0.1 \
+	python=0.0.1
 
 MKPM_REPOS := \
-	https://gitlab.com/bitspur/community/mkpm-stable.git
+	https://gitlab.com/risserlabs/community/mkpm-stable.git
 
 ############# MKPM BOOTSTRAP SCRIPT BEGIN #############
-MKPM_BOOTSTRAP := https://bitspur.gitlab.io/community/mkpm/bootstrap.mk
+MKPM_BOOTSTRAP := https://risserlabs.gitlab.io/community/mkpm/bootstrap.mk
 export PROJECT_ROOT := $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
 NULL := /dev/null
 TRUE := true

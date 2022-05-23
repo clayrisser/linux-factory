@@ -1,0 +1,2 @@
+.mkpm/.cache filter=lfs diff=lfs merge=lfs -text
+.mkpm/.bootstrap.mk filter=lfs diff=lfs merge=lfs -text

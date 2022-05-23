@@ -1,6 +1,8 @@
 *.log
 *.tmp
 .env
-.mkpm/
 /.os
 /.overlays
+.mkpm/*
+!/.mkpm/.cache.tar.gz
+!/.mkpm/.bootstrap.mk
