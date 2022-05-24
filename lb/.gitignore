@@ -9,3 +9,5 @@
 /live-image-*.*
 /local
 /unpacked-initrd
+/system-*.files
+/system-*.packages

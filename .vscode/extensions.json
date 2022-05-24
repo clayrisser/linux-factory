@@ -5,6 +5,10 @@
     "rubymaniac.vscode-direnv",
     "editorconfig.editorconfig",
     "esbenp.prettier-vscode",
-    "psioniq.psi-header"
+    "psioniq.psi-header",
+    "ms-python.python",
+    "bungcip.better-toml",
+    "ms-python.python",
+    "bungcip.better-toml"
   ]
 }

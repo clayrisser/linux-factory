@@ -1,0 +1,25 @@
+root = true
+
+[*]
+end_of_line = lf
+indent_size = 2
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.md]
+charset = utf-8
+trim_trailing_whitespace = false
+
+[{M,m}akefile{,.*}]
+charset = utf-8
+indent_style = tab
+indent_size = 4
+[*.mk]
+charset = utf-8
+indent_style = tab
+indent_size = 4
+
+[*.sh]
+charset = utf-8
+indent_size = 4
