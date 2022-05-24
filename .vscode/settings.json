@@ -147,5 +147,6 @@
   "psi-header.license-reference": {
     "uri": "../LICENSE",
     "uriIsLocalFile": true
-  }
+  },
+  "python.formatting.provider": "black"
 }
