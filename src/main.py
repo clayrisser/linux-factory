@@ -1,10 +1,12 @@
-from build import Build
-
-build = Build()
-
-
-def main():
-    build.build()
+from stages import BuildStage, PrepareStage
+import asyncio
 
 
-main()
+async def main():
+    prepareStage = PrepareStage()
+    buildStage = BuildStage()
+    await prepareStage.run()
+    await buildStage.run()
+
+
+asyncio.run(main())
