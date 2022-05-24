@@ -1,10 +1,12 @@
+from config import Config
 from stages import BuildStage, PrepareStage
 import asyncio
 
 
 async def main():
-    prepareStage = PrepareStage()
-    buildStage = BuildStage()
+    config = await Config.create()
+    prepareStage = PrepareStage(config)
+    buildStage = BuildStage(config)
     await prepareStage.run()
     await buildStage.run()
 
