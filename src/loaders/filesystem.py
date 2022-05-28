@@ -41,9 +41,3 @@ class FilesystemLoader:
                 "config/includes.chroot/root/install/filesystem",
             ),
         )
-
-
-# $(MKDIR) -p $(LB_PATH)/config/includes.installer/root/install/filesystem
-# @$(MKDIR) -p $(LB_PATH)/config/includes.chroot/root/install/filesystem
-# @$(RSYNC) -a filesystem/installed/ filesystem/live_installed/ filesystem/installed_live/ \
-# 	$(LB_PATH)/ $(NOFAIL)

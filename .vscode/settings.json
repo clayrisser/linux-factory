@@ -18,6 +18,7 @@
     "deno",
     "direnv",
     "distro",
+    "dpkg",
     "dpms",
     "drun",
     "fontconfig",

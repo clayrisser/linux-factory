@@ -44,6 +44,7 @@ class Config:
             "lb": os.path.join(build_path, "lb"),
             "os": os.path.join(build_path, "os"),
             "root": root_path,
+            "tmp": os.path.join(build_path, "tmp"),
         }
         return _paths
 

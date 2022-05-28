@@ -1,4 +1,5 @@
 import os
+import importlib
 
 
 def merge_dict(a, b, depth=-1):
@@ -31,3 +32,17 @@ async def merge_dir(a_path, b_path):
         + b_path
         + "/ 2>/dev/null"
     )
+
+
+async def download(url, output):
+    os.system("curl -Lo " + output + " " + url)
+
+
+def import_module(module_name, relative_path):
+    full_path = os.path.abspath(
+        os.path.join(os.path.dirname(os.path.realpath(__file__)), relative_path)
+    )
+    spec = importlib.util.spec_from_file_location(module_name, full_path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module

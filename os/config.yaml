@@ -15,7 +15,7 @@ supportUrl: https://www.debian.org/support
 version: 11
 website: https://debian.org
 overlays:
-  calamares: {}
-  sway: {}
-  grub: {}
-  brave: {}
+  # calamares: {}
+  # sway: {}
+  # grub: {}
+  # brave: {}
