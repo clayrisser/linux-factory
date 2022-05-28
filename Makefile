@@ -3,7 +3,7 @@
 # File Created: 24-05-2022 13:11:50
 # Author: Clay Risser
 # -----
-# Last Modified: 24-05-2022 13:26:10
+# Last Modified: 28-05-2022 06:54:28
 # Modified By: Clay Risser
 # -----
 # Risser Labs LLC (c) Copyright 2021 - 2022
@@ -39,13 +39,13 @@ $(ACTION)/lint: $(call git_deps,\.(py)$$)
 	@$(call done,lint)
 
 .PHONY: start
-start: ~install ##
-	@$(PYTHON) src/main.py $(ARGS)
+start: sudo ~install ##
+	@$(SUDO) $(PYTHON) src/main.py $(ARGS)
 
 .PHONY: clean
-clean:
+clean: sudo
 	@$(MKCHAIN_CLEAN)
-	@$(GIT) clean -fXd \
+	@$(SUDO) $(GIT) clean -fXd \
 		$(MKPM_GIT_CLEAN_FLAGS)
 
 .PHONY: purge

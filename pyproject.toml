@@ -9,7 +9,7 @@ license = "Apache-2.0"
 python = "^3.9.6"
 
 [tool.poetry.dev-dependencies]
-black = "^21.11b1"
+black = "^22.3.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
