@@ -1,6 +1,7 @@
 import os
 import shutil
 from util import merge_dir
+from loaders import loaders
 
 
 class PrepareStage:
@@ -12,6 +13,7 @@ class PrepareStage:
         await self.initialize_lb()
         await self.initialize_os()
         await self.initialize_overlays()
+        await self.apply_loaders()
 
     async def initialize_build(self):
         if not os.path.exists(self.config.paths["build"]):
@@ -47,3 +49,8 @@ class PrepareStage:
     async def initialize_overlays(self):
         for _overlay_name, overlay in self.config.overlays.items():
             await merge_dir(overlay.path, self.config.paths["os"])
+
+    async def apply_loaders(self):
+        for Loader in loaders:
+            loader = Loader(self.config)
+            await loader.load()

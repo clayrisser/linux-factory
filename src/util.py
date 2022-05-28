@@ -1,4 +1,3 @@
-import glob
 import os
 
 
@@ -21,11 +20,14 @@ def merge_dict(a, b, depth=-1):
 
 
 async def merge_dir(a_path, b_path):
+    if type(a_path) is not list:
+        a_path = [a_path]
+    if not os.path.exists(b_path):
+        os.makedirs(b_path)
     os.system(
-        "cp -r "
-        + " ".join(
-            set(glob.glob(a_path + "/*")) - set(glob.glob(a_path + "/config.yaml"))
-        )
+        "rsync -a "
+        + " ".join(list(map(lambda p: p + "/", a_path)))
         + " "
         + b_path
+        + "/ 2>/dev/null"
     )
