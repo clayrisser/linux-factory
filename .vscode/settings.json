@@ -33,6 +33,7 @@
     "libxcb",
     "lightdm",
     "linuxbrew",
+    "mkdirs",
     "mkpm",
     "mssql",
     "nixpkgs",
