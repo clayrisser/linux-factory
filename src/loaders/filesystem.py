@@ -15,7 +15,7 @@ class FilesystemLoader:
         )
         await merge_dir(
             [
-                os.path.join(self.deb.paths["os"], "filesystem/installed"),
+                os.path.join(self.deb.paths["os"], "filesystem/live"),
                 os.path.join(self.deb.paths["os"], "filesystem/live_installed"),
                 os.path.join(self.deb.paths["os"], "filesystem/installed_live"),
             ],

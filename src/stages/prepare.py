@@ -30,7 +30,7 @@ class PrepareStage:
                 )
             overlay_hooks = None
             if hasattr(overlay_module, "OverlayHooks"):
-                overlay_hooks = overlay_module.OverlayHooks(self.deb)
+                overlay_hooks = overlay_module.OverlayHooks(self.deb, overlay.config)
             for method_name in dir(overlay_hooks):
                 if len(method_name) <= 0:
                     continue
@@ -42,9 +42,7 @@ class PrepareStage:
                     continue
                 overlay_hook_name = method_name
                 overlay_hook = getattr(overlay_hooks, method_name)
-                self.deb.hooks.listen(
-                    overlay_hook_name, lambda *args: overlay_hook(*args)
-                )
+                self.deb.hooks.listen(overlay_hook_name, overlay_hook)
 
     async def initialize_build(self):
         if not os.path.exists(self.deb.paths["build"]):

@@ -1,4 +1,3 @@
-from typing import List
 from hooks import Hooks
 from overlay import Overlay
 from util import merge_dict
@@ -36,6 +35,11 @@ class Deb:
             overlay_path = os.path.join(self.paths["root"], "overlays", overlay_name)
             if not overlay_config:
                 overlay_config = {}
+            if os.path.exists(os.path.join(overlay_path, "config.yaml")):
+                with open(os.path.join(overlay_path, "config.yaml")) as f:
+                    overlay_config = merge_dict(
+                        yaml.load(f, Loader=SafeLoader), overlay_config
+                    )
             overlay_config["name"] = overlay_name
             overlay_config["path"] = overlay_path
             self._overlays[overlay_name] = Overlay(overlay_config)
