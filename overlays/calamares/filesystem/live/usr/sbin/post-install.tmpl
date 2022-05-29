@@ -43,7 +43,7 @@ if [ -f $CHROOT/root/install/hooks/user-post-install.sh ]; then
         "cd /home/$DEFAULT_USER && sh /root/install/hooks/user-post-install.sh 2>&1 > /var/log/install/user-post-install.log"
 fi
 
-if [ "<% $OS_DEBUG %>" = "false" ]; then
+if [ "{{ deb.debug }}" = "False" ]; then
     rm -rf $CHROOT/var/log/install
 fi
 

@@ -56,3 +56,7 @@ async def mkdirs(path):
 
 def get_filename_from_path(path):
     return "".join(re.findall(r"[^/]+$", path))
+
+
+def get_parent_from_path(path):
+    return re.sub(r"/[^/]+$", "", path)

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo <% $INSTALLER %>
+sudo {{ overlay.installer }}
 while [ $? -ne 0 ]; do
-    sudo <% $INSTALLER %>
+    sudo {{ overlay.installer }}
 done

@@ -1,5 +1,5 @@
-from util import download
 from datetime import datetime
+from util import download
 from yaml import SafeLoader
 import glob
 import hashlib
@@ -24,10 +24,10 @@ class PackagesLoader:
             os.path.join(self.deb.paths["lb"], "config/packages.chroot")
         ):
             os.makedirs(os.path.join(self.deb.paths["lb"], "config/packages.chroot"))
-        for d in (
-            glob.glob(os.path.join(self.deb.paths["os"], "packages") + "*.deb")
-            + glob.glob(os.path.join(self.deb.paths["os"], "packages") + "**/*.deb")
-            + glob.glob(os.path.join(self.deb.paths["os"], ".debs/*.deb"))
+        for d in glob.glob(
+            os.path.join(self.deb.paths["os"], "packages/**/*.deb"), recursive=True
+        ) + glob.glob(
+            os.path.join(self.deb.paths["os"], ".debs/**/*.deb"), recursive=True
         ):
             os.system(
                 "dpkg-name -s "
@@ -39,8 +39,8 @@ class PackagesLoader:
     async def get_packages(self):
         packages = []
         for path in glob.glob(
-            os.path.join(self.deb.paths["os"], "packages/**/*.yaml")
-        ) + glob.glob(os.path.join(self.deb.paths["os"], "packages/*.yaml")):
+            os.path.join(self.deb.paths["os"], "packages/**/*.yaml"), recursive=True
+        ):
             with open(path) as f:
                 data = yaml.load(f, Loader=SafeLoader)
                 packages += data

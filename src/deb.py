@@ -94,6 +94,18 @@ class Deb:
         return envs
 
     @property
+    def name(self):
+        return self._config["name"] if "name" in self._config else "DEB Distro"
+
+    @property
+    def distribution(self):
+        return (
+            self._config["distribution"]
+            if "distribution" in self._config
+            else "bullseye"
+        )
+
+    @property
     def lb_envs(self):
         if self._envs:
             return self._envs
@@ -101,7 +113,7 @@ class Deb:
         kernel_version = (
             self._config["kernelVersion"] if "kernelVersion" in self._config else None
         )
-        name = self._config["name"] if "name" in self._config else "DEB Distro"
+        name = self.name
         website = (
             self._config["website"]
             if "website" in self._config
@@ -127,11 +139,7 @@ class Deb:
         distribution = (
             self._lb["distribution"]
             if "distribution" in self._lb
-            else (
-                self._config["distribution"]
-                if "distribution" in self._config
-                else "bullseye"
-            )
+            else (self.distribution)
         )
         security = self._config["security"] if "security" in self._config else True
         if distribution == "bullseye":
@@ -298,6 +306,10 @@ class Deb:
     def debug(self):
         return self._config["debug"] if "debug" in self._config else False
 
+    @property
+    def config(self):
+        return self._config
+
     @staticmethod
     def _get_paths():
         global _paths
@@ -333,8 +345,15 @@ class Deb:
         ).keys():
             overlay_path = os.path.join(paths["root"], "overlays", overlay_name)
             if os.path.exists(os.path.join(overlay_path, "config.yaml")):
-                config = merge_dict(
-                    config,
-                    await Deb._load_config(os.path.join(overlay_path, "config.yaml")),
+                overlay_config = await Deb._load_config(
+                    os.path.join(overlay_path, "config.yaml")
                 )
+                if (
+                    "overload" in overlay_config
+                    and type(overlay_config["overload"]) is dict
+                ):
+                    config = merge_dict(
+                        config,
+                        overlay_config["overload"],
+                    )
         return Deb(config)

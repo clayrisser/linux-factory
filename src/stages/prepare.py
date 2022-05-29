@@ -1,7 +1,9 @@
 from deb import Deb
+from jinja2 import Template
 from loaders import loaders
 from overlay import Overlay
-from util import merge_dir, import_module
+from util import merge_dir, import_module, mkdirs, get_parent_from_path
+import glob
 import os
 import shutil
 
@@ -75,8 +77,48 @@ class PrepareStage:
         )
 
     async def initialize_overlays(self):
+        overlay: Overlay
         for _overlay_name, overlay in self.deb.overlays.items():
             await merge_dir(overlay.path, self.deb.paths["os"])
+            for path in glob.glob(
+                os.path.join(overlay.path, "**/*.tmpl"), recursive=True
+            ):
+                await mkdirs(get_parent_from_path(path))
+                with open(path) as f:
+                    template = Template(f.read())
+                    with open(
+                        os.path.join(
+                            self.deb.paths["os"], path[len(overlay.path) + 1 : -5]
+                        ),
+                        "w",
+                    ) as f:
+                        f.write(template.render(deb=self.deb, overlay=overlay))
+                if os.path.exists(
+                    os.path.join(self.deb.paths["os"], path[len(overlay.path) + 1 :]),
+                ):
+                    os.remove(
+                        os.path.join(
+                            self.deb.paths["os"], path[len(overlay.path) + 1 :]
+                        ),
+                    )
+        if os.path.exists(
+            os.path.join(self.deb.paths["os"], "__pycache__"),
+        ):
+            shutil.rmtree(
+                os.path.join(self.deb.paths["os"], "__pycache__"),
+            )
+        if os.path.exists(
+            os.path.join(self.deb.paths["os"], "config.yaml"),
+        ):
+            os.remove(
+                os.path.join(self.deb.paths["os"], "config.yaml"),
+            )
+        if os.path.exists(
+            os.path.join(self.deb.paths["os"], "overlay.py"),
+        ):
+            os.remove(
+                os.path.join(self.deb.paths["os"], "overlay.py"),
+            )
 
     async def apply_loaders(self):
         for Loader in loaders:

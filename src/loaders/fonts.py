@@ -29,8 +29,12 @@ class FontsLoader:
     async def get_fonts(self):
         fonts = []
         for path in glob.glob(
-            os.path.join(self.deb.paths["os"], "fonts/**/*.yaml")
-        ) + glob.glob(os.path.join(self.deb.paths["os"], "fonts/*.yaml")):
+            os.path.join(
+                self.deb.paths["os"],
+                "fonts/**/*.yaml",
+            ),
+            recursive=True,
+        ):
             with open(path) as f:
                 data = yaml.load(f, Loader=SafeLoader)
                 fonts += data
@@ -68,21 +72,22 @@ class FontsLoader:
             await self.unpack_fonts("installed")
             return
         for path in glob.glob(
-            os.path.join(self.deb.paths["os"], ".fonts", location, "**/*.zip")
-        ) + glob.glob(os.path.join(self.deb.paths["os"], ".fonts", location, "*.zip")):
+            os.path.join(
+                self.deb.paths["os"],
+                ".fonts",
+                location,
+                "**/*.zip",
+            ),
+            recursive=True,
+        ):
             with zipfile.ZipFile(path, "r") as zip:
                 zip.extractall(os.path.join(self.deb.paths["os"], ".fonts", location))
-        for path in (
-            glob.glob(
-                os.path.join(self.deb.paths["os"], ".fonts", location, "**/*.tar")
-            )
-            + glob.glob(os.path.join(self.deb.paths["os"], ".fonts", location, "*.tar"))
-            + glob.glob(
-                os.path.join(self.deb.paths["os"], ".fonts", location, "**/*.tar.gz")
-            )
-            + glob.glob(
-                os.path.join(self.deb.paths["os"], ".fonts", location, "*.tar.gz")
-            )
+        for path in glob.glob(
+            os.path.join(self.deb.paths["os"], ".fonts", location, "**/*.tar"),
+            recursive=True,
+        ) + glob.glob(
+            os.path.join(self.deb.paths["os"], ".fonts", location, "**/*.tar.gz"),
+            recursive=True,
         ):
             with tarfile.TarFile(path, "r") as tar:
                 tar.extractall(os.path.join(self.deb.paths["os"], ".fonts", location))
@@ -106,11 +111,12 @@ class FontsLoader:
                 "filesystem/installed/root/install/fonts",
             ),
         )
-        for path in (
-            glob.glob(os.path.join(self.deb.paths["os"], ".fonts/installed/**/*.ttf"))
-            + glob.glob(os.path.join(self.deb.paths["os"], ".fonts/installed/*.ttf"))
-            + glob.glob(os.path.join(self.deb.paths["os"], ".fonts/installed/**/*.otf"))
-            + glob.glob(os.path.join(self.deb.paths["os"], ".fonts/installed/*.otf"))
+        for path in glob.glob(
+            os.path.join(self.deb.paths["os"], ".fonts/installed/**/*.ttf"),
+            recursive=True,
+        ) + glob.glob(
+            os.path.join(self.deb.paths["os"], ".fonts/installed/**/*.otf"),
+            recursive=True,
         ):
             filename = get_filename_from_path(path)
             shutil.copyfile(

@@ -7,18 +7,18 @@ windowSize: 800px,520px
 windowPlacement: center
 
 strings:
-    productName:         <% $OS_NAME %>
-    shortProductName:    <% $OS_SHORT_NAME %>
-    version:             <% $OS_VERSION %> (<% $OS_DISTRIBUTION %>)
-    shortVersion:        <% $OS_VERSION %>
-    versionedName:       <% $OS_SHORT_NAME %> <% $OS_VERSION %> (<% $OS_DISTRIBUTION %>)
-    shortVersionedName:  <% $OS_SHORT_NAME %> <% $OS_VERSION %>
-    bootloaderEntryName: <% $OS_SHORT_NAME %>
-    productUrl:          <% $OS_WEBSITE %>
-    supportUrl:          <% $OS_SUPPORT_URL %>
-    knownIssuesUrl:      <% $OS_ISSUES_URL %>
-    releaseNotesUrl:     <% $OS_RELEASE_NOTES_URL %>
-    donateUrl:           <% $OS_DONATE_URL %>
+    productName:         {{ deb.name }}
+    shortProductName:    {{ deb.config.shortName }}
+    version:             {{ deb.config.version }} ({{ deb.distribution }})
+    shortVersion:        {{ deb.config.version }}
+    versionedName:       {{ deb.config.shortName }} {{ deb.config.version }} ({{ deb.distribution }})
+    shortVersionedName:  {{ deb.config.shortName }} {{ deb.config.version }}
+    bootloaderEntryName: {{ deb.config.shortName }}
+    productUrl:          {{ deb.config.website }}
+    supportUrl:          {{ deb.config.supportUrl }}
+    knownIssuesUrl:      {{ deb.config.issuesUrl }}
+    releaseNotesUrl:     {{ deb.config.releaseNotesUrl }}
+    donateUrl:           {{ deb.config.donateUrl }}
 
 images:
     productLogo:         "debian-logo.png"
