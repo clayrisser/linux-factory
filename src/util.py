@@ -1,5 +1,6 @@
-import os
 import importlib
+import os
+import re
 
 
 def merge_dict(a, b, depth=-1):
@@ -46,3 +47,12 @@ def import_module(module_name, relative_path):
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
+
+
+async def mkdirs(path):
+    if not os.path.exists(path):
+        os.makedirs(path)
+
+
+def get_filename_from_path(path):
+    return "".join(re.findall(r"[^/]+$", path))
