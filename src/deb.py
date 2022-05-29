@@ -1,26 +1,30 @@
+from typing import List
+from hooks import Hooks
+from overlay import Overlay
+from util import merge_dict
+from yaml.loader import SafeLoader
 import os
 import subprocess
 import yaml
-from yaml.loader import SafeLoader
-from overlay import Overlay
-from util import merge_dict
 
 _paths = None
 
 
-class Config:
+class Deb:
     def __init__(self, config):
         self._config = config
         self._overlays = None
         self._envs = None
         self._additional_envs = {"HELLO": "world"}
 
-    @property
-    def paths(self):
-        return Config._get_paths()
+    hooks = Hooks()
 
     @property
-    def overlays(self):
+    def paths(self):
+        return Deb._get_paths()
+
+    @property
+    def overlays(self) -> list[Overlay]:
         if self._overlays:
             return self._overlays
         self._overlays = {}
@@ -310,7 +314,7 @@ class Config:
 
     @staticmethod
     async def _load_config(config_path=None):
-        paths = Config._get_paths()
+        paths = Deb._get_paths()
         if not config_path:
             config_path = os.path.join(paths["root"], "os/config.yaml")
         with open(config_path) as f:
@@ -318,8 +322,8 @@ class Config:
 
     @staticmethod
     async def create(config={}):
-        paths = Config._get_paths()
-        config = merge_dict(await Config._load_config(), config)
+        paths = Deb._get_paths()
+        config = merge_dict(await Deb._load_config(), config)
         for overlay_name in (
             config["overlays"] if ("overlays" in config and config["overlays"]) else {}
         ).keys():
@@ -327,8 +331,6 @@ class Config:
             if os.path.exists(os.path.join(overlay_path, "config.yaml")):
                 config = merge_dict(
                     config,
-                    await Config._load_config(
-                        os.path.join(overlay_path, "config.yaml")
-                    ),
+                    await Deb._load_config(os.path.join(overlay_path, "config.yaml")),
                 )
-        return Config(config)
+        return Deb(config)

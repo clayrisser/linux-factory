@@ -6,8 +6,10 @@ import yaml
 
 
 class ReposLoader:
-    def __init__(self, config):
-        self.config = config
+    name = "repos"
+
+    def __init__(self, deb):
+        self.deb = deb
 
     async def load(self):
         repos = await self.get_repos()
@@ -17,8 +19,8 @@ class ReposLoader:
     async def get_repos(self):
         repos = []
         for path in glob.glob(
-            os.path.join(self.config.paths["os"], "repos/**/*.yaml")
-        ) + glob.glob(os.path.join(self.config.paths["os"], "repos/*.yaml")):
+            os.path.join(self.deb.paths["os"], "repos/**/*.yaml")
+        ) + glob.glob(os.path.join(self.deb.paths["os"], "repos/*.yaml")):
             with open(path) as f:
                 data = yaml.load(f, Loader=SafeLoader)
                 repos += data
@@ -27,13 +29,13 @@ class ReposLoader:
     async def load_repo(self, repo):
         if not os.path.exists(
             os.path.join(
-                self.config.paths["lb"],
+                self.deb.paths["lb"],
                 "config/archives",
             )
         ):
             os.makedirs(
                 os.path.join(
-                    self.config.paths["lb"],
+                    self.deb.paths["lb"],
                     "config/archives",
                 )
             )
@@ -41,7 +43,7 @@ class ReposLoader:
             # list.chroot key.chroot
             with open(
                 os.path.join(
-                    self.config.paths["lb"],
+                    self.deb.paths["lb"],
                     "config/archives",
                     repo.name + ".list.chroot",
                 ),
@@ -51,7 +53,7 @@ class ReposLoader:
             if repo.key:
                 with open(
                     os.path.join(
-                        self.config.paths["lb"],
+                        self.deb.paths["lb"],
                         "config/archives",
                         repo.name + ".key.chroot",
                     ),
@@ -59,12 +61,12 @@ class ReposLoader:
                 ) as f:
                     f.write(repo.key + "\n")
             elif os.path.exists(
-                os.path.join(self.config.paths["os"], "repos", repo.name + ".key")
+                os.path.join(self.deb.paths["os"], "repos", repo.name + ".key")
             ):
                 shutil.copyfile(
-                    os.path.join(self.config.paths["os"], "repos", repo.name + ".key"),
+                    os.path.join(self.deb.paths["os"], "repos", repo.name + ".key"),
                     os.path.join(
-                        self.config.paths["lb"],
+                        self.deb.paths["lb"],
                         "config/archives",
                         repo.name + ".key.chroot",
                     ),
@@ -74,7 +76,7 @@ class ReposLoader:
         if repo.binary:
             with open(
                 os.path.join(
-                    self.config.paths["lb"],
+                    self.deb.paths["lb"],
                     "config/archives",
                     repo.name + ".list.binary",
                 ),
@@ -84,7 +86,7 @@ class ReposLoader:
             if repo.key:
                 with open(
                     os.path.join(
-                        self.config.paths["lb"],
+                        self.deb.paths["lb"],
                         "config/archives",
                         repo.name + ".key.binary",
                     ),
@@ -92,12 +94,12 @@ class ReposLoader:
                 ) as f:
                     f.write(repo.key + "\n")
             elif os.path.exists(
-                os.path.join(self.config.paths["os"], "repos", repo.name + ".key")
+                os.path.join(self.deb.paths["os"], "repos", repo.name + ".key")
             ):
                 shutil.copyfile(
-                    os.path.join(self.config.paths["os"], "repos", repo.name + ".key"),
+                    os.path.join(self.deb.paths["os"], "repos", repo.name + ".key"),
                     os.path.join(
-                        self.config.paths["lb"],
+                        self.deb.paths["lb"],
                         "config/archives",
                         repo.name + ".key.binary",
                     ),

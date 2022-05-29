@@ -1,15 +1,15 @@
-from config import Config
+from deb import Deb
 from stages import BuildStage, PrepareStage
 import asyncio
 import logging
 
 
 async def main():
-    config = await Config.create({})
-    if config.debug:
+    deb = await Deb.create({})
+    if deb.debug:
         logging.basicConfig(encoding="utf-8", level=logging.DEBUG)
-    prepareStage = PrepareStage(config)
-    buildStage = BuildStage(config)
+    prepareStage = PrepareStage(deb)
+    buildStage = BuildStage(deb)
     await prepareStage.run()
     # await buildStage.run()
 
