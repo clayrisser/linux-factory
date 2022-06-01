@@ -1,9 +1,12 @@
 from deb import Deb
-from jinja2 import Template
 from loaders import loaders
 from overlay import Overlay
-from util import merge_dir, import_module, mkdirs, get_parent_from_path
-import glob
+import logging
+from util import (
+    merge_dir,
+    import_module,
+    merge_dir_templates,
+)
 import os
 import shutil
 
@@ -19,7 +22,7 @@ class PrepareStage:
         await self.initialize_lb()
         await self.initialize_os()
         await self.initialize_overlays()
-        await self.apply_loaders()
+        await self.run_loaders()
         await self.deb.hooks.trigger("after_prepare")
 
     async def load_overlays(self):
@@ -80,27 +83,9 @@ class PrepareStage:
         overlay: Overlay
         for _overlay_name, overlay in self.deb.overlays.items():
             await merge_dir(overlay.path, self.deb.paths["os"])
-            for path in glob.glob(
-                os.path.join(overlay.path, "**/*.tmpl"), recursive=True
-            ):
-                await mkdirs(get_parent_from_path(path))
-                with open(path) as f:
-                    template = Template(f.read())
-                    with open(
-                        os.path.join(
-                            self.deb.paths["os"], path[len(overlay.path) + 1 : -5]
-                        ),
-                        "w",
-                    ) as f:
-                        f.write(template.render(deb=self.deb, overlay=overlay))
-                if os.path.exists(
-                    os.path.join(self.deb.paths["os"], path[len(overlay.path) + 1 :]),
-                ):
-                    os.remove(
-                        os.path.join(
-                            self.deb.paths["os"], path[len(overlay.path) + 1 :]
-                        ),
-                    )
+            await merge_dir_templates(
+                overlay.path, self.deb.paths["os"], deb=self.deb, overlay=overlay
+            )
         if os.path.exists(
             os.path.join(self.deb.paths["os"], "__pycache__"),
         ):
@@ -120,9 +105,11 @@ class PrepareStage:
                 os.path.join(self.deb.paths["os"], "overlay.py"),
             )
 
-    async def apply_loaders(self):
+    async def run_loaders(self):
         for Loader in loaders:
             loader = Loader(self.deb)
+            logging.debug("LOADER: loading " + loader.name + "...")
             await self.deb.hooks.trigger("before_" + loader.name)
             await loader.load()
             await self.deb.hooks.trigger("after_" + loader.name)
+            logging.debug("LOADER: loaded " + loader.name)

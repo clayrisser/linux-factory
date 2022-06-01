@@ -8,5 +8,5 @@ class BuildStage:
 
     async def run(self):
         await self.deb.hooks.trigger("before_build")
-        os.system("make build")
+        os.system("cd " + self.deb.paths["lb"] + " && make build")
         await self.deb.hooks.trigger("after_build")

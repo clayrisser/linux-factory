@@ -3,7 +3,7 @@
 # File Created: 22-05-2022 12:30:01
 # Author: Clay Risser
 # -----
-# Last Modified: 24-05-2022 13:25:14
+# Last Modified: 31-05-2022 11:27:39
 # Modified By: Clay Risser
 # -----
 # Risser Labs LLC (c) Copyright 2021 - 2022
@@ -21,7 +21,7 @@
 # limitations under the License.
 
 MKPM_PACKAGES := \
-	dotenv=0.0.8 \
+	dotenv=0.0.9 \
 	envcache=0.0.2 \
 	gnu=0.0.3 \
 	mkchain=0.0.16 \

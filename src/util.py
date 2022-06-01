@@ -1,4 +1,6 @@
 import importlib
+from jinja2 import Template
+import glob
 import os
 import re
 
@@ -33,6 +35,27 @@ async def merge_dir(a_path, b_path):
         + b_path
         + "/ 2>/dev/null"
     )
+
+
+async def merge_dir_templates(a_path, b_path, deb, overlay=None):
+    for path in glob.glob(
+        os.path.join(a_path, "**/*.overlay.tmpl" if overlay else "**/*.tmpl"),
+        recursive=True,
+    ):
+        await mkdirs(get_parent_from_path(path))
+        with open(path) as f:
+            template = Template(f.read())
+            with open(
+                os.path.join(b_path, path[len(a_path) + 1 : -13 if overlay else -5]),
+                "w",
+            ) as f:
+                f.write(template.render(deb=deb, overlay=overlay))
+        if os.path.exists(
+            os.path.join(b_path, path[len(a_path) + 1 :]),
+        ):
+            os.remove(
+                os.path.join(b_path, path[len(a_path) + 1 :]),
+            )
 
 
 async def download(url, output):

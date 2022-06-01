@@ -41,6 +41,7 @@
     "mkdirs",
     "mkpm",
     "mssql",
+    "netinst",
     "nixpkgs",
     "nopasswd",
     "openvpn",

@@ -2,20 +2,23 @@ architectures: amd64
 debug: true
 distribution: bullseye
 donateUrl: https://www.debian.org
-email: email@bitspur.com
+email: email@risserlabs.com
 issuesUrl: https://bugs.debian.org
 keyboardLayout: us
 locale: en_US
 mirror: http://deb.debian.org/debian/
 mirrorSecurity: http://security.debian.org/
-name: Debian GNU/Linux
+name: DEB Distro
 releaseNotesUrl: https://www.debian.org/releases/bullseye/releasenotes
 shortName: Debian
 supportUrl: https://www.debian.org/support
 version: 11
-website: https://debian.org
+website: https://risserlabs.com
+lb:
+  debianInstaller: netinst # live,netinst
 overlays:
+  debianInstaller: {}
+  # brave: {}
   calamares: {}
-  sway: {}
-  grub: {}
-  brave: {}
+  # grub: {}
+  # sway: {}

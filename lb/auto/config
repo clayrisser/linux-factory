@@ -20,7 +20,7 @@ lb config noauto \
     --distribution "${DISTRIBUTION:-bullseye}" \
     --initsystem "${INITSYSTEM:-systemd}" \
     --iso-application "${ISO_APPLICATION:-DEB Distro}" \
-    --iso-publisher "${ISO_PUBLISHER:-DEB Distro; https://bitspur.com; email@bitspur.com}" \
+    --iso-publisher "${ISO_PUBLISHER:-DEB Distro; https://risserlabs.com; email@risserlabs.com}" \
     --iso-volume "${ISO_VOLUME:-DEB Distro}" \
     --linux-flavours "${LINUX_FLAVOURS:-amd64}" \
     --linux-packages "${LINUX_PACKAGES:-linux-image linux-headers}" \

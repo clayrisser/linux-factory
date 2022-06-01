@@ -11,7 +11,7 @@ class FilesystemLoader:
     async def load(self):
         await merge_dir(
             os.path.join(self.deb.paths["os"], "filesystem/binary"),
-            os.path.join(self.deb.paths["lb"], "config/includes.binary/"),
+            os.path.join(self.deb.paths["lb"], "config-overrides/includes.binary/"),
         )
         await merge_dir(
             [
@@ -19,7 +19,7 @@ class FilesystemLoader:
                 os.path.join(self.deb.paths["os"], "filesystem/live_installed"),
                 os.path.join(self.deb.paths["os"], "filesystem/installed_live"),
             ],
-            os.path.join(self.deb.paths["lb"], "config/includes.chroot/"),
+            os.path.join(self.deb.paths["lb"], "config-overrides/includes.chroot/"),
         )
         await merge_dir(
             [
@@ -29,7 +29,7 @@ class FilesystemLoader:
             ],
             os.path.join(
                 self.deb.paths["lb"],
-                "config/includes.installer/root/install/filesystem",
+                "config-overrides/includes.installer/root/install/filesystem",
             ),
         )
         await merge_dir(
@@ -40,6 +40,6 @@ class FilesystemLoader:
             ],
             os.path.join(
                 self.deb.paths["lb"],
-                "config/includes.chroot/root/install/filesystem",
+                "config-overrides/includes.chroot/root/install/filesystem",
             ),
         )

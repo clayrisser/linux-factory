@@ -14,7 +14,8 @@ class Deb:
         self._config = config
         self._overlays = None
         self._envs = None
-        self._additional_envs = {"HELLO": "world"}
+        self._additional_envs = {}
+        self.data = {}
 
     hooks = Hooks()
 

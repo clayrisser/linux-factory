@@ -37,7 +37,7 @@ class OverlayHooks:
         remove_packages = []
         for path in glob.glob(
             os.path.join(
-                self.deb.paths["lb"], "config/package-lists/*.list.chroot_live"
+                self.deb.paths["lb"], "config-overrides/package-lists/*.list.chroot_live"
             )
         ):
             with open(path) as f:
@@ -50,7 +50,7 @@ class OverlayHooks:
             with open(
                 os.path.join(
                     self.deb.paths["lb"],
-                    "config/includes.chroot/etc/calamares/modules/packages.conf",
+                    "config-overrides/includes.chroot/etc/calamares/modules/packages.conf",
                 ),
             ) as f:
                 for line in f.readlines():
@@ -66,7 +66,7 @@ class OverlayHooks:
             with open(
                 os.path.join(
                     self.deb.paths["lb"],
-                    "config/includes.chroot/etc/calamares/modules/packages.conf",
+                    "config-overrides/includes.chroot/etc/calamares/modules/packages.conf",
                 ),
                 "w",
             ) as f:

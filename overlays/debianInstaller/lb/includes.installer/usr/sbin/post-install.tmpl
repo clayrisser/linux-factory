@@ -1,10 +1,8 @@
 #!/bin/sh
 
-mkdir -p /log/calamares
-
-CHROOT=$(mount | grep proc | grep calamares | awk '{print $3}' | sed -e "s#/proc##g")
-DEFAULT_USER=$(echo $(ls $CHROOT/home) | sed 's|\s.*$||g')
-[ -f /root/install/envs ] && . /root/install/envs || true
+export CHROOT=/target
+export DEFAULT_USER=$(echo $(ls $CHROOT/home) | sed 's|\s.*$||g')
+[ -f /root/install/.envs ] && export $(cat /root/install/.envs | grep -v '#') || true
 
 mkdir -p $CHROOT/var/log/install
 exec > $CHROOT/var/log/install/debian-install-pi.log 2>&1
@@ -13,20 +11,18 @@ if [ -d /root/install/filesystem ]; then
     rsync -a /root/install/filesystem/ $CHROOT/
 fi
 
-# disable sudo password
-rm -rf $CHROOT/etc/sudoers.d/10-installer
+# if [ -d $CHROOT/root/install/fonts ]; then
+#     cd $CHROOT/root/install/fonts
+#     for f in $(cat *.list); do
+#         curl -LO $f
+#         # TODO: support tar and tar.gz
+#         unzip *.zip || true
+#         # TODO: support otf fonts
+#         cp *.ttf $CHROOT/usr/local/share/fonts 2>/dev/null || true
+#     done
+#     cd -
+# fi
 
-if [ -d $CHROOT/root/install/fonts ]; then
-    cd $CHROOT/root/install/fonts
-    for f in $(cat *.list); do
-        curl -LO $f
-        # TODO: support tar and tar.gz
-        unzip *.zip || true
-        # TODO: support otf fonts
-        cp *.ttf $CHROOT/usr/local/share/fonts 2>/dev/null || true
-    done
-    cd -
-fi
 chroot $CHROOT sh -c \
     'fc-cache -f -v'
 
@@ -43,15 +39,14 @@ if [ -f $CHROOT/root/install/hooks/user-post-install.sh ]; then
         "cd /home/$DEFAULT_USER && sh /root/install/hooks/user-post-install.sh 2>&1 > /var/log/install/user-post-install.log"
 fi
 
-if [ "{{ deb.debug }}" = "False" ]; then
+if [ "<% $DEBUG %>" = "false" ]; then
     rm -rf $CHROOT/var/log/install
+    rm -rf \
+        /root/install \
+        $CHROOT/root/install
 fi
 
-chroot $CHROOT su -c \
-    "update-grub"
-
-rm -rf \
-    /root/install \
-    $CHROOT/root/install
+# chroot $CHROOT su -c \
+#     "update-grub"
 
 exit 0

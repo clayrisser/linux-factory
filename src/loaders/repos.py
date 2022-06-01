@@ -30,13 +30,13 @@ class ReposLoader:
         if not os.path.exists(
             os.path.join(
                 self.deb.paths["lb"],
-                "config/archives",
+                "config-overrides/archives",
             )
         ):
             os.makedirs(
                 os.path.join(
                     self.deb.paths["lb"],
-                    "config/archives",
+                    "config-overrides/archives",
                 )
             )
         if repo.live:
@@ -44,7 +44,7 @@ class ReposLoader:
             with open(
                 os.path.join(
                     self.deb.paths["lb"],
-                    "config/archives",
+                    "config-overrides/archives",
                     repo.name + ".list.chroot",
                 ),
                 "w",
@@ -54,7 +54,7 @@ class ReposLoader:
                 with open(
                     os.path.join(
                         self.deb.paths["lb"],
-                        "config/archives",
+                        "config-overrides/archives",
                         repo.name + ".key.chroot",
                     ),
                     "w",
@@ -67,7 +67,7 @@ class ReposLoader:
                     os.path.join(self.deb.paths["os"], "repos", repo.name + ".key"),
                     os.path.join(
                         self.deb.paths["lb"],
-                        "config/archives",
+                        "config-overrides/archives",
                         repo.name + ".key.chroot",
                     ),
                 )
@@ -77,7 +77,7 @@ class ReposLoader:
             with open(
                 os.path.join(
                     self.deb.paths["lb"],
-                    "config/archives",
+                    "config-overrides/archives",
                     repo.name + ".list.binary",
                 ),
                 "w",
@@ -87,7 +87,7 @@ class ReposLoader:
                 with open(
                     os.path.join(
                         self.deb.paths["lb"],
-                        "config/archives",
+                        "config-overrides/archives",
                         repo.name + ".key.binary",
                     ),
                     "w",
@@ -100,7 +100,7 @@ class ReposLoader:
                     os.path.join(self.deb.paths["os"], "repos", repo.name + ".key"),
                     os.path.join(
                         self.deb.paths["lb"],
-                        "config/archives",
+                        "config-overrides/archives",
                         repo.name + ".key.binary",
                     ),
                 )

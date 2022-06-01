@@ -18,12 +18,18 @@ class PackagesLoader:
 
     async def load(self):
         packages = await self.get_packages()
+        if not "packages" in self.deb.data:
+            self.deb.data["packages"] = []
+        if not "debs" in self.deb.data:
+            self.deb.data["debs"] = []
         for p in packages:
             await self.load_package(Package(p))
         if not os.path.exists(
-            os.path.join(self.deb.paths["lb"], "config/packages.chroot")
+            os.path.join(self.deb.paths["lb"], "config-overrides/packages.chroot")
         ):
-            os.makedirs(os.path.join(self.deb.paths["lb"], "config/packages.chroot"))
+            os.makedirs(
+                os.path.join(self.deb.paths["lb"], "config-overrides/packages.chroot")
+            )
         for d in glob.glob(
             os.path.join(self.deb.paths["os"], "packages/**/*.deb"), recursive=True
         ) + glob.glob(
@@ -31,7 +37,7 @@ class PackagesLoader:
         ):
             os.system(
                 "dpkg-name -s "
-                + os.path.join(self.deb.paths["lb"], "config/packages.chroot")
+                + os.path.join(self.deb.paths["lb"], "config-overrides/packages.chroot")
                 + " -o "
                 + d
             )
@@ -48,6 +54,7 @@ class PackagesLoader:
 
     async def load_package(self, package):
         if not not re.match(self.DEB_REGEX, package.package):
+            self.deb.data["debs"].append(package)
             if not os.path.exists(os.path.join(self.deb.paths["os"], ".debs")):
                 os.makedirs(os.path.join(self.deb.paths["os"], ".debs"))
             md5_hash = hashlib.md5()
@@ -58,23 +65,24 @@ class PackagesLoader:
                 os.path.join(self.deb.paths["os"], ".debs", digest + ".deb"),
             )
         else:
+            self.deb.data["packages"].append(package)
             if not os.path.exists(
                 os.path.join(
                     self.deb.paths["lb"],
-                    "config/package-lists",
+                    "config-overrides/package-lists",
                 )
             ):
                 os.makedirs(
                     os.path.join(
                         self.deb.paths["lb"],
-                        "config/package-lists",
+                        "config-overrides/package-lists",
                     )
                 )
             if package.live and package.installed:
                 with open(
                     os.path.join(
                         self.deb.paths["lb"],
-                        "config/package-lists/packages.list.chroot_install",
+                        "config-overrides/package-lists/packages.list.chroot_install",
                     ),
                     "a",
                 ) as f:
@@ -83,7 +91,7 @@ class PackagesLoader:
                 with open(
                     os.path.join(
                         self.deb.paths["lb"],
-                        "config/package-lists/packages.list.chroot_live",
+                        "config-overrides/package-lists/packages.list.chroot_live",
                     ),
                     "a",
                 ) as f:
@@ -95,7 +103,7 @@ class PackagesLoader:
                 with open(
                     os.path.join(
                         self.deb.paths["lb"],
-                        "config/package-lists/packages.list.binary",
+                        "config-overrides/package-lists/packages.list.binary",
                     ),
                     "a",
                 ) as f:

@@ -348,13 +348,13 @@ d-i apt-setup/contrib boolean true
 # Uncomment this to add multiarch configuration for i386
 #d-i apt-setup/multiarch string i386
 
-
 ### Package selection
 # tasksel tasksel/first multiselect standard, web-server, kde-desktop
 tasksel tasksel/first multiselect standard
 
 # Individual additional packages to install
 #d-i pkgsel/include string openssh-server build-essential
+{% if deb.data.packages|length > 0 %}d-i pkgsel/include string{% for package in deb.data.packages %}{% if package.installed %} {{package.package}}{% endif %}{% endfor %}{% endif %}
 # Whether to upgrade packages after debootstrap.
 # Allowed values: none, safe-upgrade, full-upgrade
 d-i pkgsel/upgrade select none

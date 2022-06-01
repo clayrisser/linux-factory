@@ -3,7 +3,7 @@
 # File Created: 24-05-2022 13:11:50
 # Author: Clay Risser
 # -----
-# Last Modified: 28-05-2022 07:38:34
+# Last Modified: 31-05-2022 10:51:47
 # Modified By: Clay Risser
 # -----
 # Risser Labs LLC (c) Copyright 2021 - 2022
@@ -28,6 +28,8 @@ include $(MKPM)/envcache
 include $(MKPM)/dotenv
 include $(MKPM)/python
 
+export EXPORT_GPG_KEY := sh $(SCRIPTS_PATH)/export-gpg-key.sh
+
 ACTIONS += install ## install dependencies
 $(ACTION)/install: $(PROJECT_ROOT)/pyproject.toml env
 	@$(call poetry_install_dev,$(ARGS))
@@ -51,6 +53,22 @@ clean: sudo
 .PHONY: purge
 purge: clean
 	@$(GIT) clean -fXd
+
+.PHONY: test-lang
+test-lang: ##
+	@grep-dctrl -Ftest-lang $(ARGS) /usr/share/tasksel/descs/debian-tasks.desc -sTask
+
+.PHONY: enhances
+enhances: ##
+	@grep-dctrl -FEnhances $(ARGS) /usr/share/tasksel/descs/debian-tasks.desc -sTask
+
+.PHONY: layouts
+layouts: ##
+	@egrep -i '(^!|$(ARGS))' /usr/share/X11/xkb/rules/base.lst
+
+.PHONY: trust-gpg-key
+trust-gpg-key: ##
+	@$(EXPORT_GPG_KEY) $(ARGS) config-overrides/archives/$(ARGS).key.chroot
 
 -include $(call actions)
 

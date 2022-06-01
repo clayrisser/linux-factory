@@ -1,7 +1,7 @@
 #!/bin/sh
 
 CHROOT=$(mount | grep proc | grep calamares | awk '{print $3}' | sed -e "s#/proc##g")
-[ -f /root/install/envs ] && . /root/install/envs || true
+[ -f /root/install/.envs ] && export $(cat /root/install/.envs | grep -v '#') || true
 
 # cleanup installer
 rm -rf \
