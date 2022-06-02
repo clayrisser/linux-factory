@@ -322,15 +322,15 @@ d-i apt-setup/contrib boolean true
 #d-i apt-setup/use_mirror boolean false
 # Select which update services to use; define the mirrors to be used.
 # Values shown below are the normal defaults.
-#d-i apt-setup/services-select multiselect security, updates
-#d-i apt-setup/security_host string security.debian.org
+d-i apt-setup/services-select multiselect security, updates
+d-i apt-setup/security_host string security.debian.org
 
 # Additional repositories, local[0-9] available
 #d-i apt-setup/local0/repository string \
 #       http://local.server/debian stable main
 #d-i apt-setup/local0/comment string local server
 # Enable deb-src lines
-#d-i apt-setup/local0/source boolean true
+d-i apt-setup/local0/source boolean true
 # URL to the public key of the local repository; you must provide a key or
 # apt will complain about the unauthenticated repository and so the
 # sources.list line will be left commented out.
@@ -346,7 +346,7 @@ d-i apt-setup/contrib boolean true
 #d-i debian-installer/allow_unauthenticated boolean true
 
 # Uncomment this to add multiarch configuration for i386
-#d-i apt-setup/multiarch string i386
+d-i apt-setup/multiarch string i386
 
 ### Package selection
 # tasksel tasksel/first multiselect standard, web-server, kde-desktop

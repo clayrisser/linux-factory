@@ -2,6 +2,7 @@ from yaml import SafeLoader
 import shutil
 import glob
 import os
+from util import mkdirs
 import yaml
 
 
@@ -27,20 +28,13 @@ class ReposLoader:
         return repos
 
     async def load_repo(self, repo):
-        if not os.path.exists(
+        await mkdirs(
             os.path.join(
                 self.deb.paths["lb"],
                 "config-overrides/archives",
             )
-        ):
-            os.makedirs(
-                os.path.join(
-                    self.deb.paths["lb"],
-                    "config-overrides/archives",
-                )
-            )
-        if repo.live:
-            # list.chroot key.chroot
+        )
+        if repo.live or repo.installed:
             with open(
                 os.path.join(
                     self.deb.paths["lb"],
@@ -72,7 +66,20 @@ class ReposLoader:
                     ),
                 )
         if repo.installed:
-            pass
+            await mkdirs(
+                os.path.join(
+                    self.deb.paths["lb"],
+                    "config-overrides/includes.installer/root/install",
+                ),
+            )
+            with open(
+                os.path.join(
+                    self.deb.paths["lb"],
+                    "config-overrides/includes.installer/root/install/repos.list",
+                ),
+                "a",
+            ) as f:
+                f.write(repo.name + "\n")
         if repo.binary:
             with open(
                 os.path.join(

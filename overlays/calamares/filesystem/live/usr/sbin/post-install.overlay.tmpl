@@ -1,13 +1,12 @@
 #!/bin/sh
 
-mkdir -p /log/calamares
-
 CHROOT=$(mount | grep proc | grep calamares | awk '{print $3}' | sed -e "s#/proc##g")
+mkdir -p $CHROOT/var/log/install
+exec > $CHROOT/var/log/install/debian-install-post-install.log 2>&1
 DEFAULT_USER=$(echo $(ls $CHROOT/home) | sed 's|\s.*$||g')
 [ -f /root/install/.envs ] && export $(cat /root/install/.envs | grep -v '#') || true
 
-mkdir -p $CHROOT/var/log/install
-exec > $CHROOT/var/log/install/debian-install-pi.log 2>&1
+mkdir -p /log/calamares
 
 if [ -d /root/install/filesystem ]; then
     rsync -a /root/install/filesystem/ $CHROOT/

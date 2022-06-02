@@ -1,6 +1,8 @@
 #!/bin/sh
 
 CHROOT=$(mount | grep proc | grep calamares | awk '{print $3}' | sed -e "s#/proc##g")
+mkdir -p $CHROOT/var/log/install
+exec > $CHROOT/var/log/install/debian-install-pre-install.log 2>&1
 [ -f /root/install/.envs ] && export $(cat /root/install/.envs | grep -v '#') || true
 
 # cleanup installer
