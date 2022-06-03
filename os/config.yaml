@@ -19,6 +19,6 @@ lb:
 overlays:
   debianInstaller: {}
   brave: {}
-  calamares: {}
-  grub: {}
-  sway: {}
+  # calamares: {}
+  # grub: {}
+  # sway: {}

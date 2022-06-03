@@ -87,3 +87,4 @@ _I'm not sure exactly what the difference between `config/package-lists/*.list.c
 - https://live-team.pages.debian.net/live-manual/html/live-manual/index.en.html
 - https://bugs.launchpad.net/subiquity/+bug/1960068
 - https://discourse.ubuntu.com/t/automated-server-install-reference/16613/21
+- https://help.ubuntu.com/community/InstallCDCustomization

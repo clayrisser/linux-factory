@@ -1,74 +1,45 @@
 #!/bin/sh
 
-. /usr/share/debconf/confmodule
-
 export CHROOT=/target
 mkdir -p $CHROOT/var/log/install
-exec > $CHROOT/var/log/install/debian-install-post-install.log 2>&1
+exec > /var/log/install/debian-install-post-install.log 2>&1
+. /usr/share/debconf/confmodule
 export DEFAULT_USER=$(echo $(ls $CHROOT/home) | sed 's|\s.*$||g')
 [ -f /root/install/.envs ] && export $(cat /root/install/.envs | grep -v '#') || true
+cp /var/log/install/di-early-install.log $CHROOT/var/log/install/di-early-install.log
 
-
-#### BEGIN
-if ! chvt 3 &>/dev/null; then
-  break
-fi
 export TERM=linux
 export NCURSES_NO_UTF8_ACS=1
 printf "\ec"
-####
 for mount in dev proc run sys; do
-    mount --bind /${mount} /target/${mount}
+    mount --bind /${mount} $CHROOT/${mount}
 done
-####
 
+chroot() {
+    unset DEBCONF_REDIR
+    unset DEBCONF_FRONTEND
+    unset DEBIAN_HAS_FRONTEND
+    unset DEBIAN_FRONTEND
+    command chroot $@
+}
 
+debconf_prompt() {
+    db_input critical $1 || true
+    db_go
+    db_get $1
+    echo $RET | tee -a /var/log/install/debconf-prompt.log
+}
 
-### START
+#### BEGIN >>>>
 
-cat > /tmp/MyInstall.template <<EOF
-Template: debian-installer/my-install/title
-Type: text
-# Main menu item
-# :sl1:
-Description: Installation of the core Operating System components has now completed.
- Additional software, and supporting applications, will now be installed.
-
-Template: my-install/progress/title
-Type: text
-# :sl1:
-Description: Installing Additional Components...
-
-Template: my-install/asktheuser
+cat > /tmp/PostInstall.template <<EOF
+Template: post-install/email
 Type: string
-Description: Just type anything here.
+Description: email
 EOF
-
-debconf-loadtemplate snare-install /tmp/MyInstall.template
-
-sleep 10
-
-STEPS=10
-db_progress START 0 $STEPS my-install/progress/title
-
-# Do something or other
-db_progress STEP 1
-
-db_progress INFO snare-install/progress/title
-# Do something or other
-db_progress STEP 1
-
-# db_input critical my-install/asktheuser || true
-# db_go
-
-# db_get my-install/asktheuser
-# USERRESPONSE=$RET
-
-# echo $USERRESPONSE > $CHROOT/var/log/TheUsersResponse
-# chroot $CHROOT sh -c "cat /var/log/TheUsersResponse > /var/log/SomethingElse"
-
-### END
-
+debconf-loadtemplate snare-install /tmp/PostInstall.template
+export EMAIL=$(debconf_prompt post-install/email)
+echo EMAIL $EMAIL
 
 if [ -d /root/install/filesystem ]; then
     /usr/bin/rsync -a /root/install/filesystem/ $CHROOT/
@@ -89,8 +60,8 @@ if [ -f /root/install/repos.list ]; then
     fi
 fi
 
-chroot $CHROOT sh -c \
-    'apt-get update -y'
+# chroot $CHROOT sh -c \
+#     'apt-get update -y'
 
 chroot $CHROOT sh -c \
     'dpkg -i "/root/packages/*.deb"'
@@ -134,14 +105,9 @@ fi
 chroot $CHROOT su -c \
     "update-grub"
 
-#### END
+#### <<<< END
+
 for mount in dev proc run sys; do
     umount /target/${mount}
 done
-####
-if ! chvt 1 &>/dev/null; then
-    break
-fi
-####
-
 exit 0
