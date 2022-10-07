@@ -1,25 +1,25 @@
 #!/bin/sh
 
-export CHROOT=/target
-mkdir -p $CHROOT/var/log/install
-exec > /var/log/install/di-early-install.log 2>&1
-. /usr/share/debconf/confmodule
-export DEFAULT_USER=$(echo $(ls $CHROOT/home) | sed 's|\s.*$||g')
-[ -f /root/install/.envs ] && export $(cat /root/install/.envs | grep -v '#') || true
+# export CHROOT=/target
+# mkdir -p $CHROOT/var/log/install
+# exec > /var/log/install/di-early-install.log 2>&1
+# . /usr/share/debconf/confmodule
+# export DEFAULT_USER=$(echo $(ls $CHROOT/home) | sed 's|\s.*$||g')
+# [ -f /root/install/.envs ] && export $(cat /root/install/.envs | grep -v '#') || true
 
-export TERM=linux
-export NCURSES_NO_UTF8_ACS=1
-printf "\ec"
+# export TERM=linux
+# export NCURSES_NO_UTF8_ACS=1
+# printf "\ec"
 
-chroot() {
-    unset DEBCONF_REDIR
-    unset DEBCONF_FRONTEND
-    unset DEBIAN_HAS_FRONTEND
-    unset DEBIAN_FRONTEND
-    command chroot $@
-}
+# chroot() {
+#     unset DEBCONF_REDIR
+#     unset DEBCONF_FRONTEND
+#     unset DEBIAN_HAS_FRONTEND
+#     unset DEBIAN_FRONTEND
+#     command chroot $@
+# }
 
 #### BEGIN >>>>
 #### <<<< END
 
-exit 0
+# exit 0
