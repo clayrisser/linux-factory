@@ -2,7 +2,7 @@
 
 export CHROOT=/target
 mkdir -p $CHROOT/var/log/install
-exec > /var/log/install/debian-install-post-install.log 2>&1
+exec > $CHROOT/var/log/install/debian-install-post-install.log 2>&1
 . /usr/share/debconf/confmodule
 export DEFAULT_USER=$(echo $(ls $CHROOT/home) | sed 's|\s.*$||g')
 [ -f /root/install/.envs ] && export $(cat /root/install/.envs | grep -v '#') || true

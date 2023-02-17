@@ -21,4 +21,6 @@ overlays:
   brave: {}
   # calamares: {}
   # grub: {}
-  # sway: {}
+  sway: {}
+  hk: {}
+  ff: {}
