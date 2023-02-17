@@ -82,7 +82,6 @@ class PrepareStage:
     async def initialize_overlays(self):
         overlay: Overlay
         for _overlay_name, overlay in self.deb.overlays.items():
-            await merge_dir(overlay.path, self.deb.paths["os"])
             await merge_dir_templates(
                 overlay.path, self.deb.paths["os"], deb=self.deb, overlay=overlay
             )

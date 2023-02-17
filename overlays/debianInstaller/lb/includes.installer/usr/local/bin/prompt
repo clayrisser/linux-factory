@@ -1,0 +1,75 @@
+#!/bin/sh -e
+
+export DEBCONF_DEBUG=${DEBCONF_DEBUG:-developer}
+export DEBCONF_PRIORITY=${DEBCONF_PRIORITY:-critical}
+export RET_PATH=${RET_PATH:-.ret}
+if [ "$_PROMPT_TMP" = "" ]; then
+    export _PROMPT_TMP=${XDG_RUNTIME_DIR:-${TMPDIR:-${TMP:-${TEMP:-/tmp}}}}/prompt/$$
+fi
+mkdir -p $_PROMPT_TMP
+
+cleanup() {
+    err=$?
+    if [ "$err" = "0" ]; then
+        err=$1
+    fi
+    if [ -d "$_PROMPT_TMP" ]; then
+        rm -r $_PROMPT_TMP
+    fi
+    exit $err
+}
+trap cleanup INT TERM
+
+_DEPTH="${_DEPTH:-0}"
+if [ "$_DEPTH" = "0" ]; then
+    if [ "$1" = "" ]; then
+        echo "please specify a template" >&2
+        exit 1
+    fi
+    PROMPT=$0
+    TEMPLATE_PATH=$1
+    shift
+    cp $PROMPT $_PROMPT_TMP/prompt
+    cp $TEMPLATE_PATH $_PROMPT_TMP/prompt.templates
+    chmod +x $_PROMPT_TMP/prompt
+    mkdir -p $RET_PATH 2>&1 >/dev/null || true
+    rm -rf $RET_PATH 2>&1 >/dev/null || true
+    export _CWD=$(pwd)
+    (
+        cd $_PROMPT_TMP
+        _DEPTH=$(($_DEPTH+1)) ./prompt $@ || true
+    )
+    if [ ! -f $RET_PATH ]; then
+        cleanup 1
+    fi
+    cleanup 0
+fi
+
+if [ "$1" = "" ]; then
+    VARIABLES=$(cat $_PROMPT_TMP/prompt.templates | grep -E '^Template: ' | sed 's|^Template: ||')
+else
+    VARIABLES=$@
+fi
+_PACKAGE=$(cat $_PROMPT_TMP/prompt.templates | grep -E '^Template: ' | sed 's|^Template: ||' | head -n1 | sed 's|/.*$||g')
+PACKAGE=${PACKAGE:-$_PACKAGE}
+VARIABLES=$(for v in $VARIABLES; do
+    if (echo $v | grep -vq '/'); then
+        echo $PACKAGE/$v
+    else
+        echo $v
+    fi
+done)
+
+. /usr/share/debconf/confmodule
+for v in $VARIABLES; do
+    db_reset $v || true
+    db_input $DEBCONF_PRIORITY $v
+done
+db_go
+(
+    cd $_CWD
+    for v in $VARIABLES; do
+        db_get $v
+        echo $v:$RET >> $RET_PATH
+    done
+)

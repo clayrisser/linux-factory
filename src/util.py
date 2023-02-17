@@ -38,6 +38,7 @@ async def merge_dir(a_path, b_path):
 
 
 async def merge_dir_templates(a_path, b_path, deb, overlay=None):
+    await merge_dir(a_path, b_path)
     for path in glob.glob(
         os.path.join(a_path, "**/*.overlay.tmpl" if overlay else "**/*.tmpl"),
         recursive=True,
