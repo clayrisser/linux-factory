@@ -10,8 +10,6 @@ echo cp /var/log/install/di-early-install.log $CHROOT/var/log/install/di-early-i
 cp /var/log/install/di-early-install.log $CHROOT/var/log/install/di-early-install.log
 chmod +x /usr/local/bin/prompt
 
-echo a
-
 export DEBIAN_FRONTEND=dialog
 export TERM=linux
 export NCURSES_NO_UTF8_ACS=1
@@ -20,18 +18,6 @@ for mount in dev proc run sys; do
     mount --bind /${mount} $CHROOT/${mount}
 done
 
-echo b
-
-chroot() {
-    unset DEBCONF_REDIR
-    unset DEBCONF_FRONTEND
-    unset DEBIAN_HAS_FRONTEND
-    unset DEBIAN_FRONTEND
-    command chroot $@
-}
-
-echo c
-
 debconf_prompt() {
     db_input critical $1 || true
     db_go
@@ -39,53 +25,41 @@ debconf_prompt() {
     echo $RET | tee -a /var/log/install/debconf-prompt.log
 }
 
-#### BEGIN >>>>
-
-sleep 30
-
-echo d
-
 mkdir -p $CHROOT/root/install
 mkdir -p $CHROOT/usr/local/bin
 cp /root/install/prompt.templates $CHROOT/root/install/prompt.templates
 cp /usr/local/bin/prompt $CHROOT/usr/local/bin/prompt
+cp /usr/local/bin/response $CHROOT/usr/local/bin/response
 chmod +x $CHROOT/usr/local/bin/prompt
+chmod +x $CHROOT/usr/local/bin/response
 
-echo e
+in-target sh -c "cd /tmp; prompt /root/install/prompt.templates; response /root/install/prompt.templates | tee .ret"
+RESPONSE="$(cat $CHROOT/tmp/.ret)"
+rm $CHROOT/tmp/.ret
+in-target cat "$RESPONSE" > /home/$DEFAULT_USER/.ret
 
-/usr/local/bin/prompt /root/install/prompt.templates
+if [ -d /root/install/filesystem ]; then
+    /usr/bin/rsync -a /root/install/filesystem/ $CHROOT/
+fi
+if [ -d /root/packages ]; then
+    mkdir -p $CHROOT/root/packages/
+    /usr/bin/rsync -a /root/packages/ $CHROOT/root/packages/
+fi
 
-echo f
+if [ -f /root/install/repos.list ]; then
+    for r in $(cat /root/install/repos.list); do
+        if [ -f /etc/apt/sources.list.d/$r.list ]; then
+            cp /etc/apt/sources.list.d/$r.list $CHROOT/etc/apt/sources.list.d/$r.list
+        fi
+        if [ -f /etc/apt/trusted.gpg.d/$r.key.chroot.asc ]; then
+            cp /etc/apt/trusted.gpg.d/$r.key.chroot.asc $CHROOT/etc/apt/trusted.gpg.d/$r.chroot.asc
+        fi
+    fi
+fi
 
-chroot $CHROOT sh -c \
-    '/usr/local/bin/prompt /root/install/prompt.templates'
+# in-target apt-get update -y
 
-echo g
-
-# if [ -d /root/install/filesystem ]; then
-#     /usr/bin/rsync -a /root/install/filesystem/ $CHROOT/
-# fi
-# if [ -d /root/packages ]; then
-#     mkdir -p $CHROOT/root/packages/
-#     /usr/bin/rsync -a /root/packages/ $CHROOT/root/packages/
-# fi
-
-# if [ -f /root/install/repos.list ]; then
-#     for r in $(cat /root/install/repos.list); do
-#         if [ -f /etc/apt/sources.list.d/$r.list ]; then
-#             cp /etc/apt/sources.list.d/$r.list $CHROOT/etc/apt/sources.list.d/$r.list
-#         fi
-#         if [ -f /etc/apt/trusted.gpg.d/$r.key.chroot.asc ]; then
-#             cp /etc/apt/trusted.gpg.d/$r.key.chroot.asc $CHROOT/etc/apt/trusted.gpg.d/$r.chroot.asc
-#         fi
-#     fi
-# fi
-
-# chroot $CHROOT sh -c \
-#     'apt-get update -y'
-
-# chroot $CHROOT sh -c \
-#     'dpkg -i "/root/packages/*.deb"'
+# in-target sh -c "dpkg -i "/root/packages/*.deb || true; apt-get install -f; dpkg -i "/root/packages/*.deb"
 
 # if [ -d $CHROOT/root/install/fonts ]; then
 #     cd $CHROOT/root/install/fonts
@@ -99,20 +73,15 @@ echo g
 #     cd -
 # fi
 
-# chroot $CHROOT sh -c \
-#     'fc-cache -f -v'
+# in-target fc-cache -f -v
 
 # if [ -f $CHROOT/root/install/hooks/post-install.sh ]; then
-#     chroot $CHROOT su -c \
-#         "cd / && sh /root/install/hooks/post-install.sh 2>&1 > /var/log/install/post-install.log"
+#     in-target sh -c "cd / && sh /root/install/hooks/post-install.sh 2>&1 > /var/log/install/post-install.log"
 # fi
 # if [ -f $CHROOT/root/install/hooks/user-post-install.sh ]; then
-#     chroot $CHROOT su -c \
-#         "touch /var/log/install/user-post-install.log"
-#     chroot $CHROOT su -c \
-#         "chown $DEFAULT_USER:$DEFAULT_USER /var/log/install/user-post-install.log"
-#     chroot $CHROOT su $DEFAULT_USER -c \
-#         "cd /home/$DEFAULT_USER && sh /root/install/hooks/user-post-install.sh 2>&1 > /var/log/install/user-post-install.log"
+#     in-target touch /var/log/install/user-post-install.log
+#     in-target chown $DEFAULT_USER:$DEFAULT_USER /var/log/install/user-post-install.log
+#     in-target su $DEFAULT_USER -c "cd /home/$DEFAULT_USER && sh /root/install/hooks/user-post-install.sh 2>&1 > /var/log/install/user-post-install.log"
 # fi
 
 # if [ "<% $DEBUG %>" = "false" ]; then
@@ -123,10 +92,7 @@ echo g
 #         $CHROOT/root/packages
 # fi
 
-# chroot $CHROOT su -c \
-#     "update-grub"
-
-#### <<<< END
+# in-target update-grub
 
 for mount in dev proc run sys; do
     umount /target/${mount}

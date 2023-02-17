@@ -1,16 +1,17 @@
-- package: fontconfig
-  live: true
-  installed: true
-  binary: true
-- package: rsync
-  live: true
-  installed: true
-  binary: true
-- package: util-linux
-  live: true
-  installed: true
-  binary: true
-- package: xdg-utils
-  live: true
-  installed: true
-  binary: true
+# - package: fontconfig
+#   live: true
+#   installed: true
+#   binary: true
+# - package: rsync
+#   live: true
+#   installed: true
+#   binary: true
+# - package: util-linux
+#   live: true
+#   installed: true
+#   binary: true
+# - package: xdg-utils
+#   live: true
+#   installed: true
+#   binary: true
+[]

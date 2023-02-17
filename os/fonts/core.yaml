@@ -1,4 +1,5 @@
-- https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/UbuntuMono.zip
-- font: agave.zip
-  installed: true
-  live: true
+# - https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/UbuntuMono.zip
+# - font: agave.zip
+#   installed: true
+#   live: true
+[]

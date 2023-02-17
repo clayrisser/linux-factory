@@ -1,4 +1,5 @@
-- foot
-- util-linux
-- xdg-utils
-- http://ftp.de.debian.org/debian/pool/main/n/nyancat/nyancat_1.5.2-0.1_amd64.deb
+# - foot
+# - util-linux
+# - xdg-utils
+# - http://ftp.de.debian.org/debian/pool/main/n/nyancat/nyancat_1.5.2-0.1_amd64.deb
+[]
