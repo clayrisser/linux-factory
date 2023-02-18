@@ -3,6 +3,3 @@
 mkdir -p /var/log/install
 exec >> /var/log/install/di-early-command.log 2>&1
 [ -f /root/install/.envs ] && export $(cat /root/install/.envs | grep -v '#') || true
-
-echo hello
-echo world >&2

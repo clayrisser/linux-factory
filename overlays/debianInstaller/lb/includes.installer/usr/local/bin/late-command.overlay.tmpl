@@ -3,7 +3,7 @@
 # PREPARE ENVIRONMENT
 export CHROOT=/target
 mkdir -p $CHROOT/var/log/install
-# exec >> $CHROOT/var/log/install/di-late-command.log 2>&1
+exec 2>> $CHROOT/var/log/install/di-late-command.log
 cp /var/log/install/di-early-command.log $CHROOT/var/log/install/di-early-command.log
 export DEFAULT_USER=$(echo $(ls $CHROOT/home) | sed 's|\s.*$||g')
 [ -f /root/install/.envs ] && export $(cat /root/install/.envs | grep -v '#') || true

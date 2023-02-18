@@ -61,6 +61,44 @@ class OverlayHooks:
 
 It's important to note that the order in which hooks are executed is determined by the order in which the overlays are specified. Make sure to take this into consideration when implementing your hooks.
 
+### Script Hooks
+
+There are also a couple of script hooks that run during the installation. currently the script hooks supported are `post-install` and `user-post-install`.
+
+Script hooks go in the `hooks/<hook>/<overlay>.sh` path. all scripts in the folder will execute during the respective hook.
+
+user-post-install executes after the system has been installed as the newly created user
+
+post-install also executes after the system hsa been installed, but runs as the root user
+
+During the installation process, there are two script hooks that can be utilized, `post-install` and `user-post-install`.
+
+#### Location of Script Hooks
+
+Script hooks should be placed in the `hooks/<hook>` folder. All scripts within the specified
+folder will be executed during the corresponding hook.
+
+> the name of the script should be the same name as your overlay to prevent collisions with hooks from other overlays
+
+#### Execution of Script Hooks
+
+- `user-post-install`: This script hook will execute after the system has been installed as the newly created user.
+- `post-install`: This script hook will also execute after the system has been installed, but it runs as the root user.
+
+#### Example
+
+Here's an example of how you can utilize the user-post-install script hook.
+
+Create a folder named user-post-install in the hooks directory and add a file named script.sh in it. In the script.sh file, you can add the following code.
+
+_hooks/user-post-install/\<overlay\>.sh_
+
+```sh
+#!/bin/sh
+
+echo "Running user-post-install script"
+```
+
 ### Live Build
 
 ## Overlays
