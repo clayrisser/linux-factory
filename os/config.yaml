@@ -18,9 +18,7 @@ lb:
   debianInstaller: netinst # live,netinst
 overlays:
   debianInstaller: {}
-  # brave: {}
+  test: {}
   # calamares: {}
   # grub: {}
   # sway: {}
-  # hk: {}
-  # ff: {}

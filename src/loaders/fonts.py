@@ -16,8 +16,9 @@ class FontsLoader:
         self.deb = deb
 
     async def load(self):
-        await mkdirs(os.path.join(self.deb.paths["os"], ".fonts/live"))
         await mkdirs(os.path.join(self.deb.paths["os"], ".fonts/installed"))
+        await mkdirs(os.path.join(self.deb.paths["os"], ".fonts/live"))
+        await mkdirs(os.path.join(self.deb.paths["os"], ".fonts/live_installed"))
         fonts = await self.get_fonts()
         for f in fonts:
             await self.load_font(Font(f))
@@ -40,30 +41,46 @@ class FontsLoader:
 
     async def load_font(self, font):
         if not not re.match(FontsLoader.URI_REGEX, font.font):
-            if font.live:
-                filename = os.path.basename(font.font)
+            extension = font.format
+            if not extension:
+                extension = "." + font.font.split(".")[-1]
+                extension = (
+                    extension
+                    if extension in {".zip", ".tar", ".tar.gz", ".otf", "ttf"}
+                    else ".zip"
+                )
+            filename = str(hash(font.font)) + extension
+            if font.live and font.installed:
+                await download(
+                    font.font,
+                    os.path.join(
+                        self.deb.paths["os"], ".fonts/live_installed", filename
+                    ),
+                )
+            elif font.live:
                 await download(
                     font.font,
                     os.path.join(self.deb.paths["os"], ".fonts/live", filename),
                 )
-                if font.installed:
-                    shutil.copyfile(
-                        os.path.join(self.deb.paths["os"], ".fonts/live", filename),
-                        os.path.join(self.deb.paths["os"], ".fonts/live", font.font),
-                    )
             elif font.installed:
-                with open(
-                    os.path.join(self.deb.paths["os"], ".fonts/installed/fonts.list"),
-                    "a",
-                ) as f:
-                    f.write(font.font)
+                await download(
+                    font.font,
+                    os.path.join(self.deb.paths["os"], ".fonts/installed", filename),
+                )
         elif os.path.exists(os.path.join(self.deb.paths["os"], "fonts", font.font)):
-            if font.live:
+            if font.live and font.installed:
+                shutil.copyfile(
+                    os.path.join(self.deb.paths["os"], "fonts", font.font),
+                    os.path.join(
+                        self.deb.paths["os"], ".fonts/live_installed", font.font
+                    ),
+                )
+            elif font.live:
                 shutil.copyfile(
                     os.path.join(self.deb.paths["os"], "fonts", font.font),
                     os.path.join(self.deb.paths["os"], ".fonts/live", font.font),
                 )
-            if font.installed:
+            elif font.installed:
                 shutil.copyfile(
                     os.path.join(self.deb.paths["os"], "fonts", font.font),
                     os.path.join(self.deb.paths["os"], ".fonts/installed", font.font),
@@ -71,19 +88,26 @@ class FontsLoader:
 
     async def unpack_fonts(self, location=None):
         if location == None:
-            await self.unpack_fonts("live")
             await self.unpack_fonts("installed")
+            await self.unpack_fonts("live")
+            await self.unpack_fonts("live_installed")
             return
-        for path in glob.glob(
-            os.path.join(
-                self.deb.paths["os"],
-                ".fonts",
-                location,
-                "**/*.{zip,tar,tar.gz}",
-            ),
-            recursive=True,
+        fonts_path = os.path.join(self.deb.paths["os"], ".fonts", location)
+        for path in (
+            glob.glob(
+                os.path.join(fonts_path, "**/*.zip"),
+                recursive=True,
+            )
+            + glob.glob(
+                os.path.join(fonts_path, "**/*.tar"),
+                recursive=True,
+            )
+            + glob.glob(
+                os.path.join(fonts_path, "**/*.tar.gz"),
+                recursive=True,
+            )
         ):
-            extract(path, location)
+            extract(path, fonts_path)
 
     async def copy_fonts(self):
         await mkdirs(
@@ -98,14 +122,11 @@ class FontsLoader:
                 "filesystem/live/usr/local/share/fonts",
             )
         )
-        await mkdirs(
-            os.path.join(
-                self.deb.paths["os"],
-                "filesystem/installed/root/install/fonts",
-            ),
-        )
         for path in glob.glob(
-            os.path.join(self.deb.paths["os"], ".fonts/installed/**/*.{otf,ttf}"),
+            os.path.join(self.deb.paths["os"], ".fonts/installed/**/*.otf"),
+            recursive=True,
+        ) + glob.glob(
+            os.path.join(self.deb.paths["os"], ".fonts/installed/**/*.ttf"),
             recursive=True,
         ):
             filename = os.path.basename(path)
@@ -118,7 +139,10 @@ class FontsLoader:
                 ),
             )
         for path in glob.glob(
-            os.path.join(self.deb.paths["os"], ".fonts/live/**/*.{otf,ttf}"),
+            os.path.join(self.deb.paths["os"], ".fonts/live/**/*.otf"),
+            recursive=True,
+        ) + glob.glob(
+            os.path.join(self.deb.paths["os"], ".fonts/live/**/*.ttf"),
             recursive=True,
         ):
             filename = os.path.basename(path)
@@ -127,6 +151,30 @@ class FontsLoader:
                 os.path.join(
                     self.deb.paths["os"],
                     "filesystem/live/usr/local/share/fonts",
+                    filename,
+                ),
+            )
+        for path in glob.glob(
+            os.path.join(self.deb.paths["os"], ".fonts/live_installed/**/*.otf"),
+            recursive=True,
+        ) + glob.glob(
+            os.path.join(self.deb.paths["os"], ".fonts/live_installed/**/*.ttf"),
+            recursive=True,
+        ):
+            filename = os.path.basename(path)
+            shutil.copyfile(
+                path,
+                os.path.join(
+                    self.deb.paths["os"],
+                    "filesystem/live/usr/local/share/fonts",
+                    filename,
+                ),
+            )
+            shutil.copyfile(
+                path,
+                os.path.join(
+                    self.deb.paths["os"],
+                    "filesystem/installed/usr/local/share/fonts",
                     filename,
                 ),
             )
@@ -139,3 +187,4 @@ class Font:
         self.live = font["live"] if "live" in font else True
         self.installed = font["installed"] if "installed" in font else True
         self.font = font["font"].strip()
+        self.format = font["format"] if "format" in font else None

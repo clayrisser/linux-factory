@@ -89,6 +89,7 @@ async def mkdirs(path):
 
 
 def extract(file, destination=os.getcwd()):
+    logging.debug("EXTRACT: " + file + " -> " + destination)
     parent_path = os.path.dirname(destination)
     if not os.path.exists(parent_path):
         os.makedirs(parent_path)
