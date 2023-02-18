@@ -1,7 +1,5 @@
 #!/bin/sh -e
 
-echo $0 $@ >&2
-
 if [ "$_RESPONSE_TMP" = "" ]; then
     export _RESPONSE_TMP=${XDG_RUNTIME_DIR:-${TMPDIR:-${TMP:-${TEMP:-/tmp}}}}/prompt/$PPID
 fi

@@ -38,15 +38,51 @@ Currently only supports zip files that contain .ttf fonts
 
 ### Hooks
 
+To use the hooks in your overlay, you will need to create a file named overlay.py within your overlay directory. This file should contain a class named OverlayHooks that implements methods for each hook.
+
+Each hook has two corresponding methods, one for before the stage is executed and one for after the stage is executed. There are currently three stages in the process: build, config, and prepare. This means the following hooks are available for you to use:
+
+- `before_build()`
+- `after_build()`
+- `before_config()`
+- `after_config()`
+- `before_prepare()`
+- `after_prepare()`
+
+For example, if you wanted to run some custom code before the build stage is executed, you could implement the following in your overlay.py file:
+
+_overlay.py_
+
+```py
+class OverlayHooks:
+    def before_build(self):
+        # Your custom code here
+```
+
+It's important to note that the order in which hooks are executed is determined by the order in which the overlays are specified. Make sure to take this into consideration when implementing your hooks.
+
 ### Live Build
 
 ## Overlays
 
 ### Calamares
 
+Calamares is a distribution-independent system installer, which aims
+to be easy, useful and fast. In the context of this system, Calamares
+can be used as an overlay to provide a graphical installer for the target system.
+
 ### Grub
 
+GRUB (GRand Unified Bootloader) is a boot loader package from the GNU Project. It is used to
+boot Linux operating systems, as well as a number of other operating systems. In the context
+of this system, Grub can be used as an overlay to customize the boot loader.
+
 ### Sway
+
+Sway is a tiling window manager for Wayland. It provides a tiling window manager
+experience for users who are looking for a modern, keyboard-driven interface. In the
+context of this system, Sway can be used as an overlay to provide a tiling
+window manager for the target system.
 
 ## Live Build Cheatsheet
 

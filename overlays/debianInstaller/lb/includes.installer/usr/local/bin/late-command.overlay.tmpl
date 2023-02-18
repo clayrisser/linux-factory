@@ -1,39 +1,40 @@
 #!/bin/sh
 
+# PREPARE ENVIRONMENT
 export CHROOT=/target
 mkdir -p $CHROOT/var/log/install
-exec > $CHROOT/var/log/install/di-late-command.log 2>&1
+# exec >> $CHROOT/var/log/install/di-late-command.log 2>&1
 cp /var/log/install/di-early-command.log $CHROOT/var/log/install/di-early-command.log
 export DEFAULT_USER=$(echo $(ls $CHROOT/home) | sed 's|\s.*$||g')
 [ -f /root/install/.envs ] && export $(cat /root/install/.envs | grep -v '#') || true
-
-mkdir -p $CHROOT/root/install
-mkdir -p $CHROOT/usr/local/bin
-cp /root/install/prompt.templates $CHROOT/root/install/prompt.templates
-cp /usr/local/bin/prompt $CHROOT/usr/local/bin/prompt
-cp /usr/local/bin/response $CHROOT/usr/local/bin/response
-
-export DEBIAN_FRONTEND=dialog
-export TERM=linux
-export NCURSES_NO_UTF8_ACS=1
-printf "\ec"
 for mount in dev proc run sys; do
     mount --bind /${mount} $CHROOT/${mount}
 done
 
-in-target sh -c "cd /tmp; prompt /root/install/prompt.templates; response /root/install/prompt.templates | tee .ret"
-RESPONSE="$(cat $CHROOT/tmp/.ret)"
+# PREPARE SCRIPTS
+chmod +x /usr/local/bin/prompt
+chmod +x /usr/local/bin/response
+chmod +x /usr/local/bin/rsyncr
+cp -r /root/install $CHROOT/root/install
+cp /usr/local/bin/prompt $CHROOT/usr/local/bin/prompt
+cp /usr/local/bin/response $CHROOT/usr/local/bin/response
+
+# CUSTOM PROMPTS
+export DEBIAN_FRONTEND=dialog
+export TERM=linux
+export NCURSES_NO_UTF8_ACS=1
+printf "\ec"
+in-target sh -c "cd /tmp; /usr/local/bin/prompt /root/install/prompt.templates; response /root/install/prompt.templates | tee .ret"
+export PROMPT_RESPONSE="$(cat $CHROOT/tmp/.ret)"
 rm $CHROOT/tmp/.ret
-in-target cat "$RESPONSE" > $CHROOT/home/$DEFAULT_USER/.ret
+in-target cat "$PROMPT_RESPONSE" > $CHROOT/home/$DEFAULT_USER/.ret
 
-if [ -d /root/install/filesystem ]; then
-    /usr/bin/rsync -a /root/install/filesystem/ $CHROOT/
-fi
-if [ -d /root/packages ]; then
-    mkdir -p $CHROOT/root/packages/
-    /usr/bin/rsync -a /root/packages/ $CHROOT/root/packages/
+# INSTALL FILESYSTEM
+if [ -d $CHROOT/root/install/filesystem ]; then
+    /usr/local/bin/rsyncr $CHROOT/root/install/filesystem/ $CHROOT/
 fi
 
+# INSTALL DEBIAN REPOSITORIES
 if [ -f /root/install/repos.list ]; then
     for r in $(cat /root/install/repos.list); do
         if [ -f /etc/apt/sources.list.d/$r.list ]; then
@@ -44,46 +45,44 @@ if [ -f /root/install/repos.list ]; then
         fi
     done
 fi
+in-target apt-get update -y
 
-# in-target apt-get update -y
+# INSTALL DEBS
+if [ -d $CHROOT/root/install/packages ]; then
+    in-target sh -c "dpkg -i /root/install/packages/*.deb || true; apt-get install -f; dpkg -i /root/install/packages/*.deb"
+fi
 
-# in-target sh -c "dpkg -i "/root/packages/*.deb || true; apt-get install -f; dpkg -i "/root/packages/*.deb"
 
-# if [ -d $CHROOT/root/install/fonts ]; then
-#     cd $CHROOT/root/install/fonts
-#     for f in $(cat *.list); do
-#         curl -LO $f
-#         # TODO: support tar and tar.gz
-#         unzip *.zip || true
-#         # TODO: support otf fonts
-#         cp *.ttf $CHROOT/usr/local/share/fonts 2>/dev/null || true
-#     done
-#     cd -
-# fi
+# RUN POST INSTALL HOOKS
+for script in "/root/install/hooks/post-install"/*.sh; do
+    if [ -f "$script" ]; then
+        SCRIPT_NAME=$(basename "$script" .sh)
+        in-target sh -c "cd / && sh $script 2>&1 > /var/log/install/post-install-$SCRIPT_NAME.log"
+    fi
+done
+for script in "/root/install/hooks/user-post-install"/*.sh; do
+    if [ -f "$script" ]; then
+        SCRIPT_NAME=$(basename "$script" .sh)
+        LOG_PATH="/var/log/install/user-post-install-$SCRIPT_NAME.log"
+        in-target touch $LOG_PATH
+        in-target chown $DEFAULT_USER:$DEFAULT_USER $LOG_PATH
+        in-target su $DEFAULT_USER -c "cd /home/$DEFAULT_USER && sh $script 2>&1 > $LOG_PATH"
+    fi
+done
 
-# in-target fc-cache -f -v
+# UPDATE SYSTEM
+in-target fc-cache -f -v
+in-target update-grub
 
-# if [ -f $CHROOT/root/install/hooks/post-install.sh ]; then
-#     in-target sh -c "cd / && sh /root/install/hooks/post-install.sh 2>&1 > /var/log/install/post-install.log"
-# fi
-# if [ -f $CHROOT/root/install/hooks/user-post-install.sh ]; then
-#     in-target touch /var/log/install/user-post-install.log
-#     in-target chown $DEFAULT_USER:$DEFAULT_USER /var/log/install/user-post-install.log
-#     in-target su $DEFAULT_USER -c "cd /home/$DEFAULT_USER && sh /root/install/hooks/user-post-install.sh 2>&1 > /var/log/install/user-post-install.log"
-# fi
+# CLEANUP
+if [ "{{ deb.debug }}" = "false" ]; then
+    rm -rf \
+        $CHROOT/root/install \
+        $CHROOT/usr/local/bin/prompt \
+        $CHROOT/usr/local/bin/response \
+        $CHROOT/var/log/install
+fi
 
-# if [ "<% $DEBUG %>" = "false" ]; then
-#     rm -rf $CHROOT/var/log/install
-#     rm -rf \
-#         /root/install \
-#         $CHROOT/root/install \
-#         $CHROOT/root/packages
-# fi
-
-# in-target update-grub
 for mount in dev proc run sys; do
     umount /target/${mount}
 done
-if ! chvt 1 &>/dev/null; then
-    break
-fi

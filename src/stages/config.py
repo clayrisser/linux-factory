@@ -1,4 +1,5 @@
 import os
+from util import shell
 from deb import Deb
 
 
@@ -8,5 +9,5 @@ class ConfigStage:
 
     async def run(self):
         await self.deb.hooks.trigger("before_config")
-        os.system("cd " + self.deb.paths["lb"] + " && make config")
+        shell("cd " + self.deb.paths["lb"] + " && make config")
         await self.deb.hooks.trigger("after_config")

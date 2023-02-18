@@ -354,7 +354,7 @@ tasksel tasksel/first multiselect standard
 
 # Individual additional packages to install
 #d-i pkgsel/include string openssh-server build-essential
-{% if deb.data.packages|length > 0 and deb.lb_envs.DEBIAN_INSTALLER != 'live' %}d-i pkgsel/include string{% for package in deb.data.packages %}{% if package.installed %} {{package.package}}{% endif %}{% endfor %}{% endif %}
+{% set packages = deb.data.packages|selectattr("installed", "equalto", true)|selectattr("live", "equalto", false)|list %}{% if packages|length > 0 and deb.lb_envs.DEBIAN_INSTALLER != 'live' %}d-i pkgsel/include string{% for package in packages %} {{package.package}}{% endfor %}{% endif %}
 # Whether to upgrade packages after debootstrap.
 # Allowed values: none, safe-upgrade, full-upgrade
 d-i pkgsel/upgrade select none

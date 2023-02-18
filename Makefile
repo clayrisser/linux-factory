@@ -3,7 +3,7 @@
 # File Created: 24-05-2022 13:11:50
 # Author: Clay Risser
 # -----
-# Last Modified: 31-05-2022 10:51:47
+# Last Modified: 18-02-2023 13:31:00
 # Modified By: Clay Risser
 # -----
 # Risser Labs LLC (c) Copyright 2021 - 2022
@@ -29,6 +29,8 @@ include $(MKPM)/dotenv
 include $(MKPM)/python
 
 export EXPORT_GPG_KEY := sh $(SCRIPTS_PATH)/export-gpg-key.sh
+
+CLOC ?= cloc
 
 ACTIONS += install ## install dependencies
 $(ACTION)/install: $(PROJECT_ROOT)/pyproject.toml env
@@ -69,6 +71,11 @@ layouts: ##
 .PHONY: trust-gpg-key
 trust-gpg-key: ##
 	@$(EXPORT_GPG_KEY) $(ARGS) config-overrides/archives/$(ARGS).key.chroot
+
+.PHONY: count
+count:
+	@$(CLOC) $(shell $(GIT) ls-files | $(GREP) -v '^.gitattributes$$' | $(XARGS) git check-attr filter | \
+		$(GREP) -v 'filter: lfs' | $(SED) 's|: filter: .*||g')
 
 -include $(call actions)
 

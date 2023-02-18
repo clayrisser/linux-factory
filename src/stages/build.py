@@ -1,5 +1,5 @@
-import os
 from deb import Deb
+from util import shell
 
 
 class BuildStage:
@@ -8,5 +8,5 @@ class BuildStage:
 
     async def run(self):
         await self.deb.hooks.trigger("before_build")
-        os.system("cd " + self.deb.paths["lb"] + " && make build")
+        shell("cd " + self.deb.paths["lb"] + " && make build")
         await self.deb.hooks.trigger("after_build")

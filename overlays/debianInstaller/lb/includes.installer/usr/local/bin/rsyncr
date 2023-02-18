@@ -1,0 +1,37 @@
+#!/bin/sh
+
+path_a=$1
+path_b=$2
+
+if [ ! -d "$path_a" ]; then
+    echo "Error: The source path does not exist or is not a directory." >&2
+    exit 1
+fi
+
+realpath_a=$(realpath "$path_a" 2>/dev/null)
+realpath_b=$(realpath "$path_b" 2>/dev/null)
+if [ "$realpath_b" = "$realpath_a" ]; then
+    echo "Error: The destination directory is inside the source directory." >&2
+    exit 1
+elif [ "${realpath_b#$realpath_a}" != "$realpath_b" ]; then
+    echo "Error: The destination directory is inside the source directory." >&2
+    exit 1
+fi
+
+if [ ! -d "$path_b" ]; then
+    mkdir -p "$path_b"
+fi
+
+for file in "$path_a"/*; do
+    filename=$(basename "$file")
+    if [ -d "$file" ]; then
+        if [ ! -d "$path_b/$filename" ]; then
+            mkdir "$path_b/$filename"
+        fi
+        "$0" "$file" "$path_b/$filename"
+    else
+        if [ ! -f "$path_b/$filename" ]; then
+            cp "$file" "$path_b/$filename"
+        fi
+    fi
+done

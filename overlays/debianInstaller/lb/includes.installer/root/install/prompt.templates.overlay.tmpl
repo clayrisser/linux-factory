@@ -1,6 +1,6 @@
 {% if overlay.config.prompts|length > 0 %}{% for prompt in overlay.config.prompts %}Template: {{ prompt.template }}
 Type: {% if prompt.type %}{{ prompt.type }}{% else %}string{% endif %}{% if prompt.default %}
-Default: {{ prompt.default }}{% endif %}{% if prompt.order is not none %}
+Default: {{ prompt.default }}{% endif %}{% if prompt.order is number %}
 Order: {{ prompt.order }}{% endif %}{% if prompt.owners %}
 Owners: {{ prompt.owners }}{% endif %}{% if prompt.priority %}
 Priority: {{ prompt.priority }}{% endif %}{% if prompt.tag %}

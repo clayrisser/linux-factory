@@ -1,5 +1,5 @@
 from datetime import datetime
-from util import download
+from util import download, shell
 from yaml import SafeLoader
 import glob
 import hashlib
@@ -11,7 +11,7 @@ import yaml
 class PackagesLoader:
     name = "packages"
 
-    DEB_REGEX = r"[^:]+:\/\/.+\.deb$"
+    URI_REGEX = r"[^:]+:\/\/.+\.deb$"
 
     def __init__(self, deb):
         self.deb = deb
@@ -35,7 +35,7 @@ class PackagesLoader:
         ) + glob.glob(
             os.path.join(self.deb.paths["os"], ".debs/**/*.deb"), recursive=True
         ):
-            os.system(
+            shell(
                 "dpkg-name -s "
                 + os.path.join(self.deb.paths["lb"], "config-overrides/packages.chroot")
                 + " -o "
@@ -53,7 +53,7 @@ class PackagesLoader:
         return packages
 
     async def load_package(self, package):
-        if not not re.match(self.DEB_REGEX, package.package):
+        if not not re.match(self.URI_REGEX, package.package):
             self.deb.data["debs"].append(package)
             if not os.path.exists(os.path.join(self.deb.paths["os"], ".debs")):
                 os.makedirs(os.path.join(self.deb.paths["os"], ".debs"))
@@ -97,7 +97,8 @@ class PackagesLoader:
                 ) as f:
                     f.write(package.package + "\n")
             elif not package.live and package.installed:
-                # TODO: add to calamares/modules/packages.conf and includes.installer/preseed.cfg
+                # add to calamares/modules/packages.conf and includes.installer/preseed.cfg
+                # handled by overlays
                 pass
             if package.binary:
                 with open(

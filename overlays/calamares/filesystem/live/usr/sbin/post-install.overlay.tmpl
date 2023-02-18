@@ -9,7 +9,7 @@ DEFAULT_USER=$(echo $(ls $CHROOT/home) | sed 's|\s.*$||g')
 mkdir -p /log/calamares
 
 if [ -d /root/install/filesystem ]; then
-    rsync -a /root/install/filesystem/ $CHROOT/
+    /usr/local/bin/rsyncr /root/install/filesystem/ $CHROOT/
 fi
 
 # disable sudo password

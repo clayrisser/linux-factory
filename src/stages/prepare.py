@@ -2,12 +2,12 @@ from deb import Deb
 from loaders import loaders
 from overlay import Overlay
 import logging
-from util import (
-    import_module,
-    merge_dir_templates,
-)
 import os
 import shutil
+from util import (
+    import_module,
+    merge_dirs_templates,
+)
 
 
 class PrepareStage:
@@ -81,7 +81,7 @@ class PrepareStage:
     async def initialize_overlays(self):
         overlay: Overlay
         for _overlay_name, overlay in self.deb.overlays.items():
-            await merge_dir_templates(
+            await merge_dirs_templates(
                 overlay.path, self.deb.paths["os"], deb=self.deb, overlay=overlay
             )
         if os.path.exists(

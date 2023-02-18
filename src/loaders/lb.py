@@ -1,5 +1,5 @@
 import os
-from util import merge_dir, merge_dir_templates
+from util import merge_dirs_templates
 
 
 class LBLoader:
@@ -9,7 +9,7 @@ class LBLoader:
         self.deb = deb
 
     async def load(self):
-        await merge_dir_templates(
+        await merge_dirs_templates(
             os.path.join(self.deb.paths["os"], "lb"),
             os.path.join(self.deb.paths["lb"], "config-overrides"),
             deb=self.deb,

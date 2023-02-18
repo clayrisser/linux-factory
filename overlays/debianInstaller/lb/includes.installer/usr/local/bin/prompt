@@ -1,7 +1,5 @@
 #!/bin/sh -e
 
-echo $0 $@ >&2
-
 export DEBCONF_DEBUG=${DEBCONF_DEBUG:-developer}
 export DEBCONF_PRIORITY=${DEBCONF_PRIORITY:-critical}
 if [ "$_PROMPT_TMP" = "" ]; then

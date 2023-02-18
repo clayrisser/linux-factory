@@ -3,47 +3,50 @@ import glob
 import importlib
 import os
 import re
+import logging
+import tarfile
+import zipfile
 
 
-def merge_dict(a, b, depth=-1):
+def merge_dict(a, b, depth=float("inf")):
     if b == None:
         return a
     if type(a) is dict and type(b) is dict:
         if depth == 0:
             return a
         merged = {}
-        for key in list(set(list(a.keys()) + list(b.keys()))):
+        for key in set(list(a.keys()) + list(b.keys())):
             merged[key] = merge_dict(
                 a[key] if key in a else None, b[key] if key in b else None, --depth
             )
         return merged
     elif type(a) is list and type(b) is list:
-        return list(set(a + b))
+        return a + [x for x in b if x not in a]
     else:
         return b
 
 
-async def merge_dir(a_path, b_path):
-    if type(a_path) is not list:
-        a_path = [a_path]
+async def merge_dirs(a_paths, b_path):
+    if type(a_paths) is not list:
+        a_paths = [a_paths]
     if not os.path.exists(b_path):
         os.makedirs(b_path)
-    os.system(
-        "rsync -a "
-        + " ".join(list(map(lambda p: p + "/", a_path)))
+    existing_a_paths = list(filter(lambda path: os.path.exists(path), a_paths))
+    shell(
+        "rsync -r "
+        + " ".join(list(map(lambda p: p + "/", existing_a_paths)))
         + " "
         + b_path
-        + "/ 2>/dev/null"
+        + "/"
     )
 
 
-async def merge_dir_templates(a_path, b_path, deb, overlay=None):
-    await merge_dir(a_path, b_path)
+async def merge_dirs_templates(a_path, b_path, deb, overlay=None):
+    await merge_dirs(a_path, b_path)
     for path in glob.glob(
         os.path.join(a_path, "**/*.overlay.tmpl" if overlay else "**/*.tmpl"),
         recursive=True,
     ):
-        await mkdirs(get_parent_from_path(path))
         with open(path) as f:
             template = Template(f.read())
             with open(
@@ -52,7 +55,7 @@ async def merge_dir_templates(a_path, b_path, deb, overlay=None):
             ) as f:
                 f.write(
                     template.render(
-                        deb=deb.__dict__ if hasattr(deb, "__dict__") else None,
+                        deb=deb,
                         overlay=overlay.__dict__
                         if hasattr(overlay, "__dict__")
                         else None,
@@ -67,7 +70,7 @@ async def merge_dir_templates(a_path, b_path, deb, overlay=None):
 
 
 async def download(url, output):
-    os.system("curl -Lo " + output + " " + url)
+    shell("curl -Lfo " + output + " " + url)
 
 
 def import_module(module_name, relative_path):
@@ -85,9 +88,32 @@ async def mkdirs(path):
         os.makedirs(path)
 
 
-def get_filename_from_path(path):
-    return "".join(re.findall(r"[^/]+$", path))
+def extract(file, destination=os.getcwd()):
+    parent_path = os.path.dirname(destination)
+    if not os.path.exists(parent_path):
+        os.makedirs(parent_path)
+    if bool(re.search(r"\.zip$", file)):
+        with zipfile.ZipFile(file, "r") as zip:
+            zip.extractall(destination)
+    elif bool(re.search(r"\.tar$", file)):
+        with tarfile.TarFile(file, "r") as tar:
+            tar.extractall(destination)
+    elif bool(re.search(r"\.tar.gz$", file)):
+        with tarfile.TarFile(file, "r") as tar:
+            tar.extractall(destination)
 
 
-def get_parent_from_path(path):
-    return re.sub(r"/[^/]+$", "", path)
+def shell(command, ignore_error=False):
+    logging.debug("SHELL: " + command)
+    status = os.system(command)
+    if os.WIFEXITED(status):
+        exit_code = os.WEXITSTATUS(status)
+        if exit_code != 0:
+            if not ignore_error:
+                exit(exit_code)
+            return False
+    else:
+        if not ignore_error:
+            exit(1)
+        return False
+    return True

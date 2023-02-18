@@ -1,5 +1,5 @@
 import glob
-from util import mkdirs, get_filename_from_path
+from util import mkdirs
 import shutil
 import os
 
@@ -37,7 +37,8 @@ class OverlayHooks:
         remove_packages = []
         for path in glob.glob(
             os.path.join(
-                self.deb.paths["lb"], "config-overrides/package-lists/*.list.chroot_live"
+                self.deb.paths["lb"],
+                "config-overrides/package-lists/*.list.chroot_live",
             )
         ):
             with open(path) as f:
