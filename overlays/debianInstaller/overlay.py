@@ -15,6 +15,6 @@ class OverlayHooks:
             "a",
         ) as f:
             f.write(
-                "\nd-i preseed/early_command string chmod +x /usr/local/bin/early-install && sh /usr/local/bin/early-install\n"
-                + "d-i preseed/late_command string chmod +x /usr/local/bin/post-install && sh /usr/local/bin/post-install\n"
+                "\nd-i preseed/early_command string chmod +x /usr/local/bin/early-command && sh /usr/local/bin/early-command\n"
+                + "d-i preseed/late_command string chmod +x /usr/local/bin/late-command && sh /usr/local/bin/late-command\n"
             )

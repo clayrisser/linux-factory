@@ -1,0 +1,12 @@
+{% if overlay.config.prompts|length > 0 %}{% for prompt in overlay.config.prompts %}Template: {{ prompt.template }}
+Type: {% if prompt.type %}{{ prompt.type }}{% else %}string{% endif %}{% if prompt.default %}
+Default: {{ prompt.default }}{% endif %}{% if prompt.order is not none %}
+Order: {{ prompt.order }}{% endif %}{% if prompt.owners %}
+Owners: {{ prompt.owners }}{% endif %}{% if prompt.priority %}
+Priority: {{ prompt.priority }}{% endif %}{% if prompt.tag %}
+Tag: {{ prompt.tag }}{% endif %}{% if prompt.visibility %}
+Visibility: {{ prompt.visibility }}{% endif %}{% if prompt.choices|length > 0 %}
+Choices: {{ prompt.choices|join(', ') }}{% endif %}
+Description: {{ prompt.description }}{% if prompt.help %}
+ {{ prompt.help }}{% endif %}
+{% endfor %}{% endif %}

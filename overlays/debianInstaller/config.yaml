@@ -1,0 +1,4 @@
+prompts:
+  - template: prompt/thank_you
+    description: "Thank you for installing"
+    type: note

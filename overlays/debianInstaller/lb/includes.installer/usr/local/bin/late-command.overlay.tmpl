@@ -2,13 +2,16 @@
 
 export CHROOT=/target
 mkdir -p $CHROOT/var/log/install
-exec > $CHROOT/var/log/install/debian-install-post-install.log 2>&1
+exec > $CHROOT/var/log/install/di-late-command.log 2>&1
+cp /var/log/install/di-early-command.log $CHROOT/var/log/install/di-early-command.log
 export DEFAULT_USER=$(echo $(ls $CHROOT/home) | sed 's|\s.*$||g')
 [ -f /root/install/.envs ] && export $(cat /root/install/.envs | grep -v '#') || true
-ls /var/log/install
-echo cp /var/log/install/di-early-install.log $CHROOT/var/log/install/di-early-install.log
-cp /var/log/install/di-early-install.log $CHROOT/var/log/install/di-early-install.log
-chmod +x /usr/local/bin/prompt
+
+mkdir -p $CHROOT/root/install
+mkdir -p $CHROOT/usr/local/bin
+cp /root/install/prompt.templates $CHROOT/root/install/prompt.templates
+cp /usr/local/bin/prompt $CHROOT/usr/local/bin/prompt
+cp /usr/local/bin/response $CHROOT/usr/local/bin/response
 
 export DEBIAN_FRONTEND=dialog
 export TERM=linux
@@ -18,25 +21,10 @@ for mount in dev proc run sys; do
     mount --bind /${mount} $CHROOT/${mount}
 done
 
-debconf_prompt() {
-    db_input critical $1 || true
-    db_go
-    db_get $1
-    echo $RET | tee -a /var/log/install/debconf-prompt.log
-}
-
-mkdir -p $CHROOT/root/install
-mkdir -p $CHROOT/usr/local/bin
-cp /root/install/prompt.templates $CHROOT/root/install/prompt.templates
-cp /usr/local/bin/prompt $CHROOT/usr/local/bin/prompt
-cp /usr/local/bin/response $CHROOT/usr/local/bin/response
-chmod +x $CHROOT/usr/local/bin/prompt
-chmod +x $CHROOT/usr/local/bin/response
-
 in-target sh -c "cd /tmp; prompt /root/install/prompt.templates; response /root/install/prompt.templates | tee .ret"
 RESPONSE="$(cat $CHROOT/tmp/.ret)"
 rm $CHROOT/tmp/.ret
-in-target cat "$RESPONSE" > /home/$DEFAULT_USER/.ret
+in-target cat "$RESPONSE" > $CHROOT/home/$DEFAULT_USER/.ret
 
 if [ -d /root/install/filesystem ]; then
     /usr/bin/rsync -a /root/install/filesystem/ $CHROOT/
@@ -54,7 +42,7 @@ if [ -f /root/install/repos.list ]; then
         if [ -f /etc/apt/trusted.gpg.d/$r.key.chroot.asc ]; then
             cp /etc/apt/trusted.gpg.d/$r.key.chroot.asc $CHROOT/etc/apt/trusted.gpg.d/$r.chroot.asc
         fi
-    fi
+    done
 fi
 
 # in-target apt-get update -y
@@ -93,8 +81,9 @@ fi
 # fi
 
 # in-target update-grub
-
 for mount in dev proc run sys; do
     umount /target/${mount}
 done
-exit 0
+if ! chvt 1 &>/dev/null; then
+    break
+fi

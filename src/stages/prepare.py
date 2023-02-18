@@ -3,7 +3,6 @@ from loaders import loaders
 from overlay import Overlay
 import logging
 from util import (
-    merge_dir,
     import_module,
     merge_dir_templates,
 )

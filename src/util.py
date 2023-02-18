@@ -1,6 +1,6 @@
-import importlib
 from jinja2 import Template
 import glob
+import importlib
 import os
 import re
 
@@ -50,7 +50,14 @@ async def merge_dir_templates(a_path, b_path, deb, overlay=None):
                 os.path.join(b_path, path[len(a_path) + 1 : -13 if overlay else -5]),
                 "w",
             ) as f:
-                f.write(template.render(deb=deb, overlay=overlay))
+                f.write(
+                    template.render(
+                        deb=deb.__dict__ if hasattr(deb, "__dict__") else None,
+                        overlay=overlay.__dict__
+                        if hasattr(overlay, "__dict__")
+                        else None,
+                    )
+                )
         if os.path.exists(
             os.path.join(b_path, path[len(a_path) + 1 :]),
         ):
