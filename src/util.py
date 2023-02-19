@@ -29,6 +29,10 @@ def merge_dict(a, b, depth=float("inf")):
 async def merge_dirs(a_paths, b_path):
     if type(a_paths) is not list:
         a_paths = [a_paths]
+    if not a_paths[0].strip():
+        raise Exception("missing source")
+    if not b_path.strip():
+        raise Exception("missing destination")
     if not os.path.exists(b_path):
         os.makedirs(b_path)
     existing_a_paths = list(filter(lambda path: os.path.exists(path), a_paths))
@@ -41,32 +45,37 @@ async def merge_dirs(a_paths, b_path):
     )
 
 
-async def merge_dirs_templates(a_path, b_path, deb, overlay=None):
-    await merge_dirs(a_path, b_path)
-    for path in glob.glob(
-        os.path.join(a_path, "**/*.overlay.tmpl" if overlay else "**/*.tmpl"),
-        recursive=True,
-    ):
-        with open(path) as f:
-            template = Template(f.read())
-            with open(
-                os.path.join(b_path, path[len(a_path) + 1 : -13 if overlay else -5]),
-                "w",
-            ) as f:
-                f.write(
-                    template.render(
-                        deb=deb,
-                        overlay=overlay.__dict__
-                        if hasattr(overlay, "__dict__")
-                        else None,
-                    )
-                )
-        if os.path.exists(
-            os.path.join(b_path, path[len(a_path) + 1 :]),
+async def merge_dirs_templates(a_paths, b_path, deb, overlay=None):
+    if type(a_paths) is not list:
+        a_paths = [a_paths]
+    await merge_dirs(a_paths, b_path)
+    for a_path in a_paths:
+        for path in glob.glob(
+            os.path.join(a_path, "**/*.overlay.tmpl" if overlay else "**/*.tmpl"),
+            recursive=True,
         ):
-            os.remove(
+            with open(path) as f:
+                template = Template(f.read())
+                with open(
+                    os.path.join(
+                        b_path, path[len(a_path) + 1 : -13 if overlay else -5]
+                    ),
+                    "w",
+                ) as f:
+                    f.write(
+                        template.render(
+                            deb=deb,
+                            overlay=overlay.__dict__
+                            if hasattr(overlay, "__dict__")
+                            else None,
+                        )
+                    )
+            if os.path.exists(
                 os.path.join(b_path, path[len(a_path) + 1 :]),
-            )
+            ):
+                os.remove(
+                    os.path.join(b_path, path[len(a_path) + 1 :]),
+                )
 
 
 async def download(url, output):

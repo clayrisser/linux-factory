@@ -132,6 +132,15 @@ echo "Running user-post-install script"
 
 ## Live Build Cheatsheet
 
+> WARNING: `binary` unfortunately has many different meanings in the documentation depending on the context. The following table helps clarify the context of binary.
+
+| binary                                | refers to           |
+| ------------------------------------- | ------------------- |
+| `config/archives/*.{list,key}.binary` | live system         |
+| `config/includes.binary/*`            | live medium         |
+| `config/package-lists/*.list.binary`  | live medium `/pool` |
+| `config/packages.binary`              | debian installer    |
+
 ### Definitions
 
 - **live medium** - the ISO image and filesystem

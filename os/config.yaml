@@ -17,7 +17,11 @@ website: https://risserlabs.com
 lb:
   debianInstaller: netinst # live,netinst
 overlays:
-  debianInstaller: {}
+  debianInstaller:
+    prompts:
+      - template: prompt/thank_you
+        description: "Thank you for installing"
+        type: note
   test: {}
   # calamares: {}
   # grub: {}

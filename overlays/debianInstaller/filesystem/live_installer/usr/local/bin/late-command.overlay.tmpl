@@ -16,10 +16,7 @@ cp -r /root/install $CHROOT/root/install
 cp /usr/local/bin/prompt $CHROOT/usr/local/bin/prompt
 cp /usr/local/bin/response $CHROOT/usr/local/bin/response
 
-export LIVE_MEDIUM=$([ -d /cdrom ] && echo /cdrom || /run/live/medium)
-echo LIVE_MEDIUM $LIVE_MEDIUM >&2
-ls $LIVE_MEDIUM >&2
-
+{% if overlay.config.prompts|length > 0 %}
 # CUSTOM PROMPTS
 export DEBIAN_FRONTEND=dialog
 export TERM=linux
@@ -29,15 +26,17 @@ in-target sh -c "cd /tmp; /usr/local/bin/prompt /root/install/prompt.templates; 
 export PROMPT_RESPONSE="$(cat $CHROOT/tmp/.ret)"
 rm $CHROOT/tmp/.ret
 in-target cat "$PROMPT_RESPONSE" > $CHROOT/home/$DEFAULT_USER/.ret
+{% endif %}
 
 # INSTALL FILESYSTEM
 if [ -d $CHROOT/root/install/filesystem ]; then
     /usr/local/bin/rsyncr $CHROOT/root/install/filesystem/ $CHROOT/
 fi
 /usr/local/bin/rsyncr $CHROOT/etc/skel/ $CHROOT/home/$DEFAULT_USER/
-in-target chown -R $DEFAULT_USER:$DEFAULT_USER $CHROOT/home/$DEFAULT_USER
+in-target chown -R $DEFAULT_USER:$DEFAULT_USER /home/$DEFAULT_USER
 
 # INSTALL DEBIAN REPOSITORIES
+# TODO: fix
 if [ -f /root/install/repos.list ]; then
     for r in $(cat /root/install/repos.list); do
         if [ -f /etc/apt/sources.list.d/$r.list ]; then
@@ -68,7 +67,7 @@ for script in "/root/install/hooks/user-post-install"/*.sh; do
         LOG_PATH="/var/log/install/user-post-install-$SCRIPT_NAME.log"
         in-target touch $LOG_PATH
         in-target chown $DEFAULT_USER:$DEFAULT_USER $LOG_PATH
-        in-target su $DEFAULT_USER -c "cd /home/$DEFAULT_USER && sh $script 2>&1 > $LOG_PATH"
+        in-target su $DEFAULT_USER -c "sh -c \"cd /home/$DEFAULT_USER && sh $script 2>&1 > $LOG_PATH\""
     fi
 done
 

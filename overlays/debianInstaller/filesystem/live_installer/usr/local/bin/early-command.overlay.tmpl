@@ -1,0 +1,14 @@
+#!/bin/sh
+
+mkdir -p /var/log/install
+exec 2>> /var/log/install/di-early-command.log
+[ -f /root/install/.envs ] && export $(cat /root/install/.envs | grep -v '#') || true
+
+{% if overlay.config.prompts|length > 0 %}
+# CUSTOM PROMPTS
+export DEBIAN_FRONTEND=dialog
+export TERM=linux
+export NCURSES_NO_UTF8_ACS=1
+printf "\ec"
+/usr/local/bin/prompt /root/install/prompt.templates
+{% endif %}
