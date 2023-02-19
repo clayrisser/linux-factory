@@ -100,6 +100,8 @@ It's important to note that the order in which hooks are executed is determined 
 
 ### Script Hooks
 
+> Script hooks are a deb-distro concept and should not be confused with the live build hooks available at `lb/hooks/`.
+
 During the installation process, there are two script hooks that can be utilized, `post-install` and `user-post-install`.
 
 #### Location of Script Hooks

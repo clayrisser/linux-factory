@@ -12,9 +12,6 @@ for mount in dev proc run sys; do
 done
 
 # PREPARE SCRIPTS
-chmod +x /usr/local/bin/prompt
-chmod +x /usr/local/bin/response
-chmod +x /usr/local/bin/rsyncr
 cp -r /root/install $CHROOT/root/install
 cp /usr/local/bin/prompt $CHROOT/usr/local/bin/prompt
 cp /usr/local/bin/response $CHROOT/usr/local/bin/response

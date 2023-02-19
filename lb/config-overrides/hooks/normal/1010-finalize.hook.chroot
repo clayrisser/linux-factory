@@ -1,3 +1,5 @@
 #!/bin/bash
 
-# fc-cache -f -v
+chmod +x /usr/local/bin/*
+
+fc-cache -f -v
