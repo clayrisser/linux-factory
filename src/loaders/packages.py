@@ -1,10 +1,9 @@
-from datetime import datetime
 from util import download, shell, merge_dirs
 from yaml import SafeLoader
 import glob
-import hashlib
 import os
 import re
+import shutil
 import yaml
 
 
@@ -31,8 +30,6 @@ class PackagesLoader:
                 os.path.join(self.deb.paths["lb"], "config-overrides/packages.chroot")
             )
         for d in glob.glob(
-            os.path.join(self.deb.paths["os"], "packages/**/*.deb"), recursive=True
-        ) + glob.glob(
             os.path.join(self.deb.paths["os"], ".debs/**/*.deb"), recursive=True
         ):
             shell(
@@ -76,13 +73,22 @@ class PackagesLoader:
             self.deb.data["debs"].append(package)
             if not os.path.exists(os.path.join(self.deb.paths["os"], ".debs")):
                 os.makedirs(os.path.join(self.deb.paths["os"], ".debs"))
-            md5_hash = hashlib.md5()
-            md5_hash.update(str(datetime.now()).encode("utf-8"))
-            digest = md5_hash.hexdigest()
             await download(
                 package.package,
-                os.path.join(self.deb.paths["os"], ".debs", digest + ".deb"),
+                os.path.join(
+                    self.deb.paths["os"], ".debs", str(hash(package.package)) + ".deb"
+                ),
             )
+        elif package.package[-4:] == ".deb":
+            if package.live or package.installed:
+                shutil.copyfile(
+                    os.path.join(self.deb.paths["os"], "packages", package.package),
+                    os.path.join(
+                        self.deb.paths["os"],
+                        ".debs",
+                        str(hash(package.package)) + ".deb",
+                    ),
+                )
         else:
             self.deb.data["packages"].append(package)
             if not os.path.exists(

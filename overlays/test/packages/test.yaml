@@ -1,5 +1,6 @@
 - cowsay
 - http://ftp.de.debian.org/debian/pool/main/s/sl/sl_5.02-1+b1_amd64.deb
+- ddate.deb
 - package: brave-browser
   live: true
   installed: true

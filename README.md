@@ -136,7 +136,7 @@ echo "Running user-post-install script"
 - **live system** - the operating system booted from the live medium
 - **installed system** - the operating system installed from debian installer
 - **chroot stage** - stage when building the image
-- **binary stage** - stage when building the live medium
+- **binary stage** - stage when building the live medium (binary can also refer to the debian installer)
 
 ### File Structure
 
@@ -146,9 +146,11 @@ echo "Running user-post-install script"
 - `config/includes.chroot/*` - files to include in the _live system's_ filesystem
 - `config/includes.installer/*` - configuration for debian installer
 - `config/package-lists/*.list.binary` - packages to place in the APT `pool/` repository on the _live medium_ (for offline packages)
-- `config/package-lists/*.list.chroot` - packages to install in the _live system_ (which will most likely be added to the _installed system_)
 - `config/package-lists/*.list.chroot_install` - packages to install in the _live system_ and _installed system_
 - `config/package-lists/*.list.chroot_live` - packages to install in the _live system_ only (works by uninstalling them from _installed system_)
+- `config/package-lists/*.list.chroot` - packages to install in the _live system_ (which will most likely be added to the _installed system_)
+- `config/packages.binary` - udeb packages to install for the debian installer
+- `config/packages.chroot` - deb packages to install for the live system
 
 _I'm not sure exactly what the difference between `config/package-lists/*.list.chroot` and
 `config/package-lists/*.list.chroot_install` are._
