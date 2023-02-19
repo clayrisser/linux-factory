@@ -29,7 +29,7 @@ class OverlayHooks:
             self.deb.paths["lb"], "config-overrides/includes.installer/etc/apt"
         )
         sources_path = os.path.join(apt_path, "sources.list.d")
-        trusted_path = os.path.join(apt_path, "trusted.list.d")
+        trusted_path = os.path.join(apt_path, "trusted.gpg.d")
         if not os.path.exists(sources_path):
             os.makedirs(sources_path)
         if not os.path.exists(trusted_path):
