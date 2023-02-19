@@ -132,15 +132,6 @@ echo "Running user-post-install script"
 
 ## Live Build Cheatsheet
 
-> WARNING: `binary` unfortunately has many different meanings in the documentation depending on the context. The following table helps clarify the context of binary.
-
-| binary                                | refers to           |
-| ------------------------------------- | ------------------- |
-| `config/archives/*.{list,key}.binary` | live system         |
-| `config/includes.binary/*`            | live medium         |
-| `config/package-lists/*.list.binary`  | live medium `/pool` |
-| `config/packages.binary`              | debian installer    |
-
 ### Definitions
 
 - **live medium** - the ISO image and filesystem
@@ -163,8 +154,19 @@ echo "Running user-post-install script"
 - `config/packages.binary` - udeb packages to install for the debian installer
 - `config/packages.chroot` - deb packages to install for the live system
 
-_I'm not sure exactly what the difference between `config/package-lists/*.list.chroot` and
+_I'm not sure exactly what the differences between `config/package-lists/*.list.chroot` and
 `config/package-lists/*.list.chroot_install` are._
+
+> WARNING: _binary_ unfortunately has many different meanings in the documentation depending on the context. The following table helps clarify the context of binary.
+
+| binary                                | refers to             |
+| ------------------------------------- | --------------------- |
+| `config/archives/*.{list,key}.binary` | _live system_         |
+| `config/includes.binary/*`            | _live medium_         |
+| `config/package-lists/*.list.binary`  | _live medium_ `/pool` |
+| `config/packages.binary`              | _debian installer_    |
+
+> WARNING: `config/archives/*.{list,key}.chroot` does not make the repositories available to the _live system_. Instead you must use `config/archives/*.{list,key}.binary` for the repositories to be available to the _live system_.
 
 ### Mounts
 

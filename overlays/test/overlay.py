@@ -7,19 +7,19 @@ class OverlayHooks:
         self.config = config
 
     async def before_config(self):
-        logging.debug("TEST before config")
+        logging.debug("TEST: before config")
 
     async def after_config(self):
-        logging.debug("TEST after config")
+        logging.debug("TEST: after config")
 
     async def before_prepare(self):
-        logging.debug("TEST before prepare")
+        logging.debug("TEST: before prepare")
 
     async def after_prepare(self):
-        logging.debug("TEST after prepare")
+        logging.debug("TEST: after prepare")
 
     async def before_build(self):
-        logging.debug("TEST before build")
+        logging.debug("TEST: before build")
 
     async def after_build(self):
-        logging.debug("TEST after build")
+        logging.debug("TEST: after build")

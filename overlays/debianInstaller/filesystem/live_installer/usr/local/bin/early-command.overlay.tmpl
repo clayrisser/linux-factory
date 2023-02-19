@@ -4,7 +4,9 @@ mkdir -p /var/log/install
 exec 2>> /var/log/install/di-early-command.log
 [ -f /root/install/.envs ] && export $(cat /root/install/.envs | grep -v '#') || true
 
-{% if overlay.config.prompts|length > 0 %}
+chmod +x /usr/local/bin/*
+
+{% if deb.config.prompts|length > 0 %}
 # CUSTOM PROMPTS
 export DEBIAN_FRONTEND=dialog
 export TERM=linux

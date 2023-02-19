@@ -14,6 +14,8 @@ class ReposLoader:
 
     async def load(self):
         repos = await self.get_repos()
+        if not "repos" in self.deb.data:
+            self.deb.data["repos"] = []
         for r in repos:
             await self.load_repo(Repo(r))
 
@@ -28,6 +30,7 @@ class ReposLoader:
         return repos
 
     async def load_repo(self, repo):
+        self.deb.data["repos"].append(repo)
         await mkdirs(
             os.path.join(
                 self.deb.paths["lb"],
@@ -66,6 +69,9 @@ class ReposLoader:
                     ),
                 )
         if repo.installed:
+            # creates repos.list
+            # installer must use this list to copy the correct repos
+            # to the installed system
             await mkdirs(
                 os.path.join(
                     self.deb.paths["lb"],

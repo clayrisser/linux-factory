@@ -1,4 +1,6 @@
 import glob
+from time import sleep
+import logging
 from util import mkdirs
 import shutil
 import os
@@ -8,6 +10,10 @@ class OverlayHooks:
     def __init__(self, deb, config):
         self.deb = deb
         self.config = config
+
+    async def before_prepare(self):
+        logging.warn("\033[1;33mUNSTABLE: calamares overlay is unstable\033[0m")
+        sleep(5)
 
     async def before_filesystem(self):
         await mkdirs(

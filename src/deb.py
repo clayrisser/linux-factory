@@ -355,12 +355,9 @@ class Deb:
                 overlay_config = await Deb._load_config(
                     os.path.join(overlay_path, "config.yaml")
                 )
-                if (
-                    "overload" in overlay_config
-                    and type(overlay_config["overload"]) is dict
-                ):
+                if "os" in overlay_config and type(overlay_config["os"]) is dict:
                     config = merge_dict(
                         config,
-                        overlay_config["overload"],
+                        overlay_config["os"],
                     )
         return Deb(config)

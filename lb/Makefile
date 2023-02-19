@@ -3,7 +3,7 @@
 # File Created: 31-08-2021 15:23:50
 # Author: Clay Risser
 # -----
-# Last Modified: 18-02-2023 10:07:36
+# Last Modified: 19-02-2023 05:25:57
 # Modified By: Clay Risser
 # -----
 # Risser Labs LLC (c) Copyright 2021 - 2022
@@ -52,6 +52,7 @@ ACTIONS += build~config
 BUILD_TARGET := sudo
 $(ACTION)/build: ##
 	@$(SUDO) bash auto/build
+	@$(CAT) build.log | $(TAIL) -n1 | $(GREP) -q 'P: Build completed successfully'
 	@$(call done,build)
 
 $(ISO_FILE): ~build

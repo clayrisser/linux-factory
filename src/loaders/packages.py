@@ -38,14 +38,17 @@ class PackagesLoader:
                 + " -o "
                 + d
             )
-        await merge_dirs(
+        if len(glob.glob(
             os.path.join(self.deb.paths["lb"], "config-overrides/packages.chroot"),
-            os.path.join(self.deb.paths["installer_install"], "debs"),
-        )
-        await merge_dirs(
-            os.path.join(self.deb.paths["lb"], "config-overrides/packages.chroot"),
-            os.path.join(self.deb.paths["chroot_install"], "debs"),
-        )
+        )) > 0:
+            await merge_dirs(
+                os.path.join(self.deb.paths["lb"], "config-overrides/packages.chroot"),
+                os.path.join(self.deb.paths["installer_install"], "debs"),
+            )
+            await merge_dirs(
+                os.path.join(self.deb.paths["lb"], "config-overrides/packages.chroot"),
+                os.path.join(self.deb.paths["chroot_install"], "debs"),
+            )
 
     async def get_packages(self):
         packages = []

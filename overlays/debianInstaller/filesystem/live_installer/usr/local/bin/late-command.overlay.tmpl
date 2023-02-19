@@ -16,7 +16,7 @@ cp -r /root/install $CHROOT/root/install
 cp /usr/local/bin/prompt $CHROOT/usr/local/bin/prompt
 cp /usr/local/bin/response $CHROOT/usr/local/bin/response
 
-{% if overlay.config.prompts|length > 0 %}
+{% if deb.config.prompts|length > 0 %}
 # CUSTOM PROMPTS
 export DEBIAN_FRONTEND=dialog
 export TERM=linux
@@ -36,7 +36,6 @@ fi
 in-target chown -R $DEFAULT_USER:$DEFAULT_USER /home/$DEFAULT_USER
 
 # INSTALL DEBIAN REPOSITORIES
-# TODO: fix
 if [ -f /root/install/repos.list ]; then
     for r in $(cat /root/install/repos.list); do
         if [ -f /etc/apt/sources.list.d/$r.list ]; then
