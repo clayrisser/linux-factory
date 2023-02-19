@@ -60,13 +60,20 @@ for script in "/root/install/hooks/post-install"/*.sh; do
         in-target sh -c "cd / && sh $script 2>&1 > /var/log/install/post-install-$SCRIPT_NAME.log"
     fi
 done
-for script in "/root/install/hooks/user-post-install"/*.sh; do
-    if [ -f "$script" ]; then
-        SCRIPT_NAME=$(basename "$script" .sh)
+mkdir -p $CHROOT/home/$DEFAULT_USER/install/hooks
+cp -r /root/install/hooks/user-post-install $CHROOT/home/$DEFAULT_USER/install/hooks
+in-target chown -R $DEFAULT_USER:$DEFAULT_USER /home/$DEFAULT_USER
+for s in "$CHROOT/home/$DEFAULT_USER/install/hooks/user-post-install"/*.sh; do
+    SCRIPT_PATH=/home/$DEFAULT_USER/install/hooks/user-post-install/$(basename "$s")
+    SCRIPT_NAME=$(basename "$s" .sh)
+    echo SCRIPT_PATH $SCRIPT_PATH >&2
+    echo SCRIPT_NAME $SCRIPT_NAME >&2
+    echo -f "${CHROOT}${SCRIPT_PATH}" >&2
+    if [ -f "${CHROOT}${SCRIPT_PATH}" ]; then
         LOG_PATH="/var/log/install/user-post-install-$SCRIPT_NAME.log"
         in-target touch $LOG_PATH
         in-target chown $DEFAULT_USER:$DEFAULT_USER $LOG_PATH
-        in-target su $DEFAULT_USER -c "sh -c \"cd /home/$DEFAULT_USER && sh $script 2>&1 > $LOG_PATH\""
+        in-target su $DEFAULT_USER -c "cd /home/$DEFAULT_USER && sh $SCRIPT_PATH 2>&1 > $LOG_PATH"
     fi
 done
 

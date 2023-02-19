@@ -50,5 +50,5 @@ class OverlayHooks:
                         "config-overrides/archives",
                         repo.name + ".key.chroot",
                     ),
-                    os.path.join(trusted_path, repo.name + ".chroot.asc"),
+                    os.path.join(trusted_path, repo.name + ".key.chroot.asc"),
                 )
