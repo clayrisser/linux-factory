@@ -326,6 +326,12 @@ class Deb:
             "os": os.path.join(build_path, "os"),
             "root": root_path,
             "tmp": os.path.join(build_path, "tmp"),
+            "installer_install": os.path.join(
+                build_path, "lb/config-overrides/includes.installer/root/install"
+            ),
+            "chroot_install": os.path.join(
+                build_path, "lb/config-overrides/includes.chroot/root/install"
+            ),
         }
         return _paths
 

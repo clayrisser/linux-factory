@@ -19,6 +19,10 @@ cp -r /root/install $CHROOT/root/install
 cp /usr/local/bin/prompt $CHROOT/usr/local/bin/prompt
 cp /usr/local/bin/response $CHROOT/usr/local/bin/response
 
+export LIVE_MEDIUM=$([ -d /cdrom ] && echo /cdrom || /run/live/medium)
+echo LIVE_MEDIUM $LIVE_MEDIUM >&2
+ls $LIVE_MEDIUM >&2
+
 # CUSTOM PROMPTS
 export DEBIAN_FRONTEND=dialog
 export TERM=linux
@@ -33,6 +37,8 @@ in-target cat "$PROMPT_RESPONSE" > $CHROOT/home/$DEFAULT_USER/.ret
 if [ -d $CHROOT/root/install/filesystem ]; then
     /usr/local/bin/rsyncr $CHROOT/root/install/filesystem/ $CHROOT/
 fi
+/usr/local/bin/rsyncr $CHROOT/etc/skel/ $CHROOT/home/$DEFAULT_USER/
+in-target chown -R $DEFAULT_USER:$DEFAULT_USER $CHROOT/home/$DEFAULT_USER
 
 # INSTALL DEBIAN REPOSITORIES
 if [ -f /root/install/repos.list ]; then
@@ -48,10 +54,9 @@ fi
 in-target apt-get update -y
 
 # INSTALL DEBS
-if [ -d $CHROOT/root/install/packages ]; then
-    in-target sh -c "dpkg -i /root/install/packages/*.deb || true; apt-get install -f; dpkg -i /root/install/packages/*.deb"
+if [ -d $CHROOT/root/install/debs ]; then
+    in-target sh -c "dpkg -i /root/install/debs/*.deb || true; apt-get install -f; dpkg -i /root/install/debs/*.deb"
 fi
-
 
 # RUN POST INSTALL HOOKS
 for script in "/root/install/hooks/post-install"/*.sh; do

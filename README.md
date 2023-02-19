@@ -1,10 +1,10 @@
 # deb-distro
 
-> a framework used to create custom debian distributions
+> a framework used to create custom debian operating systems
 
 ## Tools
 
-grub-emu - used to test grub without rebooting
+`grub-emu` - used to test grub without rebooting
 
 ## Dependencies
 
@@ -12,23 +12,60 @@ This system can only be built from a Debian based operating system. While
 any Debian based operating system should work, this is only tested against
 the official Debian distribution on amd64.
 
-| Name       | Install                                                                                                                                                                                                 | Url                                                                           |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| GNU Make   | `sudo apt-get install -y make`                                                                                                                                                                          | https://www.gnu.org/software/make                                             |
-| Live Build | `sudo apt-get install -y live-build`                                                                                                                                                                    | https://live-team.pages.debian.net/live-manual/html/live-manual/index.en.html |
-| NixOS      | `sudo true && curl -L https://nixos.org/nix/install \| sh`                                                                                                                                              | https://nixos.org/download.html                                               |
-| NodeJS     | `sudo apt-get install -y nodejs`                                                                                                                                                                        | https://nodejs.org/en/                                                        |
-| direnv     | `sudo apt-get install -y direnv && export SHELL_NAME=$(echo $SHELL \| grep -oE '[^/]+$') && echo "eval \"\$(direnv hook $SHELL_NAME)\"" >> $HOME/.${SHELL_NAME}rc && eval "$(direnv hook $SHELL_NAME)"` | https://direnv.net                                                            |
-| jq         | `sudo apt-get install -y jq`                                                                                                                                                                            | https://stedolan.github.io/jq/                                                |
-| yq         | `sudo apt-get install -y snap && sudo snap install yq`                                                                                                                                                  | https://mikefarah.gitbook.io/yq/                                              |
+| Name       | Install                                                | Url                                                                           |
+| ---------- | ------------------------------------------------------ | ----------------------------------------------------------------------------- |
+| GNU Make   | `sudo apt-get install -y make`                         | https://www.gnu.org/software/make                                             |
+| Live Build | `sudo apt-get install -y live-build`                   | https://live-team.pages.debian.net/live-manual/html/live-manual/index.en.html |
+| Python 3   | `sudo apt-get install -y python3`                      | https://www.python.org                                                        |
+| jq         | `sudo apt-get install -y jq`                           | https://stedolan.github.io/jq                                                 |
+| poetry     | `sudo apt-get install -y python3-poetry-core`          | https://python-poetry.org                                                     |
+| virtualenv | `sudo apt-get install -y python3-virtualenv`           | https://virtualenv.pypa.io                                                    |
+| yq         | `sudo apt-get install -y snap && sudo snap install yq` | https://mikefarah.gitbook.io/yq                                               |
 
-_If you install NixOS and direnv, you do not need to install yq, jq or GNU Make_
+You can install all of the dependencies with the following command.
 
-## Components
+```sh
+sudo apt-get install -y make live-build python3 jq python3-poetry-core python3-virtualenv snap && sudo snap install yq
+```
+
+## Overlays
+
+Overlays are configurable, flexible and decoupled customizations that get applied to the operating system build. They
+can be mixed and matched with other overlays, or be completely disabled if you don't want those changes.
+
+### Debian Installer
+
+The Debian Installer is the official installation system for the Debian operating system.
+It provides a user-friendly interface for installing Debian on a wide range of hardware,
+from desktops and laptops to servers and embedded systems. The Debian Installer supports
+multiple languages, network installations, and a variety of disk partitioning options. With
+its flexible and customizable design, the Debian Installer is a popular choice for many
+users who are looking to install Debian on their systems.
+
+### Grub
+
+GRUB (GRand Unified Bootloader) is a boot loader package from the GNU Project. It is used to
+boot Linux operating systems, as well as a number of other operating systems. In the context
+of this system, Grub can be used as an overlay to customize the boot loader.
+
+### Calamares
+
+Calamares is a distribution-independent system installer, which aims
+to be easy, useful and fast. In the context of this system, Calamares
+can be used as an overlay to provide a graphical installer for the target system.
+
+### Sway
+
+Sway is a tiling window manager for Wayland. It provides a tiling window manager
+experience for users who are looking for a modern, keyboard-driven interface. In the
+context of this system, Sway can be used as an overlay to provide a tiling
+window manager for the target system.
+
+## Overlay Components
 
 ### Fonts
 
-Currently only supports zip files that contain .ttf fonts
+Supports `zip`, `tar` and `tar.gz` files that contain `.ttf` or `.otf` fonts
 
 ### Packages
 
@@ -63,14 +100,6 @@ It's important to note that the order in which hooks are executed is determined 
 
 ### Script Hooks
 
-There are also a couple of script hooks that run during the installation. currently the script hooks supported are `post-install` and `user-post-install`.
-
-Script hooks go in the `hooks/<hook>/<overlay>.sh` path. all scripts in the folder will execute during the respective hook.
-
-user-post-install executes after the system has been installed as the newly created user
-
-post-install also executes after the system hsa been installed, but runs as the root user
-
 During the installation process, there are two script hooks that can be utilized, `post-install` and `user-post-install`.
 
 #### Location of Script Hooks
@@ -99,29 +128,6 @@ _hooks/user-post-install/\<overlay\>.sh_
 echo "Running user-post-install script"
 ```
 
-### Live Build
-
-## Overlays
-
-### Calamares
-
-Calamares is a distribution-independent system installer, which aims
-to be easy, useful and fast. In the context of this system, Calamares
-can be used as an overlay to provide a graphical installer for the target system.
-
-### Grub
-
-GRUB (GRand Unified Bootloader) is a boot loader package from the GNU Project. It is used to
-boot Linux operating systems, as well as a number of other operating systems. In the context
-of this system, Grub can be used as an overlay to customize the boot loader.
-
-### Sway
-
-Sway is a tiling window manager for Wayland. It provides a tiling window manager
-experience for users who are looking for a modern, keyboard-driven interface. In the
-context of this system, Sway can be used as an overlay to provide a tiling
-window manager for the target system.
-
 ## Live Build Cheatsheet
 
 ### Definitions
@@ -148,8 +154,6 @@ _I'm not sure exactly what the difference between `config/package-lists/*.list.c
 `config/package-lists/*.list.chroot_install` are._
 
 ### Mounts
-
-#### Debian Installer
 
 - **live medium** - `/cdrom` if debian installer or `/run/live/medium` from live system
 - **installed system** - `/target` if debian installer or `/tmp/calamares-root-*` if calamares

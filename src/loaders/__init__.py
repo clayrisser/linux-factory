@@ -1,9 +1,10 @@
 from .envs import EnvsLoader
 from .filesystem import FilesystemLoader
 from .fonts import FontsLoader
+from .hooks import HooksLoader
+from .lb import LBLoader
 from .packages import PackagesLoader
 from .repos import ReposLoader
-from .lb import LBLoader
 
 
 loaders = [
@@ -11,6 +12,7 @@ loaders = [
     EnvsLoader,
     ReposLoader,
     FontsLoader,
+    HooksLoader,
     FilesystemLoader,
     LBLoader,
 ]

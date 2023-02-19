@@ -68,6 +68,7 @@
     "synaptics",
     "sysv",
     "tmpl",
+    "virtualenv",
     "wexitstatus",
     "wifexited",
     "xhost",

@@ -1,5 +1,5 @@
 from datetime import datetime
-from util import download, shell
+from util import download, shell, merge_dirs
 from yaml import SafeLoader
 import glob
 import hashlib
@@ -41,15 +41,34 @@ class PackagesLoader:
                 + " -o "
                 + d
             )
+        await merge_dirs(
+            os.path.join(self.deb.paths["lb"], "config-overrides/packages.chroot"),
+            os.path.join(self.deb.paths["installer_install"], "debs"),
+        )
+        await merge_dirs(
+            os.path.join(self.deb.paths["lb"], "config-overrides/packages.chroot"),
+            os.path.join(self.deb.paths["chroot_install"], "debs"),
+        )
 
     async def get_packages(self):
         packages = []
+        package_names = set()
         for path in glob.glob(
             os.path.join(self.deb.paths["os"], "packages/**/*.yaml"), recursive=True
         ):
             with open(path) as f:
                 data = yaml.load(f, Loader=SafeLoader)
-                packages += data
+                if not type(data) is list:
+                    continue
+                for package in data:
+                    package_name = None
+                    if type(package) == str:
+                        package_name = package
+                    elif "package" in package:
+                        package_name = package["package"]
+                    if type(package_name) is str and package_name not in package_names:
+                        package_names.add(package_name)
+                        packages.append(package)
         return packages
 
     async def load_package(self, package):
@@ -82,7 +101,7 @@ class PackagesLoader:
                 with open(
                     os.path.join(
                         self.deb.paths["lb"],
-                        "config-overrides/package-lists/packages.list.chroot_install",
+                        "config-overrides/package-lists/packages.list.chroot",
                     ),
                     "a",
                 ) as f:

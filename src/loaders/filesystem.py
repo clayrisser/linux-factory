@@ -28,8 +28,8 @@ class FilesystemLoader:
                 os.path.join(self.deb.paths["os"], "filesystem/installed_live"),
             ],
             os.path.join(
-                self.deb.paths["lb"],
-                "config-overrides/includes.installer/root/install/filesystem",
+                self.deb.paths["installer_install"],
+                "filesystem",
             ),
         )
         await merge_dirs(
@@ -39,7 +39,7 @@ class FilesystemLoader:
                 os.path.join(self.deb.paths["os"], "filesystem/installed_live"),
             ],
             os.path.join(
-                self.deb.paths["lb"],
-                "config-overrides/includes.chroot/root/install/filesystem",
+                self.deb.paths["chroot_install"],
+                "filesystem",
             ),
         )
