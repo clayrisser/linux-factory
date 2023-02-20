@@ -9,4 +9,5 @@ Visibility: {{ prompt.visibility }}{% endif %}{% if prompt.choices|length > 0 %}
 Choices: {{ prompt.choices|join(', ') }}{% endif %}
 Description: {{ prompt.description }}{% if prompt.help %}
  {{ prompt.help }}{% endif %}
+
 {% endfor %}{% endif %}

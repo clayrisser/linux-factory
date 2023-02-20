@@ -1,6 +1,9 @@
 hello: world
 os:
   prompts:
+    - template: prompt/favorite_color
+      type: string
+      description: "What is your favorite color?"
     - template: prompt/thank_you
       description: "Thank you for installing"
       type: note

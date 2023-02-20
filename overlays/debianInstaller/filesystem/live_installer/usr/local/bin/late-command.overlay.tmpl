@@ -22,10 +22,10 @@ export DEBIAN_FRONTEND=dialog
 export TERM=linux
 export NCURSES_NO_UTF8_ACS=1
 printf "\ec"
-in-target sh -c "cd /tmp; /usr/local/bin/prompt /root/install/prompt.templates; response /root/install/prompt.templates | tee .ret"
+in-target sh -c "cd /tmp; /usr/local/bin/prompt /root/install/prompt.templates; /usr/local/bin/response /root/install/prompt.templates | tee .ret" >&2
 export PROMPT_RESPONSE="$(cat $CHROOT/tmp/.ret)"
 rm $CHROOT/tmp/.ret
-in-target cat "$PROMPT_RESPONSE" > $CHROOT/home/$DEFAULT_USER/.ret
+in-target echo "$PROMPT_RESPONSE" > $CHROOT/home/$DEFAULT_USER/.ret
 {% endif %}
 
 # INSTALL FILESYSTEM

@@ -73,6 +73,18 @@ Supports `zip`, `tar` and `tar.gz` files that contain `.ttf` or `.otf` fonts
 
 ### Filesystem
 
+### Prompt
+
+#### Types
+
+- `string`
+- `boolean`
+- `select`
+- `multiselect`
+- `error`
+- `note`
+- `password`
+
 ### Hooks
 
 To use the hooks in your overlay, you will need to create a file named overlay.py within your overlay directory. This file should contain a class named OverlayHooks that implements methods for each hook.

@@ -3,6 +3,12 @@
 if [ "$KEYSEVER" = "" ]; then
 	KEYSEVER=hkp://pool.sks-keyservers.net
 fi
+
+if echo "$1" | grep -qE '^[^:/]+:\/\/.*'; then
+    curl "$1" | gpg --enarmor 2>/dev/null | sed '/Comment: .*/d'
+    exit 0
+fi
+
 _FINGERPRINT="$1"
 if [ "$_FINGERPRINT" = "" ]; then
 	echo "missing fingerprint" >&2
