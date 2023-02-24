@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "deb-distro"
+name = "linux-factory"
 version = "0.0.1"
-description = "a framework used to create custom debian distributions"
+description = "a framework used to create custom linux debian distributions"
 authors = [""]
 license = "Apache-2.0"
 

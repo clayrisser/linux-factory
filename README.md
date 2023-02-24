@@ -1,6 +1,6 @@
-# deb-distro
+# linux-factory
 
-> a framework used to create custom debian operating systems
+> a framework used to create custom linux debian operating systems
 
 ## Tools
 
@@ -112,7 +112,7 @@ It's important to note that the order in which hooks are executed is determined 
 
 ### Script Hooks
 
-> Script hooks are a deb-distro concept and should not be confused with the live build hooks available at `lb/hooks/`.
+> Script hooks are a linux-factory concept and should not be confused with the live build hooks available at `lb/hooks/`.
 
 During the installation process, there are two script hooks that can be utilized, `post-install` and `user-post-install`.
 
