@@ -16,9 +16,10 @@ version: 11
 website: https://risserlabs.com
 lb:
   debianInstaller: netinst # live,netinst
+  debianInstallerGui: true
 overlays:
   debianInstaller: {}
-  test: {}
+  # test: {}
   # calamares: {}
   # grub: {}
   # sway: {}

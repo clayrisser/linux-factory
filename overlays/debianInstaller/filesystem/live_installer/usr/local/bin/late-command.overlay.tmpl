@@ -18,7 +18,8 @@ cp /usr/local/bin/response $CHROOT/usr/local/bin/response
 
 {% if deb.config.prompts|length > 0 %}
 # CUSTOM PROMPTS
-export DEBIAN_FRONTEND=dialog
+# export DEBIAN_FRONTEND=dialog
+echo DEBIAN_FRONTEND $DEBIAN_FRONTEND >&2
 export TERM=linux
 export NCURSES_NO_UTF8_ACS=1
 printf "\ec"
@@ -30,9 +31,9 @@ in-target echo "$PROMPT_RESPONSE" > $CHROOT/home/$DEFAULT_USER/.ret
 
 # INSTALL FILESYSTEM
 if [ -d $CHROOT/root/install/filesystem ]; then
-    /usr/local/bin/rsyncr $CHROOT/root/install/filesystem/ $CHROOT/
+    /usr/local/bin/rsyncr $CHROOT/root/install/filesystem/ $CHROOT/ >&2
 fi
-/usr/local/bin/rsyncr $CHROOT/etc/skel/ $CHROOT/home/$DEFAULT_USER/
+/usr/local/bin/rsyncr $CHROOT/etc/skel/ $CHROOT/home/$DEFAULT_USER/ >&2
 in-target chown -R $DEFAULT_USER:$DEFAULT_USER /home/$DEFAULT_USER
 
 # INSTALL DEBIAN REPOSITORIES
@@ -50,7 +51,7 @@ in-target apt-get update -y
 
 # INSTALL DEBS
 if [ -d $CHROOT/root/install/debs ]; then
-    in-target sh -c "dpkg -i /root/install/debs/*.deb || true; apt-get install -f; dpkg -i /root/install/debs/*.deb"
+    in-target sh -c "dpkg -i /root/install/debs/*.deb || true; apt-get install -f; dpkg -i /root/install/debs/*.deb" >&2
 fi
 
 # RUN POST INSTALL HOOKS
@@ -78,8 +79,8 @@ for s in "$CHROOT/home/$DEFAULT_USER/install/hooks/user-post-install"/*.sh; do
 done
 
 # UPDATE SYSTEM
-in-target fc-cache -f -v
-in-target update-grub
+in-target fc-cache -f -v >&2
+in-target update-grub >&2
 
 # CLEANUP
 if [ "{{ deb.debug }}" = "false" ]; then
