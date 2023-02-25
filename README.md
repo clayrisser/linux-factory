@@ -1,4 +1,4 @@
-# linux-factory
+# 🐧🏭 linux-factory
 
 > a framework used to create custom linux debian operating systems
 
