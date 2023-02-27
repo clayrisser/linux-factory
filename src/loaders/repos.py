@@ -22,7 +22,9 @@ class ReposLoader:
     async def get_repos(self):
         repos = []
         for path in glob.glob(
-            os.path.join(self.deb.paths["os"], "repos/**/*.yaml"), recursive=True
+            os.path.join(self.deb.paths["os"], "repos/**/*.yaml"),
+            recursive=True,
+            include_hidden=True,
         ):
             with open(path) as f:
                 data = yaml.load(f, Loader=SafeLoader)

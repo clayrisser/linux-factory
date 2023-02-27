@@ -22,7 +22,8 @@ class OverlayHooks:
             )
         )
         for path in glob.glob(
-            os.path.join(self.deb.paths["os"], "assets/calamares/*.png")
+            os.path.join(self.deb.paths["os"], "assets/calamares/*.png"),
+            include_hidden=True,
         ):
             await mkdirs(
                 os.path.join(
@@ -45,7 +46,8 @@ class OverlayHooks:
             os.path.join(
                 self.deb.paths["lb"],
                 "config-overrides/package-lists/*.list.chroot_live",
-            )
+            ),
+            include_hidden=True,
         ):
             with open(path) as f:
                 for line in f.readlines():

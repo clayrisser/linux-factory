@@ -53,6 +53,7 @@ async def merge_dirs_templates(a_paths, b_path, deb, overlay=None):
         for path in glob.glob(
             os.path.join(a_path, "**/*.overlay.tmpl" if overlay else "**/*.tmpl"),
             recursive=True,
+            include_hidden=True,
         ):
             with open(path) as f:
                 template = Template(f.read())

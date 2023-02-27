@@ -33,6 +33,7 @@ class FontsLoader:
                 "fonts/**/*.yaml",
             ),
             recursive=True,
+            include_hidden=True,
         ):
             with open(path) as f:
                 data = yaml.load(f, Loader=SafeLoader)
@@ -97,14 +98,17 @@ class FontsLoader:
             glob.glob(
                 os.path.join(fonts_path, "**/*.zip"),
                 recursive=True,
+                include_hidden=True,
             )
             + glob.glob(
                 os.path.join(fonts_path, "**/*.tar"),
                 recursive=True,
+                include_hidden=True,
             )
             + glob.glob(
                 os.path.join(fonts_path, "**/*.tar.gz"),
                 recursive=True,
+                include_hidden=True,
             )
         ):
             extract(path, fonts_path)
@@ -125,9 +129,11 @@ class FontsLoader:
         for path in glob.glob(
             os.path.join(self.deb.paths["os"], ".fonts/installed/**/*.otf"),
             recursive=True,
+            include_hidden=True,
         ) + glob.glob(
             os.path.join(self.deb.paths["os"], ".fonts/installed/**/*.ttf"),
             recursive=True,
+            include_hidden=True,
         ):
             filename = os.path.basename(path)
             shutil.copyfile(
@@ -141,9 +147,11 @@ class FontsLoader:
         for path in glob.glob(
             os.path.join(self.deb.paths["os"], ".fonts/live/**/*.otf"),
             recursive=True,
+            include_hidden=True,
         ) + glob.glob(
             os.path.join(self.deb.paths["os"], ".fonts/live/**/*.ttf"),
             recursive=True,
+            include_hidden=True,
         ):
             filename = os.path.basename(path)
             shutil.copyfile(
@@ -157,9 +165,11 @@ class FontsLoader:
         for path in glob.glob(
             os.path.join(self.deb.paths["os"], ".fonts/live_installed/**/*.otf"),
             recursive=True,
+            include_hidden=True,
         ) + glob.glob(
             os.path.join(self.deb.paths["os"], ".fonts/live_installed/**/*.ttf"),
             recursive=True,
+            include_hidden=True,
         ):
             filename = os.path.basename(path)
             shutil.copyfile(

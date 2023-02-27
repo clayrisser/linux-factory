@@ -30,7 +30,9 @@ class PackagesLoader:
                 os.path.join(self.deb.paths["lb"], "config-overrides/packages.chroot")
             )
         for d in glob.glob(
-            os.path.join(self.deb.paths["os"], ".debs/**/*.deb"), recursive=True
+            os.path.join(self.deb.paths["os"], ".debs/**/*.deb"),
+            recursive=True,
+            include_hidden=True,
         ):
             shell(
                 "dpkg-name -s "
@@ -38,9 +40,17 @@ class PackagesLoader:
                 + " -o "
                 + d
             )
-        if len(glob.glob(
-            os.path.join(self.deb.paths["lb"], "config-overrides/packages.chroot"),
-        )) > 0:
+        if (
+            len(
+                glob.glob(
+                    os.path.join(
+                        self.deb.paths["lb"], "config-overrides/packages.chroot"
+                    ),
+                    include_hidden=True,
+                )
+            )
+            > 0
+        ):
             await merge_dirs(
                 os.path.join(self.deb.paths["lb"], "config-overrides/packages.chroot"),
                 os.path.join(self.deb.paths["installer_install"], "debs"),
@@ -54,7 +64,9 @@ class PackagesLoader:
         packages = []
         package_names = set()
         for path in glob.glob(
-            os.path.join(self.deb.paths["os"], "packages/**/*.yaml"), recursive=True
+            os.path.join(self.deb.paths["os"], "packages/**/*.yaml"),
+            recursive=True,
+            include_hidden=True,
         ):
             with open(path) as f:
                 data = yaml.load(f, Loader=SafeLoader)
