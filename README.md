@@ -2,6 +2,8 @@
 
 > a framework used to create custom linux debian operating systems
 
+![](assets/linux-factory.jpeg)
+
 ## Tools
 
 `grub-emu` - used to test grub without rebooting
