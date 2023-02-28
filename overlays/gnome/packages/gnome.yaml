@@ -1,0 +1,58 @@
+# NON UI
+- gnome-extra-icons
+- gnome-keyring
+- gnome-themes-extra
+- gnome-themes-standard
+- libglib2.0-bin
+- policykit-1-gnome
+- xdg-desktop-portal-gnome
+
+# HIGH PRIORITY
+- alacarte # menu editor
+- dconf-editor # dconf editor
+- gnome-control-center # control center
+- gnome-firmware # firmware settings
+- gnome-power-manager # power manager
+- gnome-system-monitor # system monitor
+- gnome-system-tools # admin settings
+- gnome-tweaks # tweak settings
+- lxappearance # interface settings
+- nautilus # file explorer
+- network-manager-gnome # network manager
+- pavucontrol # audio settings
+- system-config-printer # printer settings
+
+# MEDIUM PRIORITY
+- eog # image viewer
+- evince # document viewer
+- gnome-font-viewer # font explorer
+- gnome-software # software installer
+- gnome-software-plugin-flatpak # software flatpak installer
+- gnome-software-plugin-snap # software snap installer
+- gnome-text-editor # text editor
+- gnome-usage # space usage
+- gparted # partition manager
+- seahorse # secret management
+
+# LOW PRIORITY
+- cheese # camera
+- geary # email
+- gnome-calculator # calculator
+- gnome-calendar # calendar
+- gnome-clocks # clock
+- gnome-connections # remote desktop
+- gnome-contacts # clock
+- gnome-dictionary # dictionary
+- gnome-games # games
+- gnome-maps # maps
+- gnome-metronome # metronome
+- gnome-photos # photo manager
+- gnome-recipes # recipes
+- gnome-shell-pomodoro # pomodoro timer
+- gnome-sound-recorder # audio recorder
+- gnome-todo # todo list
+- gnome-weather # weather
+- gtranslator # translation editor
+- nautilus-nextcloud # nextcloud file sync
+- pitivi # video editor
+- totem # media player

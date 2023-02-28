@@ -67,16 +67,17 @@ class OverlayHooks:
                 ),
                 size,
             )
-            await util.mkdirs(
-                os.path.join(self.deb.paths["os"], "filesystem/binary/isolinux"),
-            )
-            convert_image(
-                splash_path,
-                os.path.join(
-                    self.deb.paths["os"], "filesystem/binary/isolinux/splash.png"
-                ),
-                size,
-            )
+            if not self.config["splash"]["debug"] or not self.deb.debug:
+                await util.mkdirs(
+                    os.path.join(self.deb.paths["os"], "filesystem/binary/isolinux"),
+                )
+                convert_image(
+                    splash_path,
+                    os.path.join(
+                        self.deb.paths["os"], "filesystem/binary/isolinux/splash.png"
+                    ),
+                    size,
+                )
 
 
 def convert_image(a_path, b_path, size="640x480"):

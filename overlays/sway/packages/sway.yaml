@@ -1,3 +1,13 @@
+# CORE
 - rofi
 - sway
 - xwayland
+
+# IMPORTANT
+- dbus
+- pipewire
+- pipewire-alsa
+- pipewire-audio
+- pipewire-bin
+- pipewire-pulse
+- policykit-1
