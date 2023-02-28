@@ -10,6 +10,7 @@ class OverlayHooks:
 
     async def after_prepare(self):
         await self._load_theme()
+        await self._load_splash()
 
     async def _load_theme(self):
         if os.path.isfile(
@@ -35,4 +36,48 @@ class OverlayHooks:
                     theme_path,
                     self.deb,
                 )
-            exit()
+
+    async def _load_splash(self):
+        splash_path = (
+            os.path.join(self.deb.paths["os"], "assets/grub/splash.png")
+            if os.path.isfile(
+                os.path.join(self.deb.paths["os"], "assets/grub/splash.png")
+            )
+            else os.path.join(self.deb.paths["os"], "assets/grub/splash.jpeg")
+        )
+        if os.path.isfile(splash_path):
+            size = "640x480"
+            await util.mkdirs(
+                os.path.join(self.deb.paths["os"], "filesystem/installed/boot/grub"),
+            )
+            await util.mkdirs(
+                os.path.join(self.deb.paths["os"], "filesystem/binary/boot/grub"),
+            )
+            convert_image(
+                splash_path,
+                os.path.join(
+                    self.deb.paths["os"], "filesystem/installed/boot/grub/splash.png"
+                ),
+                size,
+            )
+            convert_image(
+                splash_path,
+                os.path.join(
+                    self.deb.paths["os"], "filesystem/binary/boot/grub/splash.png"
+                ),
+                size,
+            )
+
+
+def convert_image(a_path, b_path, size="640x480"):
+    util.shell(
+        "convert '"
+        + a_path
+        + "' -resize '"
+        + size
+        + "^' -gravity center -extent "
+        + size
+        + " -define png:format=png24 '"
+        + b_path
+        + "'"
+    )

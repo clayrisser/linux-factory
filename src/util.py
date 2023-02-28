@@ -112,6 +112,7 @@ def extract(file, destination=os.getcwd()):
     elif bool(re.search(r"\.tar.gz$", file)):
         with tarfile.TarFile(file, "r") as tar:
             tar.extractall(destination)
+    fix_permissions(destination)
 
 
 def shell(command, ignore_error=False):
@@ -128,3 +129,15 @@ def shell(command, ignore_error=False):
             exit(1)
         return False
     return True
+
+
+def fix_permissions(path):
+    shell(
+        "chown -R "
+        + os.environ["SUDO_USER"]
+        + ":"
+        + os.environ["SUDO_USER"]
+        + ' "'
+        + path
+        + '"'
+    )
