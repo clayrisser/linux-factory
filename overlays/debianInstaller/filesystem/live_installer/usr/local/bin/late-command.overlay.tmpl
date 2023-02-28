@@ -18,8 +18,6 @@ cp /usr/local/bin/response $CHROOT/usr/local/bin/response
 
 {% if deb.config.prompts|length > 0 %}
 # CUSTOM PROMPTS
-# export DEBIAN_FRONTEND=dialog
-echo DEBIAN_FRONTEND $DEBIAN_FRONTEND >&2
 export TERM=linux
 export NCURSES_NO_UTF8_ACS=1
 printf "\ec"
