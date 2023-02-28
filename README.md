@@ -6,11 +6,25 @@
 
 ## Usage
 
-Make configurations in the `os/config.yaml`, activate custom overlays and when ready . . .
+### Building
+
+Edit configurations in the `os/config.yaml`, activate custom overlays and when ready . . .
 
 ```
 make build
 ```
+
+### Reset Environment
+
+Run the following command to completely reset your environment.
+
+```sh
+sudo git clean -fxd
+```
+
+> Please note that if you stopped the build in the middle of execution (for example `CTRL-C`),
+> it's possible you will get a permission error. If this happens you may need to restart your
+> computer and try resetting after you have rebooted.
 
 ## Tools
 

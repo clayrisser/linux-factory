@@ -9,5 +9,5 @@ class ConfigStage:
 
     async def run(self):
         await self.deb.hooks.trigger("before_config")
-        shell("cd " + self.deb.paths["lb"] + " && make config")
+        shell("make -sC '" + self.deb.paths["root"] + "' lb/config")
         await self.deb.hooks.trigger("after_config")

@@ -3,7 +3,7 @@
 # File Created: 24-05-2022 13:11:50
 # Author: Clay Risser
 # -----
-# Last Modified: 24-02-2023 12:12:28
+# Last Modified: 28-02-2023 09:39:02
 # Modified By: Clay Risser
 # -----
 # Risser Labs LLC (c) Copyright 2021 - 2022
@@ -42,8 +42,8 @@ $(ACTION)/lint: $(call git_deps,\.(py)$$)
 	@$(call black_lint,$?,$(ARGS))
 	@$(call done,lint)
 
-.PHONY: start
-start: sudo ~install ##
+.PHONY: build
+build: sudo ~install ##
 	@$(SUDO) $(PYTHON) src/main.py $(ARGS)
 
 .PHONY: clean
@@ -77,8 +77,9 @@ count:
 	@$(CLOC) $(shell $(GIT) ls-files | $(GREP) -v '^.gitattributes$$' | $(XARGS) git check-attr filter | \
 		$(GREP) -v 'filter: lfs' | $(SED) 's|: filter: .*||g')
 
-.PHONY: build
-build: start
+.PHONY: lb/%
+lb/%:
+	@$(MAKE) -sC .build/lb $(subst lb/,,$@) ARGS=$(ARGS)
 
 -include $(call actions)
 

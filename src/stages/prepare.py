@@ -51,17 +51,6 @@ class PrepareStage:
     async def initialize_build(self):
         if not os.path.exists(self.deb.paths["build"]):
             os.makedirs(self.deb.paths["build"])
-        shutil.copyfile(
-            os.path.join(self.deb.paths["root"], "mkpm.mk"),
-            os.path.join(self.deb.paths["build"], "mkpm.mk"),
-        )
-        if os.path.exists(
-            os.path.join(self.deb.paths["root"], ".mkpm")
-        ) and not os.path.exists(os.path.join(self.deb.paths["build"], ".mkpm")):
-            shutil.copytree(
-                os.path.join(self.deb.paths["root"], ".mkpm"),
-                os.path.join(self.deb.paths["build"], ".mkpm"),
-            )
         os.chdir(self.deb.paths["build"])
 
     async def initialize_lb(self):
