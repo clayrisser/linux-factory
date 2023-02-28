@@ -28,15 +28,19 @@ sudo git clean -fxd
 > it's possible you will get a permission error. If this happens you may need to restart your
 > computer and try resetting after you have rebooted.
 
-## Tools
-
-`grub-emu` - used to test grub without rebooting
-
 ## Dependencies
 
 This system can only be built from a Debian based operating system. While
 any Debian based operating system should work, this is only tested against
 the official Debian distribution on amd64.
+
+You can install all of the dependencies with the following command.
+
+```sh
+sudo apt-get install -y make git git-lfs grub-emu live-build python3 jq python3-poetry-core python3-virtualenv snap && sudo snap install yq
+```
+
+### Required
 
 | Name       | Install                                                | Url                                                                           |
 | ---------- | ------------------------------------------------------ | ----------------------------------------------------------------------------- |
@@ -50,16 +54,26 @@ the official Debian distribution on amd64.
 | virtualenv | `sudo apt-get install -y python3-virtualenv`           | https://virtualenv.pypa.io                                                    |
 | yq         | `sudo apt-get install -y snap && sudo snap install yq` | https://mikefarah.gitbook.io/yq                                               |
 
-You can install all of the dependencies with the following command.
+### Optional
 
-```sh
-sudo apt-get install -y make git git-lfs live-build python3 jq python3-poetry-core python3-virtualenv snap && sudo snap install yq
-```
+| Name          | Install                            | Url                                                             |
+| ------------- | ---------------------------------- | --------------------------------------------------------------- |
+| Grub Emulator | `sudo apt-get install -y grub-emu` | https://manpages.debian.org/testing/grub-emu/grub-emu.1.en.html |
 
 ## Overlays
 
 Overlays are configurable, flexible and decoupled customizations that get applied to the operating system build. They
 can be mixed and matched with other overlays, or be completely disabled if you don't want those changes.
+
+Overlays get _"overlayed"_ on top of the `os` directory during the build. This means the file structure inside
+of an overlay and the file structure of the `os` directory are identical.
+
+### Example
+
+The example overlay showcases the capabilities of an overlay. You can use it as a
+starting point for one of your overlays, or simply use it as a reference.
+
+[overlays/example](overlays/example)
 
 ### Debian Installer
 
@@ -70,17 +84,15 @@ multiple languages, network installations, and a variety of disk partitioning op
 its flexible and customizable design, the Debian Installer is a popular choice for many
 users who are looking to install Debian on their systems.
 
+[overlays/debianInstaller](overlays/debianInstaller)
+
 ### Grub
 
 GRUB (GRand Unified Bootloader) is a boot loader package from the GNU Project. It is used to
 boot Linux operating systems, as well as a number of other operating systems. In the context
 of this system, Grub can be used as an overlay to customize the boot loader.
 
-### Calamares
-
-Calamares is a distribution-independent system installer, which aims
-to be easy, useful and fast. In the context of this system, Calamares
-can be used as an overlay to provide a graphical installer for the target system.
+[overlays/debianInstaller](overlays/debianInstaller)
 
 ### Sway
 
@@ -88,6 +100,8 @@ Sway is a tiling window manager for Wayland. It provides a tiling window manager
 experience for users who are looking for a modern, keyboard-driven interface. In the
 context of this system, Sway can be used as an overlay to provide a tiling
 window manager for the target system.
+
+[overlays/sway](overlays/sway)
 
 ## Overlay Components
 
