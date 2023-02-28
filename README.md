@@ -4,6 +4,14 @@
 
 ![](assets/linux-factory.jpeg)
 
+## Usage
+
+Make configurations in the `os/config.yaml`, activate custom overlays and when ready . . .
+
+```
+make build
+```
+
 ## Tools
 
 `grub-emu` - used to test grub without rebooting

@@ -4,6 +4,23 @@ os:
     - template: prompt/favorite_color
       type: string
       description: "What is your favorite color?"
+
+    - template: prompt/employee_id
+      description: "Enter Employee ID"
+
+    - template: prompt/email_id
+      description: "Enter Your Email-ID"
+
+    - template: prompt/location
+      type: select
+      description: "Select Your Location"
+      choices: ["Bangalore", "Chennai", "Hyderabad", "Mumbai", "Pune"]
+
+    - template: prompt/role
+      type: multiselect
+      description: Select Your Role
+      choices: ["Developer", "Tester", "Manager", "Architect", "Lead"]
+
     - template: prompt/thank_you
       description: "Thank you for installing"
       type: note

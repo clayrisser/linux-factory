@@ -77,6 +77,9 @@ count:
 	@$(CLOC) $(shell $(GIT) ls-files | $(GREP) -v '^.gitattributes$$' | $(XARGS) git check-attr filter | \
 		$(GREP) -v 'filter: lfs' | $(SED) 's|: filter: .*||g')
 
+.PHONY: build
+build: start
+
 -include $(call actions)
 
 endif
