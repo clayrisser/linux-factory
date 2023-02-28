@@ -20,6 +20,6 @@ lb:
 overlays:
   debianInstaller: {}
   grub: {}
-  test: {}
+  example: {}
   # calamares: {}
   # sway: {}
