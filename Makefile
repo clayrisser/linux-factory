@@ -3,7 +3,7 @@
 # File Created: 24-05-2022 13:11:50
 # Author: Clay Risser
 # -----
-# Last Modified: 28-02-2023 09:39:02
+# Last Modified: 28-02-2023 09:42:58
 # Modified By: Clay Risser
 # -----
 # Risser Labs LLC (c) Copyright 2021 - 2022
@@ -74,8 +74,7 @@ trust-gpg-key: ##
 
 .PHONY: count
 count:
-	@$(CLOC) $(shell $(GIT) ls-files | $(GREP) -v '^.gitattributes$$' | $(XARGS) git check-attr filter | \
-		$(GREP) -v 'filter: lfs' | $(SED) 's|: filter: .*||g')
+	@$(CLOC) $(shell ($(GIT) ls-files && ($(GIT) lfs ls-files | $(CUT) -d' ' -f3)) | $(SORT) | $(UNIQ) -u)
 
 .PHONY: lb/%
 lb/%:

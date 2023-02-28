@@ -14,6 +14,8 @@ Edit configurations in the `os/config.yaml`, activate custom overlays and when r
 make build
 ```
 
+Once the build has completed, you can find the iso installer located in the `.build/lb` folder.
+
 ### Reset Environment
 
 Run the following command to completely reset your environment.
@@ -39,6 +41,8 @@ the official Debian distribution on amd64.
 | Name       | Install                                                | Url                                                                           |
 | ---------- | ------------------------------------------------------ | ----------------------------------------------------------------------------- |
 | GNU Make   | `sudo apt-get install -y make`                         | https://www.gnu.org/software/make                                             |
+| Git        | `sudo apt-get install -y git`                          | https://git-scm.com                                                           |
+| Git LFS    | `sudo apt-get install -y git-lfs`                      | https://git-lfs.com                                                           |
 | Live Build | `sudo apt-get install -y live-build`                   | https://live-team.pages.debian.net/live-manual/html/live-manual/index.en.html |
 | Python 3   | `sudo apt-get install -y python3`                      | https://www.python.org                                                        |
 | jq         | `sudo apt-get install -y jq`                           | https://stedolan.github.io/jq                                                 |
@@ -49,7 +53,7 @@ the official Debian distribution on amd64.
 You can install all of the dependencies with the following command.
 
 ```sh
-sudo apt-get install -y make live-build python3 jq python3-poetry-core python3-virtualenv snap && sudo snap install yq
+sudo apt-get install -y make git git-lfs live-build python3 jq python3-poetry-core python3-virtualenv snap && sudo snap install yq
 ```
 
 ## Overlays
