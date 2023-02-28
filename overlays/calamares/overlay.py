@@ -15,7 +15,7 @@ class OverlayHooks:
         logging.warn("\033[1;33mUNSTABLE: calamares overlay is unstable\033[0m")
         sleep(5)
 
-    async def before_filesystem(self):
+    async def before_loader_filesystem(self):
         await mkdirs(
             os.path.join(
                 self.deb.paths["os"], "filesystem/live/etc/calamares/branding/debian"

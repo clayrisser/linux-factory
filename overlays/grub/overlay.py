@@ -8,7 +8,7 @@ class OverlayHooks:
         self.deb = deb
         self.config = config
 
-    async def after_prepare(self):
+    async def before_loader_filesystem(self):
         await self._load_theme()
         await self._load_splash()
 
@@ -50,9 +50,6 @@ class OverlayHooks:
             await util.mkdirs(
                 os.path.join(self.deb.paths["os"], "filesystem/installed/boot/grub"),
             )
-            await util.mkdirs(
-                os.path.join(self.deb.paths["os"], "filesystem/binary/boot/grub"),
-            )
             convert_image(
                 splash_path,
                 os.path.join(
@@ -60,10 +57,23 @@ class OverlayHooks:
                 ),
                 size,
             )
+            await util.mkdirs(
+                os.path.join(self.deb.paths["os"], "filesystem/binary/boot/grub"),
+            )
             convert_image(
                 splash_path,
                 os.path.join(
                     self.deb.paths["os"], "filesystem/binary/boot/grub/splash.png"
+                ),
+                size,
+            )
+            await util.mkdirs(
+                os.path.join(self.deb.paths["os"], "filesystem/binary/isolinux"),
+            )
+            convert_image(
+                splash_path,
+                os.path.join(
+                    self.deb.paths["os"], "filesystem/binary/isolinux/splash.png"
                 ),
                 size,
             )

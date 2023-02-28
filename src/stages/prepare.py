@@ -96,7 +96,7 @@ class PrepareStage:
         for Loader in loaders:
             loader = Loader(self.deb)
             logging.debug("LOADER: loading " + loader.name + "...")
-            await self.deb.hooks.trigger("before_" + loader.name)
+            await self.deb.hooks.trigger("before_loader_" + loader.name)
             await loader.load()
-            await self.deb.hooks.trigger("after_" + loader.name)
+            await self.deb.hooks.trigger("after_loader_" + loader.name)
             logging.debug("LOADER: loaded " + loader.name)
