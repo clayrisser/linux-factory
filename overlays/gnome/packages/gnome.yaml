@@ -16,6 +16,7 @@
 - gnome-system-monitor # system monitor
 - gnome-system-tools # admin settings
 - gnome-tweaks # tweak settings
+- gnome-usage # space usage
 - lxappearance # interface settings
 - nautilus # file explorer
 - network-manager-gnome # network manager
@@ -30,29 +31,28 @@
 - gnome-software-plugin-flatpak # software flatpak installer
 - gnome-software-plugin-snap # software snap installer
 - gnome-text-editor # text editor
-- gnome-usage # space usage
 - gparted # partition manager
 - seahorse # secret management
 
 # LOW PRIORITY
-- cheese # camera
-- geary # email
-- gnome-calculator # calculator
-- gnome-calendar # calendar
-- gnome-clocks # clock
-- gnome-connections # remote desktop
-- gnome-contacts # clock
-- gnome-dictionary # dictionary
-- gnome-games # games
-- gnome-maps # maps
-- gnome-metronome # metronome
-- gnome-photos # photo manager
-- gnome-recipes # recipes
-- gnome-shell-pomodoro # pomodoro timer
-- gnome-sound-recorder # audio recorder
-- gnome-todo # todo list
-- gnome-weather # weather
-- gtranslator # translation editor
-- nautilus-nextcloud # nextcloud file sync
-- pitivi # video editor
-- totem # media player
+# - cheese # camera
+# - geary # email
+# - gnome-calculator # calculator
+# - gnome-calendar # calendar
+# - gnome-clocks # clock
+# - gnome-connections # remote desktop
+# - gnome-contacts # contacts
+# - gnome-dictionary # dictionary
+# - gnome-games # games
+# - gnome-maps # maps
+# - gnome-metronome # metronome
+# - gnome-photos # photo manager
+# - gnome-recipes # recipes
+# - gnome-shell-pomodoro # pomodoro timer
+# - gnome-sound-recorder # audio recorder
+# - gnome-todo # todo list
+# - gnome-weather # weather
+# - gtranslator # translation editor
+# - nautilus-nextcloud # nextcloud file sync
+# - pitivi # video editor
+# - totem # media player
