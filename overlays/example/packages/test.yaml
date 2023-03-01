@@ -17,24 +17,3 @@
 - package: figlet
   live: true
   installed: true
-- package: gnome-calculator
-  live: true
-  installed: true
-- package: gnome-screenshot
-  live: true
-  installed: true
-- package: kitty
-  live: true
-  installed: true
-- package: imagemagick
-  live: true
-  installed: true
-- package: vim
-  live: true
-  installed: true
-- package: flatpak
-  live: true
-  installed: true
-- package: pavucontrol
-  live: true
-  installed: true

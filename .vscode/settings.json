@@ -32,6 +32,7 @@
     "dpkg",
     "dpms",
     "drun",
+    "figlet",
     "flatpak",
     "fontconfig",
     "fullscreen",
