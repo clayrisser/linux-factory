@@ -248,6 +248,8 @@ class Deb:
         )
         system = self._lb["system"] if "system" in self._lb else "live"
         updates = self._lb["updates"] if "updates" in self._lb else True
+        if distribution == "sid":
+            updates = False
         win32_loader = self._lb["win32Loader"] if "win32Loader" in self._lb else True
         self._envs = {
             "APT": str(apt),
