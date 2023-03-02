@@ -1,5 +1,6 @@
 # app
 /.build
+/*.iso
 
 # mkpm
 .mkpm/*

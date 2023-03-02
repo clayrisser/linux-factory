@@ -29,9 +29,9 @@ in-target echo "$PROMPT_RESPONSE" > $CHROOT/home/$DEFAULT_USER/.ret
 
 # INSTALL FILESYSTEM
 if [ -d $CHROOT/root/install/filesystem ]; then
-    /usr/local/bin/rsyncr $CHROOT/root/install/filesystem/ $CHROOT/ >&2
+    /usr/local/bin/mergedirs $CHROOT/root/install/filesystem $CHROOT >&2
 fi
-/usr/local/bin/rsyncr $CHROOT/etc/skel/ $CHROOT/home/$DEFAULT_USER/ >&2
+/usr/local/bin/mergedirs $CHROOT/etc/skel $CHROOT/home/$DEFAULT_USER >&2
 in-target chown -R $DEFAULT_USER:$DEFAULT_USER /home/$DEFAULT_USER
 in-target chmod +x /usr/local/bin/*
 
@@ -66,9 +66,6 @@ in-target chown -R $DEFAULT_USER:$DEFAULT_USER /home/$DEFAULT_USER
 for s in "$CHROOT/home/$DEFAULT_USER/install/hooks/user-post-install"/*.sh; do
     SCRIPT_PATH=/home/$DEFAULT_USER/install/hooks/user-post-install/$(basename "$s")
     SCRIPT_NAME=$(basename "$s" .sh)
-    echo SCRIPT_PATH $SCRIPT_PATH >&2
-    echo SCRIPT_NAME $SCRIPT_NAME >&2
-    echo -f "${CHROOT}${SCRIPT_PATH}" >&2
     if [ -f "${CHROOT}${SCRIPT_PATH}" ]; then
         LOG_PATH="/var/log/install/user-post-install-$SCRIPT_NAME.log"
         in-target touch $LOG_PATH

@@ -3,7 +3,7 @@
 # File Created: 24-05-2022 13:11:50
 # Author: Clay Risser
 # -----
-# Last Modified: 28-02-2023 09:42:58
+# Last Modified: 02-03-2023 15:04:18
 # Modified By: Clay Risser
 # -----
 # Risser Labs LLC (c) Copyright 2021 - 2022
@@ -45,6 +45,7 @@ $(ACTION)/lint: $(call git_deps,\.(py)$$)
 .PHONY: build
 build: sudo ~install ##
 	@$(SUDO) $(PYTHON) src/main.py $(ARGS)
+	@$(CP) .build/lb/*.iso .
 
 .PHONY: clean
 clean: sudo
