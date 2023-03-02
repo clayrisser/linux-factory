@@ -1,7 +1,9 @@
+.titlebar,
 decoration,
+decoration:backdrop,
 window,
 window.background,
-window.titlebar,
 * {
   border-radius: 0px;
+  box-shadow: none;
 }

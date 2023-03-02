@@ -1,0 +1,128 @@
+#!/bin/sh
+
+main() {
+    if [ "$_COMMAND" = "set_color_scheme" ]; then
+        _set_color_scheme $@
+    elif [ "$_COMMAND" = "get_color_scheme" ]; then
+        _get_color_scheme
+    elif [ "$_COMMAND" = "set_theme" ]; then
+        _set_theme $@
+    elif [ "$_COMMAND" = "get_theme" ]; then
+        _get_theme
+    fi
+}
+
+_set_color_scheme() {
+    _COLOR_SCHEME=$1
+    _THEME=$(_get_theme)
+    if [ "$_COLOR_SCHEME" = "dark" ]; then
+        gsettings set org.gnome.desktop.interface gtk-theme "${_THEME}-dark"
+        gsettings set org.gnome.desktop.wm.preferences theme "${_THEME}-dark"
+        gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+        _settings_file_set gtk-theme-name "${_THEME}-dark" $HOME/.gtkrc-2.0
+        _settings_file_set gtk-theme-name "${_THEME}-dark" $HOME/.config/gtk-3.0/settings.ini
+        _settings_file_set gtk-theme-name "${_THEME}-dark" $HOME/.config/gtk-4.0/settings.ini
+    else
+        gsettings set org.gnome.desktop.interface gtk-theme "$_THEME"
+        gsettings set org.gnome.desktop.wm.preferences theme "$_THEME"
+        gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
+        _settings_file_set gtk-theme-name "$_THEME" $HOME/.gtkrc-2.0
+        _settings_file_set gtk-theme-name "$_THEME" $HOME/.config/gtk-3.0/settings.ini
+        _settings_file_set gtk-theme-name "$_THEME" $HOME/.config/gtk-4.0/settings.ini
+    fi
+}
+
+_set_theme() {
+    _THEME=$1
+    gsettings set org.gnome.desktop.interface gtk-theme "$_THEME"
+    gsettings set org.gnome.desktop.wm.preferences theme "$_THEME"
+    _settings_file_set gtk-theme-name "$_THEME" $HOME/.gtkrc-2.0
+    _settings_file_set gtk-theme-name "$_THEME" $HOME/.config/gtk-3.0/settings.ini
+    _settings_file_set gtk-theme-name "$_THEME" $HOME/.config/gtk-4.0/settings.ini
+}
+
+_get_theme() {
+    eval echo $(gsettings get org.gnome.desktop.interface gtk-theme) | sed 's|\-dark$||g'
+}
+
+_get_color_scheme() {
+    gsettings get org.gnome.desktop.interface color-scheme | grep --color=never -o dark || echo light
+}
+
+_echo() {
+    echo "SWAYCFG: $@"
+}
+
+_settings_file_set() {
+    _KEY=$1
+    _VALUE=$2
+    _FILEPATH=$3
+    mkdir -p $(echo $_FILEPATH | sed 's|[^\/]\+$||g')
+    touch "$_FILEPATH"
+    if ! cat "$_FILEPATH" | grep -qE "^$_KEY="; then
+        echo "$_KEY=" >> "$_FILEPATH"
+    fi
+    sed -i "s|^$_KEY=.*|$_KEY=\"$_VALUE\"|g" "$_FILEPATH"
+}
+
+if ! test $# -gt 0; then
+    set -- "-h"
+fi
+
+while test $# -gt 0; do
+    case "$1" in
+        -h|--help)
+            echo "swaycfg - sway operating system config"
+            echo " "
+            echo "swaycfg [options] command <VALUE>"
+            echo " "
+            echo "options:"
+            echo "    -h, --help                    show brief help"
+            echo "    -s, --silent                  silent output"
+            echo " "
+            echo "commands:"
+            echo "    c, color-scheme <VALUE>       set color scheme [dark|light]"
+            echo "    t, theme <VALUE>              set theme"
+            echo "    w, wizard                     open wizard"
+            exit 0
+        ;;
+        -s|--silent)
+            export _SILENT=1
+            shift
+        ;;
+        -*)
+            echo "invalid option $1" 1>&2
+            exit 1
+        ;;
+        *)
+            break
+        ;;
+    esac
+done
+
+case "$1" in
+    c|color-scheme)
+        export _COMMAND=set_color_scheme
+        shift
+        if ! test $# -gt 0; then
+            export _COMMAND=get_color_scheme
+        fi
+    ;;
+    t|theme)
+        export _COMMAND=set_theme
+        shift
+        if ! test $# -gt 0; then
+            export _COMMAND=get_theme
+        fi
+    ;;
+    w|wizard)
+        export _COMMAND=wizard
+        shift
+    ;;
+    *)
+        _echo "invalid command $1" 1>&2
+        exit 1
+    ;;
+esac
+
+main $@

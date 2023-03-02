@@ -9,3 +9,9 @@
 - https://wiki.archlinux.org/title/Uniform_look_for_Qt_and_GTK_applications
 - https://wiki.archlinux.org/title/sway
 - https://wiki.archlinux.org/title/wayland
+
+## Roadmap
+
+### Programs and features to add
+
+- autotiling (python package)

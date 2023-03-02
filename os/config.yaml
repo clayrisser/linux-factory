@@ -20,7 +20,7 @@ lb:
 overlays:
   debianInstaller: {}
   grub: {}
-  sway: {}
+  example: {}
+  # sway: {}
   # calamares: {}
-  # example: {}
   # gnome: {}

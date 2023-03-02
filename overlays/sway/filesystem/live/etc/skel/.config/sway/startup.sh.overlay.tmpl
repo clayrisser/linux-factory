@@ -1,5 +1,7 @@
 #!/bin/sh
 
+xhost local:root
+
 if which {{ overlay.config.installer }} 2>&1 >/dev/null; then
     sudo {{ overlay.config.installer }}
     while [ $? -ne 0 ]; do

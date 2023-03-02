@@ -19,6 +19,7 @@ set $term foot
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu dmenu_path | wofi -S drun -I
+set $border_pixel 4
 
 include /etc/sway/config-vars.d/*
 
@@ -234,10 +235,17 @@ bar {
     }
 }
 
-include /etc/sway/config.d/*
+default_border pixel $border_pixel
+default_floating_border pixel $border_pixel
+for_window [app_id=".*"] border pixel $border_pixel
 
 exec --no-startup-id sh $HOME/.config/sway/startup.sh
-exec --no-startup-id sh -c "xhost local:root"
+exec /usr/bin/xsettingsd
+exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+exec autotiling -w 1 3 5 7 9
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec wl-paste -t text --watch clipman store --no-persist
+exec_always sh $HOME/.config/sway/import-gsettings.sh
 exec_always xrandr --output $(xrandr | grep -m 1 XWAYLAND | awk '{print $1;}') --primary
+
+include /etc/sway/config.d/*

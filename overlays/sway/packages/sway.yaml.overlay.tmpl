@@ -1,8 +1,10 @@
 # CORE
 - sway
 - swaylock-effects_1.6.10-2_all.deb
+- wdisplays
 - wl-clipboard
 - wofi
+- x11-xserver-utils
 - xwayland
 
 # KEYBINDINGS
@@ -34,13 +36,19 @@
 - gnome-themes-standard
 - libglib2.0-bin
 - policykit-1-gnome
-- qt5-style-plugins
 {% if deb.distribution == "sid" %}
-- qgnomeplatform-qt5
 - xdg-desktop-portal-gnome
 {% else %}
-- http://ftp.de.debian.org/debian/pool/main/q/qgnomeplatform/qgnomeplatform-qt5_0.9.0-1+b1_amd64.deb
 - xdg-desktop-portal-gtk
+{% endif %}
+
+# QT
+- qt5-style-plugins
+- qtwayland5
+{% if deb.distribution == "sid" %}
+- qgnomeplatform-qt5
+{% else %}
+- http://ftp.de.debian.org/debian/pool/main/q/qgnomeplatform/qgnomeplatform-qt5_0.9.0-1+b1_amd64.deb
 {% endif %}
 
 # IMPORTANT
@@ -50,7 +58,9 @@
 - pipewire
 - pipewire-bin
 - policykit-1
+- xdg-desktop-portal-wlr
 - xrandr
+- xsettingsd
 {% if deb.distribution == "sid" %}
 - pipewire-alsa
 - pipewire-audio

@@ -1,1 +1,3 @@
 installer: calamares
+theme:
+  colorScheme: dark
