@@ -1,13 +1,44 @@
 # CORE
-- rofi
 - sway
+- swaylock-effects_1.6.10-2_all.deb
+- wl-clipboard
+- wofi
 - xwayland
+
+# SCREENSHOT
+- grim
+- slurp
+
+# SWAYBAR
+- iw
+- python3-netifaces
+- python3-psutil
+{% if deb.distribution == "sid" %}
+- bumblebee-status
+- python3-pulsectl
+{% else %}
+- http://ftp.de.debian.org/debian/pool/main/b/bumblebee-status/bumblebee-status_2.1.6-1_amd64.deb
+- http://ftp.de.debian.org/debian/pool/main/p/python-pulsectl/python3-pulsectl_22.3.2-2_all.deb
+{% endif %}
+
+# GNOME
+- adwaita-icon-theme
+- gdm3
+- gnome-extra-icons
+- gnome-keyring
+- gnome-themes-standard
+- libglib2.0-bin
+- policykit-1-gnome
+- xdg-desktop-portal-gnome
 
 # IMPORTANT
 - dbus
+- libnotify-bin
 - pipewire
-- pipewire-alsa
-- pipewire-audio
 - pipewire-bin
-- pipewire-pulse
 - policykit-1
+{% if deb.distribution == "sid" %}
+- pipewire-alsa # (Sid)
+- pipewire-audio # (Sid)
+- pipewire-pulse # (Sid)
+{% endif %}

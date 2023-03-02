@@ -1,6 +1,0 @@
-#!/bin/sh
-
-sudo {{ overlay.installer }}
-while [ $? -ne 0 ]; do
-    sudo {{ overlay.installer }}
-done

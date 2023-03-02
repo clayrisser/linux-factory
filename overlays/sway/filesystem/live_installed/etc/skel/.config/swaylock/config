@@ -1,0 +1,54 @@
+# Default look
+# clock
+indicator
+# no-unlock-indicator
+# daemonize
+indicator-caps-lock
+#timestr=%a, %B %d
+#datestr=%I:%M %p
+# image=~/Pictures/5min.png
+screenshots
+grace=0
+
+# Effects
+scaling=fill
+effect-scale=1
+effect-blur=4x4
+effect-vignette=0.8:0.01
+fade-in=0.5
+
+# Ring
+indicator-radius=160
+indicator-thickness=10
+line-uses-ring
+line-uses-inside
+inside-color=#d7992100
+inside-ver-color=#5e81ac00
+inside-caps-lock-color=#eceff400
+inside-wrong-color=#5e81ac00
+inside-clear-color=#5e81ac00
+ring-ver-color=#5e81ac00
+line-color=#eeeeee
+line-wrong-color=#bf616a
+ring-wrong-color=#bf616a
+bs-hl-color=#bf616a00
+#inside-color=#323732aa
+ring-clear-color=#eeeeee
+ring-color=#4c566a00
+key-hl-color=#eeeeee
+separator-color=#5e81ac00
+line-wrong-color=#d08770
+clock
+layout-bg-color=00000000
+layout-text-color=#eeeeeeff
+# Profile image
+#effect-compose=/home/berkut/.config/swaylock/profile.png
+
+# Text color
+font-size=160
+font=Source Sans Pro
+text-color=#eeeeeeff
+text-clear-color=#d8dee900
+text-ver-color=#d8dee900
+text-wrong-color=#d8dee900
+text-caps-lock-color=#eeeeeeff

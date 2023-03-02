@@ -19,7 +19,7 @@ lb:
   debianInstallerGui: true
 overlays:
   debianInstaller: {}
-  grub: {}
   example: {}
+  grub: {}
+  sway: {}
   # calamares: {}
-  # sway: {}

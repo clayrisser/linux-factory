@@ -1,11 +1,15 @@
 # NON UI
+- adwaita-icon-theme
 - gnome-extra-icons
 - gnome-keyring
-- gnome-themes-extra
 - gnome-themes-standard
 - libglib2.0-bin
 - policykit-1-gnome
+{% if deb.distribution == "sid" %}
 - xdg-desktop-portal-gnome
+{% else %}
+- xdg-desktop-portal-gtk
+{% endif %}
 
 # HIGH PRIORITY
 - alacarte # menu editor
@@ -24,15 +28,21 @@
 - system-config-printer # printer settings
 
 # MEDIUM PRIORITY
+- baobab # disk usage analyzer
 - eog # image viewer
 - evince # document viewer
+- gnome-characters # character selection
+- gnome-disk-utility # disk and partition manager
 - gnome-font-viewer # font explorer
 - gnome-software # software installer
 - gnome-software-plugin-flatpak # software flatpak installer
 - gnome-software-plugin-snap # software snap installer
-- gnome-text-editor # text editor
-- gparted # partition manager
 - seahorse # secret management
+{% if deb.distribution == "sid" %}
+- gnome-text-editor # text editor (Sid)
+{% else %}
+- gedit # text editor (Bullseye)
+{% endif %}
 
 # LOW PRIORITY
 # - cheese # camera
@@ -56,3 +66,6 @@
 # - nautilus-nextcloud # nextcloud file sync
 # - pitivi # video editor
 # - totem # media player
+## - gnome-documents # document manager
+## - gnome-boxes # virtualization
+# - gnome-music # music player
