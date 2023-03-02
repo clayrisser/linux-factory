@@ -1,14 +1,22 @@
 # NON UI
-- adwaita-icon-theme
-- gnome-extra-icons
 - gnome-keyring
-- gnome-themes-standard
 - libglib2.0-bin
 - policykit-1-gnome
 {% if deb.distribution == "sid" %}
 - xdg-desktop-portal-gnome
 {% else %}
 - xdg-desktop-portal-gtk
+{% endif %}
+
+# THEME
+- adwaita-icon-theme
+- gnome-extra-icons
+- gnome-themes-standard
+- qt5-style-plugins
+{% if deb.distribution == "sid" %}
+- qgnomeplatform-qt5
+{% else %}
+- http://ftp.de.debian.org/debian/pool/main/q/qgnomeplatform/qgnomeplatform-qt5_0.9.0-1+b1_amd64.deb
 {% endif %}
 
 # HIGH PRIORITY
@@ -39,9 +47,9 @@
 - gnome-software-plugin-snap # software snap installer
 - seahorse # secret management
 {% if deb.distribution == "sid" %}
-- gnome-text-editor # text editor (Sid)
+- gnome-text-editor # text editor
 {% else %}
-- gedit # text editor (Bullseye)
+- gedit # text editor
 {% endif %}
 
 # LOW PRIORITY

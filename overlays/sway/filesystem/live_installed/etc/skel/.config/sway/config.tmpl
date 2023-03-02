@@ -90,8 +90,18 @@ exec swayidle -w \
     # lock screen
     bindsym $mod+x exec swaylock
 
-    bindsym --locked XF86MonBrightnessUp exec light -S "$(light -G | awk '{ print int(($1 + .72) * 1.4) }')"
+    # custom keybindings
     bindsym --locked XF86MonBrightnessDown exec light -S "$(light -G | awk '{ print int($1 / 1.4) }')"
+    bindsym --locked XF86MonBrightnessUp exec light -S "$(light -G | awk '{ print int(($1 + .72) * 1.4) }')"
+    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+    bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+    bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+    bindsym XF86AudioNext exec playerctl next
+    bindsym XF86AudioPlay exec playerctl play-pause
+    bindsym XF86AudioPrev exec playerctl previous
+    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+    bindsym XF86Search exec $menu
+
 #
 # Moving around:
 #
@@ -226,5 +236,8 @@ bar {
 
 include /etc/sway/config.d/*
 
-exec --no-startup-id sh -c "xhost local:root"
 exec --no-startup-id sh $HOME/.config/sway/startup.sh
+exec --no-startup-id sh -c "xhost local:root"
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec wl-paste -t text --watch clipman store --no-persist
+exec_always xrandr --output $(xrandr | grep -m 1 XWAYLAND | awk '{print $1;}') --primary

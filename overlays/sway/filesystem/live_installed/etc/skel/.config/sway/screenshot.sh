@@ -20,13 +20,16 @@ function list_geometry () {
 }
 
 WINDOWS=`list_geometry visible with_description`
+if [ "$WINDOWS" != "" ]; then
+    WINDOWS="
+$WINDOWS"
+fi
 FOCUSED=`list_geometry focused`
 
 CHOICE=`wofi -S dmenu $WOFI_ARGS -p 'Screenshot' << EOF
 fullscreen
 region
-focused
-$WINDOWS
+focused$WINDOWS
 EOF`
 SAVEDIR=${SWAY_INTERACTIVE_SCREENSHOT_SAVEDIR:=~}
 mkdir -p -- "$SAVEDIR"
@@ -53,7 +56,7 @@ esac
 # If gimp is installed, prompt the user to edit the captured screenshot
 if command -v gimp $>/dev/null
 then
-    EDIT_CHOICE=`wofi -S dmenu $WOFI_ARGS -p 'Edit' -lines 2 << EOF
+    EDIT_CHOICE=`wofi -S dmenu $WOFI_ARGS -lines 2 -p 'Edit Screenshot' << EOF
 yes
 no
 EOF`

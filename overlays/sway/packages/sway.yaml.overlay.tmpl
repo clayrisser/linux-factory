@@ -5,6 +5,11 @@
 - wofi
 - xwayland
 
+# KEYBINDINGS
+- light
+- playerctl
+- pulseaudio-utils
+
 # SCREENSHOT
 - grim
 - slurp
@@ -29,16 +34,25 @@
 - gnome-themes-standard
 - libglib2.0-bin
 - policykit-1-gnome
+- qt5-style-plugins
+{% if deb.distribution == "sid" %}
+- qgnomeplatform-qt5
 - xdg-desktop-portal-gnome
+{% else %}
+- http://ftp.de.debian.org/debian/pool/main/q/qgnomeplatform/qgnomeplatform-qt5_0.9.0-1+b1_amd64.deb
+- xdg-desktop-portal-gtk
+{% endif %}
 
 # IMPORTANT
+- clipman
 - dbus
 - libnotify-bin
 - pipewire
 - pipewire-bin
 - policykit-1
+- xrandr
 {% if deb.distribution == "sid" %}
-- pipewire-alsa # (Sid)
-- pipewire-audio # (Sid)
-- pipewire-pulse # (Sid)
+- pipewire-alsa
+- pipewire-audio
+- pipewire-pulse
 {% endif %}

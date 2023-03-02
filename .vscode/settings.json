@@ -189,5 +189,8 @@
     "uri": "../LICENSE",
     "uriIsLocalFile": true
   },
-  "python.formatting.provider": "black"
+  "python.formatting.provider": "black",
+  "files.associations": {
+    "*.tmpl": "shellscript"
+  }
 }
