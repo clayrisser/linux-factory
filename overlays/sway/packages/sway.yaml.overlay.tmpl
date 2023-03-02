@@ -24,8 +24,8 @@
 - bumblebee-status
 - python3-pulsectl
 {% else %}
-- http://ftp.de.debian.org/debian/pool/main/b/bumblebee-status/bumblebee-status_2.1.6-1_amd64.deb
-- http://ftp.de.debian.org/debian/pool/main/p/python-pulsectl/python3-pulsectl_22.3.2-2_all.deb
+# - http://ftp.de.debian.org/debian/pool/main/b/bumblebee-status/bumblebee-status_2.1.6-1_amd64.deb
+# - http://ftp.de.debian.org/debian/pool/main/p/python-pulsectl/python3-pulsectl_22.3.2-2_all.deb
 {% endif %}
 
 # GNOME
@@ -34,6 +34,7 @@
 - gnome-extra-icons
 - gnome-keyring
 - gnome-themes-standard
+- gtk3-nocsd
 - libglib2.0-bin
 - policykit-1-gnome
 {% if deb.distribution == "sid" %}
@@ -48,7 +49,7 @@
 {% if deb.distribution == "sid" %}
 - qgnomeplatform-qt5
 {% else %}
-- http://ftp.de.debian.org/debian/pool/main/q/qgnomeplatform/qgnomeplatform-qt5_0.9.0-1+b1_amd64.deb
+# - http://ftp.de.debian.org/debian/pool/main/q/qgnomeplatform/qgnomeplatform-qt5_0.9.0-1+b1_amd64.deb
 {% endif %}
 
 # IMPORTANT

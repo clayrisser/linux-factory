@@ -1,4 +1,4 @@
-from util import download, shell, merge_dirs
+from util import download, shell, merge_dirs, mkdirs
 from yaml import SafeLoader
 import glob
 import os
@@ -86,8 +86,7 @@ class PackagesLoader:
     async def load_package(self, package):
         if not not re.match(self.URI_REGEX, package.package):
             self.deb.data["debs"].append(package)
-            if not os.path.exists(os.path.join(self.deb.paths["os"], ".debs")):
-                os.makedirs(os.path.join(self.deb.paths["os"], ".debs"))
+            await mkdirs(os.path.join(self.deb.paths["os"], ".debs"))
             await download(
                 package.package,
                 os.path.join(
@@ -96,6 +95,7 @@ class PackagesLoader:
             )
         elif package.package[-4:] == ".deb":
             if package.live or package.installed:
+                await mkdirs(os.path.join(self.deb.paths["os"], ".debs"))
                 shutil.copyfile(
                     os.path.join(self.deb.paths["os"], "packages", package.package),
                     os.path.join(
