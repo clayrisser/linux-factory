@@ -30,7 +30,6 @@
 
 # GNOME
 - adwaita-icon-theme
-- gdm3
 - gnome-extra-icons
 - gnome-keyring
 - gnome-themes-extra
@@ -42,12 +41,33 @@
 {% else %}
 - xdg-desktop-portal-gtk
 {% endif %}
+- package: gdm3
+  live: false
+  installed: true
+  binary: false
 
 # QT
 - qt5-style-plugins
 - qtwayland5
 {% if deb.distribution == "sid" %}
 - qgnomeplatform-qt5
+{% else %}
+- qgnomeplatform-qt5-nodeps_0.9.0-1+b1_amd64.deb
+- libadwaitaqt1
+- libc6
+- libgcc-s1
+- libgdk-pixbuf-2.0-0
+- libglib2.0-0
+- libgtk-3-0
+- libpango-1.0-0
+- libqt5core5a
+- libqt5dbus5
+- libqt5gui5
+- libqt5waylandclient5
+- libqt5widgets5
+- libstdc++6
+- qtbase-abi-5-15-2
+- qtwayland-client-abi-5-15-2
 {% endif %}
 
 # IMPORTANT

@@ -16,7 +16,7 @@ version: 11
 website: https://risserlabs.com
 lb:
   debianInstaller: netinst # live,netinst
-  debianInstallerGui: true
+  debianInstallerGui: false
 overlays:
   debianInstaller: {}
   grub: {}
