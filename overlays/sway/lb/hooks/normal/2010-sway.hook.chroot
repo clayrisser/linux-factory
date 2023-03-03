@@ -1,0 +1,9 @@
+#!/bin/sh
+
+cat <<EOF >> /home/live/.profile
+
+# start sway
+. <(cat /etc/environment.d/sway.conf | sed 's|^|export |')
+. /etc/profile
+sway
+EOF
