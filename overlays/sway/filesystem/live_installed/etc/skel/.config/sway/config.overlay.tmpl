@@ -244,6 +244,7 @@ exec /usr/bin/xsettingsd
 exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 exec /usr/libexec/xdg-desktop-portal -r
 exec autotiling -w 1 3 5 7 9
+exec mako
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec wl-paste -t text --watch clipman store --no-persist
 exec_always sh $HOME/.config/sway/import-gsettings.sh
