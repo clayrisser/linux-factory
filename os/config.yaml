@@ -21,5 +21,6 @@ overlays:
   debianInstaller: {}
   grub: {}
   example: {}
+  # plymouth: {}
   # sway: {}
   # gnome: {}

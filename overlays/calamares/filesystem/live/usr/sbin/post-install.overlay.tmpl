@@ -9,8 +9,7 @@ DEFAULT_USER=$(echo $(ls $CHROOT/home) | sed 's|\s.*$||g')
 mkdir -p /log/calamares
 
 if [ -d /root/install/filesystem ]; then
-    yes | cp -R --no-dereference --preserve=all --force --one-file-system \
-        --no-target-directory "/root/install/filesystem/" "$CHROOT" >&2
+    (while true; do echo y; done) | cp -af "/root/install/filesystem"/* "$CHROOT" >&2
 fi
 
 # disable sudo password

@@ -1,0 +1,12 @@
+- package: plymouth
+  live: false
+  installed: true
+  binary: true
+- package: plymouth-themes
+  live: false
+  installed: true
+  binary: true
+- package: gdm3
+  live: false
+  installed: true
+  binary: true

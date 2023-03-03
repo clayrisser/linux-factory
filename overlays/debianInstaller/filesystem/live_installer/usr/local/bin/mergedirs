@@ -1,2 +1,0 @@
-yes | cp --reflink=auto -R --no-dereference --preserve=all --force --one-file-system \
-    --no-target-directory "$1/" "$2"
