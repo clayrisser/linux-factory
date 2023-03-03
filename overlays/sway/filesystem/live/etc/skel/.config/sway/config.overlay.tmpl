@@ -34,17 +34,6 @@ output * bg $HOME/.wallpaper.png fill
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
-### Idle configuration
-#
-exec swayidle -w \
-    timeout 300 'swaylock' \
-    timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-    before-sleep 'swaylock'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
-
 ### Input configuration
 #
 # Example configuration:
@@ -87,9 +76,6 @@ exec swayidle -w \
 
     # printscreen
     bindsym Print exec bash $HOME/.config/sway/screenshot.sh
-
-    # lock screen
-    bindsym $mod+x exec swaylock
 
     # custom keybindings
     bindsym --locked XF86MonBrightnessDown exec light -S "$(light -G | awk '{ print int($1 / 1.4) }')"
@@ -248,6 +234,7 @@ exec mako
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec wl-paste -t text --watch clipman store --no-persist
 exec_always sh $HOME/.config/sway/import-gsettings.sh
+exec_always swaycfg color-scheme $(swaycfg color-scheme)
 exec_always xrandr --output $(xrandr | grep -m 1 XWAYLAND | awk '{print $1;}') --primary
 
 include /etc/sway/config.d/*

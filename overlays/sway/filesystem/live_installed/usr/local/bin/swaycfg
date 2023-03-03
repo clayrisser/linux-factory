@@ -22,6 +22,7 @@ _set_color_scheme() {
         _settings_file_set gtk-theme-name "${_THEME}-dark" $HOME/.gtkrc-2.0
         _settings_file_set gtk-theme-name "${_THEME}-dark" $HOME/.config/gtk-3.0/settings.ini
         _settings_file_set gtk-theme-name "${_THEME}-dark" $HOME/.config/gtk-4.0/settings.ini
+        _settings_file_set style "${_THEME}-Dark" $HOME/.config/qt5ct/qt5ct.conf
     else
         gsettings set org.gnome.desktop.interface gtk-theme "$_THEME"
         gsettings set org.gnome.desktop.wm.preferences theme "$_THEME"
@@ -29,6 +30,7 @@ _set_color_scheme() {
         _settings_file_set gtk-theme-name "$_THEME" $HOME/.gtkrc-2.0
         _settings_file_set gtk-theme-name "$_THEME" $HOME/.config/gtk-3.0/settings.ini
         _settings_file_set gtk-theme-name "$_THEME" $HOME/.config/gtk-4.0/settings.ini
+        _settings_file_set style "$_THEME" $HOME/.config/qt5ct/qt5ct.conf
     fi
 }
 
@@ -39,6 +41,7 @@ _set_theme() {
     _settings_file_set gtk-theme-name "$_THEME" $HOME/.gtkrc-2.0
     _settings_file_set gtk-theme-name "$_THEME" $HOME/.config/gtk-3.0/settings.ini
     _settings_file_set gtk-theme-name "$_THEME" $HOME/.config/gtk-4.0/settings.ini
+    _settings_file_set style "$_THEME" $HOME/.config/qt5ct/qt5ct.conf
 }
 
 _get_theme() {
@@ -57,12 +60,14 @@ _settings_file_set() {
     _KEY=$1
     _VALUE=$2
     _FILEPATH=$3
-    mkdir -p $(echo $_FILEPATH | sed 's|[^\/]\+$||g')
-    touch "$_FILEPATH"
-    if ! cat "$_FILEPATH" | grep -qE "^$_KEY="; then
-        echo "$_KEY=" >> "$_FILEPATH"
+    if [ -f "$_FILEPATH" ]; then
+        mkdir -p $(echo $_FILEPATH | sed 's|[^\/]\+$||g')
+        touch "$_FILEPATH"
+        if ! cat "$_FILEPATH" | grep -qE "^$_KEY="; then
+            echo "$_KEY=" >> "$_FILEPATH"
+        fi
+        sed -i "s|^$_KEY=.*|$_KEY=\"$_VALUE\"|g" "$_FILEPATH"
     fi
-    sed -i "s|^$_KEY=.*|$_KEY=\"$_VALUE\"|g" "$_FILEPATH"
 }
 
 if ! test $# -gt 0; then

@@ -2,7 +2,7 @@
 - gnome-keyring
 - libglib2.0-bin
 - policykit-1-gnome
-{% if deb.distribution == "sid" %}
+{% if deb.distribution == "sid" or deb.distribution == "bookworm" %}
 - xdg-desktop-portal-gnome
 {% else %}
 - xdg-desktop-portal-gtk
@@ -13,12 +13,13 @@
 - gnome-extra-icons
 - gnome-themes-extra
 - qt5-style-plugins
-{% if deb.distribution == "sid" %}
+{% if deb.distribution == "sid" or deb.distribution == "bookworm" %}
 - qgnomeplatform-qt5
 {% else %}
 - http://ftp.de.debian.org/debian/pool/main/q/qgnomeplatform/qgnomeplatform-qt5_0.9.0-1+b1_amd64.deb
 {% endif %}
 
+{% if overlay.config.packages.highPriority %}
 # HIGH PRIORITY
 - alacarte # menu editor
 - dconf-editor # dconf editor
@@ -34,7 +35,9 @@
 - network-manager-gnome # network manager
 - pavucontrol # audio settings
 - system-config-printer # printer settings
+{% endif %}
 
+{% if overlay.config.packages.mediumPriority %}
 # MEDIUM PRIORITY
 - baobab # disk usage analyzer
 - eog # image viewer
@@ -46,34 +49,37 @@
 - gnome-software-plugin-flatpak # software flatpak installer
 - gnome-software-plugin-snap # software snap installer
 - seahorse # secret management
-{% if deb.distribution == "sid" %}
+{% if deb.distribution == "sid" or deb.distribution == "bookworm" %}
 - gnome-text-editor # text editor
 {% else %}
 - gedit # text editor
 {% endif %}
+{% endif %}
 
+{% if overlay.config.packages.lowPriority %}
 # LOW PRIORITY
-# - cheese # camera
-# - geary # email
-# - gnome-calculator # calculator
-# - gnome-calendar # calendar
-# - gnome-clocks # clock
-# - gnome-connections # remote desktop
-# - gnome-contacts # contacts
-# - gnome-dictionary # dictionary
-# - gnome-games # games
-# - gnome-maps # maps
-# - gnome-metronome # metronome
-# - gnome-photos # photo manager
-# - gnome-recipes # recipes
-# - gnome-shell-pomodoro # pomodoro timer
-# - gnome-sound-recorder # audio recorder
-# - gnome-todo # todo list
-# - gnome-weather # weather
-# - gtranslator # translation editor
-# - nautilus-nextcloud # nextcloud file sync
-# - pitivi # video editor
-# - totem # media player
-## - gnome-documents # document manager
-## - gnome-boxes # virtualization
-# - gnome-music # music player
+- cheese # camera
+- geary # email
+- gnome-calculator # calculator
+- gnome-calendar # calendar
+- gnome-clocks # clock
+- gnome-connections # remote desktop
+- gnome-contacts # contacts
+- gnome-dictionary # dictionary
+- gnome-games # games
+- gnome-maps # maps
+- gnome-metronome # metronome
+- gnome-photos # photo manager
+- gnome-recipes # recipes
+- gnome-shell-pomodoro # pomodoro timer
+- gnome-sound-recorder # audio recorder
+- gnome-todo # todo list
+- gnome-weather # weather
+- gtranslator # translation editor
+- nautilus-nextcloud # nextcloud file sync
+- pitivi # video editor
+- totem # media player
+# - gnome-documents # document manager
+# - gnome-boxes # virtualization
+- gnome-music # music player
+{% endif %}

@@ -22,5 +22,4 @@ overlays:
   grub: {}
   example: {}
   # sway: {}
-  # calamares: {}
   # gnome: {}

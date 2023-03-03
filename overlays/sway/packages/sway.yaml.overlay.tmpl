@@ -1,9 +1,7 @@
 # CORE
 - mako-notifier
 - sway
-{% if deb.distribution == "sid" %}
-- swaylock-effects_1.6.10-2_all.deb
-{% endif %}
+- swaylock-effects_20230303-1_amd64.deb
 - wdisplays
 - wl-clipboard
 - wofi
@@ -23,7 +21,7 @@
 - iw
 - python3-netifaces
 - python3-psutil
-{% if deb.distribution == "sid" %}
+{% if deb.distribution == "sid" or deb.distribution == "bookworm" %}
 - bumblebee-status
 - python3-pulsectl
 {% else %}
@@ -39,7 +37,7 @@
 - gtk3-nocsd
 - libglib2.0-bin
 - policykit-1-gnome
-{% if deb.distribution == "sid" %}
+{% if deb.distribution == "sid" or deb.distribution == "bookworm" %}
 - xdg-desktop-portal-gnome
 {% else %}
 - xdg-desktop-portal-gtk
@@ -52,26 +50,11 @@
 # QT
 - qt5-style-plugins
 - qtwayland5
-{% if deb.distribution == "sid" %}
+{% if deb.distribution == "sid" or deb.distribution == "bookworm" %}
 - qgnomeplatform-qt5
 {% else %}
-# - qgnomeplatform-qt5-nodeps_0.9.0-1+b1_amd64.deb
-- build_20230303-1_amd64.deb
-- libadwaitaqt1
-- libc6
-- libgcc-s1
-- libgdk-pixbuf-2.0-0
-- libglib2.0-0
-- libgtk-3-0
-- libpango-1.0-0
-- libqt5core5a
-- libqt5dbus5
-- libqt5gui5
-- libqt5waylandclient5
-- libqt5widgets5
-- libstdc++6
-- qtbase-abi-5-15-2
-- qtwayland-client-abi-5-15-2
+- adwaita-qt
+- qt5ct
 {% endif %}
 
 # python
@@ -87,7 +70,7 @@
 - policykit-1
 - xdg-desktop-portal-wlr
 - xsettingsd
-{% if deb.distribution == "sid" %}
+{% if deb.distribution == "sid" or deb.distribution == "bookworm" %}
 - pipewire-alsa
 - pipewire-audio
 - pipewire-pulse

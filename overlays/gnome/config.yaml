@@ -1,0 +1,4 @@
+packages:
+  highPriority: true
+  mediumPriority: true
+  lowPriority: false
