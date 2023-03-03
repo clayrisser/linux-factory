@@ -27,3 +27,7 @@ indent_size = 4
 [*.py]
 charset = utf-8
 indent_size = 4
+
+[*.tmpl]
+charset = utf-8
+indent_size = 4

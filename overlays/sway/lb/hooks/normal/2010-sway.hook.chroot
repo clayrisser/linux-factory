@@ -7,3 +7,5 @@ cat <<EOF >> /etc/skel/.profile
 . /etc/profile
 sway
 EOF
+
+pip3 install autotiling

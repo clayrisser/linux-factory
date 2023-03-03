@@ -1,7 +1,9 @@
 #!/bin/sh
 
 if [ ! -f $HOME/.wallpaper.png ]; then
+    echo cp /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png $HOME/.wallpaper.png
     cp /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png $HOME/.wallpaper.png
 fi
 
+echo swaycfg color-scheme {{ overlay.config.theme.colorScheme }}
 swaycfg color-scheme {{ overlay.config.theme.colorScheme }}
