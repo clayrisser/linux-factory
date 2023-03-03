@@ -16,7 +16,7 @@
 
 - autotiling (python package)
 
-### qgnomeplatform-qt5
+#### qgnomeplatform-qt5
 
 qgnomeplatform-qt5 is only available for Sid and must be compiled for Bullseye.
 
@@ -37,3 +37,7 @@ mkdir build
 cd build
 cmake ..
 ```
+
+#### swaylock
+
+swaylock and swaylock-effects do not work on Bullseye
