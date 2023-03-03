@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cat <<EOF >> /home/live/.profile
+cat <<EOF >> /etc/skel/.profile
 
 # start sway
 . <(cat /etc/environment.d/sway.conf | sed 's|^|export |')
