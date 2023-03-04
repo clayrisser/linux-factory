@@ -2,6 +2,9 @@
 
 apt-mark hold gdm3
 
+if cat /etc/default/grub | grep GRUB_CMDLINE_LINUX_DEFAULT | grep -qv splash; then
+    sed -i 's|GRUB_CMDLINE_LINUX_DEFAULT="\([^"]\+\)"|GRUB_CMDLINE_LINUX_DEFAULT="\1 splash"|g' /etc/default/grub
+fi
 if (cat /etc/gdm3/daemon.conf | grep -qE '^PlymouthTheme='); then
     sed -i 's|^\(PlymouthTheme=\).*|\1{{ overlay.config.theme }}|g' /etc/gdm3/daemon.conf
 else

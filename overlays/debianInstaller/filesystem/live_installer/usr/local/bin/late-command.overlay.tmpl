@@ -55,7 +55,7 @@ in-target apt-get update -y
 
 # INSTALL DEBS
 if [ -d $CHROOT/root/install/debs ]; then
-    in-target sh -c "dpkg -i /root/install/debs/*.deb || true; apt-get install -f; dpkg -i /root/install/debs/*.deb" >&2
+    in-target sh -c "dpkg -i /root/install/debs/*.deb || true; apt-get install -y -f; dpkg -i /root/install/debs/*.deb" >&2
 fi
 
 # RUN POST INSTALL HOOKS

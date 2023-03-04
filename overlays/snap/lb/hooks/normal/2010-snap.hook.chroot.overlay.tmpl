@@ -1,5 +1,6 @@
 #!/bin/sh
 
 {% for snap in overlay.config.liveSnaps %}
+echo snap install {{ snap }}
 snap install {{ snap }}
 {% endfor %}

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+{% if overlay.config.packages.office %}
+apt-get install -y onlyoffice-desktopeditors
+{% endif %}

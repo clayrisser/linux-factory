@@ -1,0 +1,15 @@
+# MEDIA
+{% if overlay.config.packages.media %}
+- blender # 3d modeling
+- gimp # image editor
+- handbrake # video converter
+- pitivi # video editor
+{% endif %}
+
+# OFFICE
+{% if overlay.config.packages.office %}
+- package: onlyoffice-desktopeditors
+  live: true
+  binary: false
+  installed: false
+{% endif %}

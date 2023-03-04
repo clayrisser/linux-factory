@@ -23,6 +23,8 @@ _set_color_scheme() {
         _settings_file_set gtk-theme-name "${_THEME}-dark" $HOME/.config/gtk-3.0/settings.ini
         _settings_file_set gtk-theme-name "${_THEME}-dark" $HOME/.config/gtk-4.0/settings.ini
         _settings_file_set style "${_THEME}-Dark" $HOME/.config/qt5ct/qt5ct.conf
+        _set_chrome_color_scheme dark "$HOME/.config/chromium-flags.conf"
+        _set_chrome_color_scheme dark "$HOME/.config/chrome-flags.conf"
     else
         gsettings set org.gnome.desktop.interface gtk-theme "$_THEME" 2>/dev/null || true
         gsettings set org.gnome.desktop.wm.preferences theme "$_THEME" 2>/dev/null || true
@@ -31,6 +33,24 @@ _set_color_scheme() {
         _settings_file_set gtk-theme-name "$_THEME" $HOME/.config/gtk-3.0/settings.ini
         _settings_file_set gtk-theme-name "$_THEME" $HOME/.config/gtk-4.0/settings.ini
         _settings_file_set style "$_THEME" $HOME/.config/qt5ct/qt5ct.conf
+        _set_chrome_color_scheme light "$HOME/.config/chromium-flags.conf"
+        _set_chrome_color_scheme light "$HOME/.config/chrome-flags.conf"
+    fi
+}
+
+_set_chrome_color_scheme() {
+    _THEME=$1
+    touch "$2"
+    if [ "$_COLOR_SCHEME" = "dark" ]; then
+        if ! ((cat "$2" 2>/dev/null || true) | grep -qE '^--force-dark-mode$'); then
+            echo '--force-dark-mode' >> "$2"
+        fi
+        if ! ((cat "$2" 2>/dev/null || true) | grep -qE '^--enable-features=WebUIDarkMode$'); then
+            echo '--enable-features=WebUIDarkMode' >> "$2"
+        fi
+    else
+        sed -i '/--force-dark-mode/d' "$2"
+        sed -i '/--enable-features=WebUIDarkMode/d' "$2"
     fi
 }
 

@@ -3,7 +3,7 @@
 # File Created: 24-05-2022 13:11:50
 # Author: Clay Risser
 # -----
-# Last Modified: 02-03-2023 15:04:18
+# Last Modified: 04-03-2023 04:12:34
 # Modified By: Clay Risser
 # -----
 # Risser Labs LLC (c) Copyright 2021 - 2022
@@ -76,6 +76,10 @@ trust-gpg-key: ##
 .PHONY: count
 count:
 	@$(CLOC) $(shell ($(GIT) ls-files && ($(GIT) lfs ls-files | $(CUT) -d' ' -f3)) | $(SORT) | $(UNIQ) -u)
+
+.PHONY: fix-permissions
+fix-permissions:
+	@$(SUDO) $(CHOWN) -R $(USER):$(USER) .build
 
 .PHONY: lb/%
 lb/%:

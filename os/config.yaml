@@ -19,10 +19,16 @@ lb:
   debianInstallerGui: false
 overlays:
   debianInstaller: {}
-  example: {}
+  # example: {}
   grub: {}
-  sway: {}
   # plymouth: {}
-  # flatpak: {}
+  sway: {}
+  # tools: {}
+  # ungoogledChromium: {}
   # gnome: {}
-  # snap: {}
+  # flatpak:
+  #   flatpaks:
+  #     - https://dl.flathub.org/repo/appstream/me.iepure.devtoolbox.flatpakref
+  # snap:
+  #   snaps:
+  #     - yq
