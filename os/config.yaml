@@ -19,8 +19,10 @@ lb:
   debianInstallerGui: false
 overlays:
   debianInstaller: {}
-  grub: {}
   example: {}
-  # plymouth: {}
-  # sway: {}
+  grub: {}
+  sway: {}
+  # flatpak: {}
   # gnome: {}
+  # plymouth: {}
+  # snap: {}

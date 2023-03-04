@@ -1,0 +1,5 @@
+#!/bin/sh
+
+{% for snap in overlay.config.snaps %}
+snap install {{ snap }}
+{% endfor %}

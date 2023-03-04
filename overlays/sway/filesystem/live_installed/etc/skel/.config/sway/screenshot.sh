@@ -53,22 +53,10 @@ case $CHOICE in
     	GEOMETRY="`echo \"$CHOICE\" | cut -d$'\t' -f1`"
         grim -g "$GEOMETRY" "$EXPENDED_FILENAME"
 esac
-# If gimp is installed, prompt the user to edit the captured screenshot
-if command -v gimp $>/dev/null
-then
-    EDIT_CHOICE=`wofi -S dmenu $WOFI_ARGS -lines 2 -p 'Edit Screenshot' << EOF
-yes
-no
-EOF`
-    case $EDIT_CHOICE in
-        yes)
-            gimp "$EXPENDED_FILENAME"
-            ;;
-        no)
-            ;;
-        '')
-            ;;
-    esac
+
+_EDITOR=$(command -v drawing $>/dev/null && echo drawing || (command -v gimp $>/dev/null && echo gimp || true))
+if [ "$_EDITOR" != "" ]; then
+    $_EDITOR "$EXPENDED_FILENAME"
 fi
 wl-copy < "$EXPENDED_FILENAME"
 notify-send "Screenshot" "File saved as <i>'$FILENAME'</i> and copied to the clipboard." -i "$EXPENDED_FILENAME"

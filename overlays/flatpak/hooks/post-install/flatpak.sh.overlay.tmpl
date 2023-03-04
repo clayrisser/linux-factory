@@ -1,0 +1,8 @@
+#!/bin/sh
+
+flatpak override --filesystem=xdg-config/gtk-3.0
+flatpak override --filesystem=xdg-config/gtk-4.0
+
+{% for flatpak in overlay.config.flatpaks %}
+flatpak install -y {{ flatpak }}
+{% endfor %}

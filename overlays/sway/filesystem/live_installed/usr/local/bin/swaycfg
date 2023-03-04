@@ -16,17 +16,17 @@ _set_color_scheme() {
     _COLOR_SCHEME=$1
     _THEME=$(_get_theme)
     if [ "$_COLOR_SCHEME" = "dark" ]; then
-        gsettings set org.gnome.desktop.interface gtk-theme "${_THEME}-dark"
-        gsettings set org.gnome.desktop.wm.preferences theme "${_THEME}-dark"
-        gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+        gsettings set org.gnome.desktop.interface gtk-theme "${_THEME}-dark" 2>/dev/null || true
+        gsettings set org.gnome.desktop.wm.preferences theme "${_THEME}-dark" 2>/dev/null || true
+        gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark' 2>/dev/null || true
         _settings_file_set gtk-theme-name "${_THEME}-dark" $HOME/.gtkrc-2.0
         _settings_file_set gtk-theme-name "${_THEME}-dark" $HOME/.config/gtk-3.0/settings.ini
         _settings_file_set gtk-theme-name "${_THEME}-dark" $HOME/.config/gtk-4.0/settings.ini
         _settings_file_set style "${_THEME}-Dark" $HOME/.config/qt5ct/qt5ct.conf
     else
-        gsettings set org.gnome.desktop.interface gtk-theme "$_THEME"
-        gsettings set org.gnome.desktop.wm.preferences theme "$_THEME"
-        gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
+        gsettings set org.gnome.desktop.interface gtk-theme "$_THEME" 2>/dev/null || true
+        gsettings set org.gnome.desktop.wm.preferences theme "$_THEME" 2>/dev/null || true
+        gsettings set org.gnome.desktop.interface color-scheme 'prefer-light' 2>/dev/null || true
         _settings_file_set gtk-theme-name "$_THEME" $HOME/.gtkrc-2.0
         _settings_file_set gtk-theme-name "$_THEME" $HOME/.config/gtk-3.0/settings.ini
         _settings_file_set gtk-theme-name "$_THEME" $HOME/.config/gtk-4.0/settings.ini
@@ -36,8 +36,8 @@ _set_color_scheme() {
 
 _set_theme() {
     _THEME=$1
-    gsettings set org.gnome.desktop.interface gtk-theme "$_THEME"
-    gsettings set org.gnome.desktop.wm.preferences theme "$_THEME"
+    gsettings set org.gnome.desktop.interface gtk-theme "$_THEME" 2>/dev/null || true
+    gsettings set org.gnome.desktop.wm.preferences theme "$_THEME" 2>/dev/null || true
     _settings_file_set gtk-theme-name "$_THEME" $HOME/.gtkrc-2.0
     _settings_file_set gtk-theme-name "$_THEME" $HOME/.config/gtk-3.0/settings.ini
     _settings_file_set gtk-theme-name "$_THEME" $HOME/.config/gtk-4.0/settings.ini
@@ -49,7 +49,25 @@ _get_theme() {
 }
 
 _get_color_scheme() {
-    gsettings get org.gnome.desktop.interface color-scheme | grep --color=never -o dark || echo light
+    if gsettings get org.gnome.desktop.interface color-scheme 2>/dev/null >/dev/null; then
+        gsettings get org.gnome.desktop.interface color-scheme | grep --color=never -o dark || echo light
+    else
+        if [ -f "$HOME/.config/gtk-4.0/settings.ini" ]; then
+            echo $(_get_color_scheme_from_file "$HOME/.config/gtk-4.0/settings.ini")
+        elif [ -f "$HOME/.config/gtk-3.0/settings.ini" ]; then
+            echo $(_get_color_scheme_from_file "$HOME/.config/gtk-3.0/settings.ini")
+        elif [ -f "$HOME/.gtkrc-2.0" ]; then
+            echo $(_get_color_scheme_from_file "$HOME/.gtkrc-2.0")
+        fi
+    fi
+}
+
+_get_color_scheme_from_file() {
+    if [ $(cat "$1" | grep gtk-theme-name | sed 's|^gtk-theme-name="\?.\+-\([^-]\+\)|\1|g' | sed 's|"||g') = dark ]; then
+        echo dark
+    else
+        echo light
+    fi
 }
 
 _echo() {
