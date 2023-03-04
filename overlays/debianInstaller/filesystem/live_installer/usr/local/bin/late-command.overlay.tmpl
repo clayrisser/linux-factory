@@ -16,8 +16,8 @@ cp -r /root/install $CHROOT/root/install
 cp /usr/local/bin/prompt $CHROOT/usr/local/bin/prompt
 cp /usr/local/bin/response $CHROOT/usr/local/bin/response
 
-{% if deb.config.prompts|length > 0 %}
 # CUSTOM PROMPTS
+{% if deb.config.prompts|length > 0 %}
 export TERM=linux
 export NCURSES_NO_UTF8_ACS=1
 printf "\ec"
@@ -29,9 +29,13 @@ in-target echo "$PROMPT_RESPONSE" > $CHROOT/home/$DEFAULT_USER/.ret
 
 # INSTALL FILESYSTEM
 if [ -d $CHROOT/root/install/filesystem ]; then
+    mkdir -p "$CHROOT/root/install/filesystem"
     (while true; do echo y; done) | cp -af "$CHROOT/root/install/filesystem"/* "$CHROOT" >&2
+    (while true; do echo y; done) | cp -af "$CHROOT/root/install/filesystem"/.?* "$CHROOT" >&2
 fi
+mkdir -p "$CHROOT/home/$DEFAULT_USER"
 (while true; do echo y; done) | cp -af "$CHROOT/etc/skel"/* "$CHROOT/home/$DEFAULT_USER" >&2
+(while true; do echo y; done) | cp -af "$CHROOT/etc/skel"/.?* "$CHROOT/home/$DEFAULT_USER" >&2
 
 in-target chown -R $DEFAULT_USER:$DEFAULT_USER /home/$DEFAULT_USER
 in-target chmod +x /usr/local/bin/*

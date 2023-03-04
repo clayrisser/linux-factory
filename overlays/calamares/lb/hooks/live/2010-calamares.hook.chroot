@@ -1,4 +1,0 @@
-#!/bin/bash
-
-chmod +x /usr/local/bin/post-install \
-    /usr/local/bin/pre-install

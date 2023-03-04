@@ -22,7 +22,7 @@ overlays:
   example: {}
   grub: {}
   sway: {}
+  # plymouth: {}
   # flatpak: {}
   # gnome: {}
-  # plymouth: {}
   # snap: {}
