@@ -1,0 +1,9 @@
+# UI
+- kitty
+
+# CLI
+- build-essential
+- git
+- git-lfs
+- jq
+- make

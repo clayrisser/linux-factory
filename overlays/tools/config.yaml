@@ -1,3 +1,4 @@
 packages:
+  cli: true
   media: false
-  office: true
+  productivity: true

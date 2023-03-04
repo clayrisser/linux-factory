@@ -1,15 +1,29 @@
 # MEDIA
 {% if overlay.config.packages.media %}
-- blender # 3d modeling
-- gimp # image editor
-- handbrake # video converter
-- pitivi # video editor
+- package: blender # 3d modeling
+  live: false
+  binary: false
+  installed: true
+- package: gimp # image editor
+  live: false
+  binary: false
+  installed: true
+- package: handbrake # video converter
+  live: false
+  binary: false
+  installed: true
+- package: pitivi # video editor
+  live: false
+  binary: false
+  installed: true
 {% endif %}
 
-# OFFICE
-{% if overlay.config.packages.office %}
-- package: onlyoffice-desktopeditors
-  live: true
-  binary: false
-  installed: false
+# CLI
+{% if overlay.config.packages.cli %}
+- curl
+- git
+- git-lfs
+- make
+- tree
+- vim
 {% endif %}

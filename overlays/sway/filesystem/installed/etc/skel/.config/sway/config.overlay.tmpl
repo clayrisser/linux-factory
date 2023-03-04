@@ -225,8 +225,12 @@ bar {
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command bumblebee-status -m cpu memory battery time \
-        pasink pasource -p time.format="%H:%M" -t solarized
+    status_command bumblebee-status -t solarized \
+        -m shortcut cpu memory battery time pasink pasource \
+        -p \
+            time.format="%H:%M" \
+            shortcut.cmds='swaycfg color-scheme $([ $(swaycfg color-scheme) = dark ] && echo light || echo dark) && swaymsg reload' \
+            shortcut.labels="$([ $(swaycfg color-scheme) = dark ] && echo dark || echo light)"
 
     colors {
         statusline #ffffff

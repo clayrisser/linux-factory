@@ -16,7 +16,8 @@
 {% if deb.distribution == "sid" or deb.distribution == "bookworm" %}
 - qgnomeplatform-qt5
 {% else %}
-- http://ftp.de.debian.org/debian/pool/main/q/qgnomeplatform/qgnomeplatform-qt5_0.9.0-1+b1_amd64.deb
+- adwaita-qt
+- qt5ct
 {% endif %}
 
 # HIGH PRIORITY
@@ -59,29 +60,98 @@
 
 # LOW PRIORITY
 {% if overlay.config.packages.lowPriority %}
-- cheese # camera
-- geary # email
-- gimp # image editor
-- gnome-calculator # calculator
-- gnome-calendar # calendar
-- gnome-clocks # clock
-- gnome-connections # remote desktop
-- gnome-contacts # contacts
-- gnome-dictionary # dictionary
-- gnome-games # games
-- gnome-maps # maps
-- gnome-metronome # metronome
-- gnome-photos # photo manager
-- gnome-recipes # recipes
-- gnome-shell-pomodoro # pomodoro timer
-- gnome-sound-recorder # audio recorder
-- gnome-todo # todo list
-- gnome-weather # weather
-- gtranslator # translation editor
-- nautilus-nextcloud # nextcloud file sync
-- pitivi # video editor
-- totem # media player
+- package: cheese # camera
+  live: false
+  binary: false
+  installed: true
+- package: geary # email
+  live: false
+  binary: false
+  installed: true
+- package: gimp # image editor
+  live: false
+  binary: false
+  installed: true
+- package: gnome-calculator # calculator
+  live: false
+  binary: false
+  installed: true
+- package: gnome-calendar # calendar
+  live: false
+  binary: false
+  installed: true
+- package: gnome-clocks # clock
+  live: false
+  binary: false
+  installed: true
+- package: gnome-connections # remote desktop
+  live: false
+  binary: false
+  installed: true
+- package: gnome-contacts # contacts
+  live: false
+  binary: false
+  installed: true
+- package: gnome-dictionary # dictionary
+  live: false
+  binary: false
+  installed: true
+- package: gnome-games # games
+  live: false
+  binary: false
+  installed: true
+- package: gnome-maps # maps
+  live: false
+  binary: false
+  installed: true
+- package: gnome-metronome # metronome
+  live: false
+  binary: false
+  installed: true
+- package: gnome-photos # photo manager
+  live: false
+  binary: false
+  installed: true
+- package: gnome-recipes # recipes
+  live: false
+  binary: false
+  installed: true
+- package: gnome-shell-pomodoro # pomodoro timer
+  live: false
+  binary: false
+  installed: true
+- package: gnome-sound-recorder # audio recorder
+  live: false
+  binary: false
+  installed: true
+- package: gnome-todo # todo list
+  live: false
+  binary: false
+  installed: true
+- package: gnome-weather # weather
+  live: false
+  binary: false
+  installed: true
+- package: gtranslator # translation editor
+  live: false
+  binary: false
+  installed: true
+- package: nautilus-nextcloud # nextcloud file sync
+  live: false
+  binary: false
+  installed: true
+- package: pitivi # video editor
+  live: false
+  binary: false
+  installed: true
+- package: totem # media player
+  live: false
+  binary: false
+  installed: true
 # - gnome-documents # document manager
 # - gnome-boxes # virtualization
-- gnome-music # music player
+- package: gnome-music # music player
+  live: false
+  binary: false
+  installed: true
 {% endif %}
