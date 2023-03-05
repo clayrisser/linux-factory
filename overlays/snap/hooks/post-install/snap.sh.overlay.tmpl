@@ -2,5 +2,7 @@
 
 {% for snap in overlay.config.snaps %}
 echo snap install {{ snap }}
+systemctl status snapd
 snap install {{ snap }}
+systemctl status snapd
 {% endfor %}

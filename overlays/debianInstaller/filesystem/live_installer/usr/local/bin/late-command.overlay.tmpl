@@ -62,6 +62,7 @@ fi
 for script in "/root/install/hooks/post-install"/*.sh; do
     if [ -f "$script" ]; then
         SCRIPT_NAME=$(basename "$script" .sh)
+        echo running /var/log/install/post-install-$SCRIPT_NAME.log 1>&2
         in-target sh -c "cd / && sh $script 2>&1 > /var/log/install/post-install-$SCRIPT_NAME.log"
     fi
 done
@@ -75,6 +76,7 @@ for s in "$CHROOT/home/$DEFAULT_USER/install/hooks/user-post-install"/*.sh; do
         LOG_PATH="/var/log/install/user-post-install-$SCRIPT_NAME.log"
         in-target touch $LOG_PATH
         in-target chown $DEFAULT_USER:$DEFAULT_USER $LOG_PATH
+        echo running $SCRIPT_PATH 1>&2
         in-target su $DEFAULT_USER -c "cd /home/$DEFAULT_USER && sh $SCRIPT_PATH 2>&1 > $LOG_PATH"
     fi
 done

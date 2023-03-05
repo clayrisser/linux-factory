@@ -2,8 +2,8 @@
 
 $(curl --version >/dev/null 2>/dev/null && echo curl -L || echo wget -O-) \
     https://gitlab.com/risserlabs/community/cody/-/raw/main/cody.sh 2>/dev/null | sh -s i cody
-cody install cinch
-cody install dotstow
+/usr/local/bin/cody install cinch
+/usr/local/bin/cody install dotstow
 
 cat <<EOF >> /etc/skel/.profile
 if [ -f "\${XDG_STATE_HOME:-\$HOME/.local/state}/weasley/dotstow" ]; then

@@ -1,0 +1,12 @@
+- package: firmware-atheros
+  live: false
+  binary: true
+  installed: false
+- package: firmware-iwlwifi
+  live: false
+  binary: true
+  installed: false
+- package: firmware-linux
+  live: false
+  binary: true
+  installed: false

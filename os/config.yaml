@@ -18,16 +18,19 @@ lb:
   debianInstaller: netinst # live,netinst
   debianInstallerGui: false
 overlays:
-  example: {}
+  # example: {}
   debianInstaller: {}
+  firmware: {}
   grub: {}
   plymouth: {}
   sway: {}
   ungoogledChromium: {}
-  # tools: {}
-  # dev: {}
-  # gnome: {}
+  tools: {}
+  dev: {}
+  gnome: {}
   flatpak:
     flatpaks:
       - https://dl.flathub.org/repo/appstream/me.iepure.devtoolbox.flatpakref
-  snap: {}
+  snap:
+    snaps:
+      - yq
