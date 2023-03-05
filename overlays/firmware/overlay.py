@@ -1,4 +1,5 @@
 import os
+import shutil
 from util import download, mkdirs, shell
 
 
@@ -15,16 +16,26 @@ class OverlayHooks:
             self.deb.paths["lb"],
             "config-overrides/includes.binary/firmware",
         )
-        firmware_tar_path = os.path.join(
-            firmware_path,
-            "firmware.tar.gz",
-        )
-        await mkdirs(firmware_path)
-        await download(
-            'https://chuangtzu.ftp.acc.umu.se/cdimage/unofficial/non-free/firmware/bullseye/11.6.0/firmware.tar.gz',
-            firmware_tar_path
-        )
-        shell(
-            "tar -xzvf '" + firmware_tar_path + "' -C '"  + firmware_path + "'"
-        )
-        os.remove(firmware_tar_path)
+        download_path = os.environ['HOME'] +'/Downloads/firmware'
+        if os.path.exists(download_path):
+            await mkdirs(
+                os.path.join(
+                    self.deb.paths["lb"],
+                    "config-overrides/includes.binary",
+                )
+            )
+            shutil.copytree(download_path, firmware_path)
+        else:
+            firmware_tar_path = os.path.join(
+                firmware_path,
+                "firmware.tar.gz",
+            )
+            await mkdirs(firmware_path)
+            await download(
+                'https://chuangtzu.ftp.acc.umu.se/cdimage/unofficial/non-free/firmware/bullseye/11.6.0/firmware.tar.gz',
+                firmware_tar_path
+            )
+            shell(
+                "tar -xzvf '" + firmware_tar_path + "' -C '"  + firmware_path + "'"
+            )
+            os.remove(firmware_tar_path)
