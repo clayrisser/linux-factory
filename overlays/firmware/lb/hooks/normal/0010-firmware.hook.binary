@@ -1,8 +1,6 @@
 #!/bin/bash
 
-cd live
-echo $ARCH > arch
-echo $DISTRIBUTION > distribution
+cd install
 [ -f initrd.gz.orig ] || cp -p initrd.gz initrd.gz.orig
-[ -f firmware.cpio.gz ] || wget https://cdimage.debian.org/cdimage/firmware/bullseye/11.3.0/firmware.cpio.gz
+[ -f firmware.cpio.gz ] || wget https://cdimage.debian.org/cdimage/firmware/$DISTRIBUTION/11.3.0/firmware.cpio.gz
 cat initrd.gz.orig firmware.cpio.gz > initrd.gz
