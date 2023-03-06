@@ -2,7 +2,12 @@
 
 apt-mark hold sway
 
+{% if deb.distribution == "sid" or deb.distribution == "bookworm" %}
+pip3 install autotiling --break-system-packages
+{% else %}
+pip3 install pipx
 pip3 install autotiling
+{% endif %}
 
 if (cat /etc/gdm3/daemon.conf | grep -qE '^DefaultSession='); then
     sed -i 's|^\(DefaultSession=\).*|\1sway|g' /etc/gdm3/daemon.conf
