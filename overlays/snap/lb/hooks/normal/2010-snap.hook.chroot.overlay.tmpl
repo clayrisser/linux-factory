@@ -1,5 +1,6 @@
 #!/bin/sh
 
+systemctl start snapd
 {% for snap in overlay.config.liveSnaps %}
 snap install {{ snap }}
 {% endfor %}

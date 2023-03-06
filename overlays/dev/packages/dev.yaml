@@ -3,6 +3,7 @@
 
 # CLI
 - build-essential
+- direnv
 - git
 - git-lfs
 - jq

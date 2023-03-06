@@ -1,6 +1,6 @@
 architectures: amd64
 debug: true
-distribution: bullseye
+distribution: sid
 donateUrl: https://www.debian.org
 email: email@risserlabs.com
 issuesUrl: https://bugs.debian.org

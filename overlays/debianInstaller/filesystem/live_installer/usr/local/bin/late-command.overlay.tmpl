@@ -10,6 +10,9 @@ export DEFAULT_USER=$(echo $(ls $CHROOT/home) | sed 's|\s.*$||g')
 for mount in dev proc run sys; do
     mount --bind /${mount} $CHROOT/${mount}
 done
+if (echo $PATH | grep -vq '/usr/local/bin'); then
+    export PATH="/usr/local/bin:$PATH"
+fi
 
 # PREPARE SCRIPTS
 cp -r /root/install $CHROOT/root/install

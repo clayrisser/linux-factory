@@ -176,6 +176,14 @@ class Deb:
             self._lb["archiveAreas"]
             if "archiveAreas" in self._lb
             else "main contrib non-free"
+            + (
+                " non-free-firmware"
+                if (
+                    self._lb["distribution"] == "sid"
+                    or self._lb["distribution"] == "bookworm"
+                )
+                else ""
+            )
         )
         backports = self._lb["backports"] if "backports" in self._lb else True
         binary_images = (

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo systemctl start snapd
+systemctl start snapd
 {% for snap in overlay.config.snaps %}
 echo snap install {{ snap }}
 systemctl status snapd
