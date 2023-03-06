@@ -46,7 +46,6 @@ class OverlayHooks:
             else os.path.join(self.deb.paths["os"], "assets/grub/splash.jpeg")
         )
         if os.path.isfile(splash_path):
-            size = "640x480"
             await util.mkdirs(
                 os.path.join(self.deb.paths["os"], "filesystem/installed/boot/grub"),
             )
@@ -55,7 +54,6 @@ class OverlayHooks:
                 os.path.join(
                     self.deb.paths["os"], "filesystem/installed/boot/grub/splash.png"
                 ),
-                size,
             )
             await util.mkdirs(
                 os.path.join(self.deb.paths["os"], "filesystem/binary/boot/grub"),
@@ -65,7 +63,6 @@ class OverlayHooks:
                 os.path.join(
                     self.deb.paths["os"], "filesystem/binary/boot/grub/splash.png"
                 ),
-                size,
             )
             if not self.config["splash"]["debug"] or not self.deb.debug:
                 await util.mkdirs(
@@ -76,18 +73,19 @@ class OverlayHooks:
                     os.path.join(
                         self.deb.paths["os"], "filesystem/binary/isolinux/splash.png"
                     ),
-                    size,
+                    "640x480",
                 )
 
 
-def convert_image(a_path, b_path, size="640x480"):
+def convert_image(a_path, b_path, size=None):
     util.shell(
         "convert '"
         + a_path
-        + "' -resize '"
-        + size
-        + "^' -gravity center -extent "
-        + size
+        + (
+            ("' -resize '" + size + "^' -gravity center -extent " + size)
+            if size
+            else "'"
+        )
         + " -define png:format=png24 '"
         + b_path
         + "'"

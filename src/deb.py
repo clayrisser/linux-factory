@@ -178,10 +178,7 @@ class Deb:
             else "main contrib non-free"
             + (
                 " non-free-firmware"
-                if (
-                    self._lb["distribution"] == "sid"
-                    or self._lb["distribution"] == "bookworm"
-                )
+                if (distribution == "sid" or distribution == "bookworm")
                 else ""
             )
         )

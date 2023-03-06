@@ -2,6 +2,6 @@
 
 cd install
 [ -f initrd.gz.orig ] || cp -p initrd.gz initrd.gz.orig
-[ -f firmware.cpio.gz ] || wget https://cdimage.debian.org/cdimage/firmware/$DISTRIBUTION/11.3.0/firmware.cpio.gz
+[ -f firmware.cpio.gz ] || wget https://cdimage.debian.org/cdimage/firmware/$DISTRIBUTION/current/firmware.cpio.gz
 cat initrd.gz.orig firmware.cpio.gz > initrd.gz
 rm -rf initrd.gz.orig firmware.cpio.gz
