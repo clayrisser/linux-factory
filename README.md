@@ -14,7 +14,7 @@ Edit configurations in the `os/config.yaml`, activate custom overlays and when r
 make build
 ```
 
-Once the build has completed, you can find the iso installer located in the `.build/lb` folder.
+Once the build has been completed, you can find the iso installer located in the `.build/lb` folder.
 
 ### Reset Environment
 
