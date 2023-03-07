@@ -1,8 +1,12 @@
 #!/bin/bash
 
 FIRMWARE_URL="{{ overlay.config.firmwareUrl }}"
+DISTRIBUTION="current"
+if [ "$DISTRIBUTION" = "sid" ]; then
+    FIRMWARE_VERSION="20230209"
+fi
 if [ "$FIRMWARE_URL" = "" ]; then
-    FIRMWARE_URL="https://cdimage.debian.org/cdimage/firmware/$DISTRIBUTION/current/firmware.cpio.gz"
+    FIRMWARE_URL="https://cdimage.debian.org/cdimage/firmware/$DISTRIBUTION/$FIRMWARE_VERSION/firmware.cpio.gz"
 fi
 
 cd install
