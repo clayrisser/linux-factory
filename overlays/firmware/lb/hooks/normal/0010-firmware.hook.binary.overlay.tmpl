@@ -1,17 +1,23 @@
 #!/bin/bash
 
-FIRMWARE_URL="{{ overlay.config.firmwareUrl }}"
+FIRMWARE_BASE_URL="{{ overlay.config.firmwareUrl }}"
 FIRMWARE_VERSION="current"
 if [ "$DISTRIBUTION" = "sid" ]; then
     FIRMWARE_VERSION="20230209"
 fi
-if [ "$FIRMWARE_URL" = "" ]; then
-    FIRMWARE_URL="https://cdimage.debian.org/cdimage/firmware/$DISTRIBUTION/$FIRMWARE_VERSION/firmware.cpio.gz"
+if [ "$FIRMWARE_BASE_URL" = "" ]; then
+    FIRMWARE_BASE_URL="https://cdimage.debian.org/cdimage/firmware/$DISTRIBUTION/$FIRMWARE_VERSION"
 fi
 
-cd install
+mkdir -p firmware
+cd firmware
+[ -f firmware.list.gz ] || wget "$FIRMWARE_BASE_URL/firmware.list.gz"
+[ -f firmware.tar.gz ] || wget "$FIRMWARE_BASE_URL/firmware.tar.gz"
+gzip -d firmware.list.gz
+tar -xvf firmware.tar.gz
+rm -rf firmware.list.gz firmware.tar.gz
+cd ../install
 [ -f initrd.gz.orig ] || cp -p initrd.gz initrd.gz.orig
-[ -f firmware.cpio.gz ] || echo wget "$FIRMWARE_URL"
-[ -f firmware.cpio.gz ] || wget "$FIRMWARE_URL"
+[ -f firmware.cpio.gz ] || wget "$FIRMWARE_BASE_URL/firmware.cpio.gz"
 cat initrd.gz.orig firmware.cpio.gz > initrd.gz
 rm -rf initrd.gz.orig firmware.cpio.gz

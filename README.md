@@ -237,3 +237,5 @@ _I'm not sure exactly what the differences between `config/package-lists/*.list.
 - https://help.ubuntu.com/community/InstallCDCustomization
 - https://live-team.pages.debian.net/live-manual/html/live-manual/index.en.html
 - https://manpages.debian.org/unstable/live-build/lb_config.1.en.html
+- https://wiki.debian.org/DebianInstaller/NetbootFirmware
+- https://www.debian.org/releases/stable/i386/ch06s04.en.html
