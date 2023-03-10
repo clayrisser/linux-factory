@@ -231,10 +231,15 @@ class Deb:
             else mirror
         )
         mode = self._lb["mode"] if "mode" in self._lb else "debian"
+        debian_installer_distribution = (
+            self._lb["debianInstallerDistribution"]
+            if "debianInstallerDistribution" in self._lb
+            else distribution
+        )
         parent_debian_installer_distribution = (
             self._lb["parentDebianInstallerDistribution"]
             if "parentDebianInstallerDistribution" in self._lb
-            else distribution
+            else debian_installer_distribution
         )
         parent_distribution = (
             self._lb["parentDistribution"]
@@ -278,6 +283,7 @@ class Deb:
             "CACHE": str(cache).lower() if type(cache) is bool else str(cache),
             "CHECKSUMS": str(checksums),
             "DEBIAN_INSTALLER": str(debian_installer),
+            "DEBIAN_INSTALLER_DISTRIBUTION": str(debian_installer_distribution),
             "DEBIAN_INSTALLER_GUI": str(debian_installer_gui).lower()
             if type(debian_installer_gui) is bool
             else str(debian_installer_gui),

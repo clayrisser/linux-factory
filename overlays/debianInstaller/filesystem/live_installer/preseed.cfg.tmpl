@@ -23,7 +23,7 @@ d-i keyboard-configuration/xkb-keymap select us
 
 # netcfg will choose an interface that has link if possible. This makes it
 # skip displaying a list if there is more than one interface.
-d-i netcfg/choose_interface select auto
+# d-i netcfg/choose_interface select auto
 
 # To pick a particular interface instead:
 #d-i netcfg/choose_interface select eth1
@@ -66,7 +66,7 @@ d-i netcfg/choose_interface select auto
 # Any hostname and domain names assigned from dhcp take precedence over
 # values set here. However, setting the values still prevents the questions
 # from being shown, even if values come from dhcp.
-d-i netcfg/get_hostname string unassigned-hostname
+# d-i netcfg/get_hostname string unassigned-hostname
 d-i netcfg/get_domain string unassigned-domain
 
 # If you want to force a hostname, regardless of what either the DHCP
@@ -82,7 +82,7 @@ d-i netcfg/wireless_wep string
 # If non-free firmware is needed for the network or other hardware, you can
 # configure the installer to always try to load it, without prompting. Or
 # change to false to disable asking.
-#d-i hw-detect/load_firmware boolean true
+d-i hw-detect/load_firmware boolean true
 
 ### Network console
 # Use the following settings if you wish to make use of the network-console

@@ -14,6 +14,7 @@ lb config noauto \
     --cache "${CACHE:-true}" \
     --checksums "${CHECKSUMS:-sha256}" \
     --debian-installer "${DEBIAN_INSTALLER:-netinst}" \
+    --debian-installer-distribution "${DEBIAN_INSTALLER_DISTRIBUTION:-bullseye}" \
     --debian-installer-gui "${DEBIAN_INSTALLER_GUI:-true}" \
     --debootstrap-options "${DEBOOTSTRAP_OPTIONS:---include=apt-transport-https,ca-certificates,openssl}" \
     $([ "${DEBUG:-true}" = "true" ] && echo --debug || true) \
