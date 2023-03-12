@@ -12,7 +12,7 @@ name: DEB Distro
 releaseNotesUrl: https://www.debian.org/releases/bullseye/releasenotes
 shortName: Debian
 supportUrl: https://www.debian.org/support
-version: 11
+version: 12
 website: https://risserlabs.com
 lb:
   debianInstaller: netinst # live,netinst
