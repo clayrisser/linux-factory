@@ -28,6 +28,7 @@ overlays:
   ungoogledChromium: {}
   tools: {}
   dev: {}
+  easterEggs: {}
   gnome: {}
   flatpak:
     flatpaks:

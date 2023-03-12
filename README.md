@@ -51,7 +51,7 @@ sudo apt-get install -y imagemagick make git git-lfs grub-emu live-build python3
 | Live Build  | `sudo apt-get install -y live-build`                    | https://live-team.pages.debian.net/live-manual/html/live-manual/index.en.html |
 | Python 3    | `sudo apt-get install -y python3`                       | https://www.python.org                                                        |
 | jq          | `sudo apt-get install -y jq`                            | https://stedolan.github.io/jq                                                 |
-| poetry      | `sudo apt-get install -y python3-poetry-core`           | https://python-poetry.org                                                     |
+| poetry      | `sudo pip3 install poetry --break-system-packages`      | https://python-poetry.org                                                     |
 | virtualenv  | `sudo apt-get install -y python3-venv`                  | https://virtualenv.pypa.io                                                    |
 | yq          | `sudo apt-get install -y snapd && sudo snap install yq` | https://mikefarah.gitbook.io/yq                                               |
 

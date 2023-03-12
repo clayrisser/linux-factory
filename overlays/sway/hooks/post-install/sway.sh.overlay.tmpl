@@ -4,6 +4,7 @@ apt-mark hold sway
 
 {% if deb.distribution == "sid" or deb.distribution == "bookworm" %}
 pip3 install autotiling --break-system-packages
+pip3 install pulsectl --break-system-packages
 {% else %}
 pip3 install pipx
 pip3 install autotiling
