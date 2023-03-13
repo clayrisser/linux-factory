@@ -77,6 +77,9 @@ output * bg $HOME/.wallpaper.png fill
     # printscreen
     bindsym Print exec bash $HOME/.config/sway/screenshot.sh
 
+    # clipboard
+    bindsym $mod+c exec clipman pick -t wofi -T'-W 100% -H 14% -y 0 -x 0 -I -w 1'
+
     # custom keybindings
     bindsym --locked XF86MonBrightnessDown exec light -S "$(light -G | awk '{ print int($1 / 1.4) }')"
     bindsym --locked XF86MonBrightnessUp exec light -S "$(light -G | awk '{ print int(($1 + .72) * 1.4) }')"
@@ -231,7 +234,7 @@ for_window [app_id=".*"] border pixel $border_pixel
 
 exec --no-startup-id sh $HOME/.config/sway/startup.sh
 exec /usr/bin/xsettingsd
-exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+exec /usr/lib/x86_64-linux-gnu/polkit-mate/polkit-mate-authentication-agent-1
 exec /usr/libexec/xdg-desktop-portal -r
 exec /usr/libexec/xdg-desktop-portal-gnome -r
 exec autotiling -w 1 3 5 7 9
