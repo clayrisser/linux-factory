@@ -6,7 +6,6 @@ height=110
 border-size=2
 border-color=#88c0d0
 border-radius=15
-icons=0
 max-icon-size=64
 default-timeout=5000
 ignore-timeout=1
