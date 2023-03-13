@@ -18,7 +18,7 @@ set $term foot
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu dmenu_path | wofi -S drun -I
+set $menu wofi -S drun -I
 set $border_pixel 4
 
 include /etc/sway/config-vars.d/*
@@ -235,7 +235,7 @@ bar {
     colors {
         statusline #ffffff
         background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        inactive_workspace #323232 #323232 #5c5c5c
     }
 }
 
@@ -247,6 +247,7 @@ exec --no-startup-id sh $HOME/.config/sway/startup.sh
 exec /usr/bin/xsettingsd
 exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 exec /usr/libexec/xdg-desktop-portal -r
+exec /usr/libexec/xdg-desktop-portal-gnome -r
 exec autotiling -w 1 3 5 7 9
 exec mako
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK

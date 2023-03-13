@@ -45,7 +45,7 @@ layout-text-color=#eeeeeeff
 #effect-compose=/home/berkut/.config/swaylock/profile.png
 
 # Text color
-font-size=160
+font-size=60
 font=Source Sans Pro
 text-color=#eeeeeeff
 text-clear-color=#d8dee900

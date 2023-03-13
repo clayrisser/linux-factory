@@ -6,8 +6,9 @@ apt-mark hold sway
 pip3 install autotiling --break-system-packages
 pip3 install pulsectl --break-system-packages
 {% else %}
-pip3 install pipx
 pip3 install autotiling
+pip3 install pipx
+pip3 install pulsectl
 {% endif %}
 
 if (cat /etc/gdm3/daemon.conf | grep -qE '^DefaultSession='); then
