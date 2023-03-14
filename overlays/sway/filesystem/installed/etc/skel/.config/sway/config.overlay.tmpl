@@ -246,17 +246,17 @@ default_border pixel $border_pixel
 default_floating_border pixel $border_pixel
 for_window [app_id=".*"] border pixel $border_pixel
 
+exec_always sh $HOME/.config/sway/import-gsettings.sh
+exec_always swaycfg color-scheme $(swaycfg color-scheme)
+exec_always xrandr --output $(xrandr | grep -m 1 XWAYLAND | awk '{print $1;}') --primary
 exec --no-startup-id sh $HOME/.config/sway/startup.sh
 exec /usr/bin/xsettingsd
 exec /usr/lib/x86_64-linux-gnu/polkit-mate/polkit-mate-authentication-agent-1
 exec /usr/libexec/xdg-desktop-portal -r
 exec /usr/libexec/xdg-desktop-portal-gnome -r
-exec autotiling -w 1 3 5 7 9
+exec /usr/local/bin/autotiling
 exec mako
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec wl-paste -t text --watch clipman store --no-persist
-exec_always sh $HOME/.config/sway/import-gsettings.sh
-exec_always swaycfg color-scheme $(swaycfg color-scheme)
-exec_always xrandr --output $(xrandr | grep -m 1 XWAYLAND | awk '{print $1;}') --primary
 
 include /etc/sway/config.d/*
