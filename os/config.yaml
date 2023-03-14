@@ -31,6 +31,7 @@ overlays:
   easterEggs: {}
   gnome: {}
   librewolf: {}
+  sid: {}
   flatpak:
     flatpaks:
       - https://dl.flathub.org/repo/appstream/me.iepure.devtoolbox.flatpakref
