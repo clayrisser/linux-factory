@@ -1,10 +1,6 @@
 #!/bin/sh
 
-curl -Lo theme.tar.gz https://gitlab.com/risserlabs/community/firefox-sway-gnome-theme/-/archive/master/firefox-sway-gnome-theme-master.tar.gz
-tar -xzvf theme.tar.gz
-cd firefox-sway-gnome-theme-master
-yes | bash ./scripts/auto-install.sh
-cd ..
-rm -rf theme.tar.gz firefox-sway-gnome-theme-master
+librewolf -headless &; sleep 10 && killall librewolf
+curl -L https://gitlab.com/risserlabs/community/firefox-sway-gnome-theme/-/raw/master/scripts/install-by-curl.sh | bash
 
 xdg-settings set default-web-browser librewolf.desktop
