@@ -3,7 +3,7 @@
 FIRMWARE_BASE_URL="{{ overlay.config.firmwareUrl }}"
 FIRMWARE_VERSION="current"
 if [ "$DISTRIBUTION" = "sid" ]; then
-    FIRMWARE_VERSION="20230209"
+    FIRMWARE_VERSION="20230213"
 fi
 if [ "$FIRMWARE_BASE_URL" = "" ]; then
     FIRMWARE_BASE_URL="https://cdimage.debian.org/cdimage/firmware/$DISTRIBUTION/$FIRMWARE_VERSION"

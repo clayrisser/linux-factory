@@ -40,60 +40,21 @@
 
 {% if overlay.config.packages.mediumPriority %}
 # MEDIUM PRIORITY
-- package: baobab # disk usage analyzer
-  live: false
-  binary: true
-  installed: true
-- package: drawing # screenshot editor
-  live: false
-  binary: true
-  installed: true
-- package: eog # image viewer
-  live: false
-  binary: true
-  installed: true
-- package: evince # document viewer
-  live: false
-  binary: true
-  installed: true
-- package: gnome-characters # character selection
-  live: false
-  binary: true
-  installed: true
-- package: gnome-disk-utility # disk and partition manager
-  live: false
-  binary: true
-  installed: true
-- package: gnome-font-viewer # font explorer
-  live: false
-  binary: true
-  installed: true
-- package: gnome-software # software installer
-  live: false
-  binary: true
-  installed: true
-- package: gnome-software-plugin-flatpak # software flatpak installer
-  live: false
-  binary: true
-  installed: true
-- package: gnome-software-plugin-snap # software snap installer
-  live: false
-  binary: true
-  installed: true
-- package: seahorse # secret management
-  live: false
-  binary: true
-  installed: true
+- baobab # disk usage analyzer
+- drawing # screenshot editor
+- eog # image viewer
+- evince # document viewer
+- gnome-characters # character selection
+- gnome-disk-utility # disk and partition manager
+- gnome-font-viewer # font explorer
+- gnome-software # software installer
+- gnome-software-plugin-flatpak # software flatpak installer
+- gnome-software-plugin-snap # software snap installer
+- seahorse # secret management
 {% if deb.distribution == "sid" or deb.distribution == "bookworm" %}
-- package: gnome-text-editor # text editor
-  live: false
-  binary: true
-  installed: true
+- gnome-text-editor # text editor
 {% else %}
-- package: gedit # text editor
-  live: false
-  binary: true
-  installed: true
+- gedit # text editor
 {% endif %}
 {% endif %}
 
