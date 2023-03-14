@@ -57,6 +57,7 @@
     "libglib",
     "libnotify",
     "libpam",
+    "librewolf",
     "libxcb",
     "lightdm",
     "linuxbrew",
