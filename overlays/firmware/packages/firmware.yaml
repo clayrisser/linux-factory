@@ -1,3 +1,12 @@
-- firmware-iwlwifi
-- firmware-linux
-- firmware-realtek
+- package: firmware-iwlwifi
+  binary: true
+  installed: false
+  live: true
+- package: firmware-linux
+  binary: true
+  installed: false
+  live: true
+- package: firmware-realtek
+  binary: true
+  installed: false
+  live: true

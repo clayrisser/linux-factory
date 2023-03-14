@@ -40,21 +40,60 @@
 
 {% if overlay.config.packages.mediumPriority %}
 # MEDIUM PRIORITY
-- baobab # disk usage analyzer
-- drawing # screenshot editor
-- eog # image viewer
-- evince # document viewer
-- gnome-characters # character selection
-- gnome-disk-utility # disk and partition manager
-- gnome-font-viewer # font explorer
-- gnome-software # software installer
-- gnome-software-plugin-flatpak # software flatpak installer
-- gnome-software-plugin-snap # software snap installer
-- seahorse # secret management
+- package: baobab # disk usage analyzer
+  live: false
+  binary: true
+  installed: true
+- package: drawing # screenshot editor
+  live: false
+  binary: true
+  installed: true
+- package: eog # image viewer
+  live: false
+  binary: true
+  installed: true
+- package: evince # document viewer
+  live: false
+  binary: true
+  installed: true
+- package: gnome-characters # character selection
+  live: false
+  binary: true
+  installed: true
+- package: gnome-disk-utility # disk and partition manager
+  live: false
+  binary: true
+  installed: true
+- package: gnome-font-viewer # font explorer
+  live: false
+  binary: true
+  installed: true
+- package: gnome-software # software installer
+  live: false
+  binary: true
+  installed: true
+- package: gnome-software-plugin-flatpak # software flatpak installer
+  live: false
+  binary: true
+  installed: true
+- package: gnome-software-plugin-snap # software snap installer
+  live: false
+  binary: true
+  installed: true
+- package: seahorse # secret management
+  live: false
+  binary: true
+  installed: true
 {% if deb.distribution == "sid" or deb.distribution == "bookworm" %}
-- gnome-text-editor # text editor
+- package: gnome-text-editor # text editor
+  live: false
+  binary: true
+  installed: true
 {% else %}
-- gedit # text editor
+- package: gedit # text editor
+  live: false
+  binary: true
+  installed: true
 {% endif %}
 {% endif %}
 
@@ -62,96 +101,96 @@
 {% if overlay.config.packages.lowPriority %}
 - package: cheese # camera
   live: false
-  binary: false
+  binary: true
   installed: true
 - package: geary # email
   live: false
-  binary: false
+  binary: true
   installed: true
 - package: gimp # image editor
   live: false
-  binary: false
+  binary: true
   installed: true
 - package: gnome-calculator # calculator
   live: false
-  binary: false
+  binary: true
   installed: true
 - package: gnome-calendar # calendar
   live: false
-  binary: false
+  binary: true
   installed: true
 - package: gnome-clocks # clock
   live: false
-  binary: false
+  binary: true
   installed: true
 - package: gnome-connections # remote desktop
   live: false
-  binary: false
+  binary: true
   installed: true
 - package: gnome-contacts # contacts
   live: false
-  binary: false
+  binary: true
   installed: true
 - package: gnome-dictionary # dictionary
   live: false
-  binary: false
+  binary: true
   installed: true
 - package: gnome-games # games
   live: false
-  binary: false
+  binary: true
   installed: true
 - package: gnome-maps # maps
   live: false
-  binary: false
+  binary: true
   installed: true
 - package: gnome-metronome # metronome
   live: false
-  binary: false
+  binary: true
   installed: true
 - package: gnome-photos # photo manager
   live: false
-  binary: false
+  binary: true
   installed: true
 - package: gnome-recipes # recipes
   live: false
-  binary: false
+  binary: true
   installed: true
 - package: gnome-shell-pomodoro # pomodoro timer
   live: false
-  binary: false
+  binary: true
   installed: true
 - package: gnome-sound-recorder # audio recorder
   live: false
-  binary: false
+  binary: true
   installed: true
 - package: gnome-todo # todo list
   live: false
-  binary: false
+  binary: true
   installed: true
 - package: gnome-weather # weather
   live: false
-  binary: false
+  binary: true
   installed: true
 - package: gtranslator # translation editor
   live: false
-  binary: false
+  binary: true
   installed: true
 - package: nautilus-nextcloud # nextcloud file sync
   live: false
-  binary: false
+  binary: true
   installed: true
 - package: pitivi # video editor
   live: false
-  binary: false
+  binary: true
   installed: true
 - package: totem # media player
   live: false
-  binary: false
+  binary: true
   installed: true
 # - gnome-documents # document manager
 # - gnome-boxes # virtualization
 - package: gnome-music # music player
   live: false
-  binary: false
+  binary: true
   installed: true
 {% endif %}

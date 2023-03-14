@@ -37,9 +37,7 @@ if [ -d $CHROOT/root/install/filesystem ]; then
     (while true; do echo y; done) | cp -af "$CHROOT/root/install/filesystem"/.?* "$CHROOT" >&2
 fi
 mkdir -p "$CHROOT/home/$DEFAULT_USER"
-(while true; do echo y; done) | cp -af "$CHROOT/etc/skel"/* "$CHROOT/home/$DEFAULT_USER" >&2
-(while true; do echo y; done) | cp -af "$CHROOT/etc/skel"/.?* "$CHROOT/home/$DEFAULT_USER" >&2
-
+in-target rsync -a /etc/skel/ /home/$DEFAULT_USER/
 in-target chown -R $DEFAULT_USER:$DEFAULT_USER "/home/$DEFAULT_USER" >&2
 chmod +x $CHROOT/usr/local/bin/* >&2
 
