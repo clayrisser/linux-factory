@@ -13,8 +13,8 @@ cd firmware
 gzip -d firmware.list.gz
 tar -xvf firmware.tar.gz
 rm -rf firmware.list.gz firmware.tar.gz
-cd ../install
-[ -f initrd.gz.orig ] || cp -p initrd.gz initrd.gz.orig
-[ -f firmware.cpio.gz ] || wget "$FIRMWARE_BASE_URL/firmware.cpio.gz"
-cat initrd.gz.orig firmware.cpio.gz > initrd.gz
-rm -rf initrd.gz.orig firmware.cpio.gz
+# cd ../install
+# [ -f initrd.gz.orig ] || cp -p initrd.gz initrd.gz.orig
+# [ -f firmware.cpio.gz ] || wget "$FIRMWARE_BASE_URL/firmware.cpio.gz"
+# cat initrd.gz.orig firmware.cpio.gz > initrd.gz
+# rm -rf initrd.gz.orig firmware.cpio.gz

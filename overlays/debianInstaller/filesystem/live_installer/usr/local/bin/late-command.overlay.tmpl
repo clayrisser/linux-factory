@@ -33,8 +33,7 @@ in-target echo "$PROMPT_RESPONSE" > $CHROOT/home/$DEFAULT_USER/.ret
 # INSTALL FILESYSTEM
 if [ -d $CHROOT/root/install/filesystem ]; then
     mkdir -p "$CHROOT/root/install/filesystem"
-    (while true; do echo y; done) | cp -af "$CHROOT/root/install/filesystem"/* "$CHROOT" >&2
-    (while true; do echo y; done) | cp -af "$CHROOT/root/install/filesystem"/.?* "$CHROOT" >&2
+    in-target rsync -a /root/install/filesystem/ / >&2
 fi
 mkdir -p "$CHROOT/home/$DEFAULT_USER"
 in-target rsync -a /etc/skel/ /home/$DEFAULT_USER/ >&2

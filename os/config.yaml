@@ -15,7 +15,7 @@ supportUrl: https://www.debian.org/support
 version: 12
 website: https://risserlabs.com
 lb:
-  debianInstaller: netinst # live,netinst
+  debianInstaller: cdrom
   debianInstallerGui: false
   debianInstallerDistribution: daily
 overlays:

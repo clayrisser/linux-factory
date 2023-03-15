@@ -234,6 +234,7 @@ _I'm not sure exactly what the differences between `config/package-lists/*.list.
 - https://debian-live-config.readthedocs.io/en/latest/custom.html
 - https://discourse.ubuntu.com/t/automated-server-install-reference/16613/21
 - https://github.com/elementary/os/wiki/Building-ISO-Images
+- https://groups.google.com/g/linux.debian.user/c/yN-MAMle-qE?pli=1
 - https://help.ubuntu.com/community/InstallCDCustomization
 - https://live-team.pages.debian.net/live-manual/html/live-manual/index.en.html
 - https://manpages.debian.org/unstable/live-build/lb_config.1.en.html
