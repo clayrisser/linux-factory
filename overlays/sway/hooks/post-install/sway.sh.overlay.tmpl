@@ -16,15 +16,3 @@ if (cat /etc/gdm3/daemon.conf | grep -qE '^DefaultSession='); then
 else
     sed -i "$(grep -n '\[daemon\]' /etc/gdm3/daemon.conf | cut -d ':' -f1) a DefaultSession=sway" /etc/gdm3/daemon.conf
 fi
-
-cat <<EOF >> /etc/skel/.config/sway/startup.sh
-
-if [ ! -f "\$HOME/.config/sway/initialized" ]; then
-    touch -m "\$HOME/.config/sway/initialized"
-    xdg-settings set default-web-browser librewolf.desktop
-    swaycfg color-scheme light
-    swaymsg reload
-fi
-EOF
-cp /etc/skel/.config/sway/startup.sh "/home/$DEFAULT_USER/.config/sway/startup.sh"
-chown $DEFAULT_USER:$DEFAULT_USER "/home/$DEFAULT_USER/.config/sway/startup.sh"

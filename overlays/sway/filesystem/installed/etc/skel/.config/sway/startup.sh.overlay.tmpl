@@ -1,1 +1,10 @@
 #!/bin/sh
+
+if [ ! -f "$HOME/.config/sway/initialized" ]; then
+    touch -m "$HOME/.config/sway/initialized"
+    if which librewolf >/dev/null 2>/dev/null; then
+        xdg-settings set default-web-browser librewolf.desktop
+    fi
+    swaycfg color-scheme dark
+    swaymsg reload
+fi
