@@ -1,3 +1,11 @@
+# PRODUCTIVITY
+{% if overlay.config.packages.productivity %}
+- package: onlyoffice-desktopeditors
+  binary: true
+  installed: false
+  live: false
+{% endif %}
+
 # MEDIA
 {% if overlay.config.packages.media %}
 - package: blender # 3d modeling

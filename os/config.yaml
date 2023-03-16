@@ -19,18 +19,19 @@ lb:
   debianInstallerGui: false
   debianInstallerDistribution: daily
 overlays:
-  # example: {}
+  example: {}
   debianInstaller: {}
   firmware: {}
   grub: {}
-  plymouth: {}
+  # plymouth: {}
   sway: {}
-  ungoogledChromium: {}
-  tools: {}
-  dev: {}
+  # ungoogledChromium: {}
+  # tools: {}
+  # dev: {}
   easterEggs: {}
-  gnome: {}
-  librewolf: {}
+  # gnome: {}
+  # waydroid: {}
+  # librewolf: {}
   sid: {}
   flatpak:
     flatpaks:

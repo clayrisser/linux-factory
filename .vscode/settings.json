@@ -102,6 +102,7 @@
     "venv",
     "virtualenv",
     "waybar",
+    "waydroid",
     "wexitstatus",
     "wifexited",
     "wofi",
