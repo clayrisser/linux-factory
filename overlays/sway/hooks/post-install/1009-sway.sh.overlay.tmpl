@@ -19,11 +19,11 @@ fi
 
 cat <<EOF >> /etc/skel/.config/sway/startup.sh
 
-mkdir -p "\${XDG_STATE_HOME:-\$HOME/.local/state}/weasley"
-DEFAULTS_PATH="\${XDG_STATE_HOME:-\$HOME/.local/state}/weasley/defaults"
-if [ ! -f "\$DEFAULTS_PATH" ]; then
+if [ ! -f "\$HOME/.config/sway/initialized" ]; then
+    touch -m "\$HOME/.config/sway/initialized"
     xdg-settings set default-web-browser librewolf.desktop
-    touch -m "\$DEFAULTS_PATH"
+    swaycfg color-scheme light
+    swaymsg reload
 fi
 EOF
 cp /etc/skel/.config/sway/startup.sh "/home/$DEFAULT_USER/.config/sway/startup.sh"
