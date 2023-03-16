@@ -1,6 +1,7 @@
 #!/bin/sh
 
 export _STATE_PATH="${XDG_STATE_HOME:-$HOME/.local/state}/weasley"
+export GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 
 if [ "$1" = "startup" ] && [ -f "$_STATE_PATH/dotstow" ]; then
     exit 0
