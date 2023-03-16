@@ -1,8 +1,34 @@
 #!/bin/sh
 
+hide-session() {
+    SESSION_PATH=$1
+    if [ ! -f "$SESSION_PATH" ]; then
+        echo "$SESSION_PATH not found" >&2
+        exit 1
+    fi
+    if [ -f "$SESSION_PATH.real" ]; then
+        echo "$SESSION_PATH already diverted" >&2
+        exit 1
+    fi
+    dpkg-divert --rename \
+        --divert "$SESSION_PATH.real" \
+        --add "$SESSION_PATH"
+    (cat "$SESSION_PATH.real" | grep -E '^Hidden=') && \
+        (sed 's|^Hidden=.*|Hidden=true|g' "$SESSION_PATH.real" | grep Hidden) || \
+        (cat "$SESSION_PATH.real" && echo 'Hidden=true') | \
+        tee "$SESSION_PATH" >/dev/null
+}
+
+hide-session /usr/share/wayland-sessions/gnome-wayland.desktop
+hide-session /usr/share/xsessions/gnome-xorg.desktop
+hide-session /usr/share/xsessions/gnome.desktop
+hide-session /usr/share/xsessions/i3-with-shmlog.desktop
+hide-session /usr/share/xsessions/i3.desktop
+
 dpkg-divert --rename \
     --divert /usr/share/wayland-sessions/sway.desktop.real \
     --add /usr/share/wayland-sessions/sway.desktop
+cp /usr/share/wayland-sessions/sway.desktop.real /usr/share/wayland-sessions/sway.desktop
 
 cat <<EOF > /var/lib/AccountsService/users/$DEFAULT_USER
 [User]

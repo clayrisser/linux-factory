@@ -1,14 +1,11 @@
 #!/bin/sh
 
-dpkg-divert --rename \
-    --divert /usr/share/wayland-sessions/sway.desktop.real \
-    --add /usr/share/wayland-sessions/sway.desktop
-
 if cat /etc/default/grub | grep GRUB_CMDLINE_LINUX_DEFAULT | grep -qv splash; then
     sed 's|GRUB_CMDLINE_LINUX_DEFAULT="\([^"]\+\)"|GRUB_CMDLINE_LINUX_DEFAULT="\1 splash"|g' /etc/default/grub > /etc/default/grub.real
     dpkg-divert --rename \
         --divert /etc/default/grub.real \
         --add /etc/default/grub
+    cp /etc/default/grub.real /etc/default/grub
 fi
 
 if (cat /etc/gdm3/daemon.conf | grep -qE '^PlymouthTheme='); then
@@ -19,6 +16,7 @@ fi
 dpkg-divert --rename \
     --divert /etc/gdm3/daemon.conf.real \
     --add /etc/gdm3/daemon.conf
+cp /etc/gdm3/daemon.conf.real /etc/gdm3/daemon.conf
 
 plymouth-set-default-theme {{ overlay.config.theme }}
 update-initramfs -u
