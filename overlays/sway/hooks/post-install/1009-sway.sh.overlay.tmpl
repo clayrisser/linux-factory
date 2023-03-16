@@ -16,3 +16,15 @@ if (cat /etc/gdm3/daemon.conf | grep -qE '^DefaultSession='); then
 else
     sed -i "$(grep -n '\[daemon\]' /etc/gdm3/daemon.conf | cut -d ':' -f1) a DefaultSession=sway" /etc/gdm3/daemon.conf
 fi
+
+cat <<EOF >> /etc/skel/.config/sway/startup.sh
+
+mkdir -p "\${XDG_STATE_HOME:-\$HOME/.local/state}/weasley"
+DEFAULTS_PATH="\${XDG_STATE_HOME:-\$HOME/.local/state}/weasley/defaults"
+if [ ! -f "\$DEFAULTS_PATH" ]; then
+    xdg-settings set default-web-browser librewolf.desktop
+    touch -m "\$DEFAULTS_PATH"
+fi
+EOF
+cp /etc/skel/.config/sway/startup.sh "/home/$DEFAULT_USER/.config/sway/startup.sh"
+chown $DEFAULT_USER:$DEFAULT_USER "/home/$DEFAULT_USER/.config/sway/startup.sh"

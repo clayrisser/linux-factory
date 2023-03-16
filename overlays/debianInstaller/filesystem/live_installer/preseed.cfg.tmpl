@@ -320,6 +320,7 @@ d-i apt-setup/non-free boolean true
 d-i apt-setup/contrib boolean true
 # Uncomment this if you don't want to use a network mirror.
 #d-i apt-setup/use_mirror boolean false
+d-i apt-setup/use_mirror boolean true
 # Select which update services to use; define the mirrors to be used.
 # Values shown below are the normal defaults.
 d-i apt-setup/services-select multiselect security, updates
