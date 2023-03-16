@@ -12,7 +12,7 @@ cody install dotstow
 if [ -f /etc/skel/.config/sway/startup.sh ]; then
     cat <<EOF >> /etc/skel/.config/sway/startup.sh
 
-if [ -f "\${XDG_STATE_HOME:-\$HOME/.local/state}/weasley/dotstow" ]; then
+if [ ! -f "\${XDG_STATE_HOME:-\$HOME/.local/state}/weasley/dotstow" ]; then
     kitty -e weasley startup
 fi
 EOF
@@ -21,7 +21,7 @@ EOF
 else
     cat <<EOF >> /etc/skel/.profile
 
-if [ -f "\${XDG_STATE_HOME:-\$HOME/.local/state}/weasley/dotstow" ]; then
+if [ ! -f "\${XDG_STATE_HOME:-\$HOME/.local/state}/weasley/dotstow" ]; then
     kitty -e weasley startup
 fi
 EOF
