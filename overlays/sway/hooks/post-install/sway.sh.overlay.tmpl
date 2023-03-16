@@ -1,6 +1,15 @@
 #!/bin/sh
 
-apt-mark hold sway
+dpkg-divert --rename \
+    --divert /usr/share/wayland-sessions/sway.desktop.real \
+    --add /usr/share/wayland-sessions/sway.desktop
+
+cat <<EOF > /var/lib/AccountsService/users/$DEFAULT_USER
+[User]
+Session=sway
+Icon=/home/$DEFAULT_USER/.face
+SystemAccount=false
+EOF
 
 {% if deb.distribution == "sid" or deb.distribution == "bookworm" %}
 pip3 install autotiling --break-system-packages
@@ -10,9 +19,3 @@ pip3 install autotiling
 pip3 install pipx
 pip3 install pulsectl
 {% endif %}
-
-if (cat /etc/gdm3/daemon.conf | grep -qE '^DefaultSession='); then
-    sed -i 's|^\(DefaultSession=\).*|\1sway|g' /etc/gdm3/daemon.conf
-else
-    sed -i "$(grep -n '\[daemon\]' /etc/gdm3/daemon.conf | cut -d ':' -f1) a DefaultSession=sway" /etc/gdm3/daemon.conf
-fi

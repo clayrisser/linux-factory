@@ -1,14 +1,24 @@
 #!/bin/sh
 
-apt-mark hold gdm3
+dpkg-divert --rename \
+    --divert /usr/share/wayland-sessions/sway.desktop.real \
+    --add /usr/share/wayland-sessions/sway.desktop
 
 if cat /etc/default/grub | grep GRUB_CMDLINE_LINUX_DEFAULT | grep -qv splash; then
-    sed -i 's|GRUB_CMDLINE_LINUX_DEFAULT="\([^"]\+\)"|GRUB_CMDLINE_LINUX_DEFAULT="\1 splash"|g' /etc/default/grub
+    sed 's|GRUB_CMDLINE_LINUX_DEFAULT="\([^"]\+\)"|GRUB_CMDLINE_LINUX_DEFAULT="\1 splash"|g' /etc/default/grub > /etc/default/grub.real
+    dpkg-divert --rename \
+        --divert /etc/default/grub.real \
+        --add /etc/default/grub
 fi
+
 if (cat /etc/gdm3/daemon.conf | grep -qE '^PlymouthTheme='); then
-    sed -i 's|^\(PlymouthTheme=\).*|\1{{ overlay.config.theme }}|g' /etc/gdm3/daemon.conf
+    sed 's|^\(PlymouthTheme=\).*|\1{{ overlay.config.theme }}|g' /etc/gdm3/daemon.conf > /etc/gdm3/daemon.conf.real
 else
-    sed -i "$(grep -n '\[daemon\]' /etc/gdm3/daemon.conf | cut -d ':' -f1) a PlymouthTheme={{ overlay.config.theme }}" /etc/gdm3/daemon.conf
+    sed "$(grep -n '\[daemon\]' /etc/gdm3/daemon.conf | cut -d ':' -f1) a PlymouthTheme={{ overlay.config.theme }}" /etc/gdm3/daemon.conf > /etc/gdm3/daemon.conf.real
 fi
+dpkg-divert --rename \
+    --divert /etc/gdm3/daemon.conf.real \
+    --add /etc/gdm3/daemon.conf
+
 plymouth-set-default-theme {{ overlay.config.theme }}
 update-initramfs -u
