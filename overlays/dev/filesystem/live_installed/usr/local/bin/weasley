@@ -1,0 +1,29 @@
+#!/bin/sh
+
+export _STATE_PATH="${XDG_STATE_HOME:-$HOME/.local/state}/weasley"
+
+if [ "$1" = "startup" ] && [ -f "$_STATE_PATH/dotstow" ]; then
+    exit 0
+fi
+
+sudo true
+mkdir -p "$_STATE_PATH"
+
+if [ ! -f $HOME/.ssh/id_rsa.pub ] || [ ! -f $HOME/.ssh/id_rsa ]; then
+    (echo; echo; echo) | ssh-keygen
+fi
+touch -m "$_STATE_PATH/ssh-keygen"
+
+if ! which cody >/dev/null 2>/dev/null; then
+    $(curl --version >/dev/null 2>/dev/null && echo curl -L || echo wget -O-) https://gitlab.com/risserlabs/community/cody/-/raw/main/cody.sh 2>/dev/null | sh -s i cody
+fi
+if ! which gitlogin >/dev/null 2>/dev/null; then
+    cody install cinch
+fi
+if ! which dotstow >/dev/null 2>/dev/null; then
+    cody install dotstow
+fi
+
+gitlogin && touch -m "$_STATE_PATH/gitlogin"
+cody wizard && touch -m "$_STATE_PATH/cody"
+dotstow wizard && touch -m "$_STATE_PATH/dotstow"
