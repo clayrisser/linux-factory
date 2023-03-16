@@ -88,6 +88,7 @@ in-target update-grub >&2
 # CLEANUP
 if [ "{{ deb.debug }}" = "false" ]; then
     rm -rf \
+        $CHROOT/home/$DEFAULT_USER/install \
         $CHROOT/root/install \
         $CHROOT/usr/local/bin/prompt \
         $CHROOT/usr/local/bin/response \
