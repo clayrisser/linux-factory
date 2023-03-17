@@ -15,8 +15,7 @@ hide-session() {
         --add "$SESSION_PATH"
     (cat "$SESSION_PATH.real" | grep -E '^Hidden=') && \
         (sed 's|^Hidden=.*|Hidden=true|g' "$SESSION_PATH.real" | grep Hidden) || \
-        (cat "$SESSION_PATH.real" && echo 'Hidden=true') | \
-        tee "$SESSION_PATH" >/dev/null
+        ((cat "$SESSION_PATH.real" && echo 'Hidden=true') > "$SESSION_PATH")
 }
 
 hide-session /usr/share/wayland-sessions/gnome-wayland.desktop

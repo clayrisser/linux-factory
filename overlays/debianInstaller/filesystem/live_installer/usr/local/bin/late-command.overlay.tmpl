@@ -3,7 +3,7 @@
 # PREPARE ENVIRONMENT
 export CHROOT=/target
 mkdir -p $CHROOT/var/log/install
-exec &> >(tee -a $CHROOT/var/log/install/di-late-command.log)
+exec 2>> $CHROOT/var/log/install/di-late-command.log
 cp /var/log/install/di-early-command.log $CHROOT/var/log/install/di-early-command.log
 export DEFAULT_USER=$(echo $(ls $CHROOT/home) | sed 's|\s.*$||g')
 [ -f /root/install/.envs ] && export $(cat /root/install/.envs | grep -v '#') || true
@@ -63,7 +63,7 @@ for script in "/root/install/hooks/post-install"/*.sh; do
     if [ -f "$script" ]; then
         SCRIPT_NAME=$(basename "$script" .sh)
         echo running /var/log/install/post-install-$SCRIPT_NAME.log 1>&2
-        in-target sh -c "cd / && sh $script 2>&1 | tee -a /var/log/install/post-install-$SCRIPT_NAME.log" >&2
+        in-target sh -c "cd / && sh $script 2>>/var/log/install/post-install-$SCRIPT_NAME.log >>/var/log/install/post-install-$SCRIPT_NAME.log"
     fi
 done
 mkdir -p $CHROOT/home/$DEFAULT_USER/install/hooks
@@ -77,7 +77,7 @@ for s in "$CHROOT/home/$DEFAULT_USER/install/hooks/user-post-install"/*.sh; do
         in-target touch $LOG_PATH
         in-target chown $DEFAULT_USER:$DEFAULT_USER $LOG_PATH
         echo running $SCRIPT_PATH 1>&2
-        in-target su $DEFAULT_USER -c "cd /home/$DEFAULT_USER && sh $SCRIPT_PATH 2>&1 | tee -a $LOG_PATH" >&2
+        in-target su $DEFAULT_USER -c "cd /home/$DEFAULT_USER && sh $SCRIPT_PATH 2>>$LOG_PATH >>$LOG_PATH"
     fi
 done
 
