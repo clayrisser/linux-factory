@@ -1,6 +1,6 @@
 #!/bin/sh
 
-hide-session() {
+hide_session() {
     SESSION_PATH=$1
     if [ ! -f "$SESSION_PATH" ]; then
         echo "$SESSION_PATH not found" >&2
@@ -18,11 +18,11 @@ hide-session() {
         ((cat "$SESSION_PATH.real" && echo 'Hidden=true') > "$SESSION_PATH")
 }
 
-hide-session /usr/share/wayland-sessions/gnome-wayland.desktop
-hide-session /usr/share/xsessions/gnome-xorg.desktop
-hide-session /usr/share/xsessions/gnome.desktop
-hide-session /usr/share/xsessions/i3-with-shmlog.desktop
-hide-session /usr/share/xsessions/i3.desktop
+hide_session /usr/share/wayland-sessions/gnome-wayland.desktop
+hide_session /usr/share/xsessions/gnome-xorg.desktop
+hide_session /usr/share/xsessions/gnome.desktop
+hide_session /usr/share/xsessions/i3-with-shmlog.desktop
+hide_session /usr/share/xsessions/i3.desktop
 
 dpkg-divert --rename \
     --divert /usr/share/wayland-sessions/sway.desktop.real \

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 mkdir -p /var/log/install
-exec >> /var/log/install/di-early-command.log 2>&1
+exec 2>> /var/log/install/di-early-command.log
 [ -f /root/install/.envs ] && export $(cat /root/install/.envs | grep -v '#') || true
 if (echo $PATH | grep -vq '/usr/local/bin'); then
     export PATH="/usr/local/bin:$PATH"
