@@ -1,12 +1,34 @@
 #!/bin/sh
 
-cat <<EOF >> /etc/skel/.profile
+hide_session() {
+    SESSION_PATH=$1
+    if [ ! -f "$SESSION_PATH" ]; then
+        echo "$SESSION_PATH not found" >&2
+        exit 1
+    fi
+    if [ -f "$SESSION_PATH.real" ]; then
+        echo "$SESSION_PATH already diverted" >&2
+        exit 1
+    fi
+    dpkg-divert --rename \
+        --divert "$SESSION_PATH.real" \
+        --add "$SESSION_PATH"
+    (cat "$SESSION_PATH.real" | grep -E '^Hidden=') && \
+        (sed 's|^Hidden=.*|Hidden=true|g' "$SESSION_PATH.real" | grep Hidden) || \
+        ((cat "$SESSION_PATH.real" && echo 'Hidden=true') > "$SESSION_PATH")
+}
 
-# start sway
-. <(cat /etc/environment.d/sway.conf | sed 's|^|export |')
-. /etc/profile
-sway
-EOF
+hide_session /usr/share/wayland-sessions/gnome-wayland.desktop
+hide_session /usr/share/wayland-sessions/gnome.desktop
+hide_session /usr/share/xsessions/gnome-xorg.desktop
+hide_session /usr/share/xsessions/gnome.desktop
+hide_session /usr/share/xsessions/i3-with-shmlog.desktop
+hide_session /usr/share/xsessions/i3.desktop
+
+dpkg-divert --rename \
+    --divert /usr/share/wayland-sessions/sway.desktop.real \
+    --add /usr/share/wayland-sessions/sway.desktop
+cp /usr/share/wayland-sessions/sway.desktop.real /usr/share/wayland-sessions/sway.desktop
 
 mkdir -p /var/lib/AccountsService/users
 cat <<EOF > /var/lib/AccountsService/users/live
@@ -14,6 +36,14 @@ cat <<EOF > /var/lib/AccountsService/users/live
 Session=sway
 Icon=/home/live/.face
 SystemAccount=false
+EOF
+
+cat <<EOF >> /etc/skel/.profile
+
+# start sway
+. <(cat /etc/environment.d/sway.conf | sed 's|^|export |')
+. /etc/profile
+sway
 EOF
 
 {% if deb.distribution == "sid" or deb.distribution == "bookworm" %}
