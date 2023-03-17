@@ -30,12 +30,19 @@ dpkg-divert --rename \
     --add /usr/share/wayland-sessions/sway.desktop
 cp /usr/share/wayland-sessions/sway.desktop.real /usr/share/wayland-sessions/sway.desktop
 
+mkdir -p /var/lib/AccountsService/users
 cat <<EOF > /var/lib/AccountsService/users/$DEFAULT_USER
 [User]
 Session=sway
 Icon=/home/$DEFAULT_USER/.face
 SystemAccount=false
 EOF
+
+# TODO: remove test
+echo ls /var/lib/AccountsService/users
+ls /var/lib/AccountsService/users
+echo cat /var/lib/AccountsService/users/$DEFAULT_USER
+cat /var/lib/AccountsService/users/$DEFAULT_USER
 
 {% if deb.distribution == "sid" or deb.distribution == "bookworm" %}
 pip3 install autotiling --break-system-packages

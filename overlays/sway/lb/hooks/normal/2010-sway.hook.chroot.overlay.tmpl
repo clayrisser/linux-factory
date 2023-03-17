@@ -8,6 +8,14 @@ cat <<EOF >> /etc/skel/.profile
 sway
 EOF
 
+mkdir -p /var/lib/AccountsService/users
+cat <<EOF > /var/lib/AccountsService/users/live
+[User]
+Session=sway
+Icon=/home/live/.face
+SystemAccount=false
+EOF
+
 {% if deb.distribution == "sid" or deb.distribution == "bookworm" %}
 pip3 install autotiling --break-system-packages
 {% else %}
