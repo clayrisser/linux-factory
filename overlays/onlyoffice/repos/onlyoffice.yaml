@@ -1,4 +1,3 @@
-{% if overlay.config.packages.productivity %}
 - name: onlyoffice
   repo: "deb https://download.onlyoffice.com/repo/debian squeeze main"
   binary: true
@@ -56,6 +55,3 @@
     46sjEZg181hkBVJuWbhRoNnqaVckis0fsqCr
     =5jvL
     -----END PGP PUBLIC KEY BLOCK-----
-{% else %}
-[]
-{% endif %}

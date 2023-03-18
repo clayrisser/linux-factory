@@ -27,6 +27,7 @@ overlays:
   sway: {}
   # ungoogledChromium: {}
   # tools: {}
+  # onlyoffice: {}
   # dev: {}
   easterEggs: {}
   # gnome: {}

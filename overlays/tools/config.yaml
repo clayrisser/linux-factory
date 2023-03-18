@@ -1,4 +1,3 @@
 packages:
   cli: true
   media: false
-  productivity: true

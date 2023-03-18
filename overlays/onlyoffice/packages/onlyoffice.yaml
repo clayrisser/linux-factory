@@ -1,0 +1,5 @@
+# - package: onlyoffice-desktopeditors
+#   binary: true
+#   installed: false
+#   live: false
+- https://github.com/ONLYOFFICE/DesktopEditors/releases/download/v7.2.1/onlyoffice-desktopeditors_amd64.deb
