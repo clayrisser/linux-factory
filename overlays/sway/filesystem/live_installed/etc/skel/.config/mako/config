@@ -1,21 +1,19 @@
 sort=-time
 layer=overlay
-background-color=#2e3440
-width=300
-height=110
+background-color=#444444
 border-size=2
-border-color=#88c0d0
-border-radius=15
+border-color=#444444
+border-radius=0
 max-icon-size=64
 default-timeout=5000
 ignore-timeout=1
-font=monospace 14
+font=UbuntuMono Nerd Font 14
 
 [urgency=low]
-border-color=#cccccc
+border-color=#444444
 
 [urgency=normal]
-border-color=#d08770
+border-color=#444444
 
 [urgency=high]
 border-color=#bf616a
