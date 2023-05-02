@@ -28,3 +28,11 @@
 - tree
 - vim
 {% endif %}
+
+# PYTHON
+- python3
+- python3-pip
+- python3-venv
+{% if deb.distribution == "sid" or deb.distribution == "bookworm" %}
+- pipx
+{% endif %}
