@@ -1,14 +1,13 @@
 {
   "recommendations": [
     "dawidd6.debian-vscode",
-    "streetsidesoftware.code-spell-checker",
-    "rubymaniac.vscode-direnv",
+    "bungcip.better-toml",
     "editorconfig.editorconfig",
     "esbenp.prettier-vscode",
+    "mkhl.direnv",
+    "ms-python.python",
+    "ms-python.python",
     "psioniq.psi-header",
-    "ms-python.python",
-    "bungcip.better-toml",
-    "ms-python.python",
-    "bungcip.better-toml"
+    "streetsidesoftware.code-spell-checker"
   ]
 }
