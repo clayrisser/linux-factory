@@ -251,7 +251,7 @@ exec_always swaycfg color-scheme $(swaycfg color-scheme)
 exec_always xrandr --output $(xrandr | grep -m 1 XWAYLAND | awk '{print $1;}') --primary
 exec --no-startup-id sh $HOME/.config/sway/startup.sh
 exec /usr/bin/xsettingsd
-exec /usr/lib/x86_64-linux-gnu/polkit-mate/polkit-mate-authentication-agent-1
+exec /usr/libexec/polkit-mate-authentication-agent-1
 exec /usr/libexec/xdg-desktop-portal -r
 exec /usr/libexec/xdg-desktop-portal-gnome -r
 exec /usr/local/bin/autotiling
