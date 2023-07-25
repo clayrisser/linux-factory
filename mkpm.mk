@@ -21,12 +21,12 @@
 # limitations under the License.
 
 export MKPM_PACKAGES_DEFAULT := \
-	dotenv=0.0.12 \
-	envcache=0.1.0 \
-	gnu=0.0.3 \
+	python=0.0.4 \
+	patch=0.0.3 \
 	mkchain=0.1.1 \
-	patch=0.0.1 \
-	python=0.0.4
+	gnu=0.0.3 \
+	envcache=0.1.0 \
+	dotenv=0.0.12
 
 export MKPM_REPO_DEFAULT := \
 	https://gitlab.com/risserlabs/community/mkpm-stable.git
