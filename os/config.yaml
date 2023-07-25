@@ -15,9 +15,9 @@ supportUrl: https://www.debian.org/support
 version: 12
 website: https://bitspur.com
 lb:
-  debianInstaller: cdrom
+  debianInstaller: cdrom # true|cdrom|netinst|netboot|businesscard|live|false
   debianInstallerGui: false
-  debianInstallerDistribution: daily
+  debianInstallerDistribution: bookworm # daily|bookworm
 overlays:
   # example: {}
   debianInstaller: {}
