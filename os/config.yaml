@@ -19,7 +19,7 @@ lb:
   debianInstallerGui: false
   debianInstallerDistribution: daily
 overlays:
-  example: {}
+  # example: {}
   debianInstaller: {}
   firmware: {}
   grub: {}
@@ -34,9 +34,9 @@ overlays:
   # waydroid: {}
   # librewolf: {}
   apt: {}
-  flatpak:
-    flatpaks:
-      - https://dl.flathub.org/repo/appstream/me.iepure.devtoolbox.flatpakref
-  snap:
-    snaps:
-      - yq
+  # flatpak:
+  #   flatpaks:
+  #     - https://dl.flathub.org/repo/appstream/me.iepure.devtoolbox.flatpakref
+  # snap:
+  #   snaps:
+  #     - yq

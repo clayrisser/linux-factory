@@ -3,10 +3,11 @@ stages:
 
 build:
   stage: build
-  script:
+  before_script:
     - sudo apt-get install -y imagemagick make git git-lfs grub-emu live-build python3 python3-pip jq virtualenv yq
     - sudo pip3 install poetry --break-system-packages
     - sudo virtualenv env
+  script:
     - sudo make build
   tags:
     - debian-build
