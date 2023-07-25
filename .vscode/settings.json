@@ -69,6 +69,7 @@
     "nextcloud",
     "nixpkgs",
     "nopasswd",
+    "nyancat",
     "onlyoffice",
     "openvpn",
     "overlayed",
@@ -201,8 +202,11 @@
     "uri": "../LICENSE",
     "uriIsLocalFile": true
   },
-  "python.formatting.provider": "black",
+  "python.formatting.provider": "none",
   "files.associations": {
     "*.tmpl": "shellscript"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
   }
 }

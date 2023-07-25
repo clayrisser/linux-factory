@@ -4,6 +4,26 @@
 
 ![](assets/linux-factory.jpeg)
 
+## Cloud
+
+You can build and test this system in the cloud using gitlab-runner and virtualbox. You must use a
+cloud server that supports virtualization. DigitalOcean is recommended because it has been tested on it
+and it supports virtualization.
+
+Run the following script to install gitlab-runner, sway with a vnc server, and virtualbox.
+
+```sh
+curl -L https://gitlab.com/bitspur/community/linux-factory/-/raw/main/scripts/cloud-setup.sh | sudo sh
+```
+
+Connect with a vnc client at <IP_ADDRESS>:5900
+
+The window manager is running sway. You can access a cheatsheet for sway commands at the link below.
+
+[Sway Cheatsheet](https://depau.github.io/sway-cheatsheet)
+
+For example `WIN-d` will open the dmenu to start programs and `WIN-ENTER` will open a terminal.
+
 ## Usage
 
 ### Building

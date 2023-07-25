@@ -1,7 +1,7 @@
 {
   "recommendations": [
-    "dawidd6.debian-vscode",
     "bungcip.better-toml",
+    "dawidd6.debian-vscode",
     "editorconfig.editorconfig",
     "esbenp.prettier-vscode",
     "mkhl.direnv",

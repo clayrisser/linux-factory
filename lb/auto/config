@@ -14,11 +14,11 @@ lb config noauto \
     --cache "${CACHE:-true}" \
     --checksums "${CHECKSUMS:-sha256}" \
     --debian-installer "${DEBIAN_INSTALLER:-netinst}" \
-    --debian-installer-distribution "${DEBIAN_INSTALLER_DISTRIBUTION:-bullseye}" \
+    --debian-installer-distribution "${DEBIAN_INSTALLER_DISTRIBUTION:-bookworm}" \
     --debian-installer-gui "${DEBIAN_INSTALLER_GUI:-true}" \
     --debootstrap-options "${DEBOOTSTRAP_OPTIONS:---include=apt-transport-https,ca-certificates,openssl}" \
     $([ "${DEBUG:-true}" = "true" ] && echo --debug || true) \
-    --distribution "${DISTRIBUTION:-bullseye}" \
+    --distribution "${DISTRIBUTION:-bookworm}" \
     --initsystem "${INITSYSTEM:-systemd}" \
     --iso-application "${ISO_APPLICATION:-DEB Distro}" \
     --iso-publisher "${ISO_PUBLISHER:-DEB Distro; https://risserlabs.com; email@risserlabs.com}" \
@@ -28,8 +28,8 @@ lb config noauto \
     --mirror-bootstrap "${MIRROR_BOOTSTRAP:-http://deb.debian.org/debian/}" \
     --mirror-debian-installer "${MIRROR_DEBIAN_INSTALLER:-http://deb.debian.org/debian/}" \
     --mode "${MODE:-debian}" \
-    --parent-debian-installer-distribution "${PARENT_DEBIAN_INSTALLER_DISTRIBUTION:-bullseye}" \
-    --parent-distribution "${PARENT_DISTRIBUTION:-bullseye}" \
+    --parent-debian-installer-distribution "${PARENT_DEBIAN_INSTALLER_DISTRIBUTION:-bookworm}" \
+    --parent-distribution "${PARENT_DISTRIBUTION:-bookworm}" \
     --parent-mirror-chroot "${PARENT_MIRROR_CHROOT:-http://deb.debian.org/debian/}" \
     --parent-mirror-chroot-security "${PARENT_MIRROR_CHROOT_SECURITY:-http://security.debian.org/}" \
     --security "${SECURITY:-false}" \

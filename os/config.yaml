@@ -1,6 +1,6 @@
 architectures: amd64
 debug: true
-distribution: sid
+distribution: bookworm
 donateUrl: https://www.debian.org
 email: email@risserlabs.com
 issuesUrl: https://bugs.debian.org
@@ -9,11 +9,11 @@ locale: en_US
 mirror: http://deb.debian.org/debian/
 mirrorSecurity: http://security.debian.org/
 name: DEB Distro
-releaseNotesUrl: https://www.debian.org/releases/bullseye/releasenotes
+releaseNotesUrl: https://www.debian.org/releases/bookworm/releasenotes
 shortName: Debian
 supportUrl: https://www.debian.org/support
 version: 12
-website: https://risserlabs.com
+website: https://bitspur.com
 lb:
   debianInstaller: cdrom
   debianInstallerGui: false
@@ -33,7 +33,7 @@ overlays:
   # gnome: {}
   # waydroid: {}
   # librewolf: {}
-  sid: {}
+  apt: {}
   flatpak:
     flatpaks:
       - https://dl.flathub.org/repo/appstream/me.iepure.devtoolbox.flatpakref
