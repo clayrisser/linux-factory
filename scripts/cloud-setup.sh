@@ -25,10 +25,6 @@ if ! which gitlab-runner >/dev/null 2>/dev/null; then
         git \
         git-lfs
     curl -Lo /tmp/gitlab-runner.deb https://gitlab-runner-downloads.s3.amazonaws.com/latest/deb/gitlab-runner_${ARCH}.deb
-    while sudo fuser /var/lib/dpkg/lock-frontend 2>/dev/null; do
-        echo "DPKG is locked, waiting and then will check again"
-        sleep 1
-    done
     sudo dpkg -i /tmp/gitlab-runner.deb 2>/dev/null || ( sudo apt-get install -fy && sudo dpkg -i /tmp/gitlab-runner.deb )
     rm -rf /tmp/gitlab-runner.deb
     sudo /sbin/usermod -aG sudo gitlab-runner
