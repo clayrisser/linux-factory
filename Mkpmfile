@@ -3,7 +3,7 @@
 # File Created: 24-05-2022 13:11:50
 # Author: Clay Risser
 # -----
-# Last Modified: 03-08-2023 07:42:24
+# Last Modified: 03-08-2023 07:49:46
 # Modified By: Clay Risser
 # -----
 # Risser Labs LLC (c) Copyright 2021 - 2022
@@ -74,7 +74,7 @@ trust-gpg-key: ##
 
 .PHONY: count
 count:
-	@$(CLOC) $(shell ($(GIT) ls-files && ($(GIT) lfs ls-files | $(CUT) -d' ' -f3)) | $(SORT) | $(UNIQ) -u)
+	@$(CLOC) $(shell ($(GIT) ls-files && ($(GIT) lfs ls-files | $(CUT) -d' ' -f3)) | $(SORT) | $(UNIQ) -u | $(GREP) -vE '\.tar(\.gz)?$$')
 
 .PHONY: fix-permissions
 fix-permissions:
