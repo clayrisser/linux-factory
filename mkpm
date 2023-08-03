@@ -1,0 +1,77 @@
+#!/bin/sh
+
+MKPM_VERSION="1.0.0"
+MKPM_SH_URL="${MKPM_SH_URL:-https://gitlab.com/api/v4/projects/48207162/packages/generic/mkpm/${MKPM_VERSION}/mkpm.sh}"
+alias download="$(curl --version >/dev/null 2>&1 && echo curl -Lo || echo wget -O)"
+alias echo="$([ "$(echo -e)" = "-e" ] && echo "echo" || echo "echo -e")"
+_SUPPORTS_COLORS=$([ "$(tput colors 2>/dev/null)" -ge 8 ] && echo 1 || true)
+_CWD="$(pwd)"
+if [ "$_SUPPORTS_COLORS" = "1" ]; then
+    export NOCOLOR='\033[0m'
+    export RED='\033[31m'
+    export YELLOW='\033[33m'
+fi
+_error() { echo "${RED}MKPM [E]:${NOCOLOR} $@" 1>&2; }
+_debug() { [ "$MKPM_DEBUG" = "1" ] && echo "${YELLOW}MKPM [D]:${NOCOLOR} $@" || true; }
+_project_root() {
+    _ROOT="$1"
+    if [ "$_ROOT" = "" ]; then
+        _ROOT="$(pwd)"
+    fi
+    if [ -f "$_ROOT/mkpm.json" ]; then
+        echo "$_ROOT"
+        return
+    fi
+    _PARENT="$(echo "$_ROOT" | sed 's|\/[^\/]\+$||g')"
+    if ([ "$_PARENT" = "" ] || [ "$_PARENT" = "/" ]); then
+        echo "/"
+        return
+    fi
+    echo "$(_project_root "$_PARENT")"
+    return
+}
+_is_mkpm_proxy_required() {
+    while test $# -gt 0; do
+        case "$1" in
+            -h|--help)
+                return 1
+            ;;
+            -*)
+                shift
+            ;;
+            v|version|init)
+                return 1
+            ;;
+            *)
+                break
+            ;;
+        esac
+    done
+    [ "$1" = "" ] && return 1 || true
+}
+export PROJECT_ROOT="$(_project_root)"
+if [ "$PROJECT_ROOT" = "/" ]; then
+    if _is_mkpm_proxy_required "$@"; then
+        _error "not an mkpm project" && exit 1
+    else
+        PROJECT_ROOT="$_CWD"
+    fi
+fi
+MKPM_ROOT="$PROJECT_ROOT/.mkpm"
+MKPM="$MKPM_ROOT/mkpm"
+_MKPM_BIN="$MKPM/.bin"
+if [ ! -f "$_MKPM_BIN/mkpm" ]; then
+    mkdir -p "$_MKPM_BIN"
+    if [ -f "$MKPM_ROOT/cache.tar.gz" ]; then
+        mkdir -p "$MKPM"
+        cd "$MKPM"
+        tar -xzf "$MKPM_ROOT/cache.tar.gz"
+        cd "$_CWD"
+        _debug restored cache
+    else
+        download "$_MKPM_BIN/mkpm" "$MKPM_SH_URL" >/dev/null
+        _debug downloaded mkpm.sh
+    fi
+    chmod +x "$_MKPM_BIN/mkpm"
+fi
+exec "$_MKPM_BIN/mkpm" "$@"

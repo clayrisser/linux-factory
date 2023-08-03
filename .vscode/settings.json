@@ -35,6 +35,7 @@
     "dpkg",
     "dpms",
     "drun",
+    "envcache",
     "figlet",
     "flatpak",
     "flatpaks",
@@ -62,6 +63,7 @@
     "libxcb",
     "lightdm",
     "linuxbrew",
+    "mkchain",
     "mkdirs",
     "mkpm",
     "mssql",
@@ -206,7 +208,8 @@
   },
   "python.formatting.provider": "none",
   "files.associations": {
-    "*.tmpl": "shellscript"
+    "*.tmpl": "shellscript",
+    "Mkpmfile": "makefile"
   },
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter"

@@ -6,7 +6,7 @@
     "esbenp.prettier-vscode",
     "mkhl.direnv",
     "ms-python.python",
-    "ms-python.python",
+    "ms-vscode.makefile-tools",
     "psioniq.psi-header",
     "streetsidesoftware.code-spell-checker"
   ]

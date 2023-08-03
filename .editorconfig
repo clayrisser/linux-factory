@@ -31,3 +31,8 @@ indent_size = 4
 [*.tmpl]
 charset = utf-8
 indent_size = 4
+
+[Mkpmfile]
+charset = utf-8
+indent_size = 4
+indent_style = tab

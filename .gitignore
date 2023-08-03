@@ -2,12 +2,6 @@
 /.build
 /*.iso
 
-# mkpm
-.mkpm/*
-**/.mkpm/*
-!/.mkpm/.cache.tar.gz
-!/.mkpm/.bootstrap.mk
-
 # python
 *$py.class
 build/
@@ -86,3 +80,6 @@ venv.bak/
 .webassets-cache
 wheels/
 /requirements.txt
+
+# mkpm
+.mkpm/mkpm
