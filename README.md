@@ -57,7 +57,7 @@ the official Debian distribution on amd64.
 You can install all of the dependencies with the following command.
 
 ```sh
-sudo apt-get install -y imagemagick make git git-lfs grub-emu live-build python3 jq python3-poetry-core python3-venv snapd && sudo snap install yq
+sudo apt-get install -y imagemagick make git git-lfs grub-emu live-build python3-minimal jq python3-poetry-core python3-venv yq
 ```
 
 ### Required
@@ -69,11 +69,11 @@ sudo apt-get install -y imagemagick make git git-lfs grub-emu live-build python3
 | Git LFS     | `sudo apt-get install -y git-lfs`                       | https://git-lfs.com                                                           |
 | ImageMagick | `sudo apt-get install -y imagemagick`                   | https://imagemagick.org                                                       |
 | Live Build  | `sudo apt-get install -y live-build`                    | https://live-team.pages.debian.net/live-manual/html/live-manual/index.en.html |
-| Python 3    | `sudo apt-get install -y python3`                       | https://www.python.org                                                        |
+| Python 3    | `sudo apt-get install -y python3-minimal`                       | https://www.python.org                                                        |
 | jq          | `sudo apt-get install -y jq`                            | https://stedolan.github.io/jq                                                 |
 | poetry      | `sudo pip3 install poetry --break-system-packages`      | https://python-poetry.org                                                     |
 | virtualenv  | `sudo apt-get install -y python3-venv`                  | https://virtualenv.pypa.io                                                    |
-| yq          | `sudo apt-get install -y snapd && sudo snap install yq` | https://mikefarah.gitbook.io/yq                                               |
+| yq          | `sudo apt-get install -y yq` | https://mikefarah.gitbook.io/yq                                               |
 
 ### Optional
 
