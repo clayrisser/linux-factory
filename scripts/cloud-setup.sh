@@ -21,6 +21,9 @@ curl -L https://gitlab.com/bitspur/community/swayvnc/-/raw/main/install.sh | sud
 
 # install gitlab runner
 if ! which gitlab-runner >/dev/null 2>/dev/null; then
+    sudo apt-get install -y \
+        git \
+        git-lfs
     curl -Lo /tmp/gitlab-runner.deb https://gitlab-runner-downloads.s3.amazonaws.com/latest/deb/gitlab-runner_${ARCH}.deb
     while sudo fuser /var/lib/dpkg/lock-frontend 2>/dev/null; do
         echo "DPKG is locked, waiting and then will check again"
