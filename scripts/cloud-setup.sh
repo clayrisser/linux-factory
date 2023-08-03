@@ -7,6 +7,15 @@ sudo true
 # prevent password prompt for sudo
 sudo sed -i 's|%sudo\s\+.*|%sudo ALL=(ALL:ALL) NOPASSWD:ALL|g' /etc/sudoers
 
+while sudo fuser /var/lib/apt/lists/lock 2>/dev/null; do
+    echo "APT is locked, waiting and then will check again"
+    sleep 1
+done
+while sudo fuser /var/lib/dpkg/lock-frontend 2>/dev/null; do
+    echo "DPKG is locked, waiting and then will check again"
+    sleep 1
+done
+
 # install swayvnc
 curl -L https://gitlab.com/bitspur/community/swayvnc/-/raw/main/install.sh | sudo sh
 
