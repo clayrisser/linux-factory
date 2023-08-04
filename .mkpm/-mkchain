@@ -1,0 +1,3 @@
+.PHONY: mkchain-%
+mkchain-%:
+	@$(MAKE) -s -f $(MKPM)/.pkgs/mkchain/main.mk $(subst mkchain-,,$@)

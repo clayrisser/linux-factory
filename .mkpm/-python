@@ -1,0 +1,3 @@
+.PHONY: python-%
+python-%:
+	@$(MAKE) -s -f $(MKPM)/.pkgs/python/main.mk $(subst python-,,$@)

@@ -1,0 +1,8 @@
+export PIP := env/bin/pip
+export POETRY := poetry
+export PYTHON := env/bin/python
+export VIRTUALENV := python3 -m venv
+export PIP := env/bin/pip
+export POETRY := poetry
+export PYTHON := env/bin/python
+export VIRTUALENV := python3 -m venv

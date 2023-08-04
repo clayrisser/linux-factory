@@ -1,0 +1,7 @@
+.PHONY: install +install _install ~install
+.DELETE_ON_ERROR: $(ACTION)/install
+install: _install ~install
+~install: |  $(INSTALL_TARGETS) $(ACTION)/install
++install: | _install $(INSTALL_TARGETS) $(ACTION)/install
+_install:
+	@$(RM) -rf $(_DONE)/install
