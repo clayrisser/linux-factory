@@ -1,7 +1,0 @@
-.PHONY: lint +lint _lint ~lint
-.DELETE_ON_ERROR: $(ACTION)/lint
-lint: _lint ~lint
-~lint: |  $(LINT_TARGETS) $(ACTION)/lint
-+lint: | _lint $(LINT_TARGETS) $(ACTION)/lint
-_lint:
-	@$(RM) -rf $(_DONE)/lint

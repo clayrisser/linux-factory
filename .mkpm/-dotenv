@@ -1,3 +1,0 @@
-.PHONY: dotenv-%
-dotenv-%:
-	@$(MAKE) -s -f $(MKPM)/.pkgs/dotenv/main.mk $(subst dotenv-,,$@)

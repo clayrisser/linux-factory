@@ -1,3 +1,0 @@
-.PHONY: patch-%
-patch-%:
-	@$(MAKE) -s -f $(MKPM)/.pkgs/patch/main.mk $(subst patch-,,$@)

@@ -1,3 +1,0 @@
-.PHONY: gnu-%
-gnu-%:
-	@$(MAKE) -s -f $(MKPM)/.pkgs/gnu/main.mk $(subst gnu-,,$@)

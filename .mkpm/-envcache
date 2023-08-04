@@ -1,3 +1,0 @@
-.PHONY: envcache-%
-envcache-%:
-	@$(MAKE) -s -f $(MKPM)/.pkgs/envcache/main.mk $(subst envcache-,,$@)
