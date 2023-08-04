@@ -11,3 +11,4 @@ build:
     - sudo make build
   tags:
     - debian-build
+  when: manual
