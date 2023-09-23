@@ -18,12 +18,12 @@ hide_session() {
         ((cat "$SESSION_PATH.real" && echo 'Hidden=true') > "$SESSION_PATH")
 }
 
-# hide_session /usr/share/wayland-sessions/gnome-wayland.desktop
-# hide_session /usr/share/wayland-sessions/gnome.desktop
-# hide_session /usr/share/xsessions/gnome-xorg.desktop
-# hide_session /usr/share/xsessions/gnome.desktop
-# hide_session /usr/share/xsessions/i3-with-shmlog.desktop
-# hide_session /usr/share/xsessions/i3.desktop
+hide_session /usr/share/wayland-sessions/gnome-wayland.desktop
+hide_session /usr/share/wayland-sessions/gnome.desktop
+hide_session /usr/share/xsessions/gnome-xorg.desktop
+hide_session /usr/share/xsessions/gnome.desktop
+hide_session /usr/share/xsessions/i3-with-shmlog.desktop
+hide_session /usr/share/xsessions/i3.desktop
 
 dpkg-divert --rename \
     --divert /usr/share/wayland-sessions/sway.desktop.real \

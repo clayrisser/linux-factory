@@ -54,7 +54,7 @@ case $CHOICE in
         grim -g "$GEOMETRY" "$EXPENDED_FILENAME"
 esac
 
-_EDITOR=$(command -v drawing $>/dev/null && echo drawing || (command -v gimp $>/dev/null && echo gimp || true))
+_EDITOR=$(command -v drawing $>/dev/null && echo drawing || (command -v krita $>/dev/null && echo krita || true))
 if [ "$_EDITOR" != "" ]; then
     $_EDITOR "$EXPENDED_FILENAME"
 fi
