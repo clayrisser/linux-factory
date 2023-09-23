@@ -18,5 +18,5 @@ dpkg-divert --rename \
     --add /etc/gdm3/daemon.conf
 cp /etc/gdm3/daemon.conf.real /etc/gdm3/daemon.conf
 
-plymouth-set-default-theme {{ overlay.config.theme }}
-update-initramfs -u
+/sbin/plymouth-set-default-theme {{ overlay.config.theme }}
+/sbin/update-initramfs -u

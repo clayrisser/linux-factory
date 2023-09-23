@@ -23,7 +23,7 @@ overlays:
   debianInstaller: {}
   firmware: {}
   grub: {}
-  # plymouth: {}
+  plymouth: {}
   sway: {}
   # ungoogledChromium: {}
   # tools: {}
