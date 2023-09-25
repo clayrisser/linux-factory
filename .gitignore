@@ -36,8 +36,6 @@ htmlcov/
 instance/
 .ipynb_checkpoints
 ipython_config.py
-lib/
-lib64/
 local_settings.py
 *.log
 *.manifest

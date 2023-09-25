@@ -26,6 +26,8 @@ overlays:
   plymouth: {}
   sway: {}
   # ungoogledChromium: {}
+  firefox: {}
+  chromium: {}
   # tools: {}
   # onlyoffice: {}
   # dev: {}
