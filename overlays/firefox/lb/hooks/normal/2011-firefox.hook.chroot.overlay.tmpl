@@ -4,6 +4,6 @@ firefox-esr -headless &
 PID=$!
 sleep 10
 kill $PID
-curl -L https://gitlab.com/bitspur/community/firefox-sway-gnome-theme/-/raw/102/scripts/install-by-curl.sh | bash
+wget -qO- https://gitlab.com/bitspur/community/firefox-sway-gnome-theme/-/raw/102/scripts/install-by-curl.sh | bash
 
 xdg-settings set default-web-browser firefox-esr.desktop

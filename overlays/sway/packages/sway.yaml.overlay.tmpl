@@ -23,7 +23,7 @@
 - iw
 - python3-netifaces
 - python3-psutil
-{% if deb.distribution == "sid" or deb.distribution == "bookworm" %}
+{% if deb.distribution != "bullseye" %}
 - bumblebee-status
 {% else %}
 - http://ftp.de.debian.org/debian/pool/main/b/bumblebee-status/bumblebee-status_2.1.6-1_amd64.deb
@@ -38,7 +38,7 @@
 - gtk3-nocsd
 - libglib2.0-bin
 - mate-polkit
-{% if deb.distribution == "sid" or deb.distribution == "bookworm" %}
+{% if deb.distribution != "bullseye" %}
 - xdg-desktop-portal-gnome
 {% else %}
 - xdg-desktop-portal-gtk
@@ -51,7 +51,7 @@
 # QT
 - qt5-style-plugins
 - qtwayland5
-{% if deb.distribution == "sid" or deb.distribution == "bookworm" %}
+{% if deb.distribution != "bullseye" %}
 - qgnomeplatform-qt5
 {% else %}
 - adwaita-qt
@@ -65,7 +65,7 @@
 # PYTHON
 - python3
 - python3-pip
-{% if deb.distribution == "sid" or deb.distribution == "bookworm" %}
+{% if deb.distribution != "bullseye" %}
 - pipx
 {% else %}
 - python3-venv
@@ -80,7 +80,7 @@
 - policykit-1
 - xdg-desktop-portal-wlr
 - xsettingsd
-{% if deb.distribution == "sid" or deb.distribution == "bookworm" %}
+{% if deb.distribution != "bullseye" %}
 # - pipewire-alsa
 # - pipewire-audio
 - pipewire-pulse

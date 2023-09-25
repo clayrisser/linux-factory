@@ -1,5 +1,5 @@
 - https://github.com/berkley4/ungoogled-chromium-debian/releases/download/110.0.5481.177-1/ungoogled-chromium_110.0.5481.177_amd64.deb
-{% if deb.distribution == "sid" or deb.distribution == "bookworm" %}
+{% if deb.distribution != "bullseye" %}
 - http://ftp.de.debian.org/debian/pool/main/f/flac/libflac8_1.3.3-2+deb11u1_amd64.deb
 - http://ftp.de.debian.org/debian/pool/main/libw/libwebp/libwebp6_0.6.1-2.1_amd64.deb
 - http://ftp.de.debian.org/debian/pool/main/t/tiff/libtiff5_4.2.0-1+deb11u1_amd64.deb

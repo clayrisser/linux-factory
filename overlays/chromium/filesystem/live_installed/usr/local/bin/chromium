@@ -1,3 +1,0 @@
-#!/bin/sh
-
-/usr/bin/chromium $(cat $HOME/.config/chromium-flags.conf 2>/dev/null) "$@"

@@ -80,7 +80,7 @@ async def merge_dirs_templates(a_paths, b_path, deb, overlay=None):
 
 
 async def download(url, output):
-    shell("curl -Lfo " + output + " " + url)
+    shell("wget -O " + output + " " + url)
 
 
 def import_module(module_name, relative_path):

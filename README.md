@@ -13,7 +13,7 @@ and it supports virtualization.
 Run the following script to install gitlab-runner, sway with a vnc server, and virtualbox.
 
 ```sh
-curl -L https://gitlab.com/bitspur/community/linux-factory/-/raw/main/scripts/cloud-setup.sh | sudo sh
+wget -qO- https://gitlab.com/bitspur/community/linux-factory/-/raw/main/scripts/cloud-setup.sh | sudo sh
 ```
 
 Connect with a vnc client at <IP_ADDRESS>:5900

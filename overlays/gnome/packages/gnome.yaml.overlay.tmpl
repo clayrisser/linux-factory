@@ -2,7 +2,7 @@
 - gnome-keyring
 - libglib2.0-bin
 - mate-polkit
-{% if deb.distribution == "sid" or deb.distribution == "bookworm" %}
+{% if deb.distribution != "bullseye" %}
 - xdg-desktop-portal-gnome
 {% else %}
 - xdg-desktop-portal-gtk
@@ -13,7 +13,7 @@
 - gnome-extra-icons
 - gnome-themes-extra
 - qt5-style-plugins
-{% if deb.distribution == "sid" or deb.distribution == "bookworm" %}
+{% if deb.distribution != "bullseye" %}
 - qgnomeplatform-qt5
 {% else %}
 - adwaita-qt
@@ -52,7 +52,7 @@
 - gnome-software-plugin-snap # software snap installer
 - seahorse # secret management
 - simple-scan # document scanner
-{% if deb.distribution == "sid" or deb.distribution == "bookworm" %}
+{% if deb.distribution != "bullseye" %}
 - gnome-text-editor # text editor
 {% else %}
 - gedit # text editor

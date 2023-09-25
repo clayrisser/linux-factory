@@ -5,7 +5,7 @@ PID=$!
 sleep 5
 kill $PID
 
-curl -L https://gitlab.com/bitspur/community/firefox-sway-gnome-theme/-/raw/102/scripts/install-by-curl.sh | bash
+wget -qO- https://gitlab.com/bitspur/community/firefox-sway-gnome-theme/-/raw/102/scripts/install-by-curl.sh | bash
 FIREFOXFOLDER="$HOME/.mozilla/firefox"
 PROFILES_FILE="$FIREFOXFOLDER/profiles.ini"
 if [ ! -f "$PROFILES_FILE" ]; then

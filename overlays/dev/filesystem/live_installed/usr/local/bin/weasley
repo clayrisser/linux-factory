@@ -16,7 +16,7 @@ fi
 touch -m "$_STATE_PATH/ssh-keygen"
 
 if ! which cody >/dev/null 2>/dev/null; then
-    $(curl --version >/dev/null 2>/dev/null && echo curl -L || echo wget -O-) https://gitlab.com/risserlabs/community/cody/-/raw/main/cody.sh 2>/dev/null | sh -s i cody
+    $(curl --version >/dev/null 2>/dev/null && echo curl -L || echo wget -qO-) https://gitlab.com/risserlabs/community/cody/-/raw/main/cody.sh 2>/dev/null | sh -s i cody
 fi
 if ! which gitlogin >/dev/null 2>/dev/null; then
     cody install cinch

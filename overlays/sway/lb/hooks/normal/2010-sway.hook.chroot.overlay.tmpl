@@ -46,7 +46,7 @@ cat <<EOF >> /etc/skel/.profile
 sway
 EOF
 
-{% if deb.distribution == "sid" or deb.distribution == "bookworm" %}
+{% if deb.distribution != "bullseye" %}
 pip3 install autotiling --break-system-packages
 {% else %}
 pip3 install pipx

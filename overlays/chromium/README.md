@@ -1,4 +1,4 @@
-# ungoogled-chromium
+# chromium
 
 ## Setup
 

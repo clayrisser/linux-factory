@@ -1,5 +1,7 @@
 #!/bin/sh
 
+xhost local:root
+
 if [ ! -f "$HOME/.config/sway/initialized" ]; then
     touch -m "$HOME/.config/sway/initialized"
     if which librewolf >/dev/null 2>/dev/null; then

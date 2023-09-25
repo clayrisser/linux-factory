@@ -1,7 +1,7 @@
 DEFAULT_BACKEND=wayland
 GTK_CSD=0
 GTK_USE_PORTAL=1
-QT_QPA_PLATFORMTHEME={% if deb.distribution == "sid" or deb.distribution == "bookworm" %}gnome{% else %}qt5ct{% endif %}
+QT_QPA_PLATFORMTHEME={% if deb.distribution != "bullseye" %}gnome{% else %}qt5ct{% endif %}
 SDL_DYNAMIC_API=/usr/lib/libSDL2-2.0.so
 WLR_NO_HARDWARE_CURSORS=1
 XDG_CURRENT_DESKTOP=sway
