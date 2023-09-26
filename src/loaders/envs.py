@@ -20,26 +20,33 @@ class EnvsLoader:
             envs += key + '="' + value + '"\n'
             logging.debug(key + ": " + value)
         if not os.path.exists(
-            os.path.join(self.deb.paths["lb"], "config-overrides/includes.chroot/root/install")
+            os.path.join(
+                self.deb.paths["lb"], "config-overrides/includes.chroot/root/install"
+            )
         ):
             os.makedirs(
                 os.path.join(
-                    self.deb.paths["lb"], "config-overrides/includes.chroot/root/install"
+                    self.deb.paths["lb"],
+                    "config-overrides/includes.chroot/root/install",
                 )
             )
         with open(
             os.path.join(
-                self.deb.paths["lb"], "config-overrides/includes.chroot/root/install/.env"
+                self.deb.paths["lb"],
+                "config-overrides/includes.chroot/root/install/.env",
             ),
             "w",
         ) as f:
             f.write(envs)
         if not os.path.exists(
-            os.path.join(self.deb.paths["lb"], "config-overrides/includes.installer/root/install")
+            os.path.join(
+                self.deb.paths["lb"], "config-overrides/includes.installer/root/install"
+            )
         ):
             os.makedirs(
                 os.path.join(
-                    self.deb.paths["lb"], "config-overrides/includes.installer/root/install"
+                    self.deb.paths["lb"],
+                    "config-overrides/includes.installer/root/install",
                 )
             )
         with open(

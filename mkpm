@@ -4,15 +4,15 @@ MKPM_VERSION="1.0.0"
 MKPM_SH_URL="${MKPM_SH_URL:-https://gitlab.com/api/v4/projects/48207162/packages/generic/mkpm/${MKPM_VERSION}/mkpm.sh}"
 alias download="$(curl --version >/dev/null 2>&1 && echo curl -Lo || echo wget -O)"
 alias echo="$([ "$(echo -e)" = "-e" ] && echo "echo" || echo "echo -e")"
-_SUPPORTS_COLORS=$([ "$(tput colors 2>/dev/null)" -ge 8 ] && echo 1 || true)
+_SUPPORTS_COLORS=$( (which tput >/dev/null 2>&1 && [ "$(tput colors 2>/dev/null || echo 0)" -ge 8 ]) && echo 1 || true)
 _CWD="$(pwd)"
 if [ "$_SUPPORTS_COLORS" = "1" ]; then
-    export NOCOLOR='\033[0m'
-    export RED='\033[31m'
-    export YELLOW='\033[33m'
+    export C_END='\033[0m'
+    export C_RED='\033[31m'
+    export C_YELLOW='\033[33m'
 fi
-_error() { echo "${RED}MKPM [E]:${NOCOLOR} $@" 1>&2; }
-_debug() { [ "$MKPM_DEBUG" = "1" ] && echo "${YELLOW}MKPM [D]:${NOCOLOR} $@" || true; }
+_error() { echo "${C_RED}MKPM [E]:${C_END} $@" 1>&2; }
+_debug() { [ "$MKPM_DEBUG" = "1" ] && echo "${C_YELLOW}MKPM [D]:${C_END} $@" || true; }
 _project_root() {
     _ROOT="$1"
     if [ "$_ROOT" = "" ]; then
@@ -33,17 +33,17 @@ _project_root() {
 _is_mkpm_proxy_required() {
     while test $# -gt 0; do
         case "$1" in
-            -h|--help)
-                return 1
+        -h | --help)
+            return 1
             ;;
-            -*)
-                shift
+        -*)
+            shift
             ;;
-            v|version|init)
-                return 1
+        v | version | init)
+            return 1
             ;;
-            *)
-                break
+        *)
+            break
             ;;
         esac
     done
@@ -59,9 +59,9 @@ if [ "$PROJECT_ROOT" = "/" ]; then
 fi
 MKPM_ROOT="$PROJECT_ROOT/.mkpm"
 MKPM="$MKPM_ROOT/mkpm"
-_MKPM_BIN="$MKPM/.bin"
-if [ ! -f "$_MKPM_BIN/mkpm" ]; then
-    mkdir -p "$_MKPM_BIN"
+MKPM_BIN="$MKPM/.bin"
+if [ ! -f "$MKPM_BIN/mkpm" ]; then
+    mkdir -p "$MKPM_BIN"
     if [ -f "$MKPM_ROOT/cache.tar.gz" ]; then
         mkdir -p "$MKPM"
         cd "$MKPM"
@@ -69,9 +69,9 @@ if [ ! -f "$_MKPM_BIN/mkpm" ]; then
         cd "$_CWD"
         _debug restored cache
     else
-        download "$_MKPM_BIN/mkpm" "$MKPM_SH_URL" >/dev/null
+        download "$MKPM_BIN/mkpm" "$MKPM_SH_URL" >/dev/null
         _debug downloaded mkpm.sh
     fi
-    chmod +x "$_MKPM_BIN/mkpm"
+    chmod +x "$MKPM_BIN/mkpm"
 fi
-exec "$_MKPM_BIN/mkpm" "$@"
+exec "$MKPM_BIN/mkpm" "$@"

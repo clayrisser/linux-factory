@@ -2,7 +2,6 @@ import inspect
 
 
 class Hooks:
-
     _hooks = {}
 
     def listen(self, name, cb):

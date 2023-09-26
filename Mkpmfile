@@ -3,10 +3,10 @@
 # File Created: 24-05-2022 13:11:50
 # Author: Clay Risser
 # -----
-# Last Modified: 03-08-2023 07:49:46
-# Modified By: Clay Risser
+#Last Modified: Tu-09-2023 11:12:25
+#Modified By: Clay Risser
 # -----
-# Risser Labs LLC (c) Copyright 2021 - 2022
+# BitSpur (c) Copyright 2021 - 2022
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@
 
 include $(MKPM)/mkpm
 include $(MKPM)/gnu
-include $(MKPM)/mkchain
+include $(MKPM)/chain
 include $(MKPM)/envcache
 include $(MKPM)/dotenv
 include $(MKPM)/python
@@ -31,18 +31,19 @@ export EXPORT_GPG_KEY := sh $(SCRIPTS_PATH)/export-gpg-key.sh
 
 CLOC ?= cloc
 
-ACTIONS += install ## install dependencies
-$(ACTION)/install: $(PROJECT_ROOT)/pyproject.toml env
-	@$(call poetry_install_dev,$(ARGS))
-	@$(call done,install)
+ACTIONS += deps
+DEPS_TARGETS := $(VENV)/bin/python
+$(ACTION)/deps: pyproject.toml poetry.lock
+	@$(call poetry_install)
+	@$(call done,$@)
 
-ACTIONS += lint ##
-$(ACTION)/lint: $(call git_deps,\.(py)$$)
-	@$(call black_lint,$?,$(ARGS))
-	@$(call done,lint)
+ACTIONS += format ##
+$(ACTION)/format: $(call git_deps,\.(py)$$)
+	@$(call black_format,$?,$(FORMAT_ARGS))
+	@$(call done,$@)
 
 .PHONY: build
-build: sudo ~install ##
+build: sudo ~deps ##
 	@$(SUDO) $(PYTHON) src/main.py $(ARGS)
 	@$(CP) .build/lb/*.iso .
 
@@ -84,4 +85,4 @@ fix-permissions:
 lb/%:
 	@$(MAKE) -sC .build/lb $(subst lb/,,$@) ARGS=$(ARGS)
 
--include $(call actions)
+-include $(call chain)
