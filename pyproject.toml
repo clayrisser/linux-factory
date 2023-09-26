@@ -9,7 +9,6 @@ license = "Apache-2.0"
 python = "^3.9.6"
 PyYAML = "^6.0"
 Jinja2 = "^3.1.2"
-black = "^23.9.1"
 
 [tool.poetry.dev-dependencies]
 black = "^23.9.1"

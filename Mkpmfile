@@ -31,10 +31,10 @@ CLOC ?= cloc
 ACTIONS += deps
 DEPS_TARGETS := $(VENV)/bin/python
 $(ACTION)/deps: pyproject.toml poetry.lock
-	@$(call poetry_install)
+	@$(call poetry_install_dev)
 	@$(call done,$@)
 
-ACTIONS += format ##
+ACTIONS += format~deps ##
 $(ACTION)/format: $(call git_deps,\.(py)$$)
 	@$(call black_format,$?,$(FORMAT_ARGS))
 	@$(call done,$@)
