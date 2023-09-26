@@ -4,9 +4,9 @@ xhost local:root
 
 if [ ! -f "$HOME/.config/sway/initialized" ]; then
     touch -m "$HOME/.config/sway/initialized"
-    if which librewolf >/dev/null 2>/dev/null; then
-        xdg-settings set default-web-browser librewolf.desktop
+    if which {{ overlay.config.defaultBrowser }} 2>&1 >/dev/null; then
+        xdg-settings set default-web-browser {{ overlay.config.defaultBrowser }}.desktop
     fi
-    swaycfg color-scheme dark
+    swaycfg color-scheme {{ overlay.config.theme.colorScheme }}
     swaymsg reload
 fi

@@ -38,7 +38,7 @@ overlays:
   apt: {}
   # flatpak:
   #   flatpaks:
-  #     - https://dl.flathub.org/repo/appstream/me.iepure.devtoolbox.flatpakref
+  #     - com.usebottles.bottles
   # snap:
   #   snaps:
   #     - yq
