@@ -1,3 +1,4 @@
 installer: calamares
+defaultBrowser: firefox-esr
 theme:
   colorScheme: dark

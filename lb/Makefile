@@ -1,12 +1,9 @@
 # File: /lb/Makefile
-# Project: lb
-# File Created: 31-08-2021 15:23:50
+# Project: linux-factory
+# File Created: 12-05-2023 06:06:17
 # Author: Clay Risser
 # -----
-# Last Modified: 03-08-2023 07:37:13
-# Modified By: Clay Risser
-# -----
-# Risser Labs LLC (c) Copyright 2021 - 2022
+# BitSpur (c) Copyright 2021 - 2023
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -23,7 +20,7 @@
 include $(MKPM)/mkpm
 include $(MKPM)/gnu
 include $(MKPM)/envcache
-include $(MKPM)/mkchain
+include $(MKPM)/chain
 include $(MKPM)/dotenv
 
 export ISO_FILE ?= \
@@ -45,14 +42,14 @@ $(ACTION)/config: auto/config config-overrides ##
 			$(RSYNC) -a --exclude=".*" config-overrides/$$d/ config/$$d/; \
 		fi; \
 	done
-	@$(call done,config)
+	@$(call done,$@)
 
 ACTIONS += build~config
 BUILD_TARGET := sudo
 $(ACTION)/build: ##
 	@$(SUDO) bash auto/build
 	@$(CAT) build.log | $(TAIL) -n1 | $(GREP) -q 'P: Build completed successfully'
-	@$(call done,build)
+	@$(call done,$@)
 
 $(ISO_FILE): ~build
 .PHONY: start +start
@@ -79,6 +76,6 @@ purge: clean ##
 	-@$(SUDO) bash auto/clean --purge
 	-@$(GIT) clean -fXd
 
--include $(call actions)
+-include $(call chain)
 
 CACHE_ENVS += \

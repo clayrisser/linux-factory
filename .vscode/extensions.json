@@ -8,6 +8,7 @@
     "ms-python.python",
     "ms-vscode.makefile-tools",
     "psioniq.psi-header",
-    "streetsidesoftware.code-spell-checker"
+    "streetsidesoftware.code-spell-checker",
+    "ms-python.black-formatter"
   ]
 }
