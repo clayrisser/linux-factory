@@ -1,5 +1,5 @@
 architectures: amd64
-debug: true
+debug: false
 distribution: bookworm
 donateUrl: https://www.debian.org
 email: email@risserlabs.com
