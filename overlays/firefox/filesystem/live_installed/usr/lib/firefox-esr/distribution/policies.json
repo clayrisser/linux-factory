@@ -17,10 +17,8 @@
         "https://addons.mozilla.org/firefox/downloads/file/3736912/google_container-1.5.4.xpi",
         "https://addons.mozilla.org/firefox/downloads/file/4058426/multi_account_containers-8.1.2.xpi",
         "https://addons.mozilla.org/firefox/downloads/file/4141092/facebook_container-2.3.11.xpi",
-        "https://addons.mozilla.org/firefox/downloads/file/4171020/ublock_origin-1.52.2.xpi",
-        "https://addons.mozilla.org/firefox/downloads/file/4162287/nextcloud_passwords-2.3.1.xpi",
-        "https://addons.mozilla.org/firefox/downloads/file/4167015/ether_metamask-11.0.0.xpi",
-        "https://addons.mozilla.org/firefox/downloads/file/3924381/deploysentinel_recorder-0.6.1.xpi"
+        "https://addons.mozilla.org/firefox/downloads/file/4171020/ublock_origin-1.52.2.xpi"
+      
       ]
     }
   }
