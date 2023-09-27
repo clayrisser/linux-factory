@@ -3,6 +3,10 @@
 flatpak override --filesystem=xdg-config/gtk-3.0
 flatpak override --filesystem=xdg-config/gtk-4.0
 
-{% for flatpak in overlay.config.liveFlatpaks %}
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak install -y org.gtk.Gtk3theme.Adwaita-dark
+flatpak install -y com.github.tchx84.Flatseal
+
+{% for flatpak in overlay.config.flatpaks %}
 flatpak install -y {{ flatpak }}
 {% endfor %}
