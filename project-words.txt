@@ -115,3 +115,4 @@ xhost
 xinit
 xorg
 xwayland
+zenity

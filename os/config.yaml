@@ -1,5 +1,5 @@
 architectures: amd64
-debug: false
+debug: true
 distribution: bookworm
 donateUrl: https://www.debian.org
 email: email@risserlabs.com
@@ -19,26 +19,33 @@ lb:
   debianInstallerGui: false
   debianInstallerDistribution: bookworm # daily|bookworm
 overlays:
-  # example: {}
+  apt: {}
+  chromium: {}
   debianInstaller: {}
+  easterEggs: {}
+  example: {}
+  firefox: {}
   firmware: {}
   grub: {}
   plymouth: {}
   sway: {}
-  # ungoogledChromium: {}
-  firefox: {}
-  chromium: {}
-  # tools: {}
-  # onlyoffice: {}
+  gnome:
+    packages:
+      highPriority: true
+      mediumPriority: false
+      lowPriority: false
+  tools:
+    packages:
+      cli: true
+      media: false
+  flatpak:
+    flatpaks: []
+      # - com.belmoussaoui.Authenticator
+      # - com.usebottles.bottles
+  snap:
+    snaps: []
   # dev: {}
-  easterEggs: {}
-  # gnome: {}
+  # onlyoffice: {}
   # waydroid: {}
+  # ungoogledChromium: {}
   # librewolf: {}
-  apt: {}
-  # flatpak:
-  #   flatpaks:
-  #     - com.usebottles.bottles
-  # snap:
-  #   snaps:
-  #     - yq

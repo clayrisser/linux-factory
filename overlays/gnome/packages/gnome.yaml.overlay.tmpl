@@ -22,7 +22,6 @@
 
 # HIGH PRIORITY
 {% if overlay.config.packages.highPriority %}
-- menulibre # menu editor
 - dconf-editor # dconf editor
 - gnome-control-center # control center
 - gnome-firmware # firmware settings
@@ -32,9 +31,11 @@
 - gnome-tweaks # tweak settings
 - gnome-usage # space usage
 - lxappearance # interface settings
+- menulibre # menu editor
 - nautilus # file explorer
 - network-manager-gnome # network manager
 - pavucontrol # audio settings
+- synaptic # package manager
 - system-config-printer # printer settings
 {% endif %}
 
@@ -52,6 +53,7 @@
 - gnome-software-plugin-snap # software snap installer
 - seahorse # secret management
 - simple-scan # document scanner
+- kdeconnect # mobile device integration
 {% if deb.distribution != "bullseye" %}
 - gnome-text-editor # text editor
 {% else %}
@@ -146,10 +148,6 @@
   binary: true
   installed: true
 - package: vlc # media player
-  live: false
-  binary: true
-  installed: true
-- package: gnome-documents # document manager
   live: false
   binary: true
   installed: true
