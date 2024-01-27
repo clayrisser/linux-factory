@@ -6,7 +6,7 @@ GenericName[ru]=Редактор документов
 Comment=Edit office documents
 Comment[ru]=Редактировать офисные документы
 Type=Application
-Exec=xrun /usr/bin/onlyoffice-desktopeditors --force-scale=1 %U
+Exec=sh -c "xrun /usr/bin/onlyoffice-desktopeditors --force-scale=1 \"%U\""
 Terminal=false
 Icon=onlyoffice-desktopeditors
 Keywords=Text;Document;OpenDocument Text;Microsoft Word;Microsoft Works;odt;doc;docx;rtf;
